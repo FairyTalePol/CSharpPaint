@@ -1,0 +1,10 @@
+D:\Учеба\FinalPaint\FinalPaint\FinalPaint\bin\Debug\FinalPaint.exe.config
+D:\Учеба\FinalPaint\FinalPaint\FinalPaint\bin\Debug\FinalPaint.exe
+D:\Учеба\FinalPaint\FinalPaint\FinalPaint\bin\Debug\FinalPaint.pdb
+D:\Учеба\FinalPaint\FinalPaint\FinalPaint\obj\Debug\FinalPaint.csprojAssemblyReference.cache
+D:\Учеба\FinalPaint\FinalPaint\FinalPaint\obj\Debug\FinalPaint.MainForm.resources
+D:\Учеба\FinalPaint\FinalPaint\FinalPaint\obj\Debug\FinalPaint.Properties.Resources.resources
+D:\Учеба\FinalPaint\FinalPaint\FinalPaint\obj\Debug\FinalPaint.csproj.GenerateResource.cache
+D:\Учеба\FinalPaint\FinalPaint\FinalPaint\obj\Debug\FinalPaint.csproj.CoreCompileInputs.cache
+D:\Учеба\FinalPaint\FinalPaint\FinalPaint\obj\Debug\FinalPaint.exe
+D:\Учеба\FinalPaint\FinalPaint\FinalPaint\obj\Debug\FinalPaint.pdb
