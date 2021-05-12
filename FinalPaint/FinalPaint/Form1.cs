@@ -68,6 +68,23 @@ namespace FinalPaint
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string penWidth = dropdownPenWidth.Text;
+            switch (penWidth)
+            {
+                case "1px":
+                    _pen.Width = 1;
+                    break;
+                case "5px":
+                    _pen.Width = 5;
+                    break;
+                case "10px":
+                    _pen.Width = 10;
+                    break;
+                case "20px":
+                    _pen.Width = 20;
+                    break;
+            }
+
 
         }
 
