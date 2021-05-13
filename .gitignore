@@ -1,2 +1,4 @@
-FinalPaint/FinalPaint/bin/**.*
-FinalPaint/FinalPaint/obj/**.*
+bin
+obj
+**/.vs
+/.idea
