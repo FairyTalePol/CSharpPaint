@@ -28,3 +28,13 @@ D:\Учеба\Paint\FinalPaint\FinalPaint\obj\Debug\FinalPaint.csproj.GenerateRe
 D:\Учеба\Paint\FinalPaint\FinalPaint\obj\Debug\FinalPaint.csproj.CoreCompileInputs.cache
 D:\Учеба\Paint\FinalPaint\FinalPaint\obj\Debug\FinalPaint.exe
 D:\Учеба\Paint\FinalPaint\FinalPaint\obj\Debug\FinalPaint.pdb
+D:\работы\Project\CSharpPaint\FinalPaint\FinalPaint\bin\Debug\FinalPaint.exe.config
+D:\работы\Project\CSharpPaint\FinalPaint\FinalPaint\bin\Debug\FinalPaint.exe
+D:\работы\Project\CSharpPaint\FinalPaint\FinalPaint\bin\Debug\FinalPaint.pdb
+D:\работы\Project\CSharpPaint\FinalPaint\FinalPaint\obj\Debug\FinalPaint.csprojAssemblyReference.cache
+D:\работы\Project\CSharpPaint\FinalPaint\FinalPaint\obj\Debug\FinalPaint.MainForm.resources
+D:\работы\Project\CSharpPaint\FinalPaint\FinalPaint\obj\Debug\FinalPaint.Properties.Resources.resources
+D:\работы\Project\CSharpPaint\FinalPaint\FinalPaint\obj\Debug\FinalPaint.csproj.GenerateResource.cache
+D:\работы\Project\CSharpPaint\FinalPaint\FinalPaint\obj\Debug\FinalPaint.csproj.CoreCompileInputs.cache
+D:\работы\Project\CSharpPaint\FinalPaint\FinalPaint\obj\Debug\FinalPaint.exe
+D:\работы\Project\CSharpPaint\FinalPaint\FinalPaint\obj\Debug\FinalPaint.pdb
