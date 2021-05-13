@@ -38,8 +38,7 @@ namespace FinalPaint
         int startX, startY;
    
         private void MainForm_Load(object sender, EventArgs e)
-        {
-            //Form load ne nuzen
+        {           
             _bitmap = new Bitmap(mainDrawingSurface.Width, mainDrawingSurface.Height);
             _bitmapTemp = new Bitmap(mainDrawingSurface.Width, mainDrawingSurface.Height);
             _pen = new Pen(Color.Black, 3);
@@ -53,7 +52,7 @@ namespace FinalPaint
             _pen.EndCap = LineCap.Round;
             maxWidth = mainDrawingSurface.Width;
             maxHeight = mainDrawingSurface.Height;
-
+            //Form load ne nuzen
         }
 
         private void btnColor_Click(object sender, EventArgs e)
