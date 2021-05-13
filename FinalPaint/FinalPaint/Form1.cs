@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalPaint.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,6 +32,7 @@ namespace FinalPaint
         Graphics _graphics;
         Graphics _graphicsTemp;
         bool isCalledfirstTime = true;
+        Figure _currentFigure;
        
         int prevX = 0, prevY = 0;
         int startX, startY;
@@ -117,90 +119,105 @@ namespace FinalPaint
         {
             startX = e.X;
             startY = e.Y;
-           
+            _currentFigure = new Line(new Point(e.X, e.Y), _pen);
         }
 
         private void mainDrawingSurface_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                if (_currentMode == EButtons.Line)
-                {
-                    _graphicsTemp = Graphics.FromImage(_bitmapTemp);
-                    _graphicsTemp.Clear(Color.White);
-                    _graphicsTemp.DrawImage(_bitmap, 0, 0);
-
-                    _graphicsTemp.DrawLine(_pen, startX, startY, e.X, e.Y);
-
-                    mainDrawingSurface.Image = _bitmapTemp;
-                }
-                if (_currentMode == EButtons.Rectangle)
-                {
-                    _graphicsTemp = Graphics.FromImage(_bitmapTemp);
-                    _graphicsTemp.Clear(Color.White);
-                    _graphicsTemp.DrawImage(_bitmap, 0, 0);
-
-                    int xCorner, yCorner, width, height;
-                    xCorner = e.X - startX < 0 ? e.X : startX;
-                    yCorner = e.Y - startY < 0 ? e.Y : startY;
-                    width = e.X - startX < 0 ? startX - e.X : e.X - startX;
-                    height = e.Y - startY < 0 ? startY - e.Y : e.Y - startY;
-
-                    _graphicsTemp.DrawRectangle(_pen, xCorner, yCorner, width, height);
-
-                    mainDrawingSurface.Image = _bitmapTemp;
-                }
-                if (_currentMode == EButtons.Ellipse)
-                {
-                    _graphicsTemp = Graphics.FromImage(_bitmapTemp);
-                    _graphicsTemp.Clear(Color.White);
-                    _graphicsTemp.DrawImage(_bitmap, 0, 0);
-
-
-
-                    //_graphicsTemp.DrawEllipse(_pen, startX, startY, e.X, e.Y);
-                    _graphicsTemp.DrawEllipse(_pen, startX, startY, e.X - startX, e.Y - startY);
-
-                    mainDrawingSurface.Image = _bitmapTemp;
-                }
-                if (_currentMode == EButtons.Curve)
-                {
-                    _graphics.DrawLine(_pen, prevX, prevY, e.X, e.Y);
-
-                    mainDrawingSurface.Image = _bitmap;
-                }
+                _graphicsTemp = Graphics.FromImage(_bitmapTemp);
+                _graphicsTemp.Clear(Color.White);
+                _graphicsTemp.DrawImage(_bitmap, 0, 0);
+                _currentFigure.Draw(_graphicsTemp, new Point(e.X, e.Y));
+                mainDrawingSurface.Image = _bitmapTemp;
             }
+            
 
-            prevX = e.X;
-            prevY = e.Y;
+
+            //if (e.Button == MouseButtons.Left)
+            //{
+            //    if (_currentMode == EButtons.Line)
+            //    {
+            //        _graphicsTemp = Graphics.FromImage(_bitmapTemp);
+            //        _graphicsTemp.Clear(Color.White);
+            //        _graphicsTemp.DrawImage(_bitmap, 0, 0);
+
+            //        _graphicsTemp.DrawLine(_pen, startX, startY, e.X, e.Y);
+
+            //        mainDrawingSurface.Image = _bitmapTemp;
+            //    }
+            //    if (_currentMode == EButtons.Rectangle)
+            //    {
+            //        _graphicsTemp = Graphics.FromImage(_bitmapTemp);
+            //        _graphicsTemp.Clear(Color.White);
+            //        _graphicsTemp.DrawImage(_bitmap, 0, 0);
+
+            //        int xCorner, yCorner, width, height;
+            //        xCorner = e.X - startX < 0 ? e.X : startX;
+            //        yCorner = e.Y - startY < 0 ? e.Y : startY;
+            //        width = e.X - startX < 0 ? startX - e.X : e.X - startX;
+            //        height = e.Y - startY < 0 ? startY - e.Y : e.Y - startY;
+
+            //        _graphicsTemp.DrawRectangle(_pen, xCorner, yCorner, width, height);
+
+            //        mainDrawingSurface.Image = _bitmapTemp;
+            //    }
+            //    if (_currentMode == EButtons.Ellipse)
+            //    {
+            //        _graphicsTemp = Graphics.FromImage(_bitmapTemp);
+            //        _graphicsTemp.Clear(Color.White);
+            //        _graphicsTemp.DrawImage(_bitmap, 0, 0);
+
+
+
+            //        //_graphicsTemp.DrawEllipse(_pen, startX, startY, e.X, e.Y);
+            //        _graphicsTemp.DrawEllipse(_pen, startX, startY, e.X - startX, e.Y - startY);
+
+            //        mainDrawingSurface.Image = _bitmapTemp;
+            //    }
+            //    if (_currentMode == EButtons.Curve)
+            //    {
+            //        _graphics.DrawLine(_pen, prevX, prevY, e.X, e.Y);
+
+            //        mainDrawingSurface.Image = _bitmap;
+            //    }
+            //}
+
+            //prevX = e.X;
+            //prevY = e.Y;
         }
- 
+
         private void mainDrawingSurface_MouseUp(object sender, MouseEventArgs e)
         {
-            if (_currentMode == EButtons.Line)
-            {            
-                _graphics.DrawLine(_pen, startX, startY, e.X, e.Y);
+ 
+            _currentFigure.Draw(_graphics, new Point(e.X, e.Y));
+            mainDrawingSurface.Image = _bitmap;
 
-                mainDrawingSurface.Image = _bitmap;
-            }
-            if (_currentMode == EButtons.Rectangle)
-            {
-                int xCorner, yCorner, width, height;
-                xCorner = e.X - startX < 0 ? e.X : startX;
-                yCorner = e.Y - startY < 0 ? e.Y : startY;
-                width = e.X - startX < 0 ? startX - e.X : e.X - startX;
-                height = e.Y - startY < 0 ? startY - e.Y : e.Y - startY;
+            //if (_currentMode == EButtons.Line)
+            //{            
+            //    _graphics.DrawLine(_pen, startX, startY, e.X, e.Y);
 
-                _graphics.DrawRectangle(_pen, xCorner, yCorner, width, height);
+            //    mainDrawingSurface.Image = _bitmap;
+            //}
+            //if (_currentMode == EButtons.Rectangle)
+            //{
+            //    int xCorner, yCorner, width, height;
+            //    xCorner = e.X - startX < 0 ? e.X : startX;
+            //    yCorner = e.Y - startY < 0 ? e.Y : startY;
+            //    width = e.X - startX < 0 ? startX - e.X : e.X - startX;
+            //    height = e.Y - startY < 0 ? startY - e.Y : e.Y - startY;
 
-                mainDrawingSurface.Image = _bitmap;
-            }
-            if (_currentMode == EButtons.Ellipse)
-            {
-                _graphics.DrawEllipse(_pen, startX, startY, e.X - startX, e.Y - startY);
+            //    _graphics.DrawRectangle(_pen, xCorner, yCorner, width, height);
 
-                mainDrawingSurface.Image = _bitmap;
-            }
+            //    mainDrawingSurface.Image = _bitmap;
+            //}
+            //if (_currentMode == EButtons.Ellipse)
+            //{
+            //    _graphics.DrawEllipse(_pen, startX, startY, e.X - startX, e.Y - startY);
+
+            //    mainDrawingSurface.Image = _bitmap;
+            //}
         }
 
         private void btnLine_Click(object sender, EventArgs e)
