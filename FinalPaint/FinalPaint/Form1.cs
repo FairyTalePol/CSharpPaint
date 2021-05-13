@@ -39,7 +39,7 @@ namespace FinalPaint
    
         private void MainForm_Load(object sender, EventArgs e)
         {
-         
+            //Form load ne nuzen
             _bitmap = new Bitmap(mainDrawingSurface.Width, mainDrawingSurface.Height);
             _bitmapTemp = new Bitmap(mainDrawingSurface.Width, mainDrawingSurface.Height);
             _pen = new Pen(Color.Black, 3);
