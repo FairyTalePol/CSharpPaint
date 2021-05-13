@@ -20,6 +20,7 @@ namespace FinalPaint.Classes
         //comment for master
         //odfughiufghiosdjf
         //WLM
+        //niggaz
         protected Graphics _g { get; set; }
         protected Pen _p { get; set; }
         protected Point _start { get; set; }
