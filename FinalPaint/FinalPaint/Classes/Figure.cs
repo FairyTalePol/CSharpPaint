@@ -11,6 +11,9 @@ namespace FinalPaint.Classes
     {
         //в конструктор передавать Graphics g, Pen p, Point start
         //коммент что б проверить коммит ааааааааааааааааааааааааа
+        //ааааааааааааааааааааааааааааааааааааааааааааааааааааааааа
+        //аааааааааааааааааааааааааааааааааааааааааааааааааааааааааа
+        //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
         protected Graphics _g { get; set; }
         protected Pen _p { get; set; }
         protected Point _start { get; set; }
