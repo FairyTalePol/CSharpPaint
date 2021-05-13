@@ -65,6 +65,8 @@ namespace FinalPaint
 
         private void penChangeSizeTrackBar_Scroll(object sender, EventArgs e)
         {
+
+            //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
             _pen.Width = penChangeSizeTrackBar.Value;
 
         }
