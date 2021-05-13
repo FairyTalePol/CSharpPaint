@@ -14,6 +14,7 @@ namespace FinalPaint.Classes
         //ааааааааааааааааааааааааааааааааааааааааааааааааааааааааа
         //аааааааааааааааааааааааааааааааааааааааааааааааааааааааааа
         //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        //ooooooooooooooooooooooooooooooooooooooooooooooooo
         protected Graphics _g { get; set; }
         protected Pen _p { get; set; }
         protected Point _start { get; set; }
