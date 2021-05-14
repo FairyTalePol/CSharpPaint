@@ -34,7 +34,7 @@ namespace FinalPaint
         bool isCalledfirstTime = true;
         Figure _currentFigure;
        
-        int prevX = 0, prevY = 0;
+       // int prevX = 0, prevY = 0;
         int startX, startY;
    
         private void MainForm_Load(object sender, EventArgs e)
@@ -116,7 +116,15 @@ namespace FinalPaint
         {
             startX = e.X;
             startY = e.Y;
-            _currentFigure = new Line(new Point(e.X, e.Y), _pen);
+            switch(_currentMode)
+            {
+                case EButtons.Line:
+                    _currentFigure = new Line(new Point(e.X, e.Y), _pen);
+                    break;
+                case EButtons.Rectangle:
+                    _currentFigure = new Classes.Rectangle(new Point(e.X, e.Y), _pen);
+                    break;
+            }
         }
 
         private void mainDrawingSurface_MouseMove(object sender, MouseEventArgs e)
@@ -129,6 +137,7 @@ namespace FinalPaint
                 _currentFigure.Draw(_graphicsTemp, new Point(e.X, e.Y));
                 mainDrawingSurface.Image = _bitmapTemp;
             }
+
             
 
 
@@ -260,7 +269,7 @@ namespace FinalPaint
                     _graphics = Graphics.FromImage(_bitmap);
                     _graphicsTemp = Graphics.FromImage(_bitmapTemp);
 
-                    _graphics.DrawImage(temp, new Rectangle(0, 0, maxWidth, maxHeight), new Rectangle(0, 0, maxWidth, maxHeight), GraphicsUnit.Pixel);
+                    _graphics.DrawImage(temp, new System.Drawing.Rectangle(0, 0, maxWidth, maxHeight), new System.Drawing.Rectangle(0, 0, maxWidth, maxHeight), GraphicsUnit.Pixel);
 
                     mainDrawingSurface.Image = _bitmap;
 
