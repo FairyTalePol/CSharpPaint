@@ -20,6 +20,9 @@ namespace FinalPaint
         Rectangle,
         Ellipse,
     }
+
+    
+
     public partial class MainForm : Form
     {
         EButtons _currentMode;
@@ -33,14 +36,20 @@ namespace FinalPaint
         Graphics _graphicsTemp;
         bool isCalledfirstTime = true;
         Figure _currentFigure;
-       
+        Dictionary<int, int> penWidth;
+        
        // int prevX = 0, prevY = 0;
         int startX, startY;
    
-        private void MainForm_Load(object sender, EventArgs e)
-        {           
-            //lkjhgfdsdfghjkl;
-            //bla bla
+        public void Setup()
+        {
+            penWidth = new Dictionary<int, int>();
+            penWidth.Add(0, 1);
+            penWidth.Add(1, 5);
+            penWidth.Add(2, 10);
+            penWidth.Add(3, 20);
+
+
             _bitmap = new Bitmap(mainDrawingSurface.Width, mainDrawingSurface.Height);
             _bitmapTemp = new Bitmap(mainDrawingSurface.Width, mainDrawingSurface.Height);
             _pen = new Pen(Color.Black, 3);
@@ -54,7 +63,15 @@ namespace FinalPaint
             _pen.EndCap = LineCap.Round;
             maxWidth = mainDrawingSurface.Width;
             maxHeight = mainDrawingSurface.Height;
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            //lkjhgfdsdfghjkl;
+            //bla bla
+
             //Form load ne nuzen
+            Setup();
         }
 
         private void btnColor_Click(object sender, EventArgs e)
@@ -74,24 +91,8 @@ namespace FinalPaint
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string penWidth = dropdownPenWidth.Text;
-            switch (penWidth)
-            {
-                case "1px":
-                    _pen.Width = 1;
-                    break;
-                case "5px":
-                    _pen.Width = 5;
-                    break;
-                case "10px":
-                    _pen.Width = 10;
-                    break;
-                case "20px":
-                    _pen.Width = 20;
-                    break;
-            }
-
-
+            int index = dropdownPenWidth.SelectedIndex;
+            _pen.Width = penWidth[index];
         }
 
         private void btnClear_Click(object sender, EventArgs e)
