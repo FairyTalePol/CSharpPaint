@@ -292,6 +292,62 @@ namespace FinalPaint
             }
         }
 
+        private void button_save_Click(object sender, EventArgs e)
+        {
+            if (mainDrawingSurface.Image != null)
+            {
+                SaveFileDialog save = new SaveFileDialog();
+                save.Title = "Save Us";
+                save.OverwritePrompt = true;
+                save.CheckPathExists = true;
+
+                save.Filter = "Image Files(*.BMP)|*.BMP|Image Files(*.JPG)|*.JPG|Image Files(*.PNG)|*.PNG|All files(*.*)|*.*";
+                save.ShowHelp = true;
+
+                if (save.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        mainDrawingSurface.Image.Save(save.FileName);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Image cannot be saved", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);                     
+                    }
+                }
+            }         
+        }
+
+        private void button_open_Click(object sender, EventArgs e)
+        {
+            Bitmap image;
+
+            OpenFileDialog open_dialog = new OpenFileDialog();
+            open_dialog.Filter = "Image Files(*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG|All files (*.*)|*.*";
+            if (open_dialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    image = new Bitmap(open_dialog.FileName);
+                    mainDrawingSurface.Size = image.Size;
+                    mainDrawingSurface.Image = image;
+                    mainDrawingSurface.Invalidate();
+
+                }
+                catch 
+                {
+                    DialogResult result = MessageBox.Show("The selected file cannot be opened", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            /*openFileDialog1.ShowDialog();
+            if (openFileDialog1.FileName != "")
+            {
+                _bitmap = (Bitmap)Image.FromFile(openFileDialog1.FileName);
+                mainDrawingSurface.Image = _bitmap;              
+            }*/
+        }
+
         public MainForm()
         {
             InitializeComponent();
