@@ -130,7 +130,7 @@ namespace FinalPaint
                     _currentFigure = new Ellipse(new Point(e.X, e.Y), _pen);
                     break;
                 case EButtons.Polygon:
-                    _currentFigure = new Polygon(new Point(e.X, e.Y), _pen, 12);
+                    _currentFigure = new Polygon(new Point(e.X, e.Y), _pen, 4);
                     break;
             }
         }
