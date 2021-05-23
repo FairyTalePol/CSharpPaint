@@ -125,6 +125,9 @@ namespace FinalPaint
                 case EButtons.Rectangle:
                     _currentFigure = new Classes.Rectangle(new Point(e.X, e.Y), _pen);
                     break;
+                case EButtons.Ellipse:
+                    _currentFigure = new Ellipse(new Point(e.X, e.Y), _pen);
+                    break;
             }
         }
 
