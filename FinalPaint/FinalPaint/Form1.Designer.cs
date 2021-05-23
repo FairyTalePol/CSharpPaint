@@ -60,7 +60,6 @@ namespace FinalPaint
             this.button13 = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -87,7 +86,6 @@ namespace FinalPaint
             this.panel3.AutoScroll = true;
             this.panel3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.button_open);
             this.panel3.Controls.Add(this.btnEllipse);
             this.panel3.Controls.Add(this.button_save);
@@ -106,7 +104,7 @@ namespace FinalPaint
             // 
             this.button_open.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_open.Location = new System.Drawing.Point(420, 21);
-            this.button_open.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_open.Margin = new System.Windows.Forms.Padding(4);
             this.button_open.Name = "button_open";
             this.button_open.Size = new System.Drawing.Size(52, 25);
             this.button_open.TabIndex = 3;
@@ -132,7 +130,7 @@ namespace FinalPaint
             // 
             this.button_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_save.Location = new System.Drawing.Point(420, 46);
-            this.button_save.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_save.Margin = new System.Windows.Forms.Padding(4);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(52, 25);
             this.button_save.TabIndex = 2;
@@ -434,15 +432,6 @@ namespace FinalPaint
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(293, 4);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 17);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "label2";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -459,7 +448,6 @@ namespace FinalPaint
             this.SizeChanged += new System.EventHandler(this.MainForm_SizeChanged);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.penChangeSizeTrackBar)).EndInit();
@@ -500,7 +488,6 @@ namespace FinalPaint
         private System.Windows.Forms.Button button_save;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Label label2;
     }
 }
 

@@ -37,7 +37,7 @@ namespace FinalPaint
         bool isCalledfirstTime = true;
         Figure _currentFigure;
         Dictionary<int, int> penWidth;
-        int counter = 0;
+    
         
        // int prevX = 0, prevY = 0;
         int startX, startY;
@@ -148,7 +148,7 @@ namespace FinalPaint
                 }
                 else
                 {
-                    label2.Text = ++counter+"";
+                 
                     _currentFigure.Draw(_graphics, new Point(e.X, e.Y));
                     mainDrawingSurface.Image = _bitmap;
                 }
@@ -341,6 +341,8 @@ namespace FinalPaint
             mainDrawingSurface.Image = _bitmap;
             _graphics = Graphics.FromImage(mainDrawingSurface.Image);
         }
+
+    
 
         public MainForm()
         {
