@@ -56,6 +56,7 @@ namespace FinalPaint
             this.mainDrawingSurface = new System.Windows.Forms.PictureBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.button13 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -82,6 +83,7 @@ namespace FinalPaint
             this.panel3.AutoScroll = true;
             this.panel3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.button7);
             this.panel3.Controls.Add(this.btnEllipse);
             this.panel3.Controls.Add(this.btnRectangle);
             this.panel3.Controls.Add(this.btnPoint);
@@ -394,6 +396,16 @@ namespace FinalPaint
             this.button13.Text = "button7";
             this.button13.UseVisualStyleBackColor = true;
             // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(293, 4);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(52, 48);
+            this.button7.TabIndex = 2;
+            this.button7.Text = "button7";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -446,6 +458,7 @@ namespace FinalPaint
         private System.Windows.Forms.Button btnLine;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button7;
     }
 }
 

@@ -19,6 +19,7 @@ namespace FinalPaint
         Curve,
         Rectangle,
         Ellipse,
+        Polygon,
     }
 
     
@@ -127,6 +128,9 @@ namespace FinalPaint
                     break;
                 case EButtons.Ellipse:
                     _currentFigure = new Ellipse(new Point(e.X, e.Y), _pen);
+                    break;
+                case EButtons.Polygon:
+                    _currentFigure = new Polygon(new Point(e.X, e.Y), _pen, 3);
                     break;
             }
         }
@@ -256,6 +260,11 @@ namespace FinalPaint
             _currentMode = EButtons.Point;
         }
 
+        private void button7_Click(object sender, EventArgs e)
+        {
+            _currentMode = EButtons.Polygon;
+        }
+
         private void MainForm_SizeChanged(object sender, EventArgs e)
         {
             if (!isCalledfirstTime)
@@ -295,6 +304,8 @@ namespace FinalPaint
                 btnColorDialog.BackColor = _pen.Color;
             }
         }
+
+        
 
         public MainForm()
         {
