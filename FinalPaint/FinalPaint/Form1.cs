@@ -37,6 +37,7 @@ namespace FinalPaint
         bool isCalledfirstTime = true;
         Figure _currentFigure;
         Dictionary<int, int> penWidth;
+        int counter = 0;
         
        // int prevX = 0, prevY = 0;
         int startX, startY;
@@ -106,11 +107,7 @@ namespace FinalPaint
 
         private void mainDrawingSurface_MouseClick(object sender, MouseEventArgs e)
         {
-            if (_currentMode == EButtons.Point)
-            {
-                _graphics.FillEllipse(_brush, e.X-(_pen.Width/2), e.Y- (_pen.Width / 2), _pen.Width, _pen.Width);
-                mainDrawingSurface.Image = _bitmap;
-            }
+            
         }
 
         private void mainDrawingSurface_MouseDown(object sender, MouseEventArgs e)
@@ -128,6 +125,12 @@ namespace FinalPaint
                 case EButtons.Ellipse:
                     _currentFigure = new Ellipse(new Point(e.X, e.Y), _pen);
                     break;
+                case EButtons.Curve:
+                    _currentFigure = new Curve(new Point(e.X, e.Y), _pen);
+                    break;
+                case EButtons.Point:
+                    _currentFigure = new CustomPoint(new Point(e.X, e.Y), _pen);
+                    break;
             }
         }
 
@@ -135,11 +138,20 @@ namespace FinalPaint
         {
             if (e.Button == MouseButtons.Left)
             {
-                _graphicsTemp = Graphics.FromImage(_bitmapTemp);
-                _graphicsTemp.Clear(Color.White);
-                _graphicsTemp.DrawImage(_bitmap, 0, 0);
-                _currentFigure.Draw(_graphicsTemp, new Point(e.X, e.Y));
-                mainDrawingSurface.Image = _bitmapTemp;
+                if (_currentFigure.Pullable==true)
+                {
+                    _graphicsTemp = Graphics.FromImage(_bitmapTemp);
+                    _graphicsTemp.Clear(Color.White);
+                    _graphicsTemp.DrawImage(_bitmap, 0, 0);
+                    _currentFigure.Draw(_graphicsTemp, new Point(e.X, e.Y));
+                    mainDrawingSurface.Image = _bitmapTemp;
+                }
+                else
+                {
+                    label2.Text = ++counter+"";
+                    _currentFigure.Draw(_graphics, new Point(e.X, e.Y));
+                    mainDrawingSurface.Image = _bitmap;
+                }
             }
 
             
