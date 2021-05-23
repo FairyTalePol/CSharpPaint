@@ -320,33 +320,11 @@ namespace FinalPaint
         }
 
         private void button_open_Click(object sender, EventArgs e)
-        {
-            Bitmap image;
-
-            OpenFileDialog open_dialog = new OpenFileDialog();
-            open_dialog.Filter = "Image Files(*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG|All files (*.*)|*.*";
-            if (open_dialog.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    image = new Bitmap(open_dialog.FileName);
-                    mainDrawingSurface.Size = image.Size;
-                    mainDrawingSurface.Image = image;
-                    mainDrawingSurface.Invalidate();
-
-                }
-                catch 
-                {
-                    DialogResult result = MessageBox.Show("The selected file cannot be opened", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-
-            /*openFileDialog1.ShowDialog();
-            if (openFileDialog1.FileName != "")
-            {
-                _bitmap = (Bitmap)Image.FromFile(openFileDialog1.FileName);
-                mainDrawingSurface.Image = _bitmap;              
-            }*/
+        {           
+            openFileDialog1.ShowDialog();           
+            _bitmap = new Bitmap(openFileDialog1.FileName);
+            mainDrawingSurface.Image = _bitmap;
+            _graphics = Graphics.FromImage(mainDrawingSurface.Image);
         }
 
         public MainForm()
