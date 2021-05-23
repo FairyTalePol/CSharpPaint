@@ -9,10 +9,15 @@ namespace FinalPaint.Classes
 {
     abstract class Figure
     {
-       
+        protected bool _pullable;
         protected Graphics _g { get; set; }
         protected Pen _p { get; set; }
         protected Point _start { get; set; }
+        protected bool Pullable { 
+            get {
+                return _pullable;
+            }
+        }
         public abstract void Draw(Graphics g, Point current);
             
     }

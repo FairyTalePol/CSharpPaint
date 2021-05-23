@@ -13,7 +13,8 @@ namespace FinalPaint.Classes
         {
             _start = start;
             _p = p;
-            
+            _pullable = true;
+
         }
         public override void Draw(Graphics g, Point current)
         {
