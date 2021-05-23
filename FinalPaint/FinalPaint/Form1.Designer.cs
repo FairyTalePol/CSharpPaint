@@ -60,6 +60,7 @@ namespace FinalPaint
             this.button_open = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.button7 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -86,6 +87,7 @@ namespace FinalPaint
             this.panel3.AutoScroll = true;
             this.panel3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.button7);
             this.panel3.Controls.Add(this.button_open);
             this.panel3.Controls.Add(this.btnEllipse);
             this.panel3.Controls.Add(this.button_save);
@@ -399,6 +401,16 @@ namespace FinalPaint
             this.button13.Text = "button7";
             this.button13.UseVisualStyleBackColor = true;
             // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(293, 4);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(52, 48);
+            this.button7.TabIndex = 2;
+            this.button7.Text = "button7";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
             // button_save
             // 
             this.button_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -481,6 +493,7 @@ namespace FinalPaint
         private System.Windows.Forms.Button btnLine;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button_open;
         private System.Windows.Forms.Button button_save;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
