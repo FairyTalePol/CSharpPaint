@@ -32,6 +32,7 @@ namespace FinalPaint
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button_open = new System.Windows.Forms.Button();
             this.btnHexagon = new System.Windows.Forms.Button();
             this.button_open = new System.Windows.Forms.Button();
             this.btnEllipse = new System.Windows.Forms.Button();
@@ -103,9 +104,22 @@ namespace FinalPaint
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(484, 78);
             this.panel3.Size = new System.Drawing.Size(484, 95);
             this.panel3.TabIndex = 1;
          
+            // 
+            // button_open
+            // 
+            this.button_open.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_open.Location = new System.Drawing.Point(420, 21);
+            this.button_open.Margin = new System.Windows.Forms.Padding(4);
+            this.button_open.Name = "button_open";
+            this.button_open.Size = new System.Drawing.Size(52, 25);
+            this.button_open.TabIndex = 3;
+            this.button_open.Text = "Open";
+            this.button_open.UseVisualStyleBackColor = true;
+            this.button_open.Click += new System.EventHandler(this.button_open_Click);
             // 
             // btnHexagon
             // 
@@ -136,7 +150,7 @@ namespace FinalPaint
             this.btnEllipse.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEllipse.BackgroundImage")));
             this.btnEllipse.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEllipse.Image = ((System.Drawing.Image)(resources.GetObject("btnEllipse.Image")));
-            this.btnEllipse.Location = new System.Drawing.Point(295, 5);
+            this.btnEllipse.Location = new System.Drawing.Point(235, 2);
             this.btnEllipse.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEllipse.Name = "btnEllipse";
             this.btnEllipse.Size = new System.Drawing.Size(52, 48);
@@ -147,7 +161,7 @@ namespace FinalPaint
             // button_save
             // 
             this.button_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_save.Location = new System.Drawing.Point(4, 30);
+            this.button_save.Location = new System.Drawing.Point(420, 46);
             this.button_save.Margin = new System.Windows.Forms.Padding(4);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(52, 25);
@@ -161,7 +175,7 @@ namespace FinalPaint
             this.btnRectangle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(246)))), ((int)(((byte)(247)))));
             this.btnRectangle.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRectangle.Image = ((System.Drawing.Image)(resources.GetObject("btnRectangle.Image")));
-            this.btnRectangle.Location = new System.Drawing.Point(237, 5);
+            this.btnRectangle.Location = new System.Drawing.Point(177, 2);
             this.btnRectangle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRectangle.Name = "btnRectangle";
             this.btnRectangle.Size = new System.Drawing.Size(52, 48);
@@ -175,7 +189,7 @@ namespace FinalPaint
             this.btnPoint.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPoint.BackgroundImage")));
             this.btnPoint.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPoint.Image = ((System.Drawing.Image)(resources.GetObject("btnPoint.Image")));
-            this.btnPoint.Location = new System.Drawing.Point(120, 5);
+            this.btnPoint.Location = new System.Drawing.Point(60, 2);
             this.btnPoint.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPoint.Name = "btnPoint";
             this.btnPoint.Size = new System.Drawing.Size(52, 48);
@@ -189,7 +203,7 @@ namespace FinalPaint
             this.btnLine.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLine.BackgroundImage")));
             this.btnLine.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLine.Image = ((System.Drawing.Image)(resources.GetObject("btnLine.Image")));
-            this.btnLine.Location = new System.Drawing.Point(179, 5);
+            this.btnLine.Location = new System.Drawing.Point(119, 2);
             this.btnLine.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLine.Name = "btnLine";
             this.btnLine.Size = new System.Drawing.Size(52, 48);
@@ -202,7 +216,7 @@ namespace FinalPaint
             this.btnPencil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(246)))), ((int)(((byte)(247)))));
             this.btnPencil.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPencil.Image = ((System.Drawing.Image)(resources.GetObject("btnPencil.Image")));
-            this.btnPencil.Location = new System.Drawing.Point(63, 5);
+            this.btnPencil.Location = new System.Drawing.Point(3, 2);
             this.btnPencil.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPencil.Name = "btnPencil";
             this.btnPencil.Size = new System.Drawing.Size(52, 48);
@@ -421,10 +435,10 @@ namespace FinalPaint
             // mainDrawingSurface
             // 
             this.mainDrawingSurface.BackColor = System.Drawing.Color.White;
-            this.mainDrawingSurface.Location = new System.Drawing.Point(0, 95);
+            this.mainDrawingSurface.Location = new System.Drawing.Point(0, 81);
             this.mainDrawingSurface.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.mainDrawingSurface.Name = "mainDrawingSurface";
-            this.mainDrawingSurface.Size = new System.Drawing.Size(889, 355);
+            this.mainDrawingSurface.Size = new System.Drawing.Size(889, 369);
             this.mainDrawingSurface.TabIndex = 1;
             this.mainDrawingSurface.TabStop = false;
             this.mainDrawingSurface.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mainDrawingSurface_MouseClick);

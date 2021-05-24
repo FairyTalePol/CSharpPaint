@@ -39,6 +39,7 @@ namespace FinalPaint
         bool isCalledfirstTime = true;
         Figure _currentFigure;
         Dictionary<int, int> penWidth;
+    
         
        // int prevX = 0, prevY = 0;
         int startX, startY;
@@ -65,6 +66,7 @@ namespace FinalPaint
             _pen.EndCap = LineCap.Round;
             maxWidth = mainDrawingSurface.Width;
             maxHeight = mainDrawingSurface.Height;
+           
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -108,11 +110,7 @@ namespace FinalPaint
 
         private void mainDrawingSurface_MouseClick(object sender, MouseEventArgs e)
         {
-            if (_currentMode == EButtons.Point)
-            {
-                _graphics.FillEllipse(_brush, e.X-(_pen.Width/2), e.Y- (_pen.Width / 2), _pen.Width, _pen.Width);
-                mainDrawingSurface.Image = _bitmap;
-            }
+            
         }
 
         private void mainDrawingSurface_MouseDown(object sender, MouseEventArgs e)
@@ -130,6 +128,12 @@ namespace FinalPaint
                 case EButtons.Ellipse:
                     _currentFigure = new Ellipse(new Point(e.X, e.Y), _pen);
                     break;
+                case EButtons.Curve:
+                    _currentFigure = new Curve(new Point(e.X, e.Y), _pen);
+                    break;
+                case EButtons.Point:
+                    _currentFigure = new CustomPoint(new Point(e.X, e.Y), _pen);
+                    break;
                 case EButtons.Polygon:
                     _currentFigure = new Polygon(new Point(e.X, e.Y), _pen, 6);
                     break;
@@ -141,13 +145,22 @@ namespace FinalPaint
 
         private void mainDrawingSurface_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left&& _currentFigure!=null)
             {
-                _graphicsTemp = Graphics.FromImage(_bitmapTemp);
-                _graphicsTemp.Clear(Color.White);
-                _graphicsTemp.DrawImage(_bitmap, 0, 0);
-                _currentFigure.Draw(_graphicsTemp, new Point(e.X, e.Y));
-                mainDrawingSurface.Image = _bitmapTemp;
+                if (_currentFigure.Pullable==true)
+                {
+                    _graphicsTemp = Graphics.FromImage(_bitmapTemp);
+                    _graphicsTemp.Clear(Color.White);
+                    _graphicsTemp.DrawImage(_bitmap, 0, 0);
+                    _currentFigure.Draw(_graphicsTemp, new Point(e.X, e.Y));
+                    mainDrawingSurface.Image = _bitmapTemp;
+                }
+                else
+                {
+                 
+                    _currentFigure.Draw(_graphics, new Point(e.X, e.Y));
+                    mainDrawingSurface.Image = _bitmap;
+                }
             }
 
             
@@ -208,9 +221,12 @@ namespace FinalPaint
 
         private void mainDrawingSurface_MouseUp(object sender, MouseEventArgs e)
         {
- 
-            _currentFigure.Draw(_graphics, new Point(e.X, e.Y));
-            mainDrawingSurface.Image = _bitmap;
+            if (_currentFigure!=null)
+            {
+                _currentFigure.Draw(_graphics, new Point(e.X, e.Y));
+                mainDrawingSurface.Image = _bitmap;
+            }
+          
 
             //if (_currentMode == EButtons.Line)
             //{            
@@ -332,11 +348,16 @@ namespace FinalPaint
         }
 
         private void button_open_Click(object sender, EventArgs e)
-        {           
-            openFileDialog1.ShowDialog();           
-            _bitmap = new Bitmap(openFileDialog1.FileName);
-            mainDrawingSurface.Image = _bitmap;
-            _graphics = Graphics.FromImage(mainDrawingSurface.Image);
+        {
+            _currentFigure = null;
+            openFileDialog1.ShowDialog();   
+            if (openFileDialog1.FileName!= "openFileDialog1")
+            {
+                _bitmap = new Bitmap(openFileDialog1.FileName);
+                mainDrawingSurface.Image = _bitmap;
+                _graphics = Graphics.FromImage(mainDrawingSurface.Image);
+            }
+         
         }
 
     

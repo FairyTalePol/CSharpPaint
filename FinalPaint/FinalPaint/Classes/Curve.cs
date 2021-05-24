@@ -7,19 +7,23 @@ using System.Threading.Tasks;
 
 namespace FinalPaint.Classes
 {
-    class Line : Figure
+    class Curve : Figure
     {
-        public Line(Point start, Pen p)
+        public Curve(Point start, Pen pen)
         {
+            _p = pen;
             _start = start;
-            _p = p;
-            _pullable = true;
-            
+            _pullable = false;
         }
+
         public override void Draw(Graphics g, Point current)
         {
             _g = g;
-            _g.DrawLine(_p, _start, current);
+
+            _g.DrawLine(_p, current.X, current.Y , _start.X, _start.Y);
+            _start = current;
+
+
         }
     }
 }
