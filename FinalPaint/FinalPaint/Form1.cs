@@ -20,6 +20,7 @@ namespace FinalPaint
         Rectangle,
         Ellipse,
         Polygon,
+        Polygon6
     }
 
     
@@ -130,7 +131,10 @@ namespace FinalPaint
                     _currentFigure = new Ellipse(new Point(e.X, e.Y), _pen);
                     break;
                 case EButtons.Polygon:
-                    _currentFigure = new Polygon(new Point(e.X, e.Y), _pen, 4);
+                    _currentFigure = new Polygon(new Point(e.X, e.Y), _pen, 6);
+                    break;
+                default:
+                    _currentFigure = new Polygon(new Point(e.X, e.Y), _pen, 6);
                     break;
             }
         }
@@ -260,11 +264,7 @@ namespace FinalPaint
             _currentMode = EButtons.Point;
         }
 
-        private void button7_Click(object sender, EventArgs e)
-        {
-            _currentMode = EButtons.Polygon;
-        }
-
+      
         private void MainForm_SizeChanged(object sender, EventArgs e)
         {
             if (!isCalledfirstTime)
@@ -337,6 +337,12 @@ namespace FinalPaint
             _bitmap = new Bitmap(openFileDialog1.FileName);
             mainDrawingSurface.Image = _bitmap;
             _graphics = Graphics.FromImage(mainDrawingSurface.Image);
+        }
+
+    
+        private void btnHexagon_Click(object sender, EventArgs e)
+        {
+            _currentMode = EButtons.Polygon6;
         }
 
         public MainForm()
