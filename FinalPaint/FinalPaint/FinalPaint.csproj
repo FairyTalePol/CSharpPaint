@@ -53,6 +53,7 @@
     <Compile Include="Classes\Line.cs" />
     <Compile Include="Classes\Polygon.cs" />
     <Compile Include="Classes\Rectangle.cs" />
+    <Compile Include="Classes\RastrSaveHelper.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

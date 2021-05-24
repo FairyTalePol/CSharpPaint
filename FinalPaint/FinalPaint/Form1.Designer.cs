@@ -112,6 +112,7 @@ namespace FinalPaint
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(50, 22);
             this.textBox1.TabIndex = 5;
+            this.textBox1.Text = "5";
             // 
             // nGon_button
             // 
@@ -262,6 +263,7 @@ namespace FinalPaint
             this.label1.Size = new System.Drawing.Size(35, 17);
             this.label1.TabIndex = 3;
             this.label1.Text = "Size";
+            this.label1.Visible = false;
             // 
             // btnClear
             // 
@@ -291,6 +293,7 @@ namespace FinalPaint
             this.dropdownPenWidth.Name = "dropdownPenWidth";
             this.dropdownPenWidth.Size = new System.Drawing.Size(107, 24);
             this.dropdownPenWidth.TabIndex = 1;
+            this.dropdownPenWidth.Text = "Pen width";
             this.dropdownPenWidth.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // penChangeSizeTrackBar

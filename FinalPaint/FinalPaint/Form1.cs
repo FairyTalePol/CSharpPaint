@@ -39,6 +39,7 @@ namespace FinalPaint
         bool isCalledfirstTime = true;
         Figure _currentFigure;
         Dictionary<int, int> penWidth;
+        RastrSaveHelper saveLoad;
     
         
        // int prevX = 0, prevY = 0;
@@ -326,40 +327,19 @@ namespace FinalPaint
 
         private void button_save_Click(object sender, EventArgs e)
         {
-            if (mainDrawingSurface.Image != null)
-            {
-                SaveFileDialog save = new SaveFileDialog();
-                save.Title = "Save Us";
-                save.OverwritePrompt = true;
-                save.CheckPathExists = true;
+            saveLoad = RastrSaveHelper.Create();
+            saveLoad.Save(ref mainDrawingSurface);
 
-                save.Filter = "Image Files(*.BMP)|*.BMP|Image Files(*.JPG)|*.JPG|Image Files(*.PNG)|*.PNG|All files(*.*)|*.*";
-                save.ShowHelp = true;
 
-                if (save.ShowDialog() == DialogResult.OK)
-                {
-                    try
-                    {
-                        mainDrawingSurface.Image.Save(save.FileName);
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Image cannot be saved", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);                     
-                    }
-                }
-            }         
         }
 
         private void button_open_Click(object sender, EventArgs e)
         {
             _currentFigure = null;
-            openFileDialog1.ShowDialog();   
-            if (openFileDialog1.FileName!= "openFileDialog1")
-            {
-                _bitmap = new Bitmap(openFileDialog1.FileName);
-                mainDrawingSurface.Image = _bitmap;
-                _graphics = Graphics.FromImage(mainDrawingSurface.Image);
-            }
+            
+
+            saveLoad = RastrSaveHelper.Create();
+            saveLoad.Load(ref openFileDialog1,ref _graphics,ref _bitmap,ref mainDrawingSurface);
          
         }
 
