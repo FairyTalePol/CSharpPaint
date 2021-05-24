@@ -19,6 +19,8 @@ namespace FinalPaint
         Curve,
         Rectangle,
         Ellipse,
+        Polygon,
+        Polygon6
     }
 
     
@@ -131,6 +133,15 @@ namespace FinalPaint
                     break;
                 case EButtons.Point:
                     _currentFigure = new CustomPoint(new Point(e.X, e.Y), _pen);
+                    break;
+                case EButtons.Polygon6:
+                    _currentFigure = new Polygon(new Point(e.X, e.Y), _pen, 6);
+                    break;
+                case EButtons.Polygon:
+                    _currentFigure = new Polygon(new Point(e.X, e.Y), _pen, Int32.Parse(textBox1.Text));
+                    break;
+                default:
+                    _currentFigure = new Polygon(new Point(e.X, e.Y), _pen, 6);
                     break;
             }
         }
@@ -272,6 +283,7 @@ namespace FinalPaint
             _currentMode = EButtons.Point;
         }
 
+      
         private void MainForm_SizeChanged(object sender, EventArgs e)
         {
             if (!isCalledfirstTime)
@@ -352,6 +364,15 @@ namespace FinalPaint
         }
 
     
+        private void btnHexagon_Click(object sender, EventArgs e)
+        {
+            _currentMode = EButtons.Polygon6;
+        }
+
+        private void nGon_button_Click(object sender, EventArgs e)
+        {
+            _currentMode = EButtons.Polygon;
+        }
 
         public MainForm()
         {
