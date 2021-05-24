@@ -118,7 +118,14 @@ namespace FinalPaint
         {
             startX = e.X;
             startY = e.Y;
-            switch(_currentMode)
+            SelectFigure(e);
+
+
+        }
+
+        public void SelectFigure(MouseEventArgs e)
+        {
+            switch (_currentMode)
             {
                 case EButtons.Line:
                     _currentFigure = new Line(new Point(e.X, e.Y), _pen);
