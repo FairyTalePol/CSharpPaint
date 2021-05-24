@@ -28,9 +28,10 @@ namespace FinalPaint.Classes
 
         public void Load(ref OpenFileDialog f,ref Graphics g,ref Bitmap b,ref PictureBox p)
         {
-
+            f.FileName = "";
             f.ShowDialog();
-            if (f.FileName != "openFileDialog1")
+            
+            if (f.FileName != "")
             {
                 b = new Bitmap(f.FileName);
                 p.Image = b;
