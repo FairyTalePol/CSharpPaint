@@ -138,7 +138,7 @@ namespace FinalPaint
                     _currentFigure = new Polygon(new Point(e.X, e.Y), _pen, 6);
                     break;
                 case EButtons.Polygon:
-                    _currentFigure = new Polygon(new Point(e.X, e.Y), _pen, Int32.Parse(Box1.Text));
+                    _currentFigure = new Polygon(new Point(e.X, e.Y), _pen, Int32.Parse(textBox.Text));
                     break;
                 default:
                     _currentFigure = new Polygon(new Point(e.X, e.Y), _pen, 6);
@@ -347,6 +347,25 @@ namespace FinalPaint
         private void NGon_button_Click(object sender, EventArgs e)
         {
             _currentMode = EButtons.Polygon;
+        }
+
+        private void TextBox_TextChanged(object sender, EventArgs e)
+        {
+            if(byte.TryParse(textBox.Text, out byte pointsAmount))
+            {
+                if(pointsAmount>2)
+                {
+                    _currentMode = EButtons.Polygon;
+                }
+                else
+                {
+                    MessageBox.Show("Your polygon must have at least 3 points!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("The input text must be 2>integer<257");
+            }
         }
 
         public MainForm()

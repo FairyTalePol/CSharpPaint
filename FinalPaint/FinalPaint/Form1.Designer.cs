@@ -32,7 +32,7 @@ namespace FinalPaint
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.Box1 = new System.Windows.Forms.TextBox();
+            this.textBox = new System.Windows.Forms.TextBox();
             this.nGon_button = new System.Windows.Forms.Button();
             this.btnHexagon = new System.Windows.Forms.Button();
             this.button_open = new System.Windows.Forms.Button();
@@ -88,7 +88,7 @@ namespace FinalPaint
             this.panel3.AutoScroll = true;
             this.panel3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel3.Controls.Add(this.Box1);
+            this.panel3.Controls.Add(this.textBox);
             this.panel3.Controls.Add(this.nGon_button);
             this.panel3.Controls.Add(this.btnHexagon);
             this.panel3.Controls.Add(this.button_open);
@@ -105,13 +105,14 @@ namespace FinalPaint
             this.panel3.Size = new System.Drawing.Size(971, 180);
             this.panel3.TabIndex = 1;
             // 
-            // Box1
+            // textBox
             // 
-            this.Box1.Location = new System.Drawing.Point(830, 110);
-            this.Box1.Name = "Box1";
-            this.Box1.Size = new System.Drawing.Size(100, 38);
-            this.Box1.TabIndex = 5;
-            this.Box1.Text = "5";
+            this.textBox.Location = new System.Drawing.Point(415, 54);
+            this.textBox.Name = "textBox";
+            this.textBox.Size = new System.Drawing.Size(50, 22);
+            this.textBox.TabIndex = 5;
+            this.textBox.Text = "5";
+            this.textBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // nGon_button
             // 
@@ -514,7 +515,7 @@ namespace FinalPaint
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button nGon_button;
-        private System.Windows.Forms.TextBox Box1;
+        private System.Windows.Forms.TextBox textBox;
     }
 }
 
