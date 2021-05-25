@@ -323,7 +323,7 @@ namespace FinalPaint
         private void Button_save_Click(object sender, EventArgs e)
         {
             saveLoad = RastrSaveHelper.Create();
-            saveLoad.Save(ref mainDrawingSurface);
+            saveLoad.Save(mainDrawingSurface.Image);
 
 
         }
@@ -331,10 +331,10 @@ namespace FinalPaint
         private void Button_open_Click(object sender, EventArgs e)
         {
             _currentFigure = null;
-            
+            Image temp = mainDrawingSurface.Image;
 
             saveLoad = RastrSaveHelper.Create();
-            saveLoad.Load(ref openFileDialog1,ref _graphics,ref _bitmap,ref mainDrawingSurface);
+            mainDrawingSurface.Image = saveLoad.Load(ref openFileDialog1,ref _graphics,ref _bitmap,ref temp);
          
         }
 

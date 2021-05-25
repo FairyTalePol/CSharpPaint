@@ -26,23 +26,25 @@ namespace FinalPaint.Classes
             return _saveLoad;
         }
 
-        public void Load(ref OpenFileDialog f,ref Graphics g,ref Bitmap b,ref PictureBox p)
+        public Image Load(ref OpenFileDialog f,ref Graphics g,ref Bitmap b,ref Image img)
         {
             f.FileName = "";
             f.ShowDialog();
-            
+
             if (f.FileName != "")
             {
                 b = new Bitmap(f.FileName);
-                p.Image = b;
-                g = Graphics.FromImage(p.Image);
+
+                g = Graphics.FromImage(b);
+
             }
+            return b;
         }
 
-        public void Save(ref PictureBox p)
+        public void Save(Image img)
         {
 
-            if (p.Image != null)
+            if (img != null)
             {
                 SaveFileDialog save = new SaveFileDialog();
                 save.Title = "Save Us";
@@ -56,7 +58,7 @@ namespace FinalPaint.Classes
                 {
                     try
                     {
-                        p.Image.Save(save.FileName);
+                        img.Save(save.FileName);
                     }
                     catch
                     {
