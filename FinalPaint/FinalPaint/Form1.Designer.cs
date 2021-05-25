@@ -107,9 +107,9 @@ namespace FinalPaint
             // 
             // textBox
             // 
-            this.textBox.Location = new System.Drawing.Point(415, 54);
+            this.textBox.Location = new System.Drawing.Point(830, 104);
             this.textBox.Name = "textBox";
-            this.textBox.Size = new System.Drawing.Size(50, 22);
+            this.textBox.Size = new System.Drawing.Size(100, 38);
             this.textBox.TabIndex = 5;
             this.textBox.Text = "5";
             this.textBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
