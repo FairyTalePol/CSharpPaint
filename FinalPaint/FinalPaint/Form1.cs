@@ -113,6 +113,22 @@ namespace FinalPaint
             startX = e.X;
             startY = e.Y;
             SelectFigure(e);
+
+            if (byte.TryParse(textBox.Text, out byte pointsAmount))
+            {
+                if (pointsAmount > 2)
+                {
+                    _currentMode = EButtons.Polygon;
+                }
+                else
+                {
+                    MessageBox.Show("Your polygon must have at least 3 points!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("The input text must be 2>integer<256");
+            }
         }
 
         public void SelectFigure(MouseEventArgs e)
@@ -349,24 +365,6 @@ namespace FinalPaint
             _currentMode = EButtons.Polygon;
         }
 
-        private void TextBox_TextChanged(object sender, EventArgs e)
-        {
-            if(byte.TryParse(textBox.Text, out byte pointsAmount))
-            {
-                if(pointsAmount>2)
-                {
-                    _currentMode = EButtons.Polygon;
-                }
-                else
-                {
-                    MessageBox.Show("Your polygon must have at least 3 points!");
-                }
-            }
-            else
-            {
-                MessageBox.Show("The input text must be 2>integer<257");
-            }
-        }
 
         public MainForm()
         {
