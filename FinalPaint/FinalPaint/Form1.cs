@@ -12,19 +12,7 @@ using System.Windows.Forms;
 
 namespace FinalPaint
 {
-    enum EButtons
-    {
-        Point,
-        Line,
-        Curve,
-        Rectangle,
-        Ellipse,
-        Polygon,
-        Polygon6
-    }
-
     
-
     public partial class MainForm : Form
     {
         EButtons _currentMode;
@@ -112,23 +100,26 @@ namespace FinalPaint
         {
             startX = e.X;
             startY = e.Y;
-            SelectFigure(e);
-
-            if (byte.TryParse(textBox.Text, out byte pointsAmount))
+           
+            if (_currentMode == EButtons.Polygon)
             {
-                if (pointsAmount > 2)
+                if (int.TryParse(textBox.Text, out int pointsAmount))
                 {
-                    _currentMode = EButtons.Polygon;
+                    if (pointsAmount < 2)
+                    {
+                        MessageBox.Show("Polygon points set to 3");
+                        textBox.Text = "3";
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Your polygon must have at least 3 points!");
+                    MessageBox.Show("Polygon points set to 3");
+                    textBox.Text = "3";
                 }
+
             }
-            else
-            {
-                MessageBox.Show("The input text must be 2>integer<256");
-            }
+            SelectFigure(e);
+
         }
 
         public void SelectFigure(MouseEventArgs e)

@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Classes\Curve.cs" />
     <Compile Include="Classes\CustomPoint.cs" />
+    <Compile Include="Enums\EButtons.cs" />
     <Compile Include="Classes\Ellipse.cs" />
     <Compile Include="Classes\Figure.cs" />
     <Compile Include="Classes\Line.cs" />
