@@ -32,7 +32,7 @@ namespace FinalPaint
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Box1 = new System.Windows.Forms.TextBox();
             this.nGon_button = new System.Windows.Forms.Button();
             this.btnHexagon = new System.Windows.Forms.Button();
             this.button_open = new System.Windows.Forms.Button();
@@ -89,7 +89,7 @@ namespace FinalPaint
             this.panel3.AutoScroll = true;
             this.panel3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel3.Controls.Add(this.textBox1);
+            this.panel3.Controls.Add(this.Box1);
             this.panel3.Controls.Add(this.nGon_button);
             this.panel3.Controls.Add(this.btnHexagon);
             this.panel3.Controls.Add(this.button_open);
@@ -106,13 +106,13 @@ namespace FinalPaint
             this.panel3.Size = new System.Drawing.Size(484, 95);
             this.panel3.TabIndex = 1;
             // 
-            // textBox1
+            // Box1
             // 
-            this.textBox1.Location = new System.Drawing.Point(415, 54);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(50, 22);
-            this.textBox1.TabIndex = 5;
-            this.textBox1.Text = "5";
+            this.Box1.Location = new System.Drawing.Point(415, 54);
+            this.Box1.Name = "Box1";
+            this.Box1.Size = new System.Drawing.Size(50, 22);
+            this.Box1.TabIndex = 5;
+            this.Box1.Text = "5";
             // 
             // nGon_button
             // 
@@ -303,7 +303,7 @@ namespace FinalPaint
             this.penChangeSizeTrackBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.penChangeSizeTrackBar.Maximum = 50;
             this.penChangeSizeTrackBar.Name = "penChangeSizeTrackBar";
-            this.penChangeSizeTrackBar.Size = new System.Drawing.Size(132, 56);
+            this.penChangeSizeTrackBar.Size = new System.Drawing.Size(132, 53);
             this.penChangeSizeTrackBar.TabIndex = 2;
             this.penChangeSizeTrackBar.Scroll += new System.EventHandler(this.penChangeSizeTrackBar_Scroll);
             // 
@@ -529,7 +529,7 @@ namespace FinalPaint
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button nGon_button;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox Box1;
     }
 }
 

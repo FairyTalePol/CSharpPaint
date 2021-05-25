@@ -22,33 +22,48 @@ namespace FinalPaint.Classes
             _pullable = true;
         }
 
-        public override void Draw(Graphics g, Point current)
+        private void CreatePolygon(Point current)
         {
-            _g = g;
-            //double R = (Math.Sqrt((current.X-_start.X)*(current.X-_start.X)+(current.Y-_start.Y)*(current.Y-_start.Y))/ (2 * Math.Sin(Math.PI / _pointsAmount)))/2;          
-            double R = (current.X - _start.X)/2 > (current.Y - _start.Y) / 2? (current.X - _start.X) / 2: (current.Y - _start.Y) / 2;          
-
+            double r = (current.X - _start.X) / 2 > (current.Y - _start.Y) / 2 ? (current.X - _start.X) / 2 : (current.Y - _start.Y) / 2;
             _points.Clear();
             Point temp = new Point();
             for (double angle = 0.0; angle <= 2 * Math.PI; angle += 2 * Math.PI / _pointsAmount)
             {
                 int width = current.X - _start.X;
-                temp.X = (int)(R * Math.Cos(angle))+_start.X; 
+                temp.X = (int)(r * Math.Cos(angle)) + _start.X;
                 int height = current.Y - _start.Y;
-                temp.Y = ((int)(R * Math.Sin(angle))+_start.Y); 
-
-        //        if (width > height)//если фигурю сплющило горизонтально
-        //        {
-        //            temp.X = (int)(R * Math.Cos(angle)) + _start.X;
-        //            temp.Y = (int)((R * Math.Sin(angle))*( (double)height / (double)width)+ _start.Y);
-        //}
-        //        else//если фигуру сплющило вертикально
-        //        {
-        //            temp.Y = ((int)(R * Math.Sin(angle)) + _start.Y);
-        //            temp.X = (int)((R * Math.Cos(angle))* ((double)width / (double)height) + _start.X);
-        //        }
-                _points.Add(new Point((int)R+ temp.X, (int)R+ temp.Y));        
+                temp.Y = ((int)(r * Math.Sin(angle)) + _start.Y);
+                _points.Add(new Point((int)r + temp.X, (int)r + temp.Y));
             }
+        }
+
+        public override void Draw(Graphics g, Point current)
+        {
+            _g = g;
+            CreatePolygon(current);
+        //    double R = (current.X - _start.X)/2 > (current.Y - _start.Y) / 2? (current.X - _start.X) / 2: (current.Y - _start.Y) / 2;          
+
+        //    _points.Clear();
+        //    Point temp = new Point();
+        //    for (double angle = 0.0; angle <= 2 * Math.PI; angle += 2 * Math.PI / _pointsAmount)
+        //    {
+        //        int width = current.X - _start.X;
+        //        temp.X = (int)(R * Math.Cos(angle))+_start.X; 
+        //        int height = current.Y - _start.Y;
+        //        temp.Y = ((int)(R * Math.Sin(angle))+_start.Y); 
+
+        ////        if (width > height)//если фигурю сплющило горизонтально
+        ////        {
+        ////            temp.X = (int)(R * Math.Cos(angle)) + _start.X;
+        ////            temp.Y = (int)((R * Math.Sin(angle))*( (double)height / (double)width)+ _start.Y);
+        ////}
+        ////        else//если фигуру сплющило вертикально
+        ////        {
+        ////            temp.Y = ((int)(R * Math.Sin(angle)) + _start.Y);
+        ////            temp.X = (int)((R * Math.Cos(angle))* ((double)width / (double)height) + _start.X);
+        ////        }
+        //        _points.Add(new Point((int)R+ temp.X, (int)R+ temp.Y));        
+        //    }
             _g.SmoothingMode = SmoothingMode.HighQuality;
             _g.DrawPolygon(_p, _points.ToArray());
         }

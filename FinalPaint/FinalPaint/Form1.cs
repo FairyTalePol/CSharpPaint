@@ -146,7 +146,7 @@ namespace FinalPaint
                     _currentFigure = new Polygon(new Point(e.X, e.Y), _pen, 6);
                     break;
                 case EButtons.Polygon:
-                    _currentFigure = new Polygon(new Point(e.X, e.Y), _pen, Int32.Parse(textBox1.Text));
+                    _currentFigure = new Polygon(new Point(e.X, e.Y), _pen, Int32.Parse(Box1.Text));
                     break;
                 default:
                     _currentFigure = new Polygon(new Point(e.X, e.Y), _pen, 6);
