@@ -72,35 +72,29 @@ namespace FinalPaint
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //lkjhgfdsdfghjkl;
-            //bla bla
-
             //Form load ne nuzen
             Setup();
         }
 
-        private void btnColor_Click(object sender, EventArgs e)
+        private void BtnColor_Click(object sender, EventArgs e)
         {
             _pen.Color = ((Button)sender).BackColor;
             _brush = new SolidBrush(_pen.Color);
             btnColorDialog.BackColor = _pen.Color;
         }
 
-        private void penChangeSizeTrackBar_Scroll(object sender, EventArgs e)
-        {
-
-            //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        private void PenChangeSizeTrackBar_Scroll(object sender, EventArgs e)
+        { 
             _pen.Width = penChangeSizeTrackBar.Value;
-
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = dropdownPenWidth.SelectedIndex;
             _pen.Width = penWidth[index];
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
+        private void BtnClear_Click(object sender, EventArgs e)
         {
             _graphics.Clear(mainDrawingSurface.BackColor);
             _graphicsTemp.Clear(mainDrawingSurface.BackColor);
@@ -109,18 +103,16 @@ namespace FinalPaint
         }
 
 
-        private void mainDrawingSurface_MouseClick(object sender, MouseEventArgs e)
+        private void MainDrawingSurface_MouseClick(object sender, MouseEventArgs e)
         {
             
         }
 
-        private void mainDrawingSurface_MouseDown(object sender, MouseEventArgs e)
+        private void MainDrawingSurface_MouseDown(object sender, MouseEventArgs e)
         {
             startX = e.X;
             startY = e.Y;
             SelectFigure(e);
-
-
         }
 
         public void SelectFigure(MouseEventArgs e)
@@ -154,7 +146,7 @@ namespace FinalPaint
             }
         }
 
-        private void mainDrawingSurface_MouseMove(object sender, MouseEventArgs e)
+        private void MainDrawingSurface_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left&& _currentFigure!=null)
             {
@@ -173,9 +165,6 @@ namespace FinalPaint
                     mainDrawingSurface.Image = _bitmap;
                 }
             }
-
-            
-
 
             //if (e.Button == MouseButtons.Left)
             //{
@@ -230,7 +219,7 @@ namespace FinalPaint
             //prevY = e.Y;
         }
 
-        private void mainDrawingSurface_MouseUp(object sender, MouseEventArgs e)
+        private void MainDrawingSurface_MouseUp(object sender, MouseEventArgs e)
         {
             if (_currentFigure!=null)
             {
@@ -238,7 +227,6 @@ namespace FinalPaint
                 mainDrawingSurface.Image = _bitmap;
             }
           
-
             //if (_currentMode == EButtons.Line)
             //{            
             //    _graphics.DrawLine(_pen, startX, startY, e.X, e.Y);
@@ -265,28 +253,28 @@ namespace FinalPaint
             //}
         }
 
-        private void btnLine_Click(object sender, EventArgs e)
+        private void BtnLine_Click(object sender, EventArgs e)
         {
             _currentMode = EButtons.Line;
         }
 
 
-        private void btnRectangle_Click(object sender, EventArgs e)
+        private void BtnRectangle_Click(object sender, EventArgs e)
         {
             _currentMode = EButtons.Rectangle;
         }
 
-        private void btnEllipse_Click(object sender, EventArgs e)
+        private void BtnEllipse_Click(object sender, EventArgs e)
         {
             _currentMode = EButtons.Ellipse;
         }
 
-        private void btnPencil_Click(object sender, EventArgs e)
+        private void BtnPencil_Click(object sender, EventArgs e)
         {
             _currentMode = EButtons.Curve;
         }
 
-        private void btnPoint_Click(object sender, EventArgs e)
+        private void BtnPoint_Click(object sender, EventArgs e)
         {
             _currentMode = EButtons.Point;
         }
@@ -323,7 +311,7 @@ namespace FinalPaint
 
         }
 
-        private void btnColorDialog_Click(object sender, EventArgs e)
+        private void BtnColorDialog_Click(object sender, EventArgs e)
         {
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -332,7 +320,7 @@ namespace FinalPaint
             }
         }
 
-        private void button_save_Click(object sender, EventArgs e)
+        private void Button_save_Click(object sender, EventArgs e)
         {
             saveLoad = RastrSaveHelper.Create();
             saveLoad.Save(ref mainDrawingSurface);
@@ -340,7 +328,7 @@ namespace FinalPaint
 
         }
 
-        private void button_open_Click(object sender, EventArgs e)
+        private void Button_open_Click(object sender, EventArgs e)
         {
             _currentFigure = null;
             
@@ -351,12 +339,12 @@ namespace FinalPaint
         }
 
     
-        private void btnHexagon_Click(object sender, EventArgs e)
+        private void BtnHexagon_Click(object sender, EventArgs e)
         {
             _currentMode = EButtons.Polygon6;
         }
 
-        private void nGon_button_Click(object sender, EventArgs e)
+        private void NGon_button_Click(object sender, EventArgs e)
         {
             _currentMode = EButtons.Polygon;
         }

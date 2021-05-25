@@ -13,7 +13,6 @@ namespace FinalPaint.Classes
         private int _pointsAmount;
         private List<Point> _points = new List<Point>();
 
-
         public Polygon(Point start, Pen pen, int pointsAmount)
         {
             _start = start;
