@@ -118,6 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+<<<<<<< Updated upstream
   <data name="btnEllipse.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAQEAeAB4AAD/4QC4RXhpZgAATU0AKgAAAAgAAwE7AAIAAAAOAAAAModpAAQAAAAB
@@ -138,6 +139,8 @@
         6rxafZW9y9zBaQRTyZ3ypEAzZ5OSBk1YoAKKKKACiiigAooooAKKKKAP/9k=
 </value>
   </data>
+=======
+>>>>>>> Stashed changes
   <data name="btnEllipse.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAQEAeAB4AAD/4QC4RXhpZgAATU0AKgAAAAgAAwE7AAIAAAAOAAAAModpAAQAAAAB
@@ -188,6 +191,7 @@
         QBk8tcbsDJIQnpXsFFFAH//Z
 </value>
   </data>
+<<<<<<< Updated upstream
   <data name="btnPoint.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAQEAeAB4AAD/4QC4RXhpZgAATU0AKgAAAAgAAwE7AAIAAAAOAAAAModpAAQAAAAB
@@ -208,6 +212,8 @@
         6rxafZW9y9zBaQRTyZ3ypEAzZ5OSBk1YoAKKKKACiiigAooooAKKKKAP/9k=
 </value>
   </data>
+=======
+>>>>>>> Stashed changes
   <data name="btnPoint.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAQEAeAB4AAD/4QC4RXhpZgAATU0AKgAAAAgAAwE7AAIAAAAOAAAAModpAAQAAAAB
@@ -228,6 +234,7 @@
         6rxafZW9y9zBaQRTyZ3ypEAzZ5OSBk1YoAKKKKACiiigAooooAKKKKAP/9k=
 </value>
   </data>
+<<<<<<< Updated upstream
   <data name="btnLine.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAQEAeAB4AAD/4QC4RXhpZgAATU0AKgAAAAgAAwE7AAIAAAAOAAAAModpAAQAAAAB
@@ -248,6 +255,8 @@
         6rxafZW9y9zBaQRTyZ3ypEAzZ5OSBk1YoAKKKKACiiigAooooAKKKKAP/9k=
 </value>
   </data>
+=======
+>>>>>>> Stashed changes
   <data name="btnLine.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAQEAeAB4AAD/4QYcRXhpZgAATU0AKgAAAAgABwESAAMAAAABAAEAAAExAAIAAAAm
