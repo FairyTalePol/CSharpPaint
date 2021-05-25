@@ -107,20 +107,11 @@ namespace FinalPaint
             // 
             // Box1
             // 
-<<<<<<< Updated upstream
-            this.Box1.Location = new System.Drawing.Point(415, 54);
+            this.Box1.Location = new System.Drawing.Point(830, 110);
             this.Box1.Name = "Box1";
-            this.Box1.Size = new System.Drawing.Size(50, 22);
+            this.Box1.Size = new System.Drawing.Size(100, 38);
             this.Box1.TabIndex = 5;
             this.Box1.Text = "5";
-=======
-            this.textBox1.Location = new System.Drawing.Point(830, 107);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 38);
-            this.textBox1.TabIndex = 5;
-            this.textBox1.Text = "5";
->>>>>>> Stashed changes
             // 
             // nGon_button
             // 
@@ -132,7 +123,7 @@ namespace FinalPaint
             this.nGon_button.TabIndex = 4;
             this.nGon_button.Text = "N";
             this.nGon_button.UseVisualStyleBackColor = false;
-            this.nGon_button.Click += new System.EventHandler(this.nGon_button_Click);
+            this.nGon_button.Click += new System.EventHandler(this.NGon_button_Click);
             // 
             // btnHexagon
             // 
@@ -144,19 +135,19 @@ namespace FinalPaint
             this.btnHexagon.TabIndex = 2;
             this.btnHexagon.Text = "6";
             this.btnHexagon.UseVisualStyleBackColor = false;
-            this.btnHexagon.Click += new System.EventHandler(this.btnHexagon_Click);
+            this.btnHexagon.Click += new System.EventHandler(this.BtnHexagon_Click);
             // 
             // button_open
             // 
             this.button_open.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_open.Location = new System.Drawing.Point(8, 10);
-            this.button_open.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.button_open.Margin = new System.Windows.Forms.Padding(8);
             this.button_open.Name = "button_open";
             this.button_open.Size = new System.Drawing.Size(104, 48);
             this.button_open.TabIndex = 3;
             this.button_open.Text = "Open";
             this.button_open.UseVisualStyleBackColor = true;
-            this.button_open.Click += new System.EventHandler(this.button_open_Click);
+            this.button_open.Click += new System.EventHandler(this.Button_open_Click);
             // 
             // btnEllipse
             // 
@@ -169,19 +160,19 @@ namespace FinalPaint
             this.btnEllipse.Size = new System.Drawing.Size(104, 93);
             this.btnEllipse.TabIndex = 0;
             this.btnEllipse.UseVisualStyleBackColor = false;
-            this.btnEllipse.Click += new System.EventHandler(this.btnEllipse_Click);
+            this.btnEllipse.Click += new System.EventHandler(this.BtnEllipse_Click);
             // 
             // button_save
             // 
             this.button_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_save.Location = new System.Drawing.Point(8, 60);
-            this.button_save.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.button_save.Margin = new System.Windows.Forms.Padding(8);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(104, 48);
             this.button_save.TabIndex = 2;
             this.button_save.Text = "Save";
             this.button_save.UseVisualStyleBackColor = true;
-            this.button_save.Click += new System.EventHandler(this.button_save_Click);
+            this.button_save.Click += new System.EventHandler(this.Button_save_Click);
             // 
             // btnRectangle
             // 
@@ -194,20 +185,19 @@ namespace FinalPaint
             this.btnRectangle.Size = new System.Drawing.Size(104, 93);
             this.btnRectangle.TabIndex = 0;
             this.btnRectangle.UseVisualStyleBackColor = false;
-            this.btnRectangle.Click += new System.EventHandler(this.btnRectangle_Click);
+            this.btnRectangle.Click += new System.EventHandler(this.BtnRectangle_Click);
             // 
             // btnPoint
             // 
             this.btnPoint.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnPoint.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPoint.Image = ((System.Drawing.Image)(resources.GetObject("btnPoint.Image")));
             this.btnPoint.Location = new System.Drawing.Point(242, 10);
             this.btnPoint.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.btnPoint.Name = "btnPoint";
             this.btnPoint.Size = new System.Drawing.Size(104, 93);
             this.btnPoint.TabIndex = 0;
             this.btnPoint.UseVisualStyleBackColor = false;
-            this.btnPoint.Click += new System.EventHandler(this.btnPoint_Click);
+            this.btnPoint.Click += new System.EventHandler(this.BtnPoint_Click);
             // 
             // btnLine
             // 
@@ -220,7 +210,7 @@ namespace FinalPaint
             this.btnLine.Size = new System.Drawing.Size(104, 93);
             this.btnLine.TabIndex = 0;
             this.btnLine.UseVisualStyleBackColor = false;
-            this.btnLine.Click += new System.EventHandler(this.btnLine_Click);
+            this.btnLine.Click += new System.EventHandler(this.BtnLine_Click);
             // 
             // btnPencil
             // 
@@ -233,7 +223,7 @@ namespace FinalPaint
             this.btnPencil.Size = new System.Drawing.Size(104, 93);
             this.btnPencil.TabIndex = 0;
             this.btnPencil.UseVisualStyleBackColor = false;
-            this.btnPencil.Click += new System.EventHandler(this.btnPencil_Click);
+            this.btnPencil.Click += new System.EventHandler(this.BtnPencil_Click);
             // 
             // panel2
             // 
@@ -285,7 +275,7 @@ namespace FinalPaint
             this.btnClear.Size = new System.Drawing.Size(66, 64);
             this.btnClear.TabIndex = 1;
             this.btnClear.UseVisualStyleBackColor = false;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            this.btnClear.Click += new System.EventHandler(this.BtnClear_Click);
             // 
             // dropdownPenWidth
             // 
@@ -301,7 +291,7 @@ namespace FinalPaint
             this.dropdownPenWidth.Size = new System.Drawing.Size(216, 39);
             this.dropdownPenWidth.TabIndex = 1;
             this.dropdownPenWidth.Text = "Pen width";
-            this.dropdownPenWidth.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.dropdownPenWidth.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
             // 
             // penChangeSizeTrackBar
             // 
@@ -310,13 +300,9 @@ namespace FinalPaint
             this.penChangeSizeTrackBar.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.penChangeSizeTrackBar.Maximum = 50;
             this.penChangeSizeTrackBar.Name = "penChangeSizeTrackBar";
-<<<<<<< Updated upstream
-            this.penChangeSizeTrackBar.Size = new System.Drawing.Size(132, 53);
-=======
-            this.penChangeSizeTrackBar.Size = new System.Drawing.Size(264, 114);
->>>>>>> Stashed changes
+            this.penChangeSizeTrackBar.Size = new System.Drawing.Size(256, 114);
             this.penChangeSizeTrackBar.TabIndex = 2;
-            this.penChangeSizeTrackBar.Scroll += new System.EventHandler(this.penChangeSizeTrackBar_Scroll);
+            this.penChangeSizeTrackBar.Scroll += new System.EventHandler(this.PenChangeSizeTrackBar_Scroll);
             // 
             // button10
             // 
@@ -328,7 +314,7 @@ namespace FinalPaint
             this.button10.Size = new System.Drawing.Size(54, 52);
             this.button10.TabIndex = 1;
             this.button10.UseVisualStyleBackColor = false;
-            this.button10.Click += new System.EventHandler(this.btnColor_Click);
+            this.button10.Click += new System.EventHandler(this.BtnColor_Click);
             // 
             // button8
             // 
@@ -340,7 +326,7 @@ namespace FinalPaint
             this.button8.Size = new System.Drawing.Size(54, 52);
             this.button8.TabIndex = 1;
             this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.btnColor_Click);
+            this.button8.Click += new System.EventHandler(this.BtnColor_Click);
             // 
             // btnColorDialog
             // 
@@ -351,7 +337,7 @@ namespace FinalPaint
             this.btnColorDialog.Size = new System.Drawing.Size(118, 118);
             this.btnColorDialog.TabIndex = 1;
             this.btnColorDialog.UseVisualStyleBackColor = true;
-            this.btnColorDialog.Click += new System.EventHandler(this.btnColorDialog_Click);
+            this.btnColorDialog.Click += new System.EventHandler(this.BtnColorDialog_Click);
             // 
             // button9
             // 
@@ -363,7 +349,7 @@ namespace FinalPaint
             this.button9.Size = new System.Drawing.Size(54, 52);
             this.button9.TabIndex = 1;
             this.button9.UseVisualStyleBackColor = false;
-            this.button9.Click += new System.EventHandler(this.btnColor_Click);
+            this.button9.Click += new System.EventHandler(this.BtnColor_Click);
             // 
             // btnColor
             // 
@@ -375,7 +361,7 @@ namespace FinalPaint
             this.btnColor.Size = new System.Drawing.Size(54, 52);
             this.btnColor.TabIndex = 1;
             this.btnColor.UseVisualStyleBackColor = false;
-            this.btnColor.Click += new System.EventHandler(this.btnColor_Click);
+            this.btnColor.Click += new System.EventHandler(this.BtnColor_Click);
             // 
             // button6
             // 
@@ -387,7 +373,7 @@ namespace FinalPaint
             this.button6.Size = new System.Drawing.Size(54, 52);
             this.button6.TabIndex = 1;
             this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.btnColor_Click);
+            this.button6.Click += new System.EventHandler(this.BtnColor_Click);
             // 
             // button5
             // 
@@ -399,7 +385,7 @@ namespace FinalPaint
             this.button5.Size = new System.Drawing.Size(54, 52);
             this.button5.TabIndex = 1;
             this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.btnColor_Click);
+            this.button5.Click += new System.EventHandler(this.BtnColor_Click);
             // 
             // button4
             // 
@@ -411,7 +397,7 @@ namespace FinalPaint
             this.button4.Size = new System.Drawing.Size(54, 52);
             this.button4.TabIndex = 1;
             this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.btnColor_Click);
+            this.button4.Click += new System.EventHandler(this.BtnColor_Click);
             // 
             // button3
             // 
@@ -423,7 +409,7 @@ namespace FinalPaint
             this.button3.Size = new System.Drawing.Size(54, 52);
             this.button3.TabIndex = 1;
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.btnColor_Click);
+            this.button3.Click += new System.EventHandler(this.BtnColor_Click);
             // 
             // button2
             // 
@@ -435,7 +421,7 @@ namespace FinalPaint
             this.button2.Size = new System.Drawing.Size(54, 52);
             this.button2.TabIndex = 1;
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.btnColor_Click);
+            this.button2.Click += new System.EventHandler(this.BtnColor_Click);
             // 
             // button1
             // 
@@ -447,7 +433,7 @@ namespace FinalPaint
             this.button1.Size = new System.Drawing.Size(54, 52);
             this.button1.TabIndex = 1;
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.btnColor_Click);
+            this.button1.Click += new System.EventHandler(this.BtnColor_Click);
             // 
             // mainDrawingSurface
             // 
@@ -458,10 +444,10 @@ namespace FinalPaint
             this.mainDrawingSurface.Size = new System.Drawing.Size(1778, 722);
             this.mainDrawingSurface.TabIndex = 1;
             this.mainDrawingSurface.TabStop = false;
-            this.mainDrawingSurface.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mainDrawingSurface_MouseClick);
-            this.mainDrawingSurface.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mainDrawingSurface_MouseDown);
-            this.mainDrawingSurface.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mainDrawingSurface_MouseMove);
-            this.mainDrawingSurface.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mainDrawingSurface_MouseUp);
+            this.mainDrawingSurface.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MainDrawingSurface_MouseClick);
+            this.mainDrawingSurface.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainDrawingSurface_MouseDown);
+            this.mainDrawingSurface.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainDrawingSurface_MouseMove);
+            this.mainDrawingSurface.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainDrawingSurface_MouseUp);
             // 
             // saveFileDialog1
             // 
