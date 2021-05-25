@@ -134,6 +134,9 @@ namespace FinalPaint
                 case EButtons.Rectangle:
                     factory = new RectangleFactory(_pen, new Point(e.X, e.Y));
                     break;
+                case EButtons.RoundedRectangle:
+                    _currentFigure = new RoundedRectangle(new Point(e.X, e.Y), _pen);
+                    break;
                 case EButtons.Ellipse:
                     factory = new EllipseFactory(_pen, new Point(e.X, e.Y));                  
                     break;
@@ -359,6 +362,10 @@ namespace FinalPaint
             _currentMode = EButtons.Polygon;
         }
 
+        private void btnRoundedRectangle_Click(object sender, EventArgs e)
+        {
+            _currentMode = EButtons.RoundedRectangle;
+        }
 
         public MainForm()
         {
