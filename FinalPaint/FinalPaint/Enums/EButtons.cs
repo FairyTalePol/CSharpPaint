@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalPaint.Classes
 {
-    enum EButtons
+    public enum EButtons
     {
         Point,
         Line,

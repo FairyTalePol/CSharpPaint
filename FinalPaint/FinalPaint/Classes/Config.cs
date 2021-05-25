@@ -1,5 +1,4 @@
-﻿using FinalPaint.Enum;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -15,7 +14,7 @@ namespace FinalPaint.Classes
         public static Pen pen = new Pen(Color.Black, 3);
         public static SolidBrush brush = new SolidBrush(Color.Black);
         public static int dropDownPenWidth = 0;
-        public static EButtonDrawingType eButtonDrawingType = EButtonDrawingType.Curve;
+        public static EButtons EButtons = EButtons.Curve;
         static Config()
         {
             penWidth.Add(0, 1);
