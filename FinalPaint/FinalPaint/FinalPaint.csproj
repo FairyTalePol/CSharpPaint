@@ -50,6 +50,14 @@
     <Compile Include="Classes\CustomPoint.cs" />
     <Compile Include="Classes\Ellipse.cs" />
     <Compile Include="Classes\Figure.cs" />
+    <Compile Include="Classes\FigureFactory\CurveFactory.cs" />
+    <Compile Include="Classes\FigureFactory\EllipseFactory.cs" />
+    <Compile Include="Classes\FigureFactory\FigureFactory.cs" />
+    <Compile Include="Classes\FigureFactory\HexagonFactory.cs" />
+    <Compile Include="Classes\FigureFactory\LineFactory.cs" />
+    <Compile Include="Classes\FigureFactory\PointFactory.cs" />
+    <Compile Include="Classes\FigureFactory\PolygonFactory.cs" />
+    <Compile Include="Classes\FigureFactory\RectangleFactory.cs" />
     <Compile Include="Classes\Line.cs" />
     <Compile Include="Classes\Polygon.cs" />
     <Compile Include="Classes\Rectangle.cs" />

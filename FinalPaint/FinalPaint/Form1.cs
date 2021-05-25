@@ -1,4 +1,5 @@
 ﻿using FinalPaint.Classes;
+using FinalPaint.Classes.FigureFactory;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -133,33 +134,35 @@ namespace FinalPaint
 
         public void SelectFigure(MouseEventArgs e)
         {
+            FigureFactory factory;
             switch (_currentMode)
             {
                 case EButtons.Line:
-                    _currentFigure = new Line(new Point(e.X, e.Y), _pen);
+                    factory = new LineFactory(_pen, new Point(e.X, e.Y));
                     break;
                 case EButtons.Rectangle:
-                    _currentFigure = new Classes.Rectangle(new Point(e.X, e.Y), _pen);
+                    factory = new RectangleFactory(_pen, new Point(e.X, e.Y));
                     break;
                 case EButtons.Ellipse:
-                    _currentFigure = new Ellipse(new Point(e.X, e.Y), _pen);
+                    factory = new EllipseFactory(_pen, new Point(e.X, e.Y));                  
                     break;
                 case EButtons.Curve:
-                    _currentFigure = new Curve(new Point(e.X, e.Y), _pen);
+                    factory = new CurveFactory(_pen, new Point(e.X, e.Y));                  
                     break;
                 case EButtons.Point:
-                    _currentFigure = new CustomPoint(new Point(e.X, e.Y), _pen);
+                    factory = new PointFactory(_pen, new Point(e.X, e.Y));
                     break;
                 case EButtons.Polygon6:
-                    _currentFigure = new Polygon(new Point(e.X, e.Y), _pen, 6);
+                    factory = new PolygonFactory(_pen, new Point(e.X, e.Y),6);
                     break;
                 case EButtons.Polygon:
-                    _currentFigure = new Polygon(new Point(e.X, e.Y), _pen, Int32.Parse(textBox.Text));
+                    factory = new PolygonFactory(_pen, new Point(e.X, e.Y), Int32.Parse(textBox.Text));
                     break;
-                default:
-                    _currentFigure = new Polygon(new Point(e.X, e.Y), _pen, 6);
+               default:
+                    factory = new CurveFactory(_pen, new Point(e.X, e.Y));
                     break;
             }
+            _currentFigure = factory.Create();
         }
 
         private void MainDrawingSurface_MouseMove(object sender, MouseEventArgs e)
