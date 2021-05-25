@@ -22,8 +22,6 @@ namespace FinalPaint.Classes
         {
             _g = g;
             _g.FillEllipse(_brush, _start.X-_p.Width/2, _start.Y - _p.Width / 2, _p.Width,_p.Width);
-
-
         }
     }
 }
