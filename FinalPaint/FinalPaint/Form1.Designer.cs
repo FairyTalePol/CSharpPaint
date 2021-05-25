@@ -112,7 +112,6 @@ namespace FinalPaint
             this.textBox.Size = new System.Drawing.Size(100, 38);
             this.textBox.TabIndex = 5;
             this.textBox.Text = "5";
-            this.textBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // nGon_button
             // 
