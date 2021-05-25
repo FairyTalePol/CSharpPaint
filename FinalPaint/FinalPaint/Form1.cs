@@ -19,19 +19,15 @@ namespace FinalPaint
         EButtons _currentMode;
         Bitmap _bitmap;
         Bitmap _bitmapTemp;
-        int maxWidth;
-        int maxHeight;
         Pen _pen;
-        Brush _brush;
         Graphics _graphics;
         Graphics _graphicsTemp;
-        bool isCalledfirstTime = true;
         Figure _currentFigure;
         Dictionary<int, int> penWidth;
         RastrSaveHelper saveLoad;
-    
-        
-       // int prevX = 0, prevY = 0;
+
+
+        // int prevX = 0, prevY = 0;
         int startX, startY;
    
         public void Setup()
@@ -43,19 +39,12 @@ namespace FinalPaint
             penWidth.Add(3, 20);
 
 
-            _bitmap = new Bitmap(mainDrawingSurface.Width, mainDrawingSurface.Height);
-            _bitmapTemp = new Bitmap(mainDrawingSurface.Width, mainDrawingSurface.Height);
-            _pen = new Pen(Color.Black, 3);
-            _brush = new SolidBrush(Color.Black);
-            _graphics = Graphics.FromImage(_bitmap);
-            _graphicsTemp = Graphics.FromImage(_bitmapTemp);
+
             btnColorDialog.BackColor = _pen.Color;
             dropdownPenWidth.SelectedIndex = 0;
             _currentMode = EButtons.Curve;
             _pen.StartCap = LineCap.Round;
             _pen.EndCap = LineCap.Round;
-            maxWidth = mainDrawingSurface.Width;
-            maxHeight = mainDrawingSurface.Height;
            
         }
 
@@ -68,7 +57,6 @@ namespace FinalPaint
         private void BtnColor_Click(object sender, EventArgs e)
         {
             _pen.Color = ((Button)sender).BackColor;
-            _brush = new SolidBrush(_pen.Color);
             btnColorDialog.BackColor = _pen.Color;
         }
 
@@ -292,32 +280,7 @@ namespace FinalPaint
       
         private void MainForm_SizeChanged(object sender, EventArgs e)
         {
-            if (!isCalledfirstTime)
-            {
-
-                mainDrawingSurface.Width = MainForm.ActiveForm.Width;
-                mainDrawingSurface.Height = MainForm.ActiveForm.Height - panel1.Height;
-                if (MainForm.ActiveForm.Width > maxWidth || MainForm.ActiveForm.Height - panel1.Height > maxHeight)
-                {
-                    Bitmap temp = (Bitmap)_bitmap.Clone();
-
-                    _bitmap = new Bitmap(maxWidth, maxHeight);
-                    _bitmapTemp = new Bitmap(maxWidth, maxHeight);
-
-                    _graphics = Graphics.FromImage(_bitmap);
-                    _graphicsTemp = Graphics.FromImage(_bitmapTemp);
-
-                    _graphics.DrawImage(temp, new System.Drawing.Rectangle(0, 0, maxWidth, maxHeight), new System.Drawing.Rectangle(0, 0, maxWidth, maxHeight), GraphicsUnit.Pixel);
-
-                    mainDrawingSurface.Image = _bitmap;
-
-                    if (MainForm.ActiveForm.Width > maxWidth)
-                        maxWidth = MainForm.ActiveForm.Width;
-                    if (MainForm.ActiveForm.Height - panel1.Height > maxHeight)
-                        maxHeight = MainForm.ActiveForm.Height - panel1.Height;
-                }
-            }
-            isCalledfirstTime = false;
+            
 
         }
 

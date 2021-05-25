@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\BuisnessLogic.cs" />
     <Compile Include="Classes\Curve.cs" />
     <Compile Include="Classes\CustomPoint.cs" />
     <Compile Include="Enums\EButtons.cs" />
