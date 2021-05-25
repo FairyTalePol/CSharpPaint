@@ -12,6 +12,7 @@ namespace FinalPaint.Classes
     {
         private static RastrSaveHelper _saveLoad;
 
+        string filter = "Image Files(*.BMP)|*.BMP|Image Files(*.JPG)|*.JPG|Image Files(*.PNG)|*.PNG|All files(*.*)|*.*";
         private RastrSaveHelper()
         {
 
@@ -51,7 +52,7 @@ namespace FinalPaint.Classes
                 save.OverwritePrompt = true;
                 save.CheckPathExists = true;
 
-                save.Filter = "Image Files(*.BMP)|*.BMP|Image Files(*.JPG)|*.JPG|Image Files(*.PNG)|*.PNG|All files(*.*)|*.*";
+                save.Filter = filter;
                 save.ShowHelp = true;
 
                 if (save.ShowDialog() == DialogResult.OK)
