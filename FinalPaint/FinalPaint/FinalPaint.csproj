@@ -48,13 +48,13 @@
   <ItemGroup>
     <Compile Include="Classes\BuisnessLogic.cs" />
     <Compile Include="Classes\Config.cs" />
-    <Compile Include="Classes\Curve.cs" />
-    <Compile Include="Classes\CustomPoint.cs" />
+    <Compile Include="Classes\Figures\Curve.cs" />
+    <Compile Include="Classes\Figures\CustomPoint.cs" />
     <Compile Include="Classes\FigureFactory\RoundedRectangleFactory.cs" />
     <Compile Include="Enums\EButtonDrawingType.cs" />
-    <Compile Include="Classes\RoundedRectangle.cs" />
-    <Compile Include="Classes\Ellipse.cs" />
-    <Compile Include="Classes\Figure.cs" />
+    <Compile Include="Classes\Figures\RoundedRectangle.cs" />
+    <Compile Include="Classes\Figures\Ellipse.cs" />
+    <Compile Include="Classes\Figures\Figure.cs" />
     <Compile Include="Classes\FigureFactory\CurveFactory.cs" />
     <Compile Include="Classes\FigureFactory\EllipseFactory.cs" />
     <Compile Include="Classes\FigureFactory\FigureFactory.cs" />
@@ -63,9 +63,9 @@
     <Compile Include="Classes\FigureFactory\PointFactory.cs" />
     <Compile Include="Classes\FigureFactory\PolygonFactory.cs" />
     <Compile Include="Classes\FigureFactory\RectangleFactory.cs" />
-    <Compile Include="Classes\Line.cs" />
-    <Compile Include="Classes\Polygon.cs" />
-    <Compile Include="Classes\Rectangle.cs" />
+    <Compile Include="Classes\Figures\Line.cs" />
+    <Compile Include="Classes\Figures\Polygon.cs" />
+    <Compile Include="Classes\Figures\Rectangle.cs" />
     <Compile Include="Classes\RastrSaveHelper.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
