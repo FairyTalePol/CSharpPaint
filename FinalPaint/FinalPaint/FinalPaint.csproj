@@ -47,9 +47,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\BuisnessLogic.cs" />
+    <Compile Include="Classes\Config.cs" />
     <Compile Include="Classes\Curve.cs" />
     <Compile Include="Classes\CustomPoint.cs" />
-    <Compile Include="Enums\EButtons.cs" />
+    <Compile Include="Enums\EButtonDrawingType.cs" />
     <Compile Include="Classes\Ellipse.cs" />
     <Compile Include="Classes\Figure.cs" />
     <Compile Include="Classes\FigureFactory\CurveFactory.cs" />

@@ -1,6 +1,8 @@
-﻿using System;
+﻿using FinalPaint.Classes.FigureFactory;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +13,7 @@ namespace FinalPaint.Classes
     {
         private static BuisnessLogic _bl;
 
-        public EButtons _currentMode;
+        public EButtonDrawingType _currentMode;
         public Bitmap _bitmap;
         public Bitmap _bitmapTemp;
         public Pen _pen;
@@ -20,28 +22,130 @@ namespace FinalPaint.Classes
         public Figure _currentFigure;
         public Dictionary<int, int> penWidth;
         RastrSaveHelper saveLoad;
-        //Config conf;
+        
+      
         //S
 
         private BuisnessLogic()
         {
+            Config.Configure();
             saveLoad = RastrSaveHelper.Create();
+            penWidth = Config.penWidth;
+        }
+
+        public void SetCurrentMode(EButtonDrawingType mode)
+        {
+            _currentMode = mode;
         }
 
         public void Innitialize(int bitmapWidth, int bitmapHeight)
         {
             _bitmap = new Bitmap(bitmapWidth, bitmapHeight);
             _bitmapTemp = new Bitmap(bitmapWidth, bitmapHeight);
-            //_pen = conf.Pen;
+            _pen = Config.pen;
             _graphics = Graphics.FromImage(_bitmap);
             _graphicsTemp = Graphics.FromImage(_bitmapTemp);
-            
-            _currentMode = EButtons.Curve;
-            _pen.StartCap = LineCap.Round;
-            _pen.EndCap = LineCap.Round;
+            _currentMode = Config.eButtonDrawingType;
+            penWidth = Config.penWidth;
         }
 
-        public BuisnessLogic Create()
+        public void SetPenWidth(int width)
+        {
+            _pen.Width = width;
+
+        }
+
+        public void ClearSurface(Color c)
+        {
+            _graphics.Clear(c);
+            _graphicsTemp.Clear(c);
+            _graphicsTemp.DrawImage(_bitmap, 0, 0);
+
+        }
+
+        public bool ValidatePolygon(string algles, out string message)
+        {
+            message = "";
+            if (int.TryParse(algles, out int pointsAmount))
+            {
+                if (pointsAmount < 2)
+                {
+                    message="Polygon points set to "+ Config.DefaultAngelsForPolegon;                      
+                }
+                return true;
+            }
+            else
+            {
+                message="Polygon points set to "+ Config.DefaultAngelsForPolegon;
+            }
+            return false;
+
+        }
+
+        public void DrawFigure(Point p, ref Image img)
+        {
+            if (_currentFigure != null)
+            {
+                if (_currentFigure.Pullable == true)
+                {
+                    _graphicsTemp = Graphics.FromImage(_bitmapTemp);
+                    _graphicsTemp.Clear(Color.White);
+                    _graphicsTemp.DrawImage(_bitmap, 0, 0);
+                    _currentFigure.Draw(_graphicsTemp, p);
+                    img = _bitmapTemp;
+                }
+                else
+                {
+
+                    _currentFigure.Draw(_graphics,  p);
+                   img = _bitmap;
+                }
+            }
+        }
+
+        public void FinishFigure(Point p, ref Image img)
+        {
+            if (_currentFigure != null)
+            {
+                _currentFigure.Draw(_graphics, p);
+               
+            }
+        }
+        public void SelectFigure(Point p, int polygonAngles=-1)
+        {
+            FigureFactory.FigureFactory factory;
+            switch (_currentMode)
+            {
+                case EButtonDrawingType.Line:
+                    factory = new LineFactory(_pen,p);
+                    break;
+                case EButtonDrawingType.Rectangle:
+                    factory = new RectangleFactory(_pen, p);
+                    break;
+                case EButtonDrawingType.Ellipse:
+                    factory = new EllipseFactory(_pen, p);
+                    break;
+                case EButtonDrawingType.Curve:
+                    factory = new CurveFactory(_pen,p);
+                    break;
+                case EButtonDrawingType.Point:
+                    factory = new PointFactory(_pen,p);
+                    break;
+                case EButtonDrawingType.Polygon6:
+                    factory = new PolygonFactory(_pen, p, 6);
+                    break;
+                case EButtonDrawingType.Polygon:
+                    factory = new PolygonFactory(_pen, p,polygonAngles);
+                    break;
+                default:
+                    factory = new CurveFactory(_pen,p);
+                    break;
+            }
+            _currentFigure = factory.Create();
+        }
+
+
+        public static BuisnessLogic Create()
         {
             if (_bl==null)
             {
