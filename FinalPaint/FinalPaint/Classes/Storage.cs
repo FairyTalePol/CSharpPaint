@@ -9,78 +9,56 @@ namespace FinalPaint.Classes
     class Storage
     {
         public List<Figure> _figures;
-        public List<List<Figure>> _archive;
-        public List<List<Figure>> figuresListCopy;
+        public List<Figure> _archive;
         private static Storage _storage;
 
-        private Storage ()
+        private Storage()
         {
             _figures = new List<Figure>();
-            _archive = new List<List<Figure>>();
+            _archive = new List<Figure>();
         }
 
         public static Storage Create()
         {
-            if(_storage==null)
+            if (_storage == null)
             {
-               _storage = new Storage();
+                _storage = new Storage();
             }
             return _storage;
-        
+
         }
 
         public void AddFigure(Figure figure)
         {
-            List<Figure> figuresCopy = new List<Figure>(_figures);
-            _archive.Add(figuresCopy);
-
-            if (figuresListCopy == null)
-            { 
-                figuresListCopy = new List<List<Figure>>(_archive); 
-            }
-
-            _figures.Add(figure);     
+            _figures.Add(figure);
+            ClearArchive();
         }
 
-        public Figure GetFigureAt(int index)
+        public void ClearArchive()
         {
-            return _figures.ElementAt(index);
+            _archive.Clear();
         }
 
-        public Figure GetLastFigure()
+        public void MoveBack()
         {
-            return _figures.Last();
+            _archive.Add(_figures.Last());
+            _figures.Remove(_figures.Last());
         }
 
-        public int GetFigureCount()
+        public void MoveForward()
         {
-            return _figures.Count;
+            _figures.Add(_archive.Last());
+            _archive.Remove(_archive.Last());
         }
 
-        public List<Figure> GetFiguresOneStepBack()
+        public List<Figure> GetListOfFigures()
         {
-            if (figuresListCopy == null)
-            {
-                figuresListCopy = new List<List<Figure>>(_archive);
-            }
-            figuresListCopy.RemoveAt(figuresListCopy.Count - 1);
-            return _archive.ElementAt(_archive.Count - 2);
+            return _figures;
         }
 
-        public List<Figure> GetFiguresOneStepForward()
+        public void  GetListOfFigures(List<Figure> list)
         {
-            if(figuresListCopy==null)
-            {
-                figuresListCopy = new List<List<Figure>>(_archive);
-                return _archive.Last();
-            }
-            figuresListCopy.Add(_archive.ElementAt(figuresListCopy.Count));
-            return figuresListCopy.Last();
-        }
-
-        public int GetFiguresCount()
-        {
-            return _archive.Count;
+            _figures = list;
         }
 
 
