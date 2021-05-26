@@ -6,6 +6,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace FinalPaint.Classes
 {
@@ -158,6 +159,20 @@ namespace FinalPaint.Classes
                 _bl = new BuisnessLogic();
             }
             return _bl;
+        }
+
+        public Image Load(ref OpenFileDialog f)
+        {
+            _currentFigure = null;
+
+            saveLoad = RastrSaveHelper.Create();
+
+            return saveLoad.Load(ref f,ref _graphics, ref _bitmap);
+        }
+        public void Save(Image img)
+        {
+            saveLoad = RastrSaveHelper.Create();
+            saveLoad.Save(img);
         }
 
 

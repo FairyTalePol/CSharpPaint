@@ -158,20 +158,15 @@ namespace FinalPaint
 
         private void Button_save_Click(object sender, EventArgs e)
         {
-            saveLoad = RastrSaveHelper.Create();
-            saveLoad.Save(mainDrawingSurface.Image);
+
+            bl.Save(mainDrawingSurface.Image);
 
 
         }
 
         private void Button_open_Click(object sender, EventArgs e)
         {
-            bl._currentFigure = null;
-            Image temp = mainDrawingSurface.Image;
-
-            saveLoad = RastrSaveHelper.Create();
-            mainDrawingSurface.Image = saveLoad.Load(ref openFileDialog1,ref bl._graphics,ref bl._bitmap,ref temp);
-         
+            mainDrawingSurface.Image= bl.Load(ref openFileDialog1);
         }
 
     
