@@ -188,7 +188,7 @@ namespace FinalPaint
 
         private void btnRoundedRectangle_Click(object sender, EventArgs e)
         {
-            _currentMode = EButtons.RoundedRectangle;
+            bl.SetCurrentMode(EButtonDrawingType.RoundedRectangle);
         }
 
         public MainForm()
