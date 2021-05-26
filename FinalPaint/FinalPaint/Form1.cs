@@ -65,7 +65,18 @@ namespace FinalPaint
 
         private void MainDrawingSurface_MouseClick(object sender, MouseEventArgs e)
         {
-            
+            //storage = Storage.Create();
+            //storage.AddFigure(new Ellipse(e.Location, _pen));
+            //storage.AddFigure(new Line(e.Location, _pen));
+            //if(storage._figures.Equals(storage._archive.Last()))
+            //{
+            //    MessageBox.Show("true");
+            //}
+            //else
+            //{
+            //    MessageBox.Show("false");
+            //}
+
         }
 
         private void MainDrawingSurface_MouseDown(object sender, MouseEventArgs e)
