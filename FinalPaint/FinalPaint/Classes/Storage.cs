@@ -56,7 +56,7 @@ namespace FinalPaint.Classes
             return _figures;
         }
 
-        public void  GetListOfFigures(List<Figure> list)
+        public void GetListOfFigures(List<Figure> list)
         {
             _figures = list;
         }
