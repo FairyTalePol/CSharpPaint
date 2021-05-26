@@ -1,4 +1,4 @@
-﻿using FinalPaint.Enum;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -14,9 +14,10 @@ namespace FinalPaint.Classes
         public static Dictionary<int, int> penWidth = new Dictionary<int, int>();
         public static Pen pen = new Pen(Color.Black, 3);
         public static SolidBrush brush = new SolidBrush(Color.Black);
-        public static int dropDownPenWidth = 0;
+        public static int dropDownSelectedIndex = 0;
         public static EButtonDrawingType eButtonDrawingType = EButtonDrawingType.Curve;
-        static Config()
+        public static int DefaultAngelsForPolegon = 3;
+        public static void Configure()
         {
             penWidth.Add(0, 1);
             penWidth.Add(1, 5);
