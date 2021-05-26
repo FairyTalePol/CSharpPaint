@@ -8,6 +8,7 @@
         Rectangle,
         Ellipse,
         Polygon,
-        Polygon6
+        Polygon6,
+        RoundedRectangle
     }
 }

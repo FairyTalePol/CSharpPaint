@@ -186,6 +186,10 @@ namespace FinalPaint
             bl.SetCurrentMode(EButtonDrawingType.Polygon);
         }
 
+        private void btnRoundedRectangle_Click(object sender, EventArgs e)
+        {
+            bl.SetCurrentMode(EButtonDrawingType.RoundedRectangle);
+        }
 
         public MainForm()
         {

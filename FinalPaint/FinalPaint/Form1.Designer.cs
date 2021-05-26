@@ -32,6 +32,7 @@ namespace FinalPaint
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnRoundedRectangle = new System.Windows.Forms.Button();
             this.textBox = new System.Windows.Forms.TextBox();
             this.nGon_button = new System.Windows.Forms.Button();
             this.btnHexagon = new System.Windows.Forms.Button();
@@ -88,6 +89,7 @@ namespace FinalPaint
             this.panel3.AutoScroll = true;
             this.panel3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.btnRoundedRectangle);
             this.panel3.Controls.Add(this.textBox);
             this.panel3.Controls.Add(this.nGon_button);
             this.panel3.Controls.Add(this.btnHexagon);
@@ -105,10 +107,20 @@ namespace FinalPaint
             this.panel3.Size = new System.Drawing.Size(577, 95);
             this.panel3.TabIndex = 1;
             // 
+            // btnRoundedRectangle
+            // 
+            this.btnRoundedRectangle.Image = ((System.Drawing.Image)(resources.GetObject("btnRoundedRectangle.Image")));
+            this.btnRoundedRectangle.Location = new System.Drawing.Point(471, 5);
+            this.btnRoundedRectangle.Name = "btnRoundedRectangle";
+            this.btnRoundedRectangle.Size = new System.Drawing.Size(47, 48);
+            this.btnRoundedRectangle.TabIndex = 2;
+            this.btnRoundedRectangle.UseVisualStyleBackColor = true;
+            this.btnRoundedRectangle.Click += new System.EventHandler(this.btnRoundedRectangle_Click);
+            // 
             // textBox
             // 
             this.textBox.Location = new System.Drawing.Point(415, 54);
-            this.textBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox.Margin = new System.Windows.Forms.Padding(2);
             this.textBox.Name = "textBox";
             this.textBox.Size = new System.Drawing.Size(52, 22);
             this.textBox.TabIndex = 5;
@@ -142,7 +154,7 @@ namespace FinalPaint
             // 
             this.button_open.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_open.Location = new System.Drawing.Point(4, 5);
-            this.button_open.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_open.Margin = new System.Windows.Forms.Padding(4);
             this.button_open.Name = "button_open";
             this.button_open.Size = new System.Drawing.Size(52, 25);
             this.button_open.TabIndex = 3;
@@ -167,7 +179,7 @@ namespace FinalPaint
             // 
             this.button_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_save.Location = new System.Drawing.Point(4, 31);
-            this.button_save.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_save.Margin = new System.Windows.Forms.Padding(4);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(52, 25);
             this.button_save.TabIndex = 2;
@@ -516,6 +528,7 @@ namespace FinalPaint
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button nGon_button;
         private System.Windows.Forms.TextBox textBox;
+        private System.Windows.Forms.Button btnRoundedRectangle;
     }
 }
 
