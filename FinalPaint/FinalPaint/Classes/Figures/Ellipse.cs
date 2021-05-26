@@ -18,8 +18,8 @@ namespace FinalPaint.Classes
         
         public override void Draw(Graphics g, Point current)
         {
-            _g = g;
-            _g.DrawEllipse(_p, _start.X, _start.Y, current.X - _start.X, current.Y - _start.Y);
+            
+            g.DrawEllipse(_p, _start.X, _start.Y, current.X - _start.X, current.Y - _start.Y);
 
             
         }

@@ -17,25 +17,25 @@ namespace FinalPaint.Classes
         }
         public override void Draw(Graphics g, Point current)
         {
-            _g = g;
+           
             int width = current.X - _start.X < 0 ? _start.X - current.X : current.X - _start.X;
             int height = current.Y - _start.Y < 0 ? _start.Y - current.Y : current.Y - _start.Y;
             if (_start.X < current.X && _start.Y < current.Y)
             {
-                _g.DrawRectangle(_p, _start.X, _start.Y, width, height);
+                g.DrawRectangle(_p, _start.X, _start.Y, width, height);
             }
             else if(_start.X > current.X && _start.Y > current.Y)
             {
-                _g.DrawRectangle(_p, current.X, current.Y, width, height);
+                g.DrawRectangle(_p, current.X, current.Y, width, height);
 
             }
             else if (_start.X < current.X && _start.Y > current.Y)
             {
-                _g.DrawRectangle(_p, _start.X, current.Y, width, height);
+                g.DrawRectangle(_p, _start.X, current.Y, width, height);
             }
             else if(_start.X>current.X&&_start.Y<current.Y)
             {
-                _g.DrawRectangle(_p, current.X, _start.Y, width, height);
+                g.DrawRectangle(_p, current.X, _start.Y, width, height);
             }
 
         }

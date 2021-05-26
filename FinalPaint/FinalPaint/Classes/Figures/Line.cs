@@ -18,8 +18,8 @@ namespace FinalPaint.Classes
         }
         public override void Draw(Graphics g, Point current)
         {
-            _g = g;
-            _g.DrawLine(_p, _start, current);
+            
+            g.DrawLine(_p, _start, current);
         }
     }
 }

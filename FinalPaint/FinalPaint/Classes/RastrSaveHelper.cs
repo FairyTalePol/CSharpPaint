@@ -27,7 +27,7 @@ namespace FinalPaint.Classes
             return _saveLoad;
         }
 
-        public Image Load(ref OpenFileDialog f,ref Graphics g,ref Bitmap b,ref Image img)
+        public Image Load(ref OpenFileDialog f,ref Graphics g,ref Bitmap b)
         {
             f.FileName = "";
             f.ShowDialog();

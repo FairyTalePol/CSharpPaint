@@ -7,23 +7,21 @@ using System.Threading.Tasks;
 
 namespace FinalPaint.Classes
 {
-    class Curve : Figure
+    class CustomPoint:Figure
     {
-        public Curve(Point start, Pen pen)
+        private Brush _brush;
+        public CustomPoint(Point start, Pen pen)
         {
             _p = pen;
             _start = start;
-            _pullable = false;
+            _pullable = true;
+            _brush = new SolidBrush(_p.Color);
         }
 
         public override void Draw(Graphics g, Point current)
         {
-            _g = g;
-
-            _g.DrawLine(_p, current.X, current.Y , _start.X, _start.Y);
-            _start = current;
-
-
+            
+            g.FillEllipse(_brush, _start.X-_p.Width/2, _start.Y - _p.Width / 2, _p.Width,_p.Width);
         }
     }
 }
