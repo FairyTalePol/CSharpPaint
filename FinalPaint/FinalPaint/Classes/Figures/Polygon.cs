@@ -38,7 +38,7 @@ namespace FinalPaint.Classes
 
         public override void Draw(Graphics g, Point current)
         {
-            _g = g;
+            
             CreatePolygon(current);
         //    double R = (current.X - _start.X)/2 > (current.Y - _start.Y) / 2? (current.X - _start.X) / 2: (current.Y - _start.Y) / 2;          
 
@@ -63,8 +63,8 @@ namespace FinalPaint.Classes
         ////        }
         //        _points.Add(new Point((int)R+ temp.X, (int)R+ temp.Y));        
         //    }
-            _g.SmoothingMode = SmoothingMode.HighQuality;
-            _g.DrawPolygon(_p, _points.ToArray());
+            g.SmoothingMode = SmoothingMode.HighQuality;
+            g.DrawPolygon(_p, _points.ToArray());
         }
     }
 }

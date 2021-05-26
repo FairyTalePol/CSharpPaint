@@ -20,7 +20,7 @@ namespace FinalPaint.Classes
         public override void Draw(Graphics g, Point current)
         {
             int radius = 10;
-            _g = g;
+            
 
             int width = current.X - _start.X < 0 ? _start.X - current.X : current.X - _start.X;
             int height = current.Y - _start.Y < 0 ? _start.Y - current.Y : current.Y - _start.Y;
@@ -29,25 +29,25 @@ namespace FinalPaint.Classes
             {
                 RectangleF rect = new RectangleF(_start.X, _start.Y, width, height);
                 GraphicsPath path = GetRoundRectangle(rect, radius);
-                _g.DrawPath(_p, path);
+                g.DrawPath(_p, path);
             }
             else if (_start.X > current.X && _start.Y > current.Y)
             {
                 RectangleF rect = new RectangleF(current.X, current.Y, width, height);
                 GraphicsPath path = GetRoundRectangle(rect, radius);
-                _g.DrawPath(_p, path);
+                g.DrawPath(_p, path);
             }
             else if (_start.X < current.X && _start.Y > current.Y)
             {
                 RectangleF rect = new RectangleF(_start.X, current.Y, width, height);
                 GraphicsPath path = GetRoundRectangle(rect, radius);
-                _g.DrawPath(_p, path);
+                g.DrawPath(_p, path);
             }
             else if (_start.X > current.X && _start.Y < current.Y)
             {
                 RectangleF rect = new RectangleF(current.X, _start.Y, width, height);
                 GraphicsPath path = GetRoundRectangle(rect, radius);
-                _g.DrawPath(_p, path);
+                g.DrawPath(_p, path);
             }
         }
 

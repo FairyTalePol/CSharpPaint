@@ -20,8 +20,8 @@ namespace FinalPaint.Classes
 
         public override void Draw(Graphics g, Point current)
         {
-            _g = g;
-            _g.FillEllipse(_brush, _start.X-_p.Width/2, _start.Y - _p.Width / 2, _p.Width,_p.Width);
+            
+            g.FillEllipse(_brush, _start.X-_p.Width/2, _start.Y - _p.Width / 2, _p.Width,_p.Width);
         }
     }
 }
