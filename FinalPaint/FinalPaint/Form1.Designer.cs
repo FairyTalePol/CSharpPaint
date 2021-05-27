@@ -63,6 +63,9 @@ namespace FinalPaint
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -470,11 +473,44 @@ namespace FinalPaint
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(895, 85);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(80, 49);
+            this.button7.TabIndex = 2;
+            this.button7.Text = "button7";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(894, 140);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(80, 49);
+            this.button11.TabIndex = 3;
+            this.button11.Text = "Undo";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(894, 195);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(80, 49);
+            this.button12.TabIndex = 4;
+            this.button12.Text = "Redo";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 453);
+            this.Controls.Add(this.button12);
+            this.Controls.Add(this.button11);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.mainDrawingSurface);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -529,6 +565,9 @@ namespace FinalPaint
         private System.Windows.Forms.Button nGon_button;
         private System.Windows.Forms.TextBox textBox;
         private System.Windows.Forms.Button btnRoundedRectangle;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button12;
     }
 }
 

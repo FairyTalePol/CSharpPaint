@@ -51,6 +51,7 @@
     <Compile Include="Classes\Figures\Curve.cs" />
     <Compile Include="Classes\Figures\CustomPoint.cs" />
     <Compile Include="Classes\FigureFactory\RoundedRectangleFactory.cs" />
+    <Compile Include="Classes\Interfaces\IMovable.cs" />
     <Compile Include="Classes\Storage.cs" />
     <Compile Include="Enums\EButtonDrawingType.cs" />
     <Compile Include="Classes\Figures\RoundedRectangle.cs" />

@@ -30,7 +30,7 @@ namespace FinalPaint.Classes
 
         public void AddFigure(Figure figure)
         {
-            _figures.Add(figure);
+            _figures.Add((Figure)figure.Clone()) ;
             ClearArchive();
         }
 
@@ -41,14 +41,21 @@ namespace FinalPaint.Classes
 
         public void MoveBack()
         {
-            _archive.Add(_figures.Last());
-            _figures.Remove(_figures.Last());
+            if (_figures.Count!=0)
+            {
+                _archive.Add((Figure)_figures.Last().Clone());
+                _figures.Remove(_figures.Last());
+            }
+  
         }
 
         public void MoveForward()
         {
-            _figures.Add(_archive.Last());
-            _archive.Remove(_archive.Last());
+            if (_archive.Count!=0)
+            {
+                _figures.Add((Figure)_archive.Last().Clone());
+                _archive.Remove(_archive.Last());
+            }
         }
 
         public List<Figure> GetListOfFigures()
@@ -56,9 +63,14 @@ namespace FinalPaint.Classes
             return _figures;
         }
 
-        public void GetListOfFigures(List<Figure> list)
+        public void SetListOfFigures(List<Figure> list)
         {
             _figures = list;
+        }
+
+        public Figure GetLast()
+        {
+            return _figures.Last();
         }
 
 

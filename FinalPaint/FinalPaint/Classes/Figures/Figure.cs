@@ -1,23 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using FinalPaint.Classes.Interfaces;
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FinalPaint.Classes
 {
-    abstract class Figure
+    abstract class Figure : IMovable, ICloneable
     {
         protected bool _pullable;
-        protected Pen _p { get; set; }
-        protected Point _start { get; set; }
+        protected Pen _p;
+        protected Point _start;
+
+        protected Point _end;
+
+        public Point StartPoint
+        {
+            get
+            {
+                return _start;
+            }
+            set
+            {
+                _start = value;
+            }
+        }
+        public Point EndPoint
+        {
+            get
+            {
+                return _end;
+            }
+            set
+            {
+                _end = value;
+            }
+        }
         public bool Pullable { 
             get {
                 return _pullable;
             }
+            set
+            {
+                _pullable = value;
+            }
         }
+
+        public abstract object Clone();
+
+
         public abstract void Draw(Graphics g, Point current);
-            
+
+        public abstract void Move(int moveX, int moveY);
     }
 }
