@@ -9,19 +9,17 @@ namespace FinalPaint.Classes
 {
     class Ellipse : Figure
     {
-      public Ellipse(Point start, Pen pen)
+      public Ellipse(int startX, int startY)
         {
-            _p = pen;
-            _start = start;
+            _startX = startX;
+            _startY = startY;
             _pullable = true;
         }
         
-        public override void Draw(Graphics g, Point current)
-        {
-            
-            g.DrawEllipse(_p, _start.X, _start.Y, current.X - _start.X, current.Y - _start.Y);
 
-            
+        public override void Draw(int finishX, int finishY)
+        {
+            _myGraphics.DrawEllipse(_startX, _startY, finishX, finishY);
         }
     }
 }

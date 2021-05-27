@@ -1,4 +1,5 @@
 ﻿using FinalPaint.Classes.FigureFactory;
+using FinalPaint.DependencyInversion;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -13,15 +14,15 @@ namespace FinalPaint.Classes
     class BuisnessLogic
     {
         private static BuisnessLogic _bl;
-
+        public IMyGraphics myGraphics;
         public EButtonDrawingType _currentMode;
-        public Bitmap _bitmap;
-        public Bitmap _bitmapTemp;
-        public Pen _pen;
-        public Graphics _graphics;
-        public Graphics _graphicsTemp;
+        //public Bitmap _bitmap;
+        //public Bitmap _bitmapTemp;
+        //public Pen _pen;
+        //public Graphics _graphics;
+        //public Graphics _graphicsTemp;
         public Figure _currentFigure;
-        public Dictionary<int, int> penWidth;
+        //public Dictionary<int, int> penWidth;
         RastrSaveHelper saveLoad;
         
       
@@ -31,7 +32,7 @@ namespace FinalPaint.Classes
         {
             Config.Configure();
             saveLoad = RastrSaveHelper.Create();
-            penWidth = Config.penWidth;
+          //  penWidth = Config.penWidth;
         }
 
         public void SetCurrentMode(EButtonDrawingType mode)
@@ -39,30 +40,31 @@ namespace FinalPaint.Classes
             _currentMode = mode;
         }
 
-        public void Innitialize(int bitmapWidth, int bitmapHeight)
+        public void Innitialize(IMyGraphics myGraphicsUI)
         {
-            _bitmap = new Bitmap(bitmapWidth, bitmapHeight);
-            _bitmapTemp = new Bitmap(bitmapWidth, bitmapHeight);
-            _pen = Config.pen;
-            _graphics = Graphics.FromImage(_bitmap);
-            _graphicsTemp = Graphics.FromImage(_bitmapTemp);
+            //_bitmap = new Bitmap(bitmapWidth, bitmapHeight);
+            //_bitmapTemp = new Bitmap(bitmapWidth, bitmapHeight);
+            //_pen = Config.pen;
+            //_graphics = Graphics.FromImage(_bitmap);
+            //_graphicsTemp = Graphics.FromImage(_bitmapTemp);
             _currentMode = Config.eButtonDrawingType;
-            penWidth = Config.penWidth;
+            myGraphics = myGraphicsUI;
+           // penWidth = Config.penWidth;
         }
 
-        public void SetPenWidth(int width)
-        {
-            _pen.Width = width;
+        //public void SetPenWidth(int width)
+        //{
+        //    _pen.Width = width;
 
-        }
+        //}
 
-        public void ClearSurface(Color c)
-        {
-            _graphics.Clear(c);
-            _graphicsTemp.Clear(c);
-            _graphicsTemp.DrawImage(_bitmap, 0, 0);
+        //public void ClearSurface(Color c)
+        //{
+        //    _graphics.Clear(c);
+        //    _graphicsTemp.Clear(c);
+        //    _graphicsTemp.DrawImage(_bitmap, 0, 0);
 
-        }
+        //}
 
         public bool ValidatePolygon(string algles, out string message)
         {

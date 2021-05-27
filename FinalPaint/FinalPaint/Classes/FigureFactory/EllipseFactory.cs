@@ -9,13 +9,13 @@ namespace FinalPaint.Classes.FigureFactory
 {
     class EllipseFactory : FigureFactory
     {
-        public EllipseFactory(Pen p, Point s) : base(p, s)
+        public EllipseFactory(int startX, int startY) : base(startX, startY)
         {
 
         }
         public override Figure Create()
         {
-            return new Ellipse(Start, P);
+            return new Ellipse(StartX, StartY);
         }
     }
 }

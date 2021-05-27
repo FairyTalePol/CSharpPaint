@@ -9,13 +9,13 @@ namespace FinalPaint.Classes.FigureFactory
 {
     abstract class FigureFactory
     {
-        public Pen P { get; set; }
-        public Point Start { get; set; }
+        public int StartX { get; set; }
+        public int StartY { get; set; }
 
-        public FigureFactory(Pen p, Point s)
+        public FigureFactory(int startX, int startY)
         {
-            P = p;
-            Start = s;
+            StartX = startX;
+            StartY = startY;
         }
 
         abstract public Figure Create();

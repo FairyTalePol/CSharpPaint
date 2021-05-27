@@ -52,6 +52,8 @@
     <Compile Include="Classes\Figures\CustomPoint.cs" />
     <Compile Include="Classes\FigureFactory\RoundedRectangleFactory.cs" />
     <Compile Include="Classes\Storage.cs" />
+    <Compile Include="DependencyInversion\IMyGraphics.cs" />
+    <Compile Include="DependencyInversion\MyGraphics.cs" />
     <Compile Include="Enums\EButtonDrawingType.cs" />
     <Compile Include="Classes\Figures\RoundedRectangle.cs" />
     <Compile Include="Classes\Figures\Ellipse.cs" />
@@ -101,5 +103,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalPaint.DependencyInversion;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -9,15 +10,21 @@ namespace FinalPaint.Classes
 {
     abstract class Figure
     {
+        protected MyGraphics _myGraphics;
+
         protected bool _pullable;
-        protected Pen _p { get; set; }
-        protected Point _start { get; set; }
-        public bool Pullable { 
-            get {
+
+        protected int _startX { get; set; }
+        protected int _startY { get; set; }
+        public bool Pullable
+        {
+            get
+            {
                 return _pullable;
             }
         }
-        public abstract void Draw(Graphics g, Point current);
-            
+
+        public abstract void Draw(int finishX, int finishY);
+
     }
 }

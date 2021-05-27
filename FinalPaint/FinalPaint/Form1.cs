@@ -1,5 +1,6 @@
 ﻿using FinalPaint.Classes;
 using FinalPaint.Classes.FigureFactory;
+using FinalPaint.DependencyInversion;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,15 +20,15 @@ namespace FinalPaint
 
         RastrSaveHelper saveLoad;
         BuisnessLogic bl;
+        MyGraphics _myGraphics;
 
         public void Setup()
         {
             bl = BuisnessLogic.Create();
-            bl.Innitialize(mainDrawingSurface.Width, mainDrawingSurface.Height);
+            bl.Innitialize();
+            _myGraphics = MyGraphics.Create(mainDrawingSurface.Width, mainDrawingSurface.Height);
             btnColorDialog.BackColor = Config.pen.Color;
-            dropdownPenWidth.SelectedIndex = Config.dropDownSelectedIndex;
-           
-                  
+            dropdownPenWidth.SelectedIndex = Config.dropDownSelectedIndex;             
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -38,26 +39,26 @@ namespace FinalPaint
 
         private void BtnColor_Click(object sender, EventArgs e)
         {
-            bl._pen.Color = ((Button)sender).BackColor;
-            btnColorDialog.BackColor = bl._pen.Color;
+            _myGraphics.pen.Color = ((Button)sender).BackColor;
+            btnColorDialog.BackColor = _myGraphics.pen.Color;
         }
 
         private void PenChangeSizeTrackBar_Scroll(object sender, EventArgs e)
         {
-            bl.SetPenWidth(penChangeSizeTrackBar.Value);
+            _myGraphics.SetPenWidth(penChangeSizeTrackBar.Value);
         }
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = dropdownPenWidth.SelectedIndex;
 
-            bl.SetPenWidth(bl.penWidth[index]);
+           _myGraphics.SetPenWidth(_myGraphics.penWidth[index]);
         }
 
         private void BtnClear_Click(object sender, EventArgs e)
         {
-            bl.ClearSurface(mainDrawingSurface.BackColor);
-            mainDrawingSurface.Image = bl._bitmap;
+            _myGraphics.ClearSurface(mainDrawingSurface.BackColor);
+            mainDrawingSurface.Image = _myGraphics.bitmap;
         }
 
 
