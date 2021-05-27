@@ -199,6 +199,7 @@ namespace FinalPaint
 
         public MainForm()
         {
+
             InitializeComponent();
         }
     }
