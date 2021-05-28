@@ -118,9 +118,8 @@ namespace FinalPaint
 
         private void MainDrawingSurface_MouseUp(object sender, MouseEventArgs e)
         {
-            Image img = mainDrawingSurface.Image;
-            bl.FinishFigure(new Point(e.X, e.Y), ref img);
-            mainDrawingSurface.Image = img;
+            //Image img = mainDrawingSurface.Image;
+            bl.FinishFigure(new Point(e.X, e.Y));
         }
 
         private void BtnLine_Click(object sender, EventArgs e)
@@ -201,6 +200,24 @@ namespace FinalPaint
         {
 
             InitializeComponent();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            bl.DrawFigures();
+            mainDrawingSurface.Image = bl._bitmap;
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            bl.Redo();
+            mainDrawingSurface.Image = bl._bitmap;
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            bl.Undo(mainDrawingSurface.BackColor);
+            mainDrawingSurface.Image = bl._bitmap;
         }
     }
 }

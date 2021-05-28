@@ -124,5 +124,18 @@ namespace FinalPaint.Classes
             }
             return path;
         }
+
+        public override void Move(int moveX, int moveY)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override object Clone()
+        {
+            Figure res = new RoundedRectangle(new Point(_start.X, _start.Y), (Pen)_p.Clone());
+            res.Pullable = _pullable;
+            res.EndPoint = new Point(_end.X, _end.Y);
+            return res;
+        }
     }
 }

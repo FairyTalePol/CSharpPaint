@@ -21,6 +21,21 @@ namespace FinalPaint.Classes
             _pullable = true;
         }
 
+        public override object Clone()
+        {
+            Polygon res = new Polygon(new Point(_start.X, _start.Y), (Pen)_p.Clone(), _pointsAmount);
+            res.Pullable = _pullable;
+            res.EndPoint = new Point(_end.X, _end.Y);
+            List<Point> list = new List<Point>();
+            foreach (var point in _points)
+            {
+                list.Add(new Point(point.X, point.Y));
+            }
+            res._points = list;
+            return res;
+        }
+
+
         private void CreatePolygon(Point current)
         {
             double r = (current.X - _start.X) / 2 > (current.Y - _start.Y) / 2 ? (current.X - _start.X) / 2 : (current.Y - _start.Y) / 2;
@@ -66,5 +81,11 @@ namespace FinalPaint.Classes
             g.SmoothingMode = SmoothingMode.HighQuality;
             g.DrawPolygon(_p, _points.ToArray());
         }
+
+        public override void Move(int moveX, int moveY)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

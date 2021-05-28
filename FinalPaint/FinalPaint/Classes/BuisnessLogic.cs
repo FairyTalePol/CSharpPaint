@@ -21,8 +21,10 @@ namespace FinalPaint.Classes
         public Graphics _graphics;
         public Graphics _graphicsTemp;
         public Figure _currentFigure;
+        public Figure _selectedFigure;
         public Dictionary<int, int> penWidth;
         RastrSaveHelper saveLoad;
+        Storage storage;
         
       
         //S
@@ -30,6 +32,7 @@ namespace FinalPaint.Classes
         private BuisnessLogic()
         {
             Config.Configure();
+            storage = Storage.Create();
             saveLoad = RastrSaveHelper.Create();
             penWidth = Config.penWidth;
         }
@@ -107,13 +110,39 @@ namespace FinalPaint.Classes
             }
         }
 
-        public void FinishFigure(Point p, ref Image img)
+
+        public void FinishFigure(Point p)
         {
             if (_currentFigure != null)
             {
                 _currentFigure.Draw(_graphics, p);
-               
+                _currentFigure.EndPoint = p;
+                storage.AddFigure(_currentFigure);
             }
+        }
+
+        public void DrawFigures()
+        {
+            List<Figure> figures = storage.GetListOfFigures();
+            foreach(var figure in figures)
+            {
+                figure.Draw(_graphics, figure.EndPoint);
+            }
+        }
+
+
+        public void Undo(Color color)
+        {
+            ClearSurface(color);
+            storage.MoveBack();
+            DrawFigures();
+        }
+
+        public void Redo()
+        {
+            storage.MoveForward();
+            DrawFigures();
+
         }
         public void SelectFigure(Point p, int polygonAngles=-1)
         {

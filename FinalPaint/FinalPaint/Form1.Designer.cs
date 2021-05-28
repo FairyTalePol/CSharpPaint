@@ -63,6 +63,9 @@ namespace FinalPaint
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -480,6 +483,36 @@ namespace FinalPaint
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(895, 85);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(80, 49);
+            this.button7.TabIndex = 2;
+            this.button7.Text = "button7";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(894, 140);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(80, 49);
+            this.button11.TabIndex = 3;
+            this.button11.Text = "Undo";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(894, 195);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(80, 49);
+            this.button12.TabIndex = 4;
+            this.button12.Text = "Redo";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // MainForm
             // 
