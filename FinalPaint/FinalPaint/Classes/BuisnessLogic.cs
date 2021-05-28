@@ -21,6 +21,7 @@ namespace FinalPaint.Classes
         public Graphics _graphics;
         public Graphics _graphicsTemp;
         public Figure _currentFigure;
+        public Figure _selectedFigure;
         public Dictionary<int, int> penWidth;
         RastrSaveHelper saveLoad;
         Storage storage;

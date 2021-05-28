@@ -9,13 +9,14 @@ namespace FinalPaint.Classes
     class Storage
     {
         public List<Figure> _figures;
-        public List<Figure> _archive;
+        public List<List<Figure>> _archive;
         private static Storage _storage;
+        private int _pointer;
 
         private Storage()
         {
             _figures = new List<Figure>();
-            _archive = new List<Figure>();
+            _archive = new List<List<Figure>>();
         }
 
         public static Storage Create()
@@ -28,10 +29,30 @@ namespace FinalPaint.Classes
 
         }
 
+        private List<Figure> CloneCurrentList()
+        {
+            List <Figure> res = new List<Figure>();
+            foreach (var figure in _figures)
+            {
+                res.Add((Figure)figure.Clone());
+            }
+            return res;
+        }
+
         public void AddFigure(Figure figure)
         {
-            _figures.Add((Figure)figure.Clone()) ;
-            ClearArchive();
+            if (_pointer!=0)
+            {
+                while(_pointer>0)
+                {
+                    _archive.RemoveAt(_archive.Count - 1);
+                    _pointer--;
+                }
+            }
+
+            _archive.Add(CloneCurrentList());
+            _figures.Add((Figure)figure.Clone());
+            
         }
 
         public void ClearArchive()
@@ -41,26 +62,33 @@ namespace FinalPaint.Classes
 
         public void MoveBack()
         {
-            if (_figures.Count!=0)
+            if (_pointer<_archive.Count())
             {
-                _archive.Add((Figure)_figures.Last().Clone());
-                _figures.Remove(_figures.Last());
+                _pointer++;
             }
   
         }
 
         public void MoveForward()
         {
-            if (_archive.Count!=0)
+            if (_pointer>0)
             {
-                _figures.Add((Figure)_archive.Last().Clone());
-                _archive.Remove(_archive.Last());
+                _pointer--;
             }
         }
 
         public List<Figure> GetListOfFigures()
         {
-            return _figures;
+            List<Figure> res;
+            if (_pointer==0)
+            {
+                res = _figures;
+            }
+            else
+            {
+                res = _archive.ElementAt(_archive.Count - 1 - _pointer);
+            }
+            return res;
         }
 
         public void SetListOfFigures(List<Figure> list)
