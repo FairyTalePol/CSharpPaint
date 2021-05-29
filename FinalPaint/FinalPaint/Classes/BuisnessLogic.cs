@@ -1,13 +1,6 @@
 ﻿using FinalPaint.Classes.FigureFactory;
 using FinalPaint.DependencyInversion;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+
 
 namespace FinalPaint.Classes
 {
@@ -40,7 +33,7 @@ namespace FinalPaint.Classes
             _currentMode = mode;
         }
 
-        public void Innitialize(IMyGraphics myGraphicsUI)
+        public void Initialize(IMyGraphics myGraphicsUI)
         {
             //_bitmap = new Bitmap(bitmapWidth, bitmapHeight);
             //_bitmapTemp = new Bitmap(bitmapWidth, bitmapHeight);
@@ -88,66 +81,59 @@ namespace FinalPaint.Classes
 
         }
 
-        public void DrawFigure(Point p, ref Image img)
+        public void DrawFigure(int x, int y)
         {
             if (_currentFigure != null)
             {
                 if (_currentFigure.Pullable == true)
                 {
-                    _graphicsTemp = Graphics.FromImage(_bitmapTemp);
-                    _graphicsTemp.Clear(Color.White);
-                    _graphicsTemp.DrawImage(_bitmap, 0, 0);
-                    _currentFigure.Draw(_graphicsTemp, p);
-                    img = _bitmapTemp;
+                   
+                    _currentFigure.Draw(x,y);
+                   
                 }
-                else
-                {
-
-                    _currentFigure.Draw(_graphics,  p);
-                   img = _bitmap;
-                }
+           
             }
         }
 
-        public void FinishFigure(Point p, ref Image img)
-        {
-            if (_currentFigure != null)
-            {
-                _currentFigure.Draw(_graphics, p);
+        //public void FinishFigure(Point p, ref Image img)
+        //{
+        //    if (_currentFigure != null)
+        //    {
+        //        _currentFigure.Draw(p.X, p.Y);
                
-            }
-        }
-        public void SelectFigure(Point p, int polygonAngles=-1)
+        //    }
+        //}
+        public void SelectFigure(int x, int y, int polygonAngles=-1)
         {
             FigureFactory.FigureFactory factory;
             switch (_currentMode)
             {
                 case EButtonDrawingType.Line:
-                    factory = new LineFactory(_pen,p);
+                    factory = new LineFactory(x,y, myGraphics);
                     break;
                 case EButtonDrawingType.Rectangle:
-                    factory = new RectangleFactory(_pen, p);
+                    factory = new RectangleFactory(x, y, myGraphics);
                     break;
                 case EButtonDrawingType.Ellipse:
-                    factory = new EllipseFactory(_pen, p);
+                    factory = new EllipseFactory(x,y, myGraphics);
                     break;
-                case EButtonDrawingType.Curve:
-                    factory = new CurveFactory(_pen,p);
-                    break;
-                case EButtonDrawingType.Point:
-                    factory = new PointFactory(_pen,p);
-                    break;
-                case EButtonDrawingType.Polygon6:
-                    factory = new PolygonFactory(_pen, p, 6);
-                    break;
-                case EButtonDrawingType.Polygon:
-                    factory = new PolygonFactory(_pen, p,polygonAngles);
-                    break;
-                case EButtonDrawingType.RoundedRectangle:
-                    factory = new RoundedRectangleFactory(_pen, p);
-                    break;
+                //case EButtonDrawingType.Curve:
+                //    factory = new CurveFactory(p.X, p.Y);
+                //    break;
+                //case EButtonDrawingType.Point:
+                //    factory = new PointFactory(p.X, p.Y);
+                //    break;
+                //case EButtonDrawingType.Polygon6:
+                //    factory = new PolygonFactory(p.X, p.Y, 6);
+                //    break;
+                //case EButtonDrawingType.Polygon:
+                //    factory = new PolygonFactory( p.X, p.Y,polygonAngles);
+                //    break;
+                //case EButtonDrawingType.RoundedRectangle:
+                //    factory = new RoundedRectangleFactory(p.X, p.Y);
+                //    break;
                 default:
-                    factory = new CurveFactory(_pen,p);
+                    factory = new LineFactory(x,y, myGraphics);
                     break;
             }
             _currentFigure = factory.Create();
@@ -163,19 +149,19 @@ namespace FinalPaint.Classes
             return _bl;
         }
 
-        public Image Load(ref OpenFileDialog f)
-        {
-            _currentFigure = null;
+        //public Image Load(ref OpenFileDialog f)
+        //{
+        //    _currentFigure = null;
 
-            saveLoad = RastrSaveHelper.Create();
+        //    saveLoad = RastrSaveHelper.Create();
 
-            return saveLoad.Load(ref f,ref _graphics, ref _bitmap);
-        }
-        public void Save(Image img)
-        {
-            saveLoad = RastrSaveHelper.Create();
-            saveLoad.Save(img);
-        }
+        //    //return saveLoad.Load(ref f,ref _graphics, ref _bitmap);
+        //}
+        //public void Save(Image img)
+        //{
+        //    saveLoad = RastrSaveHelper.Create();
+        //    saveLoad.Save(img);
+        //}
 
 
     }

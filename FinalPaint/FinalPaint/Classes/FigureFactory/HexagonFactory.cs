@@ -1,22 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Drawing;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
 
-namespace FinalPaint.Classes.FigureFactory
-{
-    class HexagonFactory : FigureFactory
-    {
-        public HexagonFactory(Pen p, Point s) : base(p, s)
-        {
+//namespace FinalPaint.Classes.FigureFactory
+//{
+//    class HexagonFactory : FigureFactory
+//    {
+//        public HexagonFactory(int startX, int startY) : base(startX, startY)
+//        {
             
-        }
-        public override Figure Create()
-        {
-            return new Polygon(Start, P,6);
-        }
+//        }
+//        public override Figure Create()
+//        {
+//            return new Polygon(StartX, StartY, 6);
+//        }
 
-    }
-}
+//    }
+//}

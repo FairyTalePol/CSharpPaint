@@ -5,18 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FinalPaint.Classes.FigureFactory
-{
-    class RoundedRectangleFactory : FigureFactory
-    {
-        public RoundedRectangleFactory(Pen p, Point s) : base(p, s)
-        {
+//namespace FinalPaint.Classes.FigureFactory
+//{
+//    class RoundedRectangleFactory : FigureFactory
+//    {
+//        public RoundedRectangleFactory(int startX, int startY) : base(startX, startY)
+//        {
 
-        }
-        public override Figure Create()
-        {
-            return new RoundedRectangle(Start, P);
-        }
-    }
-}
+//        }
+//        public override Figure Create()
+//        {
+//            return new RoundedRectangle(Start, P);
+//        }
+//    }
+//}
 

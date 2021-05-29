@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalPaint.DependencyInversion;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -9,13 +10,13 @@ namespace FinalPaint.Classes.FigureFactory
 {
     class LineFactory : FigureFactory
     {
-        public LineFactory(Pen p, Point s) : base(p, s)
+        public LineFactory(int startX, int startY, IMyGraphics mg) : base(startX, startY, mg)
         {
 
         }
         public override Figure Create()
         {
-            return new Line(Start, P);
+            return new Line(StartX, StartY, _myGraphics);
         }
 
     }

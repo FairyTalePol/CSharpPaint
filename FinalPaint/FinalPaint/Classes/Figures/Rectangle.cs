@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalPaint.DependencyInversion;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -9,33 +10,34 @@ namespace FinalPaint.Classes
 {
     class Rectangle : Figure
     {
-        public Rectangle (Point start, Pen pen)
+        public Rectangle (int startX, int startY, IMyGraphics mg)
         {
-            _start = start;
-            _p = pen;
+            _startX = startX;
+            _startY = startY;
             _pullable = true;
+            _myGraphics = mg;
         }
-        public override void Draw(Graphics g, Point current)
+        public override void Draw(int finishX, int finishY)
         {
            
-            int width = current.X - _start.X < 0 ? _start.X - current.X : current.X - _start.X;
-            int height = current.Y - _start.Y < 0 ? _start.Y - current.Y : current.Y - _start.Y;
-            if (_start.X < current.X && _start.Y < current.Y)
+            int width = finishX - _startX < 0 ? _startX - finishX : finishX - _startX;
+            int height = finishY - _startY < 0 ? _startY - finishY : finishY - _startY;
+            if (_startX < finishX && _startY < finishY)
             {
-                g.DrawRectangle(_p, _start.X, _start.Y, width, height);
+                _myGraphics.DrawRectangle(_startX, _startY, finishX, finishY);
             }
-            else if(_start.X > current.X && _start.Y > current.Y)
+            else if(_startX > finishX && _startY > finishY)
             {
-                g.DrawRectangle(_p, current.X, current.Y, width, height);
+                _myGraphics.DrawRectangle( finishX, finishY, width, height);
 
             }
-            else if (_start.X < current.X && _start.Y > current.Y)
+            else if (_startX < finishX && _startY > finishY)
             {
-                g.DrawRectangle(_p, _start.X, current.Y, width, height);
+                _myGraphics.DrawRectangle( _startX, finishY, width, height);
             }
-            else if(_start.X>current.X&&_start.Y<current.Y)
+            else if(_startX> finishX && _startY< finishY)
             {
-                g.DrawRectangle(_p, current.X, _start.Y, width, height);
+                _myGraphics.DrawRectangle( finishX, _startY, width, height);
             }
 
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalPaint.DependencyInversion;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -9,17 +10,18 @@ namespace FinalPaint.Classes
 {
     class Line : Figure
     {
-        public Line(Point start, Pen p)
+        public Line(int startX, int startY, IMyGraphics mg)
         {
-            _start = start;
-            _p = p;
+            _startX = startX;
+            _startY = startY;
             _pullable = true;
-            
+            _myGraphics = mg;
         }
-        public override void Draw(Graphics g, Point current)
+
+
+        public override void Draw(int finishX, int finishY)
         {
-            
-            g.DrawLine(_p, _start, current);
+            _myGraphics.DrawLine(_startX, _startY, finishX, finishY);
         }
     }
 }

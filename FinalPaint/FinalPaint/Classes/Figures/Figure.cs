@@ -10,7 +10,7 @@ namespace FinalPaint.Classes
 {
     abstract class Figure
     {
-        protected MyGraphics _myGraphics;
+        protected IMyGraphics _myGraphics;
 
         protected bool _pullable;
 

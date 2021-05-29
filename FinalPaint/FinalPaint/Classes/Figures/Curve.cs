@@ -1,28 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Drawing;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
 
-namespace FinalPaint.Classes
-{
-    class Curve : Figure
-    {
-        public Curve(Point start, Pen pen)
-        {
-            _p = pen;
-            _start = start;
-            _pullable = false;
-        }
+//namespace FinalPaint.Classes
+//{
+//    class Curve : Figure
+//    {
+//        public Curve(Point start, Pen pen)
+//        {
+//            _p = pen;
+//            _start = start;
+//            _pullable = false;
+//        }
 
-        public override void Draw(Graphics g, Point current)
-        {
+//        public override void Draw(Graphics g, Point current)
+//        {
 
-            g.DrawLine(_p, current.X, current.Y , _start.X, _start.Y);
-            _start = current;
+//            g.DrawLine(_p, current.X, current.Y , _start.X, _start.Y);
+//            _start = current;
 
 
-        }
-    }
-}
+//        }
+//    }
+//}

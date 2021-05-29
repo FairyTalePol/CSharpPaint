@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalPaint.DependencyInversion;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -9,11 +10,13 @@ namespace FinalPaint.Classes
 {
     class Ellipse : Figure
     {
-      public Ellipse(int startX, int startY)
+      public Ellipse(int startX, int startY, IMyGraphics mg)
         {
             _startX = startX;
             _startY = startY;
             _pullable = true;
+            _myGraphics = mg;
+           
         }
         
 

@@ -1,39 +1,36 @@
 ﻿using FinalPaint.Classes;
-using FinalPaint.Classes.FigureFactory;
 using FinalPaint.DependencyInversion;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FinalPaint
 {
-    
+
     public partial class MainForm : Form
     {
-
+       
         RastrSaveHelper saveLoad;
         BuisnessLogic bl;
         MyGraphics _myGraphics;
 
         public void Setup()
         {
+            Action act = GetImage;
+            _myGraphics = MyGraphics.Create(mainDrawingSurface.Width, mainDrawingSurface.Height,act);
             bl = BuisnessLogic.Create();
-            bl.Innitialize();
-            _myGraphics = MyGraphics.Create(mainDrawingSurface.Width, mainDrawingSurface.Height);
+            bl.Initialize(_myGraphics);
             btnColorDialog.BackColor = Config.pen.Color;
-            dropdownPenWidth.SelectedIndex = Config.dropDownSelectedIndex;             
+            dropdownPenWidth.SelectedIndex = Config.dropDownSelectedIndex;
+            
+        }
+
+        public void GetImage()
+        {
+            mainDrawingSurface.Image= _myGraphics.GetBitmap();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //Form load ne nuzen
             Setup();
         }
 
@@ -82,7 +79,7 @@ namespace FinalPaint
 
         private void MainDrawingSurface_MouseDown(object sender, MouseEventArgs e)
         {
-
+            _myGraphics.SwitchBitmap();
             if (bl._currentMode == EButtonDrawingType.Polygon)
             {
                 string errorMsg = "";
@@ -90,19 +87,19 @@ namespace FinalPaint
                 {
                     MessageBox.Show(errorMsg);
                     textBox.Text = Convert.ToString(Config.DefaultAngelsForPolegon);
-                    bl.SelectFigure(new Point(e.X, e.Y), Config.DefaultAngelsForPolegon);
+                    bl.SelectFigure(e.X, e.Y, Config.DefaultAngelsForPolegon);
                 }
                 else
                 {
                     
-                    bl.SelectFigure(new Point(e.X, e.Y), Int32.Parse(textBox.Text));
+                    bl.SelectFigure(e.X, e.Y, Int32.Parse(textBox.Text));
                 }
             }
             else
             {
-                bl.SelectFigure(new Point(e.X, e.Y));
+                bl.SelectFigure(e.X, e.Y);
             }
-          
+            mainDrawingSurface.Image = _myGraphics.GetBitmap();
 
         }
 
@@ -111,17 +108,21 @@ namespace FinalPaint
         {
             if (e.Button == MouseButtons.Left)
             {
-                Image img = mainDrawingSurface.Image;
-                bl.DrawFigure(new Point(e.X, e.Y), ref img);
-                mainDrawingSurface.Image = img;
+                //Image img = mainDrawingSurface.Image;
+
+             
+                bl.DrawFigure(e.X, e.Y);
+                //mainDrawingSurface.Image = img;
             }
         }
 
         private void MainDrawingSurface_MouseUp(object sender, MouseEventArgs e)
         {
-            Image img = mainDrawingSurface.Image;
-            bl.FinishFigure(new Point(e.X, e.Y), ref img);
-            mainDrawingSurface.Image = img;
+            //Image img = mainDrawingSurface.Image;
+            //bl.FinishFigure(new Point(e.X, e.Y), ref img);
+            //mainDrawingSurface.Image = img;
+            _myGraphics.SwitchBitmap();
+            bl.DrawFigure(e.X, e.Y);
         }
 
         private void BtnLine_Click(object sender, EventArgs e)
@@ -163,25 +164,24 @@ namespace FinalPaint
         {
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
-                bl._pen.Color = colorDialog1.Color;
-                btnColorDialog.BackColor = bl._pen.Color;
+                _myGraphics.pen.Color = colorDialog1.Color;
+                btnColorDialog.BackColor = _myGraphics.pen.Color;
             }
         }
 
         private void Button_save_Click(object sender, EventArgs e)
         {
 
-            bl.Save(mainDrawingSurface.Image);
-
+            //bl.Save(mainDrawingSurface.Image);
 
         }
 
         private void Button_open_Click(object sender, EventArgs e)
         {
-            mainDrawingSurface.Image= bl.Load(ref openFileDialog1);
+            //mainDrawingSurface.Image = bl.Load(ref openFileDialog1);
         }
 
-    
+
         private void BtnHexagon_Click(object sender, EventArgs e)
         {
          

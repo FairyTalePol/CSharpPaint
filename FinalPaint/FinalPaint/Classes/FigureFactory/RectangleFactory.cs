@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalPaint.DependencyInversion;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -9,13 +10,13 @@ namespace FinalPaint.Classes.FigureFactory
 {
     class RectangleFactory : FigureFactory
     {
-        public RectangleFactory(Pen p, Point s) : base(p, s)
+        public RectangleFactory(int startX, int startY, IMyGraphics mg) : base(startX, startY, mg)
         {
 
         }
         public override Figure Create()
         {
-            return new Rectangle(Start, P);
+            return new Rectangle(StartX, StartY, _myGraphics);
         }
 
     }

@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 
-namespace FinalPaint.Classes.FigureFactory
-{
-    class PointFactory : FigureFactory
-    {
-        public PointFactory(Pen p, Point s) : base(p, s)
-        {
+//namespace FinalPaint.Classes.FigureFactory
+//{
+//    class PointFactory : FigureFactory
+//    {
+//        public PointFactory(int startX, int startY) : base(startX, startY)
+//        {
 
-        }
-        public override Figure Create()
-        {
-            return new CustomPoint(Start, P);
-        }
+//        }
+//        public override Figure Create()
+//        {
+//            return new CustomPoint(StartX, StartY);
+//        }
 
-    }
-}
+//    }
+//}
