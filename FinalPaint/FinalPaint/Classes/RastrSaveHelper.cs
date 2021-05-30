@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalPaint.DependencyInversion;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -27,24 +28,23 @@ namespace FinalPaint.Classes
             return _saveLoad;
         }
 
-        public Image Load(ref OpenFileDialog f,ref Graphics g,ref Bitmap b)
+        public Bitmap Load(ref OpenFileDialog f, IMyGraphics myGraphics)
         {
+            Bitmap bitmap = myGraphics.GetBitmap();
             f.FileName = "";
             f.ShowDialog();
 
             if (f.FileName != "")
             {
-                b = new Bitmap(f.FileName);
-
-                g = Graphics.FromImage(b);
+                bitmap = new Bitmap(f.FileName);
 
             }
-            return b;
+            return bitmap;
         }
 
-        public void Save(Image img)
+        public void Save(IMyGraphics myGraphics)
         {
-
+            Image img=myGraphics.GetBitmap();
             if (img != null)
             {
                 SaveFileDialog save = new SaveFileDialog();

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace FinalPaint.DependencyInversion
 {
@@ -16,6 +17,7 @@ namespace FinalPaint.DependencyInversion
         static int _width;
         static int _height;
         public Dictionary<int, int> penWidth;
+        public RastrSaveHelper saveHelper;
         Action action;
         public Bitmap CurrentBitmap { get; set; }
 
@@ -37,10 +39,10 @@ namespace FinalPaint.DependencyInversion
             return CurrentBitmap;
         }
 
-        //public Bitmap GetBitmapTemp()
-        //{
-        //    return bitmapTemp;
-        //}
+        public void SetSavedBitmap(ref OpenFileDialog f)
+        {
+            CurrentBitmap = saveHelper.Load(ref f, _myGraphics);
+        }
 
         private MyGraphics(int width, int height, Action act)
         {
@@ -50,6 +52,7 @@ namespace FinalPaint.DependencyInversion
             bitmapTemp = new Bitmap(width, height);
             _graphics = Graphics.FromImage(bitmap);
             _graphicsTemp = Graphics.FromImage(bitmapTemp);
+            saveHelper= RastrSaveHelper.Create();
             action = act;
             CurrentBitmap = bitmap;
         }
@@ -123,6 +126,8 @@ namespace FinalPaint.DependencyInversion
             _graphicsTemp.DrawImage(bitmap, 0, 0);
 
         }
+
+        
 
         //public void DrawPolygon(int startX, int startY, int finishX, int finishY, int edges)
         //{
