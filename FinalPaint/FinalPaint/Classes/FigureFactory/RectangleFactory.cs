@@ -1,4 +1,5 @@
 ﻿using FinalPaint.DependencyInversion;
+using FinalPaint.Interfaces_;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

@@ -1,4 +1,5 @@
 ﻿using FinalPaint.DependencyInversion;
+using FinalPaint.Interfaces_;
 
 namespace FinalPaint.Classes.FigureFactory
 {

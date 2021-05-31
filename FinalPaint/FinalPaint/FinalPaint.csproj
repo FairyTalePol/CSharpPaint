@@ -53,8 +53,8 @@
     <Compile Include="Classes\FigureFactory\RoundedRectangleFactory.cs" />
     <Compile Include="Classes\Storage.cs" />
     <Compile Include="Classes\TwoDimensionalPoint.cs" />
-    <Compile Include="DependencyInversion\IMyGraphics.cs" />
-    <Compile Include="DependencyInversion\MyGraphics.cs" />
+    <Compile Include="Interfaces_\IMyGraphics.cs" />
+    <Compile Include="Classes\MyGraphics.cs" />
     <Compile Include="Enums\EButtonDrawingType.cs" />
     <Compile Include="Classes\Figures\RoundedRectangle.cs" />
     <Compile Include="Classes\Figures\Ellipse.cs" />
@@ -77,6 +77,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces_\ISaveHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

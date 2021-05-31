@@ -1,8 +1,7 @@
-﻿
-using FinalPaint.Classes;
+﻿using FinalPaint.Classes;
 using System.Collections.Generic;
 
-namespace FinalPaint.DependencyInversion
+namespace FinalPaint.Interfaces_
 {
     interface IMyGraphics
     {

@@ -1,4 +1,5 @@
 ﻿using FinalPaint.Classes;
+using FinalPaint.Interfaces_;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -197,7 +198,8 @@ namespace FinalPaint.DependencyInversion
         {
             saveLoadHelper = RastrSaveHelper.Create();
             Image img = saveLoadHelper.Load();
-            _graphics = Graphics.FromImage(img);
+            _graphics.DrawImage(img, 0, 0);
+            CurrentBitmap = bitmap;
             return img;
         }
 

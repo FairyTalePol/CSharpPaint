@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing.Drawing2D;
 using FinalPaint.DependencyInversion;
+using FinalPaint.Interfaces_;
 
 namespace FinalPaint.Classes
 {

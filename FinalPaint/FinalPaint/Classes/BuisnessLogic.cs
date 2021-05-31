@@ -1,5 +1,5 @@
 ﻿using FinalPaint.Classes.FigureFactory;
-using FinalPaint.DependencyInversion;
+using FinalPaint.Interfaces_;
 using System;
 
 namespace FinalPaint.Classes
