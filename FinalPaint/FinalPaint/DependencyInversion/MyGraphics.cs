@@ -17,6 +17,7 @@ namespace FinalPaint.DependencyInversion
         static int _height;
         public Dictionary<int, int> penWidth;
         Action action;
+        RastrSaveHelper saveLoadHelper;
         public Bitmap CurrentBitmap { get; set; }
 
         public void SwitchBitmap()
@@ -184,6 +185,20 @@ namespace FinalPaint.DependencyInversion
             _graphicsTemp.Clear(c);
             _graphicsTemp.DrawImage(bitmap, 0, 0);
 
+        }
+
+        public void Save()
+        {
+            saveLoadHelper = RastrSaveHelper.Create();
+            saveLoadHelper.Save(bitmap);
+        }
+
+        public Image Load()
+        {
+            saveLoadHelper = RastrSaveHelper.Create();
+            Image img = saveLoadHelper.Load();
+            _graphics = Graphics.FromImage(img);
+            return img;
         }
 
         //public void DrawPolygon(int startX, int startY, int finishX, int finishY, int edges)

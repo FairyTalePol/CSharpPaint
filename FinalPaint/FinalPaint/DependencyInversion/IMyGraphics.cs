@@ -6,6 +6,7 @@ namespace FinalPaint.DependencyInversion
 {
     interface IMyGraphics
     {
+        void Save();
         void DrawEllipse(int startX, int startY, int finishX, int finishY);
         void DrawRectangle(int startX, int startY, int finishX, int finishY);
 

@@ -27,19 +27,25 @@ namespace FinalPaint.Classes
             return _saveLoad;
         }
 
-        public Image Load(ref OpenFileDialog f,ref Graphics g,ref Bitmap b)
+        public Image Load()
         {
+            OpenFileDialog f = new OpenFileDialog();
             f.FileName = "";
             f.ShowDialog();
+            Bitmap res;
 
             if (f.FileName != "")
             {
-                b = new Bitmap(f.FileName);
+                res = new Bitmap(f.FileName);
 
-                g = Graphics.FromImage(b);
+       
 
             }
-            return b;
+            else
+            {
+                throw new ArgumentNullException();
+            }
+            return res;
         }
 
         public void Save(Image img)

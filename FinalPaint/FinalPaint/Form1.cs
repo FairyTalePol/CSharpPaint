@@ -178,14 +178,26 @@ namespace FinalPaint
 
         private void Button_save_Click(object sender, EventArgs e)
         {
+            Action save = Save;
+            bl.Save(save);
 
-            //bl.Save(mainDrawingSurface.Image);
+        }
 
+        private void Save()
+        {
+            _myGraphics.Save();
+        }
+
+        private void Load_()
+        {
+            mainDrawingSurface.Image = _myGraphics.Load();
         }
 
         private void Button_open_Click(object sender, EventArgs e)
         {
-            //mainDrawingSurface.Image = bl.Load(ref openFileDialog1);
+            Action act = Load_;
+            bl.Load(act);
+         
         }
 
 

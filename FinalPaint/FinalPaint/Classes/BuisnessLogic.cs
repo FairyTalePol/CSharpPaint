@@ -1,6 +1,6 @@
 ﻿using FinalPaint.Classes.FigureFactory;
 using FinalPaint.DependencyInversion;
-
+using System;
 
 namespace FinalPaint.Classes
 {
@@ -145,19 +145,16 @@ namespace FinalPaint.Classes
             return _bl;
         }
 
-        //public Image Load(ref OpenFileDialog f)
-        //{
-        //    _currentFigure = null;
-
-        //    saveLoad = RastrSaveHelper.Create();
-
-        //    //return saveLoad.Load(ref f,ref _graphics, ref _bitmap);
-        //}
-        //public void Save(Image img)
-        //{
-        //    saveLoad = RastrSaveHelper.Create();
-        //    saveLoad.Save(img);
-        //}
+        public void Load(Action act)
+        {
+            saveLoad = RastrSaveHelper.Create();
+            act();
+        }
+        public void Save(Action act)
+        {
+            saveLoad = RastrSaveHelper.Create();
+            act();
+        }
 
 
     }
