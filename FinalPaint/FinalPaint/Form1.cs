@@ -100,7 +100,7 @@ namespace FinalPaint
             {
                 bl.SelectFigure(e.X, e.Y);
             }
-            mainDrawingSurface.Image = _myGraphics.GetBitmap();
+            
             if (bl._currentFigure.Pullable)
             {
                 _myGraphics.SwitchBitmap();
