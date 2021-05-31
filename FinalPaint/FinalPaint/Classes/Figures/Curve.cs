@@ -1,28 +1,30 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Drawing;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
+﻿using FinalPaint.DependencyInversion;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-//namespace FinalPaint.Classes
-//{
-//    class Curve : Figure
-//    {
-//        public Curve(Point start, Pen pen)
-//        {
-//            _p = pen;
-//            _start = start;
-//            _pullable = false;
-//        }
+namespace FinalPaint.Classes
+{
+    class Curve : Figure
+    {
+        public Curve(int startX, int startY, IMyGraphics mg)
+        {
+            _startX = startX;
+            _startY = startY;
+            _pullable = false;
+            _myGraphics = mg;
+        }
 
-//        public override void Draw(Graphics g, Point current)
-//        {
+        public override void Draw(int finishX, int finishY)
+        {
 
-//            g.DrawLine(_p, current.X, current.Y , _start.X, _start.Y);
-//            _start = current;
+            _myGraphics.DrawCurve(_startX, _startY, finishX, finishY);
+            _startX = finishX;
+            _startY = finishY;
 
-
-//        }
-//    }
-//}
+        }
+    }
+}

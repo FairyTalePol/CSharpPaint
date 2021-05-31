@@ -79,7 +79,8 @@ namespace FinalPaint
 
         private void MainDrawingSurface_MouseDown(object sender, MouseEventArgs e)
         {
-            _myGraphics.SwitchBitmap();
+          
+                
             if (bl._currentMode == EButtonDrawingType.Polygon)
             {
                 string errorMsg = "";
@@ -91,7 +92,6 @@ namespace FinalPaint
                 }
                 else
                 {
-                    
                     bl.SelectFigure(e.X, e.Y, Int32.Parse(textBox.Text));
                 }
             }
@@ -100,6 +100,10 @@ namespace FinalPaint
                 bl.SelectFigure(e.X, e.Y);
             }
             mainDrawingSurface.Image = _myGraphics.GetBitmap();
+            if (bl._currentFigure.Pullable)
+            {
+                _myGraphics.SwitchBitmap();
+            }
 
         }
 
@@ -121,7 +125,10 @@ namespace FinalPaint
             //Image img = mainDrawingSurface.Image;
             //bl.FinishFigure(new Point(e.X, e.Y), ref img);
             //mainDrawingSurface.Image = img;
-            _myGraphics.SwitchBitmap();
+            if (bl._currentFigure.Pullable)
+            {
+                _myGraphics.SwitchBitmap();
+            }
             bl.DrawFigure(e.X, e.Y);
         }
 

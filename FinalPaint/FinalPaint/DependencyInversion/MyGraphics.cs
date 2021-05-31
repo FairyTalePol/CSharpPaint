@@ -86,6 +86,56 @@ namespace FinalPaint.DependencyInversion
             //вызовем делегата
         }
 
+        public void DrawCurve(int startX, int startY, int finishX, int finishY)
+        {
+            _graphics.DrawLine(pen, startX, startY, finishX , finishY);
+                      
+            action();
+        }
+
+        public void DrawPolygon(List<TwoDimensionalPoint> points)
+        {
+            List<Point> adaptedPoints = new List<Point>();
+
+            foreach (var point in points)
+            {
+                adaptedPoints.Add(new Point(point.X, point.Y));
+            }
+
+            if (CurrentBitmap == bitmap)
+            {
+                _graphics.DrawPolygon(pen, adaptedPoints.ToArray());
+            }
+            else
+            {
+                _graphicsTemp = Graphics.FromImage(bitmapTemp);
+                _graphicsTemp.Clear(Color.White);
+                _graphicsTemp.DrawImage(bitmap, 0, 0);
+                _graphicsTemp.DrawPolygon(pen, adaptedPoints.ToArray());
+            }
+            action();
+
+        }
+
+        public void DrawPoint(int startX, int startY, int finishX, int finishY)
+        {
+
+            if (CurrentBitmap == bitmap)
+            {
+                _graphics.FillEllipse(new SolidBrush(pen.Color), startX-pen.Width/2, startY-pen.Width / 2, pen.Width, pen.Width);
+            }
+            else
+            {
+                _graphicsTemp = Graphics.FromImage(bitmapTemp);
+                _graphicsTemp.Clear(Color.White);
+                _graphicsTemp.DrawImage(bitmap, 0, 0);
+                _graphics.FillEllipse(new SolidBrush(pen.Color), startX - pen.Width / 2, startY - pen.Width / 2, pen.Width, pen.Width);
+            }
+
+            action();
+            //вызовем делегата
+        }
+
 
 
         public void DrawRectangle(int startX, int startY, int finishX, int finishY)

@@ -16,11 +16,11 @@
 //            _p = pen;
 //            _pullable = true;
 //        }
-       
+
 //        public override void Draw(Graphics g, Point current)
 //        {
 //            int radius = 10;
-            
+
 
 //            int width = current.X - _start.X < 0 ? _start.X - current.X : current.X - _start.X;
 //            int height = current.Y - _start.Y < 0 ? _start.Y - current.Y : current.Y - _start.Y;

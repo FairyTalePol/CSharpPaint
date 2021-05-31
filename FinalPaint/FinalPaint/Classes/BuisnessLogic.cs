@@ -85,13 +85,9 @@ namespace FinalPaint.Classes
         {
             if (_currentFigure != null)
             {
-                if (_currentFigure.Pullable == true)
-                {
-                   
-                    _currentFigure.Draw(x,y);
-                   
-                }
-           
+
+                 _currentFigure.Draw(x,y);
+
             }
         }
 
@@ -117,18 +113,18 @@ namespace FinalPaint.Classes
                 case EButtonDrawingType.Ellipse:
                     factory = new EllipseFactory(x,y, myGraphics);
                     break;
-                //case EButtonDrawingType.Curve:
-                //    factory = new CurveFactory(p.X, p.Y);
-                //    break;
-                //case EButtonDrawingType.Point:
-                //    factory = new PointFactory(p.X, p.Y);
-                //    break;
-                //case EButtonDrawingType.Polygon6:
-                //    factory = new PolygonFactory(p.X, p.Y, 6);
-                //    break;
-                //case EButtonDrawingType.Polygon:
-                //    factory = new PolygonFactory( p.X, p.Y,polygonAngles);
-                //    break;
+                case EButtonDrawingType.Curve:
+                    factory = new CurveFactory(x, y, myGraphics);
+                    break;
+                case EButtonDrawingType.Point:
+                    factory = new PointFactory(x, y, myGraphics);
+                    break;
+                case EButtonDrawingType.Polygon6:
+                    factory = new PolygonFactory(x,y, myGraphics, 6);
+                    break;
+                case EButtonDrawingType.Polygon:
+                    factory = new PolygonFactory(x, y, myGraphics, polygonAngles);
+                    break;
                 //case EButtonDrawingType.RoundedRectangle:
                 //    factory = new RoundedRectangleFactory(p.X, p.Y);
                 //    break;

@@ -1,22 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-//using System.Threading.Tasks;
+﻿using FinalPaint.DependencyInversion;
 
-//namespace FinalPaint.Classes.FigureFactory
-//{
-//    class PointFactory : FigureFactory
-//    {
-//        public PointFactory(int startX, int startY) : base(startX, startY)
-//        {
+namespace FinalPaint.Classes.FigureFactory
+{
+    class PointFactory : FigureFactory
+    {
+        public PointFactory(int startX, int startY, IMyGraphics mg) : base(startX, startY, mg)
+        {
 
-//        }
-//        public override Figure Create()
-//        {
-//            return new CustomPoint(StartX, StartY);
-//        }
+        }
+        public override Figure Create()
+        {
+            return new CustomPoint(StartX, StartY, _myGraphics);
+        }
 
-//    }
-//}
+    }
+}
