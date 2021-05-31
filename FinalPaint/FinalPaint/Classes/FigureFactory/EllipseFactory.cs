@@ -6,7 +6,7 @@ namespace FinalPaint.Classes.FigureFactory
     {
         public EllipseFactory(int startX, int startY, IMyGraphics mg) : base(startX, startY, mg)
         {
-
+            
         }
         public override Figure Create()
         {

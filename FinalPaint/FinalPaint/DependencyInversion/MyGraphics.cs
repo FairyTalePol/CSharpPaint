@@ -72,16 +72,14 @@ namespace FinalPaint.DependencyInversion
 
             if (CurrentBitmap == bitmap)
             {
-                _graphics.DrawEllipse(pen, startX, startY, finishX, finishY);
-                Console.WriteLine("drawing on main");
+                _graphics.DrawEllipse(pen, startX, startY, finishX-startX, finishY-startY);
             }
             else
             {
                 _graphicsTemp = Graphics.FromImage(bitmapTemp);
                 _graphicsTemp.Clear(Color.White);
                 _graphicsTemp.DrawImage(bitmap, 0, 0);
-                _graphicsTemp.DrawEllipse(pen, startX, startY, finishX, finishY);
-                Console.WriteLine("drawing on temp");
+                _graphicsTemp.DrawEllipse(pen, startX, startY, finishX - startX, finishY - startY);
             }
   
             action();
@@ -92,22 +90,36 @@ namespace FinalPaint.DependencyInversion
 
         public void DrawRectangle(int startX, int startY, int finishX, int finishY)
         {
-            _graphicsTemp = Graphics.FromImage(bitmapTemp);
-            _graphicsTemp.Clear(Color.White);
-            _graphicsTemp.DrawImage(bitmap, 0, 0);
-            _graphicsTemp.DrawRectangle(pen, startX, startY, finishX, finishY);
+            if (CurrentBitmap == bitmap)
+            {
+                _graphics.DrawRectangle(pen, startX, startY, finishX, finishY);
+            }
+            else
+            {
+                _graphicsTemp = Graphics.FromImage(bitmapTemp);
+                _graphicsTemp.Clear(Color.White);
+                _graphicsTemp.DrawImage(bitmap, 0, 0);
+                _graphicsTemp.DrawRectangle(pen, startX, startY, finishX , finishY );
+            }
+
             action();
-            //вызовем делегата
         }
 
         public void DrawLine(int startX, int startY, int finishX, int finishY)
         {
-            _graphicsTemp = Graphics.FromImage(bitmapTemp);
-            _graphicsTemp.Clear(Color.White);
-            _graphicsTemp.DrawImage(bitmap, 0, 0);
-            _graphicsTemp.DrawLine(pen, startX, startY, finishX, finishY);
+            if (CurrentBitmap == bitmap)
+            {
+                _graphics.DrawLine(pen, startX, startY, finishX, finishY);
+            }
+            else
+            {
+                _graphicsTemp = Graphics.FromImage(bitmapTemp);
+                _graphicsTemp.Clear(Color.White);
+                _graphicsTemp.DrawImage(bitmap, 0, 0);
+                _graphicsTemp.DrawLine(pen, startX, startY, finishX, finishY);
+            }
+
             action();
-            //вызовем делегата
         }
 
         public void SetPenWidth(int width)

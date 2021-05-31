@@ -24,7 +24,7 @@ namespace FinalPaint.Classes
             int height = finishY - _startY < 0 ? _startY - finishY : finishY - _startY;
             if (_startX < finishX && _startY < finishY)
             {
-                _myGraphics.DrawRectangle(_startX, _startY, finishX, finishY);
+                _myGraphics.DrawRectangle(_startX, _startY, width, height);
             }
             else if(_startX > finishX && _startY > finishY)
             {
