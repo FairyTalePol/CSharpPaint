@@ -125,9 +125,9 @@ namespace FinalPaint.Classes
                 case EButtonDrawingType.Polygon:
                     factory = new PolygonFactory(x, y, myGraphics, polygonAngles);
                     break;
-                //case EButtonDrawingType.RoundedRectangle:
-                //    factory = new RoundedRectangleFactory(p.X, p.Y);
-                //    break;
+                case EButtonDrawingType.RoundedRectangle:
+                    factory = new RoundedRectangleFactory(x, y, myGraphics);
+                    break;
                 default:
                     factory = new LineFactory(x,y, myGraphics);
                     break;
