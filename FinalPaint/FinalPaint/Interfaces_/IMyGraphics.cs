@@ -5,6 +5,7 @@ namespace FinalPaint.Interfaces_
 {
     interface IMyGraphics
     {
+        object Load();
         void Save();
         void DrawEllipse(int startX, int startY, int finishX, int finishY);
         void DrawRectangle(int startX, int startY, int finishX, int finishY);

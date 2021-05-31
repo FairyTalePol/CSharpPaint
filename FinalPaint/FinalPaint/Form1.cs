@@ -1,6 +1,7 @@
 ﻿using FinalPaint.Classes;
 using FinalPaint.DependencyInversion;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace FinalPaint
@@ -125,11 +126,15 @@ namespace FinalPaint
             //Image img = mainDrawingSurface.Image;
             //bl.FinishFigure(new Point(e.X, e.Y), ref img);
             //mainDrawingSurface.Image = img;
-            if (bl._currentFigure.Pullable)
+            if (bl._currentFigure!=null)
             {
-                _myGraphics.SwitchBitmap();
+                if (bl._currentFigure.Pullable)
+                {
+                    _myGraphics.SwitchBitmap();
+                }
+                bl.DrawFigure(e.X, e.Y);
             }
-            bl.DrawFigure(e.X, e.Y);
+           
         }
 
         private void BtnLine_Click(object sender, EventArgs e)
@@ -190,7 +195,7 @@ namespace FinalPaint
 
         private void Load_()
         {
-            mainDrawingSurface.Image = _myGraphics.Load();
+            mainDrawingSurface.Image = (Image)_myGraphics.Load();
         }
 
         private void Button_open_Click(object sender, EventArgs e)

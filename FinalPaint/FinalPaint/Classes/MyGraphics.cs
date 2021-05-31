@@ -194,7 +194,7 @@ namespace FinalPaint.DependencyInversion
             saveLoadHelper.Save(bitmap);
         }
 
-        public Image Load()
+        public object Load()
         {
             saveLoadHelper = RastrSaveHelper.Create();
             Image img = saveLoadHelper.Load();
