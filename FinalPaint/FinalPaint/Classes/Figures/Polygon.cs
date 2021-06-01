@@ -10,7 +10,7 @@ using FinalPaint.Interfaces_;
 
 namespace FinalPaint.Classes
 {
-    class Polygon : Figure
+    public class Polygon : Figure
     {
         private int _pointsAmount;
         private List<TwoDimensionalPoint> _points = new List<TwoDimensionalPoint>();
@@ -26,6 +26,8 @@ namespace FinalPaint.Classes
 
         private void CreatePolygon(int currentX, int currentY)
         {
+            _finishX = currentX;
+            _finishY = currentY;
             double r = (currentX - _startX) / 2 > (currentY - _startY) / 2 ? (currentX - _startX) / 2 : (currentY - _startY) / 2;
             _points.Clear();
             TwoDimensionalPoint temp = new TwoDimensionalPoint();
@@ -43,6 +45,17 @@ namespace FinalPaint.Classes
         {
             CreatePolygon(finishX, finishY);
             _myGraphics.DrawPolygon(_points);
+        }
+
+        public bool IsPointInPoly(int x, int y)
+        {
+            bool res = false;
+
+            if (x >= _startX && x <= _finishX && y >= _startY && y <= _finishY)
+            {
+                res = true;
+            }
+            return res;
         }
 
     }

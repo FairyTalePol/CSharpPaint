@@ -3,12 +3,13 @@ using System.Collections.Generic;
 
 namespace FinalPaint.Interfaces_
 {
-    interface IMyGraphics
+    public interface IMyGraphics
     {
         object Load();
         void Save();
         void DrawEllipse(int startX, int startY, int finishX, int finishY);
         void DrawRectangle(int startX, int startY, int finishX, int finishY);
+        void DrawRoundedRectangle(int startX, int startY, int finishX, int finishY);
 
         void DrawPoint(int startX, int startY, int finishX, int finishY);
 
