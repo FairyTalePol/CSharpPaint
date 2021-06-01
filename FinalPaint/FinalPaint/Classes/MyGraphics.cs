@@ -3,6 +3,7 @@ using FinalPaint.Interfaces_;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace FinalPaint.DependencyInversion
 {
@@ -155,6 +156,101 @@ namespace FinalPaint.DependencyInversion
             }
 
             action();
+        }
+
+        public void DrawRoundedRectangle(int startX, int startY, int finishX, int finishY)
+        {           
+            int radius = 10;
+
+            RectangleF rect = new RectangleF(startX, startY, finishX, finishY);
+            GraphicsPath path = GetRoundRectangle(rect, radius);
+
+            if (CurrentBitmap == bitmap)
+            {               
+                _graphics.DrawPath(pen, path);               
+            }
+            else
+            {
+                _graphicsTemp = Graphics.FromImage(bitmapTemp);
+                _graphicsTemp.Clear(Color.White);
+                _graphicsTemp.DrawImage(bitmap, 0, 0);
+                _graphicsTemp.DrawPath(pen, path);
+            }
+
+            action();
+        }
+        private GraphicsPath GetRoundRectangle(RectangleF baseRect, float radius)
+        {
+            if (radius <= 0.0F)
+            {
+                GraphicsPath mPath = new GraphicsPath();
+                mPath.AddRectangle(baseRect);
+                mPath.CloseFigure();
+                return mPath;
+            }
+
+            if (radius >= (Math.Min(baseRect.Width, baseRect.Height)) / 2.0)
+                return GetCapsule(baseRect);
+
+            float diameter = radius * 2.0F;
+            SizeF sizeF = new SizeF(diameter, diameter);
+            RectangleF arc = new RectangleF(baseRect.Location, sizeF);
+            GraphicsPath path = new GraphicsPath();
+
+            path.AddArc(arc, 180, 90);
+
+            arc.X = baseRect.Right - diameter;
+            path.AddArc(arc, 270, 90);
+
+            arc.Y = baseRect.Bottom - diameter;
+            path.AddArc(arc, 0, 90);
+
+            arc.X = baseRect.Left;
+            path.AddArc(arc, 90, 90);
+
+            path.CloseFigure();
+            return path;
+        }
+
+        private GraphicsPath GetCapsule(RectangleF baseRect)
+        {
+            float diameter;
+            RectangleF arc;
+            GraphicsPath path = new GraphicsPath();
+            try
+            {
+                if (baseRect.Width > baseRect.Height)
+                {
+                    diameter = baseRect.Height;
+                    SizeF sizeF = new SizeF(diameter, diameter);
+                    arc = new RectangleF(baseRect.Location, sizeF);
+                    path.AddArc(arc, 90, 180);
+                    arc.X = baseRect.Right - diameter;
+                    path.AddArc(arc, 270, 180);
+                }
+                else if (baseRect.Width < baseRect.Height)
+                {
+                    diameter = baseRect.Width;
+                    SizeF sizeF = new SizeF(diameter, diameter);
+                    arc = new RectangleF(baseRect.Location, sizeF);
+                    path.AddArc(arc, 180, 180);
+                    arc.Y = baseRect.Bottom - diameter;
+                    path.AddArc(arc, 0, 180);
+                }
+                else
+                {
+                    path.AddEllipse(baseRect);
+                }
+            }
+            catch (Exception ex)
+            {
+                path.AddEllipse(baseRect);
+            }
+            finally
+            {
+                path.CloseFigure();
+            }
+            return path;
         }
 
         public void DrawLine(int startX, int startY, int finishX, int finishY)

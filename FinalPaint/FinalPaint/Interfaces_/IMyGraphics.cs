@@ -9,6 +9,7 @@ namespace FinalPaint.Interfaces_
         void Save();
         void DrawEllipse(int startX, int startY, int finishX, int finishY);
         void DrawRectangle(int startX, int startY, int finishX, int finishY);
+        void DrawRoundedRectangle(int startX, int startY, int finishX, int finishY);
 
         void DrawPoint(int startX, int startY, int finishX, int finishY);
 
