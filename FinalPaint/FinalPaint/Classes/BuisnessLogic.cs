@@ -175,7 +175,6 @@ namespace FinalPaint.Classes
             }
 
         }
-       
         public void Redo()
         {
             storage.Redo();
@@ -187,7 +186,7 @@ namespace FinalPaint.Classes
             }
 
         }
-
+        
 
     }
 }
