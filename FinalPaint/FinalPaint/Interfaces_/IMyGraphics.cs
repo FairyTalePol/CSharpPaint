@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace FinalPaint.Interfaces_
 {
-    interface IMyGraphics
+    public interface IMyGraphics
     {
         object Load();
         void Save();

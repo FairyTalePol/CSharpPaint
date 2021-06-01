@@ -19,5 +19,16 @@ namespace FinalPaint.Classes
         {
             _myGraphics.DrawEllipse(_startX, _startY, finishX, finishY);
         }
+
+        public bool IsPointInPoly(int x, int y)
+        {
+            bool res = false;
+
+            if (x >= _startX && x <= _finishX && y >= _startY && y <= _finishY)
+            {
+                res = true;
+            }
+            return res;
+        }
     }
 }

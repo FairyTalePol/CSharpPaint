@@ -8,14 +8,17 @@ using System.Threading.Tasks;
 
 namespace FinalPaint.Classes
 {
-    abstract class Figure
+    abstract public class Figure
     {
         protected Interfaces_.IMyGraphics _myGraphics;
 
         protected bool _pullable;
 
-        protected int _startX { get; set; }
-        protected int _startY { get; set; }
+        public int _startX { get; set; }
+        public int _startY { get; set; }
+
+        public int _finishX { get; set; }
+        public int _finishY { get; set; }
         public bool Pullable
         {
             get
