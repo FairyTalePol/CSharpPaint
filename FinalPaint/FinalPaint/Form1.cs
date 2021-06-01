@@ -232,5 +232,10 @@ namespace FinalPaint
         {
             bl.Undo();
         }
+
+        private void redoButton_Click(object sender, EventArgs e)
+        {
+            bl.Redo();
+        }
     }
 }

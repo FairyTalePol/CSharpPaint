@@ -170,12 +170,18 @@ namespace FinalPaint.Classes
             }
 
         }
-
         public void Redo()
         {
             storage.Redo();
-        }
+            List<FigureWithParametrs> figures = storage.GetCurrentList();
+            myGraphics.ClearSurface();
+            foreach (var figure in figures)
+            {
+                myGraphics.FigureFromFWP(figure);
+            }
 
+        }
+        
 
     }
 }
