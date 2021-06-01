@@ -40,6 +40,7 @@ namespace FinalPaint.Classes
             {
                 _myGraphics.DrawRectangle( finishX, _startY, width, height);
             }
+            
             _finishX = finishX;
             _finishY = finishY;
 

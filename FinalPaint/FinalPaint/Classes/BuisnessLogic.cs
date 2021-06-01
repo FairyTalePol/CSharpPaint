@@ -1,6 +1,7 @@
 ﻿using FinalPaint.Classes.FigureFactory;
 using FinalPaint.Interfaces_;
 using System;
+using System.Collections.Generic;
 
 namespace FinalPaint.Classes
 {
@@ -9,6 +10,7 @@ namespace FinalPaint.Classes
         private static BuisnessLogic _bl;
         public IMyGraphics myGraphics;
         public EButtonDrawingType _currentMode;
+        public Storage storage;
         //public Bitmap _bitmap;
         //public Bitmap _bitmapTemp;
         //public Pen _pen;
@@ -25,6 +27,7 @@ namespace FinalPaint.Classes
         {
             Config.Configure();
             saveLoad = RastrSaveHelper.Create();
+            storage = Storage.Create();
           //  penWidth = Config.penWidth;
         }
 
@@ -87,7 +90,7 @@ namespace FinalPaint.Classes
             {
 
                  _currentFigure.Draw(x,y);
-
+                storage.AddFigure(_currentFigure, myGraphics.GetCurrentPenSize(), myGraphics.GetCurrentPenColor());
             }
         }
 
@@ -154,6 +157,23 @@ namespace FinalPaint.Classes
         {
             saveLoad = RastrSaveHelper.Create();
             act();
+        }
+        
+        public void Undo()
+        {
+            storage.Undo();
+            List<FigureWithParametrs> figures = storage.GetCurrentList();
+            myGraphics.ClearSurface();
+            foreach(var figure in figures)
+            {
+                myGraphics.FigureFromFWP(figure);
+            }
+
+        }
+
+        public void Redo()
+        {
+            storage.Redo();
         }
 
 

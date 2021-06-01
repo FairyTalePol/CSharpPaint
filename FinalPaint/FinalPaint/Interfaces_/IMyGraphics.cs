@@ -7,6 +7,8 @@ namespace FinalPaint.Interfaces_
     {
         object Load();
         void Save();
+
+        void ClearSurface();
         void DrawEllipse(int startX, int startY, int finishX, int finishY);
         void DrawRectangle(int startX, int startY, int finishX, int finishY);
         void DrawRoundedRectangle(int startX, int startY, int finishX, int finishY);
@@ -17,5 +19,8 @@ namespace FinalPaint.Interfaces_
 
         void DrawPolygon(List<TwoDimensionalPoint> list);
         void DrawLine(int startX, int startY, int finishX, int finishY);
+        void FigureFromFWP(FigureWithParametrs fwp);
+        float GetCurrentPenSize();
+        string GetCurrentPenColor();
     }
 }

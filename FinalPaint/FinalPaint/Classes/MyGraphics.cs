@@ -22,6 +22,7 @@ namespace FinalPaint.DependencyInversion
         RastrSaveHelper saveLoadHelper;
         public Bitmap CurrentBitmap { get; set; }
 
+        
         public void SwitchBitmap()
         {
             if (CurrentBitmap == bitmap)
@@ -146,6 +147,7 @@ namespace FinalPaint.DependencyInversion
             if (CurrentBitmap == bitmap)
             {
                 _graphics.DrawRectangle(pen, startX, startY, finishX, finishY);
+                
             }
             else
             {
@@ -278,6 +280,49 @@ namespace FinalPaint.DependencyInversion
 
        public void ClearSurface(Color c)
         {
+            _graphics.Clear(c);
+            _graphicsTemp.Clear(c);
+            _graphicsTemp.DrawImage(bitmap, 0, 0);
+
+        }
+
+        public Color StringToColor(string color)
+        {
+            Color newColor = Color.FromName(color);
+            return newColor;
+        }
+
+        public string ColorToString(Color color)
+        {
+            string strColor = color.Name;
+            return strColor;
+        }
+        public float GetCurrentPenSize()
+        {
+            float tmp = pen.Width;
+            return tmp;
+        }
+        public string GetCurrentPenColor()
+        {
+            return ColorToString(pen.Color);
+        }
+
+        public void FigureFromFWP(FigureWithParametrs fwp)
+        {
+            
+            Figure figure = fwp.GetFigure();
+            Pen tmpPen = new Pen(pen.Color, pen.Width);
+            pen.Color = StringToColor(fwp.GetPenColor());
+            pen.Width = fwp.GetPenSize();
+            figure.Draw(figure._finishX, figure._finishY);
+            pen.Width = tmpPen.Width;
+            pen.Color = tmpPen.Color;
+
+        }
+
+        public void ClearSurface()
+        {
+            Color c = Color.White;
             _graphics.Clear(c);
             _graphicsTemp.Clear(c);
             _graphicsTemp.DrawImage(bitmap, 0, 0);

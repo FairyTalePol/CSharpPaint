@@ -8,14 +8,16 @@ namespace FinalPaint.Classes
 {
     class Storage
     {
-        public List<Figure> _figures;
-        public List<Figure> _archive;
-        private static Storage _storage;
 
+        private static Storage _storage;
+        public List<FigureWithParametrs> _current;
+        public List<List<FigureWithParametrs>> _archive;
+        private int _pointer;
         private Storage()
         {
-            _figures = new List<Figure>();
-            _archive = new List<Figure>();
+            _current = new List<FigureWithParametrs>();
+            _archive = new List<List<FigureWithParametrs>>();
+            _pointer = 0;
         }
 
         public static Storage Create()
@@ -25,43 +27,42 @@ namespace FinalPaint.Classes
                 _storage = new Storage();
             }
             return _storage;
-
         }
 
-        public void AddFigure(Figure figure)
+        public void AddFigure(Figure figure, float penWidth, string color)
         {
-            _figures.Add(figure);
-            ClearArchive();
+            FigureWithParametrs HeeeeeyMakarena = new FigureWithParametrs(figure, color, penWidth);
+            _current.Add(HeeeeeyMakarena);
+
+            List<FigureWithParametrs> temp = new List<FigureWithParametrs>();
+            foreach (var fwp in _current)
+            {
+                temp.Add((FigureWithParametrs)fwp.Clone());
+            }
+
+            _archive.Add(temp);
         }
 
-        public void ClearArchive()
+        public void Undo()
         {
-            _archive.Clear();
+            if (_pointer < _archive.Count - 1)
+            {
+                _pointer++;
+            }
         }
 
-        public void MoveBack()
+        public void Redo()
         {
-            _archive.Add(_figures.Last());
-            _figures.Remove(_figures.Last());
+            if (_pointer > 0)
+            {
+                _pointer--;
+            }
         }
 
-        public void MoveForward()
+        public List<FigureWithParametrs> GetCurrentList()
         {
-            _figures.Add(_archive.Last());
-            _archive.Remove(_archive.Last());
+            _current = _archive.ElementAt(_archive.Count - _pointer - 1);
+            return _current;
         }
-
-        public List<Figure> GetListOfFigures()
-        {
-            return _figures;
-        }
-
-        public void GetListOfFigures(List<Figure> list)
-        {
-            _figures = list;
-        }
-
-
-
     }
 }
