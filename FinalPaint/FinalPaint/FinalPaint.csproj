@@ -130,6 +130,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\FigureWithParametrs.cs" />
     <Compile Include="Classes\BuisnessLogic.cs" />
     <Compile Include="Classes\Config.cs" />
     <Compile Include="Classes\Figures\Curve.cs" />
