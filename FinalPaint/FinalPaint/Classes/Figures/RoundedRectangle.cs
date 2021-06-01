@@ -18,6 +18,7 @@ namespace FinalPaint.Classes
             _pullable = true;
             _myGraphics = mg;
         }
+        
 
         public override void Draw(int finishX, int finishY)
         {          

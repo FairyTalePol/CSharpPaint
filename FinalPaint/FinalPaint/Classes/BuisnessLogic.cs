@@ -20,7 +20,8 @@ namespace FinalPaint.Classes
         //public Dictionary<int, int> penWidth;
         RastrSaveHelper saveLoad;
         
-      
+
+
         //S
 
         private BuisnessLogic()
@@ -28,7 +29,8 @@ namespace FinalPaint.Classes
             Config.Configure();
             saveLoad = RastrSaveHelper.Create();
             storage = Storage.Create();
-          //  penWidth = Config.penWidth;
+            //  penWidth = Config.penWidth;
+
         }
 
         public void SetCurrentMode(EButtonDrawingType mode)
@@ -45,7 +47,7 @@ namespace FinalPaint.Classes
             //_graphicsTemp = Graphics.FromImage(_bitmapTemp);
             _currentMode = Config.eButtonDrawingType;
             myGraphics = myGraphicsUI;
-           // penWidth = Config.penWidth;
+            // penWidth = Config.penWidth;
         }
 
         //public void SetPenWidth(int width)
@@ -70,14 +72,14 @@ namespace FinalPaint.Classes
             {
                 if (pointsAmount < 2)
                 {
-                    message="Polygon points set to "+ Config.DefaultAngelsForPolegon;
-                    success= false;
+                    message = "Polygon points set to " + Config.DefaultAngelsForPolegon;
+                    success = false;
                 }
-                
+
             }
             else
             {
-                message="Polygon points set to "+ Config.DefaultAngelsForPolegon;
+                message = "Polygon points set to " + Config.DefaultAngelsForPolegon;
                 success = false;
             }
             return success;
@@ -89,8 +91,11 @@ namespace FinalPaint.Classes
             if (_currentFigure != null)
             {
 
-                 _currentFigure.Draw(x,y);
-                storage.AddFigure(_currentFigure, myGraphics.GetCurrentPenSize(), myGraphics.GetCurrentPenColor());
+                _currentFigure.Draw(x, y);
+                if (myGraphics.GetFlag())
+                {
+                    storage.AddFigure(_currentFigure, myGraphics.GetCurrentPenSize(), myGraphics.GetCurrentPenColor());
+                }
             }
         }
 
@@ -99,22 +104,22 @@ namespace FinalPaint.Classes
         //    if (_currentFigure != null)
         //    {
         //        _currentFigure.Draw(p.X, p.Y);
-               
+
         //    }
         //}
-        public void SelectFigure(int x, int y, int polygonAngles=-1)
+        public void SelectFigure(int x, int y, int polygonAngles = -1)
         {
             FigureFactory.FigureFactory factory;
             switch (_currentMode)
             {
                 case EButtonDrawingType.Line:
-                    factory = new LineFactory(x,y, myGraphics);
+                    factory = new LineFactory(x, y, myGraphics);
                     break;
                 case EButtonDrawingType.Rectangle:
                     factory = new RectangleFactory(x, y, myGraphics);
                     break;
                 case EButtonDrawingType.Ellipse:
-                    factory = new EllipseFactory(x,y, myGraphics);
+                    factory = new EllipseFactory(x, y, myGraphics);
                     break;
                 case EButtonDrawingType.Curve:
                     factory = new CurveFactory(x, y, myGraphics);
@@ -123,7 +128,7 @@ namespace FinalPaint.Classes
                     factory = new PointFactory(x, y, myGraphics);
                     break;
                 case EButtonDrawingType.Polygon6:
-                    factory = new PolygonFactory(x,y, myGraphics, 6);
+                    factory = new PolygonFactory(x, y, myGraphics, 6);
                     break;
                 case EButtonDrawingType.Polygon:
                     factory = new PolygonFactory(x, y, myGraphics, polygonAngles);
@@ -132,7 +137,7 @@ namespace FinalPaint.Classes
                     factory = new RoundedRectangleFactory(x, y, myGraphics);
                     break;
                 default:
-                    factory = new LineFactory(x,y, myGraphics);
+                    factory = new LineFactory(x, y, myGraphics);
                     break;
             }
             _currentFigure = factory.Create();
@@ -141,13 +146,13 @@ namespace FinalPaint.Classes
 
         public static BuisnessLogic Create()
         {
-            if (_bl==null)
+            if (_bl == null)
             {
                 _bl = new BuisnessLogic();
             }
             return _bl;
         }
-
+      
         public void Load(Action act)
         {
             saveLoad = RastrSaveHelper.Create();
@@ -158,22 +163,29 @@ namespace FinalPaint.Classes
             saveLoad = RastrSaveHelper.Create();
             act();
         }
-        
+
         public void Undo()
         {
             storage.Undo();
             List<FigureWithParametrs> figures = storage.GetCurrentList();
             myGraphics.ClearSurface();
-            foreach(var figure in figures)
+            foreach (var figure in figures)
             {
                 myGraphics.FigureFromFWP(figure);
             }
 
         }
-
+       
         public void Redo()
         {
             storage.Redo();
+            List<FigureWithParametrs> figures = storage.GetCurrentList();
+            myGraphics.ClearSurface();
+            foreach (var figure in figures)
+            {
+                myGraphics.FigureFromFWP(figure);
+            }
+
         }
 
 

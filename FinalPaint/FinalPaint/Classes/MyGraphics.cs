@@ -21,8 +21,12 @@ namespace FinalPaint.DependencyInversion
         Action action;
         RastrSaveHelper saveLoadHelper;
         public Bitmap CurrentBitmap { get; set; }
+        public bool flag;
 
-        
+
+
+
+
         public void SwitchBitmap()
         {
             if (CurrentBitmap == bitmap)
@@ -55,7 +59,13 @@ namespace FinalPaint.DependencyInversion
             _graphics = Graphics.FromImage(bitmap);
             _graphicsTemp = Graphics.FromImage(bitmapTemp);
             action = act;
+            
+
+
             CurrentBitmap = bitmap;
+
+            
+
         }
 
 
@@ -77,6 +87,7 @@ namespace FinalPaint.DependencyInversion
             if (CurrentBitmap == bitmap)
             {
                 _graphics.DrawEllipse(pen, startX, startY, finishX-startX, finishY-startY);
+                flag = true;
             }
             else
             {
@@ -85,9 +96,15 @@ namespace FinalPaint.DependencyInversion
                 _graphicsTemp.DrawImage(bitmap, 0, 0);
                 _graphicsTemp.DrawEllipse(pen, startX, startY, finishX - startX, finishY - startY);
             }
-  
+
             action();
             //вызовем делегата
+        }
+        public bool GetFlag()
+        {
+            bool tmp = flag;
+            flag = false;
+            return tmp;
         }
 
         public void DrawCurve(int startX, int startY, int finishX, int finishY)

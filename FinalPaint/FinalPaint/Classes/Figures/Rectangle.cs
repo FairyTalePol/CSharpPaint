@@ -19,6 +19,7 @@ namespace FinalPaint.Classes
             _startY = startY;
             _pullable = true;
         }
+        
         public override void Draw(int finishX, int finishY)
         {
            

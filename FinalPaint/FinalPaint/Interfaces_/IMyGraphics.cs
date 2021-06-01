@@ -22,5 +22,6 @@ namespace FinalPaint.Interfaces_
         void FigureFromFWP(FigureWithParametrs fwp);
         float GetCurrentPenSize();
         string GetCurrentPenColor();
+        bool GetFlag();
     }
 }

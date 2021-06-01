@@ -23,7 +23,7 @@ namespace FinalPaint.Classes
             _pullable = true;
             _myGraphics = mg;
         }
-
+       
         private void CreatePolygon(int currentX, int currentY)
         {
             _finishX = currentX;
