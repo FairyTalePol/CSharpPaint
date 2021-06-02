@@ -30,7 +30,7 @@ namespace FinalPaint.Classes
 
         public object Clone()
         {
-            return new FigureWithParametrs(_figure, _penColor, _penSize);
+            return new FigureWithParametrs(_figure, (string) _penColor.Clone(), _penSize);
         }
     }
 }

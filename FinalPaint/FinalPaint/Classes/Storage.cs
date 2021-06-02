@@ -31,6 +31,22 @@ namespace FinalPaint.Classes
 
         public void AddFigure(Figure figure, float penWidth, string color)
         {
+            if (_pointer>0)
+            {
+           
+                for (int i=0; i<_pointer; i++)
+                {
+                    _archive.RemoveAt(_archive.Count - 1);
+                }
+                foreach (var fig in _archive.Last())
+                {
+                    _current.Add((FigureWithParametrs) fig.Clone());
+                }
+
+                _pointer = 0;
+            }
+
+
             FigureWithParametrs HeeeeeyMakarena = new FigureWithParametrs(figure, color, penWidth);
             _current.Add(HeeeeeyMakarena);
 
@@ -41,6 +57,7 @@ namespace FinalPaint.Classes
             }
 
             _archive.Add(temp);
+
         }
 
         public void Undo()
@@ -61,8 +78,15 @@ namespace FinalPaint.Classes
 
         public List<FigureWithParametrs> GetCurrentList()
         {
+                
             _current = _archive.ElementAt(_archive.Count - _pointer - 1);
             return _current;
+        }
+
+        public void ClearCurrentList()
+        {
+
+            _current = new List<FigureWithParametrs>();
         }
     }
 }

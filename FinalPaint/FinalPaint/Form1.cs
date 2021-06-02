@@ -237,5 +237,10 @@ namespace FinalPaint
         {
             bl.Redo();
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -90,9 +90,10 @@ namespace FinalPaint.Classes
         {
             if (_currentFigure != null)
             {
-
+                _currentFigure._finishX = x;
+                _currentFigure._finishY = y;
                 _currentFigure.Draw(x, y);
-                if (myGraphics.GetFlag())
+                if (!myGraphics.IsCurrentSurfaceTemporary())
                 {
                     storage.AddFigure(_currentFigure, myGraphics.GetCurrentPenSize(), myGraphics.GetCurrentPenColor());
                 }
@@ -168,10 +169,13 @@ namespace FinalPaint.Classes
         {
             storage.Undo();
             List<FigureWithParametrs> figures = storage.GetCurrentList();
+            storage.ClearCurrentList();
             myGraphics.ClearSurface();
             foreach (var figure in figures)
             {
-                myGraphics.FigureFromFWP(figure);
+                Figure f = myGraphics.FigureFromFWP(figure);
+                f.Draw(f._finishX, f._finishY);
+                myGraphics.RestorePen();
             }
 
         }
@@ -179,10 +183,12 @@ namespace FinalPaint.Classes
         {
             storage.Redo();
             List<FigureWithParametrs> figures = storage.GetCurrentList();
+            storage.ClearCurrentList();
             myGraphics.ClearSurface();
             foreach (var figure in figures)
             {
-                myGraphics.FigureFromFWP(figure);
+                Figure f = myGraphics.FigureFromFWP(figure);
+                f.Draw(f._finishX, f._finishY);
             }
 
         }
