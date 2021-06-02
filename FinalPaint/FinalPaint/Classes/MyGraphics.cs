@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Text;
 
 namespace FinalPaint.DependencyInversion
 {
@@ -21,6 +22,12 @@ namespace FinalPaint.DependencyInversion
         Action action;
         RastrSaveHelper saveLoadHelper;
         public Bitmap CurrentBitmap { get; set; }
+        public bool temp;
+        private Pen _penBackup;
+
+
+
+
 
         public void SwitchBitmap()
         {
@@ -28,11 +35,13 @@ namespace FinalPaint.DependencyInversion
             {
                 CurrentBitmap = bitmapTemp;
                 Console.WriteLine("temp bitmap set");
+                temp = true;
             }
             else
             {
                 CurrentBitmap = bitmap;
                 Console.WriteLine("main bitmap set");
+                temp = false;
             }
         }
         public Bitmap GetBitmap()
@@ -54,7 +63,13 @@ namespace FinalPaint.DependencyInversion
             _graphics = Graphics.FromImage(bitmap);
             _graphicsTemp = Graphics.FromImage(bitmapTemp);
             action = act;
+            
+
+
             CurrentBitmap = bitmap;
+
+            
+
         }
 
 
@@ -76,6 +91,7 @@ namespace FinalPaint.DependencyInversion
             if (CurrentBitmap == bitmap)
             {
                 _graphics.DrawEllipse(pen, startX, startY, finishX-startX, finishY-startY);
+              
             }
             else
             {
@@ -84,15 +100,36 @@ namespace FinalPaint.DependencyInversion
                 _graphicsTemp.DrawImage(bitmap, 0, 0);
                 _graphicsTemp.DrawEllipse(pen, startX, startY, finishX - startX, finishY - startY);
             }
-  
+
             action();
             //вызовем делегата
         }
 
-        public void DrawCurve(int startX, int startY, int finishX, int finishY)
+        public void DrawCurve(List<TwoDimensionalPoint> points)
         {
-            _graphics.DrawLine(pen, startX, startY, finishX , finishY);
-                      
+            //_graphics.DrawLine(pen, startX, startY, finishX , finishY);
+
+            if (CurrentBitmap == bitmap)
+            {
+                //_graphics.DrawLine(pen, startX, startY, finishX, finishY);
+                for (int i=1; i<points.Count; i++)
+                {
+                    _graphics.DrawLine(pen, points[i-1].X, points[i - 1].Y, points[i].X, points[i].Y);
+                }
+
+            }
+            else
+            {
+                _graphicsTemp = Graphics.FromImage(bitmapTemp);
+                _graphicsTemp.Clear(Color.White);
+                _graphicsTemp.DrawImage(bitmap, 0, 0);
+                for (int i = 1; i < points.Count; i++)
+                {
+                    _graphicsTemp.DrawLine(pen, points[i - 1].X, points[i - 1].Y, points[i].X, points[i].Y);
+                }
+            }
+
+
             action();
         }
 
@@ -146,6 +183,7 @@ namespace FinalPaint.DependencyInversion
             if (CurrentBitmap == bitmap)
             {
                 _graphics.DrawRectangle(pen, startX, startY, finishX, finishY);
+                
             }
             else
             {
@@ -284,6 +322,71 @@ namespace FinalPaint.DependencyInversion
 
         }
 
+        public Color StringToColor(string color)
+        {
+            string[] arr = color.Split(',');
+            int[] res = new int[3];
+            for (int i=0; i< arr.Length; i++)
+            {
+                res[i] = Int32.Parse(arr[i]);
+            }
+            Color newColor = Color.FromArgb(res[0], res[1], res[2]);
+            return newColor;
+        }
+
+        public string ColorToString(Color color)
+        {
+            string strColor = color.Name;
+            return strColor;
+        }
+        public float GetCurrentPenSize()
+        {
+            float tmp = pen.Width;
+            return tmp;
+        }
+        public string GetCurrentPenColor()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"{pen.Color.R},");
+            sb.Append($"{pen.Color.G},");
+            sb.Append($"{pen.Color.B}");
+            return sb.ToString();
+        }
+
+        public void BackupPen()
+        {
+            _penBackup = pen;
+        }
+
+        public void RestorePen()
+        {
+            pen = _penBackup;
+        }
+
+        public Figure FigureFromFWP(FigureWithParametrs fwp)
+        {
+            
+            Figure figure = fwp.GetFigure();
+            figure._myGraphics = _myGraphics;
+            BackupPen();
+            Pen tmpPen = new Pen(pen.Color, pen.Width);
+            
+            pen.Color = StringToColor(fwp.GetPenColor());
+            pen.Width = fwp.GetPenSize();
+            //pen.Width = tmpPen.Width;
+            //pen.Color = tmpPen.Color;
+            return figure;
+        }
+
+        public void ClearSurface()
+        {
+            Color c = Color.White;
+            _graphics.Clear(c);
+            _graphicsTemp.Clear(c);
+            _graphicsTemp.DrawImage(bitmap, 0, 0);
+
+        }
+
         public void Save()
         {
             saveLoadHelper = RastrSaveHelper.Create();
@@ -297,6 +400,11 @@ namespace FinalPaint.DependencyInversion
             _graphics.DrawImage(img, 0, 0);
             CurrentBitmap = bitmap;
             return img;
+        }
+
+        public bool IsCurrentSurfaceTemporary()
+        {
+            return temp;
         }
 
         //public void DrawPolygon(int startX, int startY, int finishX, int finishY, int edges)

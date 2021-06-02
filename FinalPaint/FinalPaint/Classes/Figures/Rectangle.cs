@@ -19,6 +19,41 @@ namespace FinalPaint.Classes
             _startY = startY;
             _pullable = true;
         }
+        
+        public override void Draw(int finishX, int finishY)
+        {
+           
+            int width = finishX - _startX < 0 ? _startX - finishX : finishX - _startX;
+            int height = finishY - _startY < 0 ? _startY - finishY : finishY - _startY;
+            if (_startX < finishX && _startY < finishY)
+            {
+                _myGraphics.DrawRectangle(_startX, _startY, width, height);
+            }
+            else if(_startX > finishX && _startY > finishY)
+            {               
+                _myGraphics.DrawRectangle( finishX, finishY, width, height);
+            }
+            else if (_startX < finishX && _startY > finishY)
+            {
+                _myGraphics.DrawRectangle( _startX, finishY, width, height);
+            }
+            else if(_startX> finishX && _startY< finishY)
+            {
+                _myGraphics.DrawRectangle( finishX, _startY, width, height);
+            }
+            
+            _finishX = finishX;
+            _finishY = finishY;
+
+        }
+
+
+        public override bool IsPointInPoly(int x, int y)
+        {
+            _startX = startX;
+            _startY = startY;
+            _pullable = true;
+        }
         public override void Draw(int finishX, int finishY)
         {
            
