@@ -66,6 +66,7 @@ namespace FinalPaint
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.button7 = new System.Windows.Forms.Button();
+            this.btnSelect = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -92,6 +93,7 @@ namespace FinalPaint
             this.panel3.AutoScroll = true;
             this.panel3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.btnSelect);
             this.panel3.Controls.Add(this.btnRoundedRectangle);
             this.panel3.Controls.Add(this.textBox);
             this.panel3.Controls.Add(this.nGon_button);
@@ -125,7 +127,7 @@ namespace FinalPaint
             // 
             this.textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 5F);
             this.textBox.Location = new System.Drawing.Point(165, 23);
-            this.textBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox.Margin = new System.Windows.Forms.Padding(2);
             this.textBox.Multiline = true;
             this.textBox.Name = "textBox";
             this.textBox.Size = new System.Drawing.Size(44, 16);
@@ -332,7 +334,7 @@ namespace FinalPaint
             // 
             this.button_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F);
             this.button_save.Location = new System.Drawing.Point(4, 38);
-            this.button_save.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_save.Margin = new System.Windows.Forms.Padding(4);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(52, 25);
             this.button_save.TabIndex = 2;
@@ -356,7 +358,7 @@ namespace FinalPaint
             // 
             this.button_open.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F);
             this.button_open.Location = new System.Drawing.Point(4, 5);
-            this.button_open.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_open.Margin = new System.Windows.Forms.Padding(4);
             this.button_open.Name = "button_open";
             this.button_open.Size = new System.Drawing.Size(52, 25);
             this.button_open.TabIndex = 3;
@@ -515,6 +517,21 @@ namespace FinalPaint
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
+            // btnSelect
+            // 
+            this.btnSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(246)))), ((int)(((byte)(247)))));
+            this.btnSelect.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSelect.BackgroundImage")));
+            this.btnSelect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSelect.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSelect.Location = new System.Drawing.Point(5, 41);
+            this.btnSelect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(34, 35);
+            this.btnSelect.TabIndex = 6;
+            this.btnSelect.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnSelect.UseVisualStyleBackColor = false;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -578,6 +595,7 @@ namespace FinalPaint
         private System.Windows.Forms.Button undoButton;
         private System.Windows.Forms.Button redoButton;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnSelect;
     }
 }
 
