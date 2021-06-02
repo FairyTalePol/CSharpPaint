@@ -18,7 +18,7 @@ namespace FinalPaint.Interfaces_
 
         void DrawPoint(int startX, int startY, int finishX, int finishY);
 
-        void DrawCurve(int startX, int startY, int finishX, int finishY);
+        void DrawCurve(List<TwoDimensionalPoint> points);
 
         void DrawPolygon(List<TwoDimensionalPoint> list);
         void DrawLine(int startX, int startY, int finishX, int finishY);

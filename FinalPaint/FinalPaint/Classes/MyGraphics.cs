@@ -105,10 +105,31 @@ namespace FinalPaint.DependencyInversion
             //вызовем делегата
         }
 
-        public void DrawCurve(int startX, int startY, int finishX, int finishY)
+        public void DrawCurve(List<TwoDimensionalPoint> points)
         {
-            _graphics.DrawLine(pen, startX, startY, finishX , finishY);
-                      
+            //_graphics.DrawLine(pen, startX, startY, finishX , finishY);
+
+            if (CurrentBitmap == bitmap)
+            {
+                //_graphics.DrawLine(pen, startX, startY, finishX, finishY);
+                for (int i=1; i<points.Count; i++)
+                {
+                    _graphics.DrawLine(pen, points[i-1].X, points[i - 1].Y, points[i].X, points[i].Y);
+                }
+
+            }
+            else
+            {
+                _graphicsTemp = Graphics.FromImage(bitmapTemp);
+                _graphicsTemp.Clear(Color.White);
+                _graphicsTemp.DrawImage(bitmap, 0, 0);
+                for (int i = 1; i < points.Count; i++)
+                {
+                    _graphicsTemp.DrawLine(pen, points[i - 1].X, points[i - 1].Y, points[i].X, points[i].Y);
+                }
+            }
+
+
             action();
         }
 

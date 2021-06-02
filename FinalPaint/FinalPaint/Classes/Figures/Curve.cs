@@ -11,18 +11,21 @@ namespace FinalPaint.Classes
 {
     class Curve : Figure
     {
+        List<TwoDimensionalPoint> points;
         public Curve(int startX, int startY, IMyGraphics mg)
         {
             _startX = startX;
             _startY = startY;
-            _pullable = false;
+            _pullable = true;
             _myGraphics = mg;
+            points = new List<TwoDimensionalPoint>();
+            points.Add(new TwoDimensionalPoint(startX, startY));
         }
         
         public override void Draw(int finishX, int finishY)
         {
-
-            _myGraphics.DrawCurve(_startX, _startY, finishX, finishY);
+            points.Add(new TwoDimensionalPoint(finishX, finishY));
+            _myGraphics.DrawCurve(points);
             _startX = finishX;
             _startY = finishY;
 
