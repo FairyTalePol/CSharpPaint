@@ -48,7 +48,7 @@ namespace FinalPaint.Classes
         }
 
 
-        public bool IsPointInPoly(int x, int y)
+        public override bool IsPointInPoly(int x, int y)
         {
             bool res = false;
 

@@ -22,15 +22,15 @@ namespace FinalPaint.Classes
      
 
 
-    public bool IsPointInPoly(int x, int y)
-    {
-        bool res = false;
-
-        if (x >= _startX && x <= _finishX && y >= _startY && y <= _finishY)
+        public override bool IsPointInPoly(int x, int y)
         {
-            res = true;
+            bool res = false;
+
+            if (x >= _startX && x <= _finishX && y >= _startY && y <= _finishY)
+            {
+                res = true;
+            }
+            return res;
         }
-        return res;
-    }
 }
 }

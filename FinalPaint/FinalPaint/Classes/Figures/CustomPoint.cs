@@ -21,6 +21,9 @@ namespace FinalPaint.Classes
             _myGraphics.DrawPoint(_startX , _startY , finishX, finishY);
         }
 
-
+        public override bool IsPointInPoly(int x, int y)
+        {
+            return false;
+        }
     }
 }

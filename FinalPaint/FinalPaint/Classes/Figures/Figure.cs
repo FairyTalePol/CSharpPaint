@@ -14,6 +14,8 @@ namespace FinalPaint.Classes
 
         protected bool _pullable;
 
+        public bool IsSelected { get; set; }
+
         public int _startX { get; set; }
         public int _startY { get; set; }
 
@@ -28,6 +30,8 @@ namespace FinalPaint.Classes
         }
 
         public abstract void Draw(int finishX, int finishY);
+
+        public abstract bool IsPointInPoly(int x, int y);
 
     }
 }

@@ -47,7 +47,7 @@ namespace FinalPaint.Classes
             _myGraphics.DrawPolygon(_points);
         }
 
-        public bool IsPointInPoly(int x, int y)
+        public override bool IsPointInPoly(int x, int y)
         {
             bool res = false;
 

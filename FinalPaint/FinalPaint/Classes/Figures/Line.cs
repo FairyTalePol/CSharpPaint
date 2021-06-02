@@ -24,5 +24,10 @@ namespace FinalPaint.Classes
         {
             _myGraphics.DrawLine(_startX, _startY, finishX, finishY);
         }
+
+        public override bool IsPointInPoly(int x, int y)
+        {
+            return false;
+        }
     }
 }
