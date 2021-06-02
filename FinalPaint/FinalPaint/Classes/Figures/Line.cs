@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FinalPaint.Classes
 {
-    class Line : Figure
+    public class Line : Figure
     {
         public Line(int startX, int startY, IMyGraphics mg)
         {
@@ -19,10 +19,31 @@ namespace FinalPaint.Classes
             _myGraphics = mg;
         }
 
+        public Line(int startX, int startY)
+        {
+            _startX = startX;
+            _startY = startY;
+            _pullable = true;
+        }
+
 
         public override void Draw(int finishX, int finishY)
         {
             _myGraphics.DrawLine(_startX, _startY, finishX, finishY);
+        }
+
+        public bool IsPointOnLine(int x, int y)
+        {
+            bool res = false;
+            if(_startX>=_finishX&&_startY>=_finishY)
+            {
+                (_startX, _startY) = (_finishX, _finishY);
+            }
+            if (x >= _startX && x <= _finishX && y >= _startY && y <= _finishY)
+            {
+                res = true;
+            }
+            return res;
         }
     }
 }
