@@ -28,11 +28,11 @@ namespace FinalPaint.Classes
             _myGraphics.DrawPoint(_startX , _startY , finishX, finishY);
         }
 
-        public bool IsPointOnPoint(int x, int y)
+        public override bool IsPointInPoly(int x, int y, int error = 0)
         {
             bool res = false;
 
-            if((x <= _startX+5 && x>=_startX-5)&&(y<=_startY+5&&y>=_startY-5))
+            if ((x <= _startX + error && x >= _startX - error) && (y <= _startY + error && y >= _startY - error))
             {
                 res = true;
             }

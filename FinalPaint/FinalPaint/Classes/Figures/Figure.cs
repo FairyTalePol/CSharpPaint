@@ -31,7 +31,7 @@ namespace FinalPaint.Classes
 
         public abstract void Draw(int finishX, int finishY);
 
-        public abstract bool IsPointInPoly(int x, int y);
+        public abstract bool IsPointInPoly(int x, int y, int error =0);
 
     }
 }

@@ -28,7 +28,7 @@ namespace PaintTests
             point._finishX = 10;
             point._finishY = 10;
 
-            bool actual = point.IsPointOnPoint(x, y);
+            bool actual = point.IsPointInPoly(x, y);
 
             Assert.AreEqual(expected, actual);
         }
