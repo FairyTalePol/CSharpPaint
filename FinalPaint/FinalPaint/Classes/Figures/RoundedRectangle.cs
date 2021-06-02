@@ -18,6 +18,7 @@ namespace FinalPaint.Classes
             _pullable = true;
             _myGraphics = mg;
         }
+        
 
         public override void Draw(int finishX, int finishY)
         {          
@@ -40,6 +41,17 @@ namespace FinalPaint.Classes
             {
                 _myGraphics.DrawRoundedRectangle(finishX, _startY, width, height);
             }
+        }
+
+        public override bool IsPointInPoly(int x, int y)
+        {
+            bool res = false;
+
+            if (x >= _startX && x <= _finishX && y >= _startY && y <= _finishY)
+            {
+                res = true;
+            }
+            return res;
         }
 
     }

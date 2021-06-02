@@ -227,5 +227,20 @@ namespace FinalPaint
 
             InitializeComponent();
         }
+
+        private void undoButton_Click(object sender, EventArgs e)
+        {
+            bl.Undo();
+        }
+
+        private void redoButton_Click(object sender, EventArgs e)
+        {
+            bl.Redo();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

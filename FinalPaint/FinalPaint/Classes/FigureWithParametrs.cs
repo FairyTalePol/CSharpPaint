@@ -1,16 +1,36 @@
-﻿namespace FinalPaint.Classes
+﻿using System;
+
+namespace FinalPaint.Classes
 {
-    public class FigureWithParametrs
+    public class FigureWithParametrs : ICloneable
     {
-        private Figure _figure;
+        private  Figure _figure;
         private string _penColor;
-        private int _penSize;
-        
-        private void Figure(Figure figure, string penColor, int penSize)
+        private float _penSize;
+
+
+        public FigureWithParametrs(Figure figure, string penColor, float penSize)
         {
             _figure = figure;
             _penColor = penColor;
             _penSize = penSize;
+        }
+        public Figure GetFigure()
+        {
+            return _figure;
+        }
+        public string GetPenColor()
+        {
+            return _penColor;
+        }
+        public float GetPenSize()
+        {
+            return _penSize;
+        }
+
+        public object Clone()
+        {
+            return new FigureWithParametrs(_figure, (string) _penColor.Clone(), _penSize);
         }
     }
 }

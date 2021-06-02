@@ -19,6 +19,7 @@ namespace FinalPaint.Classes
             _startY = startY;
             _pullable = true;
         }
+        
         public override void Draw(int finishX, int finishY)
         {
            
@@ -40,13 +41,14 @@ namespace FinalPaint.Classes
             {
                 _myGraphics.DrawRectangle( finishX, _startY, width, height);
             }
+            
             _finishX = finishX;
             _finishY = finishY;
 
         }
 
 
-        public bool IsPointInPoly(int x, int y)
+        public override bool IsPointInPoly(int x, int y)
         {
             bool res = false;
 

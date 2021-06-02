@@ -23,7 +23,7 @@ namespace FinalPaint.Classes
             _pullable = true;
             _myGraphics = mg;
         }
-
+       
         private void CreatePolygon(int currentX, int currentY)
         {
             _finishX = currentX;
@@ -47,7 +47,7 @@ namespace FinalPaint.Classes
             _myGraphics.DrawPolygon(_points);
         }
 
-        public bool IsPointInPoly(int x, int y)
+        public override bool IsPointInPoly(int x, int y)
         {
             bool res = false;
 
