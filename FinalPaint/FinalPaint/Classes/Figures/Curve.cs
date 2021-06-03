@@ -27,6 +27,11 @@ namespace FinalPaint.Classes
             throw new NotImplementedException();
         }
 
+        public override object Clone()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void Draw(int finishX, int finishY)
         {
             points.Add(new TwoDimensionalPoint(finishX, finishY));
@@ -39,6 +44,11 @@ namespace FinalPaint.Classes
         public override bool IsPointInPoly(int x, int y, int error = 0)
         {
             return false;
+        }
+
+        public override void Optimize()
+        {
+            throw new NotImplementedException();
         }
     }
 }

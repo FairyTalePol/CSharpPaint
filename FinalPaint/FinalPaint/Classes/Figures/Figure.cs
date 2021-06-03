@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FinalPaint.Classes
 {
-    abstract public class Figure
+    abstract public class Figure : ICloneable
     {
         public Interfaces_.IMyGraphics _myGraphics;
 
@@ -35,5 +35,9 @@ namespace FinalPaint.Classes
 
         public abstract void AddCoordinates(int x, int y);
 
+        public abstract object Clone();
+
+        public abstract void Optimize();
+     
     }
 }

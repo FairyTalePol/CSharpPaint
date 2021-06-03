@@ -90,7 +90,16 @@ namespace FinalPaint.Classes
         {
             List<FigureWithParametrs> figures = storage.GetCurrentList();
 
-            foreach (var figure in figures)
+
+            List<FigureWithParametrs> temp = new List<FigureWithParametrs>();
+            foreach (var fwp in figures)
+            {
+                temp.Add((FigureWithParametrs)fwp.Clone());
+            }
+
+
+
+            foreach (var figure in temp)
             {
                 if (figure.GetFigure().IsSelected)
                 {
@@ -98,10 +107,10 @@ namespace FinalPaint.Classes
                 }     
             }
 
-            storage.AddCurrent(figures);
+            storage.AddCurrent(temp);
 
             myGraphics.ClearSurface();
-            foreach (var figure in figures)
+            foreach (var figure in temp)
             {
                 Figure f = myGraphics.FigureFromFWP(figure);
                 f.Draw(f._finishX, f._finishY);
@@ -225,7 +234,7 @@ namespace FinalPaint.Classes
         {
             storage.Redo();
             List<FigureWithParametrs> figures = storage.GetCurrentList();
-            storage.ClearCurrentList();
+            //storage.ClearCurrentList();
             myGraphics.ClearSurface();
             foreach (var figure in figures)
             {

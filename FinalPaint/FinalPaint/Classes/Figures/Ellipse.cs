@@ -19,6 +19,11 @@ namespace FinalPaint.Classes
             throw new System.NotImplementedException();
         }
 
+        public override object Clone()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public override void Draw(int finishX, int finishY)
         {
             _myGraphics.DrawEllipse(_startX, _startY, finishX, finishY);
@@ -36,5 +41,10 @@ namespace FinalPaint.Classes
             }
             return res;
         }
-}
+
+        public override void Optimize()
+        {
+            throw new System.NotImplementedException();
+        }
+    }
 }

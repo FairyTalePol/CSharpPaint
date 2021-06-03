@@ -35,7 +35,7 @@ namespace FinalPaint.Classes
 
         public object Clone()
         {
-            return new FigureWithParametrs(_figure, (string) _penColor.Clone(), _penSize);
+            return new FigureWithParametrs((Figure)_figure.Clone(), (string) _penColor.Clone(), _penSize);
         }
 
         public void FigureAddCoordinates(int x, int y)

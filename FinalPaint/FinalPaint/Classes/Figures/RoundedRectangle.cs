@@ -24,6 +24,11 @@ namespace FinalPaint.Classes
             throw new NotImplementedException();
         }
 
+        public override object Clone()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void Draw(int finishX, int finishY)
         {          
             int width = finishX - _startX < 0 ? _startX - finishX : finishX - _startX;
@@ -58,5 +63,9 @@ namespace FinalPaint.Classes
             return res;
         }
 
+        public override void Optimize()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

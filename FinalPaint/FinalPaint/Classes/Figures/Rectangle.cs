@@ -25,6 +25,8 @@ namespace FinalPaint.Classes
            
             int width = finishX - _startX < 0 ? _startX - finishX : finishX - _startX;
             int height = finishY - _startY < 0 ? _startY - finishY : finishY - _startY;
+         
+
             if (_startX < finishX && _startY < finishY)
             {
                 _myGraphics.DrawRectangle(_startX, _startY, width, height);
@@ -65,6 +67,35 @@ namespace FinalPaint.Classes
             _startY += y;
             _finishX += x;
             _finishY += y;
+        }
+
+        public override object Clone()
+        {
+            Rectangle res = new Rectangle(_startX, _startY);
+            res._finishX = _finishX;
+            res._finishY = _finishY;
+            res._myGraphics = _myGraphics;
+            res._pullable = _pullable;
+            res.IsSelected = IsSelected;
+            return res;
+        }
+
+        public override void Optimize()
+        {
+            int temp;
+            if (_startX>_finishX)
+            {
+                temp = _startX;
+                _startX = _finishX;
+                _finishX = temp;
+            }
+        
+            if (_startY> _finishY)
+            {
+                temp = _startY;
+                _startY = _finishY;
+                _finishY = temp;
+            }
         }
     }
 }

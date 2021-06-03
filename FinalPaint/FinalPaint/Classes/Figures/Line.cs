@@ -62,5 +62,15 @@ namespace FinalPaint.Classes
         {
             throw new NotImplementedException();
         }
+
+        public override object Clone()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Optimize()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
