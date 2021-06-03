@@ -8,7 +8,7 @@ using System.Text;
 
 namespace FinalPaint.DependencyInversion
 {
-    class MyGraphics : IMyGraphics
+   public class MyGraphics : IMyGraphics
     {
         private static MyGraphics _myGraphics;
         Graphics _graphics;

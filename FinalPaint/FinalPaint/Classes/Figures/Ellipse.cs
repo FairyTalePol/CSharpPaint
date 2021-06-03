@@ -3,7 +3,7 @@ using FinalPaint.Interfaces_;
 
 namespace FinalPaint.Classes
 {
-    class Ellipse : Figure
+   public class Ellipse : Figure
     {
         public Ellipse(int startX, int startY, IMyGraphics mg)
         {
@@ -14,6 +14,13 @@ namespace FinalPaint.Classes
 
         }
 
+        public Ellipse(int startX, int startY)
+        {
+            _startX = startX;
+            _startY = startY;
+            _pullable = true;
+
+        }
 
         public override void Draw(int finishX, int finishY)
         {

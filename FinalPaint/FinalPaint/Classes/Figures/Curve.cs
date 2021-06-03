@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FinalPaint.Classes
 {
-    class Curve : Figure
+   public class Curve : Figure
     {
         List<TwoDimensionalPoint> points;
         public Curve(int startX, int startY, IMyGraphics mg)
@@ -21,7 +21,16 @@ namespace FinalPaint.Classes
             points = new List<TwoDimensionalPoint>();
             points.Add(new TwoDimensionalPoint(startX, startY));
         }
-        
+
+        public Curve(int startX, int startY)
+        {
+            _startX = startX;
+            _startY = startY;
+            _pullable = true;
+            points = new List<TwoDimensionalPoint>();
+            points.Add(new TwoDimensionalPoint(startX, startY));
+        }
+
         public override void Draw(int finishX, int finishY)
         {
             points.Add(new TwoDimensionalPoint(finishX, finishY));
