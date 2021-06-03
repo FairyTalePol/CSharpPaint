@@ -20,14 +20,14 @@ namespace PaintTests
         [TestCase(3, 5, true)]
         [TestCase(25, 0, false)]
         [TestCase(50, 55, true)]
-        [TestCase(50, 56, false)]
+        [TestCase(50, 56, true)]
         public void IsPointOnLineTest_ReturnsTrueIsPassed_ElseFalse(int x, int y, bool expected)
         {
             Line line = new Line(0, 0);
             line._finishX = 100;
             line._finishY = 100;
 
-            bool actual = line.IsPointInPoly(x, y);
+            bool actual = line.IsPointInPoly(x, y,20);
 
             Assert.AreEqual(expected, actual);
         }

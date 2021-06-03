@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FinalPaint.Classes
 {
-    class RoundedRectangle : Figure
+   public class RoundedRectangle : Figure
     {      
         public RoundedRectangle(int startX, int startY, IMyGraphics mg)
         {
@@ -17,6 +17,13 @@ namespace FinalPaint.Classes
             _startY = startY;
             _pullable = true;
             _myGraphics = mg;
+        }
+
+        public RoundedRectangle(int startX, int startY)
+        {
+            _startX = startX;
+            _startY = startY;
+            _pullable = true;
         }
 
         public override void AddCoordinates(int x, int y)
