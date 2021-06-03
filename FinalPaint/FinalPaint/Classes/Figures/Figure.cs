@@ -33,5 +33,7 @@ namespace FinalPaint.Classes
 
         public abstract bool IsPointInPoly(int x, int y, int error =0);
 
+        public abstract void AddCoordinates(int x, int y);
+
     }
 }

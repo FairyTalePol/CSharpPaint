@@ -14,6 +14,10 @@ namespace FinalPaint.Classes
 
         }
 
+        public override void AddCoordinates(int x, int y)
+        {
+            throw new System.NotImplementedException();
+        }
 
         public override void Draw(int finishX, int finishY)
         {

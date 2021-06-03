@@ -86,6 +86,48 @@ namespace FinalPaint.Classes
 
         }
 
+        public void MoveSelectedFigure(int x, int y)
+        {
+            List<FigureWithParametrs> figures = storage.GetCurrentList();
+
+            foreach (var figure in figures)
+            {
+                if (figure.GetFigure().IsSelected)
+                {
+                    figure.FigureAddCoordinates(x, y);
+                }     
+            }
+
+            storage.AddCurrent(figures);
+
+            myGraphics.ClearSurface();
+            foreach (var figure in figures)
+            {
+                Figure f = myGraphics.FigureFromFWP(figure);
+                f.Draw(f._finishX, f._finishY);
+                myGraphics.RestorePen();
+            }
+        }
+
+        public void SetSelection(int x, int y)
+        {
+             List<FigureWithParametrs> figures = storage.GetCurrentList();
+
+            foreach (var figure in figures)
+            {
+                if (figure.GetFigure().IsPointInPoly(x,y,Convert.ToInt32(figure.GetPenSize())))
+                {
+                    figure.SetFigureSelection(true);
+                }
+                else
+                {
+                    figure.SetFigureSelection(false);
+                }
+
+            }
+
+        }
+
         public void DrawFigure(int x, int y)
         {
             if (_currentFigure != null)

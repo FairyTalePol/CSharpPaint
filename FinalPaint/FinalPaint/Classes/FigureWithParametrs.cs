@@ -19,6 +19,11 @@ namespace FinalPaint.Classes
         {
             return _figure;
         }
+
+        public void SetFigure(Figure f)
+        {
+            _figure = f;
+        }
         public string GetPenColor()
         {
             return _penColor;
@@ -31,6 +36,16 @@ namespace FinalPaint.Classes
         public object Clone()
         {
             return new FigureWithParametrs(_figure, (string) _penColor.Clone(), _penSize);
+        }
+
+        public void FigureAddCoordinates(int x, int y)
+        {
+            _figure.AddCoordinates(x, y);
+        }
+
+        public void SetFigureSelection(bool selected)
+        {
+            _figure.IsSelected = selected;
         }
     }
 }

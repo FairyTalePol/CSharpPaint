@@ -40,5 +40,9 @@ namespace FinalPaint.Classes
             return res;
         }
 
+        public override void AddCoordinates(int x, int y)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

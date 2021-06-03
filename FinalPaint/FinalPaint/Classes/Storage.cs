@@ -29,6 +29,17 @@ namespace FinalPaint.Classes
             return _storage;
         }
 
+        public void AddCurrent(List<FigureWithParametrs> newCurrent)
+        {
+            _current = newCurrent;
+            List<FigureWithParametrs> temp = new List<FigureWithParametrs>();
+            foreach (var fwp in _current)
+            {
+                temp.Add((FigureWithParametrs)fwp.Clone());
+            }
+            _archive.Add(temp);
+        }
+
         public void AddFigure(Figure figure, float penWidth, string color)
         {
             if (_pointer>0)

@@ -9,6 +9,7 @@
         Ellipse,
         Polygon,
         Polygon6,
-        RoundedRectangle
+        RoundedRectangle,
+        Selection
     }
 }

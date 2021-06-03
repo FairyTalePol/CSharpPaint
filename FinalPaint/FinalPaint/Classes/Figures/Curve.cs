@@ -21,7 +21,12 @@ namespace FinalPaint.Classes
             points = new List<TwoDimensionalPoint>();
             points.Add(new TwoDimensionalPoint(startX, startY));
         }
-        
+
+        public override void AddCoordinates(int x, int y)
+        {
+            throw new NotImplementedException();
+        }
+
         public override void Draw(int finishX, int finishY)
         {
             points.Add(new TwoDimensionalPoint(finishX, finishY));

@@ -58,5 +58,13 @@ namespace FinalPaint.Classes
             }
             return res;
         }
+
+        public override void AddCoordinates(int x, int y)
+        {
+            _startX += x;
+            _startY += y;
+            _finishX += x;
+            _finishY += y;
+        }
     }
 }
