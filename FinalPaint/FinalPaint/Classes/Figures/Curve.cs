@@ -21,7 +21,17 @@ namespace FinalPaint.Classes
             points = new List<TwoDimensionalPoint>();
             points.Add(new TwoDimensionalPoint(startX, startY));
         }
-        
+
+        public override void AddCoordinates(int x, int y)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override object Clone()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void Draw(int finishX, int finishY)
         {
             points.Add(new TwoDimensionalPoint(finishX, finishY));
@@ -34,6 +44,11 @@ namespace FinalPaint.Classes
         public override bool IsPointInPoly(int x, int y, int error = 0)
         {
             return false;
+        }
+
+        public override void Optimize()
+        {
+            throw new NotImplementedException();
         }
     }
 }

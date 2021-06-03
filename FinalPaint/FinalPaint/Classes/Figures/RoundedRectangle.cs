@@ -18,7 +18,16 @@ namespace FinalPaint.Classes
             _pullable = true;
             _myGraphics = mg;
         }
-        
+
+        public override void AddCoordinates(int x, int y)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override object Clone()
+        {
+            throw new NotImplementedException();
+        }
 
         public override void Draw(int finishX, int finishY)
         {          
@@ -54,5 +63,9 @@ namespace FinalPaint.Classes
             return res;
         }
 
+        public override void Optimize()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -86,6 +86,57 @@ namespace FinalPaint.Classes
 
         }
 
+        public void MoveSelectedFigure(int x, int y)
+        {
+            List<FigureWithParametrs> figures = storage.GetCurrentList();
+
+
+            List<FigureWithParametrs> temp = new List<FigureWithParametrs>();
+            foreach (var fwp in figures)
+            {
+                temp.Add((FigureWithParametrs)fwp.Clone());
+            }
+
+
+
+            foreach (var figure in temp)
+            {
+                if (figure.GetFigure().IsSelected)
+                {
+                    figure.FigureAddCoordinates(x, y);
+                }     
+            }
+
+            storage.AddCurrent(temp);
+
+            myGraphics.ClearSurface();
+            foreach (var figure in temp)
+            {
+                Figure f = myGraphics.FigureFromFWP(figure);
+                f.Draw(f._finishX, f._finishY);
+                myGraphics.RestorePen();
+            }
+        }
+
+        public void SetSelection(int x, int y)
+        {
+             List<FigureWithParametrs> figures = storage.GetCurrentList();
+
+            foreach (var figure in figures)
+            {
+                if (figure.GetFigure().IsPointInPoly(x,y,Convert.ToInt32(figure.GetPenSize())))
+                {
+                    figure.SetFigureSelection(true);
+                }
+                else
+                {
+                    figure.SetFigureSelection(false);
+                }
+
+            }
+
+        }
+
         public void DrawFigure(int x, int y)
         {
             if (_currentFigure != null)
@@ -183,7 +234,7 @@ namespace FinalPaint.Classes
         {
             storage.Redo();
             List<FigureWithParametrs> figures = storage.GetCurrentList();
-            storage.ClearCurrentList();
+            //storage.ClearCurrentList();
             myGraphics.ClearSurface();
             foreach (var figure in figures)
             {
