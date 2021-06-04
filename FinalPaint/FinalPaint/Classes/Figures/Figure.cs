@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FinalPaint.Classes
 {
-    abstract public class Figure
+    abstract public class Figure : ICloneable
     {
         public Interfaces_.IMyGraphics _myGraphics;
 
@@ -33,5 +33,11 @@ namespace FinalPaint.Classes
 
         public abstract bool IsPointInPoly(int x, int y, int error =0);
 
+        public abstract void AddCoordinates(int x, int y);
+
+        public abstract object Clone();
+
+        public abstract void Optimize();
+     
     }
 }

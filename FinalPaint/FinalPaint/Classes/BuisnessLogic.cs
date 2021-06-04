@@ -5,18 +5,19 @@ using System.Collections.Generic;
 
 namespace FinalPaint.Classes
 {
-    class BuisnessLogic
+    public class BuisnessLogic : IBuisnessLogic
     {
         private static BuisnessLogic _bl;
         public IMyGraphics myGraphics;
-        public EButtonDrawingType _currentMode;
-        public Storage storage;
+        public EButtonDrawingType currentMode;
+
+        private Storage storage;
         //public Bitmap _bitmap;
         //public Bitmap _bitmapTemp;
         //public Pen _pen;
         //public Graphics _graphics;
         //public Graphics _graphicsTemp;
-        public Figure _currentFigure;
+        public Figure currentFigure;
         //public Dictionary<int, int> penWidth;
         RastrSaveHelper saveLoad;
         
@@ -24,18 +25,19 @@ namespace FinalPaint.Classes
 
         //S
 
-        private BuisnessLogic()
+        private BuisnessLogic(IMyGraphics myGraphicsUI)
         {
-            Config.Configure();
+        //    Config.Configure();
             saveLoad = RastrSaveHelper.Create();
             storage = Storage.Create();
+            myGraphics = myGraphicsUI;
             //  penWidth = Config.penWidth;
 
         }
 
         public void SetCurrentMode(EButtonDrawingType mode)
         {
-            _currentMode = mode;
+            currentMode = mode;
         }
 
         public void Initialize(IMyGraphics myGraphicsUI)
@@ -45,7 +47,7 @@ namespace FinalPaint.Classes
             //_pen = Config.pen;
             //_graphics = Graphics.FromImage(_bitmap);
             //_graphicsTemp = Graphics.FromImage(_bitmapTemp);
-            _currentMode = Config.eButtonDrawingType;
+            currentMode = Config.eButtonDrawingType;
             myGraphics = myGraphicsUI;
             // penWidth = Config.penWidth;
         }
@@ -86,16 +88,67 @@ namespace FinalPaint.Classes
 
         }
 
+        public void MoveSelectedFigure(int x, int y)
+        {
+            List<FigureWithParametrs> figures = storage.GetCurrentList();
+
+
+            List<FigureWithParametrs> temp = new List<FigureWithParametrs>();
+            foreach (var fwp in figures)
+            {
+                temp.Add((FigureWithParametrs)fwp.Clone());
+            }
+
+
+
+            foreach (var figure in temp)
+            {
+                if (figure.GetFigure().IsSelected)
+                {
+                    figure.FigureAddCoordinates(x, y);
+                }     
+            }
+
+            storage.AddCurrent(temp);
+
+            myGraphics.ClearSurface();
+            foreach (var figure in temp)
+            {
+                Figure f = myGraphics.FigureFromFWP(figure);
+                f.Draw(f._finishX, f._finishY);
+                myGraphics.RestorePen();
+            }
+        }
+
+        public void SetSelection(int x, int y)
+        {
+             List<FigureWithParametrs> figures = storage.GetCurrentList();
+
+            foreach (var figure in figures)
+            {
+                if (figure.GetFigure().IsPointInPoly(x,y,Convert.ToInt32(figure.GetPenSize())))
+                {
+                    figure.SetFigureSelection(true);
+                }
+                else
+                {
+                    figure.SetFigureSelection(false);
+                }
+
+            }
+
+        }
+
         public void DrawFigure(int x, int y)
         {
-            if (_currentFigure != null)
+            if (currentFigure != null)
             {
-                _currentFigure._finishX = x;
-                _currentFigure._finishY = y;
-                _currentFigure.Draw(x, y);
+                currentFigure._finishX = x;
+                currentFigure._finishY = y;
+                currentFigure.Draw(x, y);
                 if (!myGraphics.IsCurrentSurfaceTemporary())
                 {
-                    storage.AddFigure(_currentFigure, myGraphics.GetCurrentPenSize(), myGraphics.GetCurrentPenColor());
+                    storage.AddFigure(currentFigure, myGraphics.GetCurrentPenSize(), myGraphics.GetCurrentPenColor());
                 }
             }
         }
@@ -111,7 +164,7 @@ namespace FinalPaint.Classes
         public void SelectFigure(int x, int y, int polygonAngles = -1)
         {
             FigureFactory.FigureFactory factory;
-            switch (_currentMode)
+            switch (currentMode)
             {
                 case EButtonDrawingType.Line:
                     factory = new LineFactory(x, y, myGraphics);
@@ -141,15 +194,15 @@ namespace FinalPaint.Classes
                     factory = new LineFactory(x, y, myGraphics);
                     break;
             }
-            _currentFigure = factory.Create();
+            currentFigure = factory.Create();
         }
 
 
-        public static BuisnessLogic Create()
+        public static BuisnessLogic Create(IMyGraphics myGraphicsUI/*, IStorage*/)
         {
             if (_bl == null)
             {
-                _bl = new BuisnessLogic();
+                _bl = new BuisnessLogic(myGraphicsUI);
             }
             return _bl;
         }
@@ -183,7 +236,7 @@ namespace FinalPaint.Classes
         {
             storage.Redo();
             List<FigureWithParametrs> figures = storage.GetCurrentList();
-            storage.ClearCurrentList();
+            //storage.ClearCurrentList();
             myGraphics.ClearSurface();
             foreach (var figure in figures)
             {

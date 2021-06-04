@@ -13,12 +13,14 @@ namespace FinalPaint
         RastrSaveHelper saveLoad;
         BuisnessLogic bl;
         MyGraphics _myGraphics;
+        int mouseDownX;
+        int mouseDownY;
 
         public void Setup()
         {
             Action act = GetImage;
             _myGraphics = MyGraphics.Create(mainDrawingSurface.Width, mainDrawingSurface.Height,act);
-            bl = BuisnessLogic.Create();
+            bl = BuisnessLogic.Create(_myGraphics);
             bl.Initialize(_myGraphics);
             btnColorDialog.BackColor = Config.pen.Color;
             dropdownPenWidth.SelectedIndex = Config.dropDownSelectedIndex;
@@ -80,9 +82,13 @@ namespace FinalPaint
 
         private void MainDrawingSurface_MouseDown(object sender, MouseEventArgs e)
         {
-          
-                
-            if (bl._currentMode == EButtonDrawingType.Polygon)
+            mouseDownX = e.X;
+            mouseDownY = e.Y;
+            if (bl.currentMode==EButtonDrawingType.Selection)
+            {
+                bl.SetSelection(e.X, e.Y);
+            }
+            else if (bl.currentMode == EButtonDrawingType.Polygon)
             {
                 string errorMsg = "";
                 if (!bl.ValidatePolygon(textBox.Text, out errorMsg))
@@ -95,13 +101,23 @@ namespace FinalPaint
                 {
                     bl.SelectFigure(e.X, e.Y, Int32.Parse(textBox.Text));
                 }
+
+                if (bl.currentFigure.Pullable)
+                {
+                    _myGraphics.SwitchBitmap();
+                }
             }
             else
             {
                 bl.SelectFigure(e.X, e.Y);
+
+                if (bl.currentFigure.Pullable)
+                {
+                    _myGraphics.SwitchBitmap();
+                }
             }
             
-            if (bl._currentFigure.Pullable)
+            if (bl.currentFigure.Pullable)
             {
                 _myGraphics.SwitchBitmap();
             }
@@ -111,7 +127,11 @@ namespace FinalPaint
        
         private void MainDrawingSurface_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            if (bl.currentMode == EButtonDrawingType.Selection)
+            {
+                
+            }
+            else if (e.Button == MouseButtons.Left)
             {
                 //Image img = mainDrawingSurface.Image;
 
@@ -126,9 +146,9 @@ namespace FinalPaint
             //Image img = mainDrawingSurface.Image;
             //bl.FinishFigure(new Point(e.X, e.Y), ref img);
             //mainDrawingSurface.Image = img;
-            if (bl._currentFigure!=null)
+            if (bl.currentFigure!=null)
             {
-                if (bl._currentFigure.Pullable)
+                if (bl.currentFigure.Pullable)
                 {
                     _myGraphics.SwitchBitmap();
                 }
@@ -245,7 +265,7 @@ namespace FinalPaint
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-
+            bl.SetCurrentMode(EButtonDrawingType.Selection);
         }
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FinalPaint.Classes
 {
-    class RoundedRectangle : Figure
+    public class RoundedRectangle : Figure
     {      
         public RoundedRectangle(int startX, int startY, IMyGraphics mg)
         {
@@ -18,7 +18,23 @@ namespace FinalPaint.Classes
             _pullable = true;
             _myGraphics = mg;
         }
-        
+
+        public RoundedRectangle(int startX, int startY)
+        {
+            _startX = startX;
+            _startY = startY;
+            _pullable = true;
+        }
+
+        public override void AddCoordinates(int x, int y)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override object Clone()
+        {
+            throw new NotImplementedException();
+        }
 
         public override void Draw(int finishX, int finishY)
         {          
@@ -43,6 +59,35 @@ namespace FinalPaint.Classes
             }
         }
 
+        public override bool Equals(object obj)
+        {
+            return obj is RoundedRectangle rectangle &&
+                   EqualityComparer<IMyGraphics>.Default.Equals(_myGraphics, rectangle._myGraphics) &&
+                   _pullable == rectangle._pullable &&
+                   IsSelected == rectangle.IsSelected &&
+                   _startX == rectangle._startX &&
+                   _startY == rectangle._startY &&
+                   _finishX == rectangle._finishX &&
+                   _finishY == rectangle._finishY &&
+                   Pullable == rectangle.Pullable;
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = -1288887542;
+            hashCode = hashCode * -1521134295 + EqualityComparer<IMyGraphics>.Default.GetHashCode(_myGraphics);
+            hashCode = hashCode * -1521134295 + _pullable.GetHashCode();
+            hashCode = hashCode * -1521134295 + IsSelected.GetHashCode();
+            hashCode = hashCode * -1521134295 + _startX.GetHashCode();
+            hashCode = hashCode * -1521134295 + _startY.GetHashCode();
+            hashCode = hashCode * -1521134295 + _finishX.GetHashCode();
+            hashCode = hashCode * -1521134295 + _finishY.GetHashCode();
+            hashCode = hashCode * -1521134295 + Pullable.GetHashCode();
+            return hashCode;
+        }
+
+
+
         public override bool IsPointInPoly(int x, int y, int error = 0)
         {
             bool res = false;
@@ -54,5 +99,9 @@ namespace FinalPaint.Classes
             return res;
         }
 
+        public override void Optimize()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
