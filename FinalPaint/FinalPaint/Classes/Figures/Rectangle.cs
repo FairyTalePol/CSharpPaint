@@ -66,12 +66,12 @@ namespace FinalPaint.Classes
         {
             bool res = false;
 
-            if (x>=_startX&&x<=_finishX&&y>=_startY&&y<=_finishY)
+            if (x >= _startX && x <= _finishX && y >= _startY && y <= _finishY)
             {
                 res = true;
             }
             return res;
-
+        }
         public override void AddCoordinates(int x, int y)
         {
             _startX += x;

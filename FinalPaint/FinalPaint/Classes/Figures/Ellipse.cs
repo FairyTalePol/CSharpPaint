@@ -1,21 +1,12 @@
 ﻿
 using FinalPaint.Interfaces_;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace FinalPaint.Classes
-{
-     public class Ellipse : Figure
-    {
-        public Ellipse(int startX, int startY, IMyGraphics mg)
-        {
-            _startX = startX;
-            _startY = startY;
-            _pullable = true;
-            _myGraphics = mg;
 
 namespace FinalPaint.Classes
 {
-  public  class Ellipse : Figure
+    public class Ellipse : Figure
     {
         public Ellipse(int startX, int startY, IMyGraphics mg)
         {
@@ -67,7 +58,7 @@ namespace FinalPaint.Classes
         {
             _myGraphics.DrawEllipse(_startX, _startY, finishX, finishY);
         }
-     
+
 
         public override bool Equals(object obj)
         {
@@ -96,7 +87,7 @@ namespace FinalPaint.Classes
             return hashCode;
         }
 
-        public override bool IsPointInPoly(int x, int y)
+        public override bool IsPointInPoly(int x, int y, int error = 0)
         {
             bool res = false;
 
@@ -105,7 +96,7 @@ namespace FinalPaint.Classes
                 res = true;
             }
             return res;
-        public override bool IsPointInPoly(int x, int y )
+        }
 
         public override void Optimize()
         {
@@ -125,4 +116,6 @@ namespace FinalPaint.Classes
             }
         }
     }
+    
+
 }

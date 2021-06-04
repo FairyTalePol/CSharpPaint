@@ -35,19 +35,19 @@ namespace PaintTests
             //fieldInfo.SetValue(_bl, _myGraphicsMock.Object);
             
         }
-        [Test]
-        public void UndoTest1()
-        {
-            //List<FigureWithParametrs> fwp = new List<FigureWithParametrs>();
-            List<FigureWithParametrs> fwp = _storage._current;
-            fwp.Add(new FigureWithParametrs(new Ellipse(5,6, _myGraphicsMock.Object), "White", 5));
-            fwp.Add(new FigureWithParametrs(new Ellipse(5,6, _myGraphicsMock.Object), "White", 5));
-            FieldInfo getPointer = typeof(Storage).GetField("_pointer", BindingFlags.NonPublic | BindingFlags.Instance);
-            getPointer.SetValue(_storage, 0);
-            _storageMock.Setup(a => a.Undo());
-            _bl.Undo();
-            _storageMock.Verify(a => a.Undo(), Times.Once);
-        }
+        //[Test]
+        //public void UndoTest1()
+        //{
+        //    //List<FigureWithParametrs> fwp = new List<FigureWithParametrs>();
+        //    List<FigureWithParametrs> fwp = _storage._current;
+        //    fwp.Add(new FigureWithParametrs(new Ellipse(5,6, _myGraphicsMock.Object), "White", 5));
+        //    fwp.Add(new FigureWithParametrs(new Ellipse(5,6, _myGraphicsMock.Object), "White", 5));
+        //    FieldInfo getPointer = typeof(Storage).GetField("_pointer", BindingFlags.NonPublic | BindingFlags.Instance);
+        //    getPointer.SetValue(_storage, 0);
+        //    _storageMock.Setup(a => a.Undo());
+        //    _bl.Undo();
+        //    _storageMock.Verify(a => a.Undo(), Times.Once);
+        //}
 
         [TestCase(EButtonDrawingType.Curve, EButtonDrawingType.Curve)]
         [TestCase(EButtonDrawingType.Ellipse, EButtonDrawingType.Ellipse)]
@@ -70,55 +70,55 @@ namespace PaintTests
             _blMock.Setup(a => a.DrawFigure(It.IsAny<int>(), It.IsAny<int>()));
             _myGraphicsMock.Verify(a => a.IsCurrentSurfaceTemporary(), Times.Never);
         }
-        [Test]
-        public void DrawFigureTest3()
-        {
-            _myGraphicsMock.Setup(a => a.IsCurrentSurfaceTemporary()).Returns(false);
-            _bl.currentFigure = new Ellipse(It.IsAny<int>(), It.IsAny<int>(), _myGraphicsMock.Object);
+        //[Test]
+        //public void DrawFigureTest3()
+        //{
+        //    _myGraphicsMock.Setup(a => a.IsCurrentSurfaceTemporary()).Returns(false);
+        //    _bl.currentFigure = new Ellipse(It.IsAny<int>(), It.IsAny<int>(), _myGraphicsMock.Object);
     
-            _storageMock.Setup(a => a.AddFigure(It.IsAny<Figure>(), It.IsAny<int>(), "White"));
+        //    _storageMock.Setup(a => a.AddFigure(It.IsAny<Figure>(), It.IsAny<int>(), "White"));
             
-            _bl.DrawFigure(It.IsAny<int>(), It.IsAny<int>());
+        //    _bl.DrawFigure(It.IsAny<int>(), It.IsAny<int>());
 
-            //_myGraphicsMock.Verify(a => a.IsCurrentSurfaceTemporary(), Times.Once);
-            //var penSize = _myGraphicsMock.Setup(a => a.GetCurrentPenSize()).Returns(It.IsAny<float>);
-            //var penColor = _myGraphicsMock.Setup(a => a.GetCurrentPenColor()).Returns(It.IsAny<string>))
+        //    //_myGraphicsMock.Verify(a => a.IsCurrentSurfaceTemporary(), Times.Once);
+        //    //var penSize = _myGraphicsMock.Setup(a => a.GetCurrentPenSize()).Returns(It.IsAny<float>);
+        //    //var penColor = _myGraphicsMock.Setup(a => a.GetCurrentPenColor()).Returns(It.IsAny<string>))
 
            
-            _storageMock.Verify(a => a.AddFigure(It.IsAny<Figure>(), It.IsAny<int>(), It.IsAny<string>()), Times.Once);
-        }
-        [Test]
-        public void DrawFigureTest4()
-        {
+        //    _storageMock.Verify(a => a.AddFigure(It.IsAny<Figure>(), It.IsAny<int>(), It.IsAny<string>()), Times.Once);
+        //}
+        //[Test]
+        //public void DrawFigureTest4()
+        //{
 
-            _myGraphicsMock.Setup(a => a.IsCurrentSurfaceTemporary()).Returns(true);
-            _bl.DrawFigure(5, 6);
-            _myGraphicsMock.Verify(a => a.IsCurrentSurfaceTemporary(), Times.Never);
-        }
-        [TestCase(9, 8, 9)]
-        public void DrawFigureTest5(int x, int y, int exp_finishX)
-        {
-            _storageMock.Setup(a => a.AddFigure(_currentFigure, 45, "White"));
-            _bl.currentFigure = new Ellipse(5, 6, _myGraphicsMock.Object);
-            _bl.DrawFigure(x, y);
-            var resX = _bl.currentFigure._finishX;
-            Assert.AreEqual(exp_finishX, resX);
+        //    _myGraphicsMock.Setup(a => a.IsCurrentSurfaceTemporary()).Returns(true);
+        //    _bl.DrawFigure(5, 6);
+        //    _myGraphicsMock.Verify(a => a.IsCurrentSurfaceTemporary(), Times.Never);
+        //}
+        //[TestCase(9, 8, 9)]
+        //public void DrawFigureTest5(int x, int y, int exp_finishX)
+        //{
+        //    _storageMock.Setup(a => a.AddFigure(_currentFigure, 45, "White"));
+        //    _bl.currentFigure = new Ellipse(5, 6, _myGraphicsMock.Object);
+        //    _bl.DrawFigure(x, y);
+        //    var resX = _bl.currentFigure._finishX;
+        //    Assert.AreEqual(exp_finishX, resX);
             
-            //_storageMock.Verify(a => a.AddFigure(_currentFigure, 45, "White"), Times.Once);
-        }
+        //    //_storageMock.Verify(a => a.AddFigure(_currentFigure, 45, "White"), Times.Once);
+        //}
 
 
-        [Test]
-        public void Test2()
-        {
-            _myGraphicsMock.Setup(a => a.IsCurrentSurfaceTemporary()).Returns(true);
-            _bl.currentFigure = new Ellipse(It.IsAny<int>(), It.IsAny<int>(), _myGraphicsMock.Object);
-            _myGraphicsMock.Setup(a => a.DrawEllipse(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>()));
+        //[Test]
+        //public void Test2()
+        //{
+        //    _myGraphicsMock.Setup(a => a.IsCurrentSurfaceTemporary()).Returns(true);
+        //    _bl.currentFigure = new Ellipse(It.IsAny<int>(), It.IsAny<int>(), _myGraphicsMock.Object);
+        //    _myGraphicsMock.Setup(a => a.DrawEllipse(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>()));
 
-            _bl.DrawFigure(It.IsAny<int>(), It.IsAny<int>());
-            _myGraphicsMock.Verify(a => a.DrawEllipse(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>()), Times.Once);
-            _myGraphicsMock.Verify(a => a.IsCurrentSurfaceTemporary(), Times.Once);
-        }
+        //    _bl.DrawFigure(It.IsAny<int>(), It.IsAny<int>());
+        //    _myGraphicsMock.Verify(a => a.DrawEllipse(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>()), Times.Once);
+        //    _myGraphicsMock.Verify(a => a.IsCurrentSurfaceTemporary(), Times.Once);
+        //}
 
 
         [Test]

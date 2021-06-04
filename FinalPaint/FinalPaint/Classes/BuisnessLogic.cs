@@ -231,7 +231,7 @@ namespace FinalPaint.Classes
             {
                 saveLoad = RastrSaveHelper.Create();
                 object res = saveLoad.Load();
-                _currentMode = EButtonDrawingType.Selection;
+                currentMode = EButtonDrawingType.Selection;
                 Clear();
                 myGraphics.ClearSurface();
                 if (res is string)

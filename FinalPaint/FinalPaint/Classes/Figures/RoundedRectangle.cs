@@ -57,7 +57,7 @@ namespace FinalPaint.Classes
         }
 
         public override void Draw(int finishX, int finishY)
-        {          
+        {
             int width = finishX - _startX < 0 ? _startX - finishX : finishX - _startX;
             int height = finishY - _startY < 0 ? _startY - finishY : finishY - _startY;
 
@@ -77,8 +77,9 @@ namespace FinalPaint.Classes
             {
                 _myGraphics.DrawRoundedRectangle(finishX, _startY, width, height);
             }
+        }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object obj)
         {
             return obj is RoundedRectangle rectangle &&
                    EqualityComparer<IMyGraphics>.Default.Equals(_myGraphics, rectangle._myGraphics) &&
@@ -104,17 +105,6 @@ namespace FinalPaint.Classes
             hashCode = hashCode * -1521134295 + Pullable.GetHashCode();
             return hashCode;
         }
-
-        public override bool IsPointInPoly(int x, int y)
-        {
-            bool res = false;
-
-            if (x >= _startX && x <= _finishX && y >= _startY && y <= _finishY)
-            {
-                res = true;
-            }
-            return res;
-        }
 
         public override bool IsPointInPoly(int x, int y, int error = 0)
         {

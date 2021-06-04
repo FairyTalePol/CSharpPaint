@@ -100,11 +100,11 @@ namespace FinalPaint
         {
             mouseDownX = e.X;
             mouseDownY = e.Y;
-            if (bl._currentMode==EButtonDrawingType.Selection)
+            if (bl.currentMode==EButtonDrawingType.Selection)
             {
                 bl.SetSelection(e.X, e.Y);
             }
-            else if (bl._currentMode == EButtonDrawingType.Polygon)
+            else if (bl.currentMode == EButtonDrawingType.Polygon)
             {
                 string errorMsg = "";
                 if (!bl.ValidatePolygon(textBox.Text, out errorMsg))
@@ -118,7 +118,7 @@ namespace FinalPaint
                     bl.SelectFigure(e.X, e.Y, Int32.Parse(textBox.Text));
                 }
 
-                if (bl._currentFigure.Pullable)
+                if (bl.currentFigure.Pullable)
                 {
                     _myGraphics.SwitchBitmap();
                 }
@@ -127,7 +127,7 @@ namespace FinalPaint
             {
                 bl.SelectFigure(e.X, e.Y);
 
-                if (bl._currentFigure.Pullable)
+                if (bl.currentFigure.Pullable)
                 {
                     _myGraphics.SwitchBitmap();
                 }
@@ -139,7 +139,7 @@ namespace FinalPaint
        
         private void MainDrawingSurface_MouseMove(object sender, MouseEventArgs e)
         {
-            if (bl._currentMode == EButtonDrawingType.Selection)
+            if (bl.currentMode == EButtonDrawingType.Selection)
             {
                 
             }
@@ -158,13 +158,13 @@ namespace FinalPaint
             //Image img = mainDrawingSurface.Image;
             //bl.FinishFigure(new Point(e.X, e.Y), ref img);
             //mainDrawingSurface.Image = img;
-            if (bl._currentMode == EButtonDrawingType.Selection)
+            if (bl.currentMode == EButtonDrawingType.Selection)
             {
                 bl.MoveSelectedFigure(e.X - mouseDownX, e.Y - mouseDownY);
             }
-            else if (bl._currentFigure!=null)
+            else if (bl.currentFigure!=null)
             {
-                if (bl._currentFigure.Pullable)
+                if (bl.currentFigure.Pullable)
                 {
                     _myGraphics.SwitchBitmap();
                 }

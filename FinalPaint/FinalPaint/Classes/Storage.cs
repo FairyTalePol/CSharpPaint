@@ -143,18 +143,8 @@ namespace FinalPaint.Classes
         }
 
         public List<FigureWithParametrs> GetCurrentList()
-        {
-                
+        {      
             _current = _archive.ElementAt(_archive.Count - _pointer - 1);
-
-            //List<FigureWithParametrs> temp = new List<FigureWithParametrs>();
-            //foreach (var fwp in _current)
-            //{
-            //    temp.Add((FigureWithParametrs)fwp.Clone());
-            //}
-
-
-            //return temp;
 
             return _current;
         }
