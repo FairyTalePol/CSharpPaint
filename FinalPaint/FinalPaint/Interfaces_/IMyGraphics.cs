@@ -5,7 +5,7 @@ namespace FinalPaint.Interfaces_
 {
     public interface IMyGraphics
     {
-        object Load();
+        object Load(object img);
         void Save();
         void BackupPen();
         void RestorePen();

@@ -13,6 +13,8 @@ namespace FinalPaint
         RastrSaveHelper saveLoad;
         BuisnessLogic bl;
         MyGraphics _myGraphics;
+        int mouseDownX;
+        int mouseDownY;
 
         public void Setup()
         {
@@ -22,7 +24,22 @@ namespace FinalPaint
             bl.Initialize(_myGraphics);
             btnColorDialog.BackColor = Config.pen.Color;
             dropdownPenWidth.SelectedIndex = Config.dropDownSelectedIndex;
-            
+            Action UndoRedo = SetDisabledUndoRedo;
+            bl.SetDisableUndoRedo(UndoRedo);
+        }
+
+        public void SetDisabledUndoRedo()
+        {
+            if (bl.EnableUndoRedo)
+            {
+                undoButton.Enabled = true;
+                redoButton.Enabled = true;
+            }
+            else
+            {
+                undoButton.Enabled = false;
+                redoButton.Enabled = false;
+            }
         }
 
         public void GetImage()
@@ -56,6 +73,7 @@ namespace FinalPaint
         private void BtnClear_Click(object sender, EventArgs e)
         {
             _myGraphics.ClearSurface(mainDrawingSurface.BackColor);
+            bl.Clear();
             mainDrawingSurface.Image = _myGraphics.bitmap;
         }
 
@@ -80,9 +98,13 @@ namespace FinalPaint
 
         private void MainDrawingSurface_MouseDown(object sender, MouseEventArgs e)
         {
-          
-                
-            if (bl.currentMode == EButtonDrawingType.Polygon)
+            mouseDownX = e.X;
+            mouseDownY = e.Y;
+            if (bl._currentMode==EButtonDrawingType.Selection)
+            {
+                bl.SetSelection(e.X, e.Y);
+            }
+            else if (bl._currentMode == EButtonDrawingType.Polygon)
             {
                 string errorMsg = "";
                 if (!bl.ValidatePolygon(textBox.Text, out errorMsg))
@@ -95,23 +117,33 @@ namespace FinalPaint
                 {
                     bl.SelectFigure(e.X, e.Y, Int32.Parse(textBox.Text));
                 }
+
+                if (bl._currentFigure.Pullable)
+                {
+                    _myGraphics.SwitchBitmap();
+                }
             }
             else
             {
                 bl.SelectFigure(e.X, e.Y);
+
+                if (bl._currentFigure.Pullable)
+                {
+                    _myGraphics.SwitchBitmap();
+                }
             }
-            
-            if (bl.currentFigure.Pullable)
-            {
-                _myGraphics.SwitchBitmap();
-            }
+           
 
         }
 
        
         private void MainDrawingSurface_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            if (bl._currentMode == EButtonDrawingType.Selection)
+            {
+                
+            }
+            else if (e.Button == MouseButtons.Left)
             {
                 //Image img = mainDrawingSurface.Image;
 
@@ -126,9 +158,13 @@ namespace FinalPaint
             //Image img = mainDrawingSurface.Image;
             //bl.FinishFigure(new Point(e.X, e.Y), ref img);
             //mainDrawingSurface.Image = img;
-            if (bl.currentFigure!=null)
+            if (bl._currentMode == EButtonDrawingType.Selection)
             {
-                if (bl.currentFigure.Pullable)
+                bl.MoveSelectedFigure(e.X - mouseDownX, e.Y - mouseDownY);
+            }
+            else if (bl._currentFigure!=null)
+            {
+                if (bl._currentFigure.Pullable)
                 {
                     _myGraphics.SwitchBitmap();
                 }
@@ -195,7 +231,7 @@ namespace FinalPaint
 
         private void Load_()
         {
-            mainDrawingSurface.Image = (Image)_myGraphics.Load();
+            mainDrawingSurface.Image = (Image)_myGraphics.GetBitmap();
         }
 
         private void Button_open_Click(object sender, EventArgs e)
@@ -236,11 +272,17 @@ namespace FinalPaint
         private void redoButton_Click(object sender, EventArgs e)
         {
             bl.Redo();
+            GetImage();
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            bl.SetCurrentMode(EButtonDrawingType.Selection);
         }
     }
 }

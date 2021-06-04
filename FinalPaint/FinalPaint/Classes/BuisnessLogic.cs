@@ -20,7 +20,8 @@ namespace FinalPaint.Classes
         public Figure currentFigure;
         //public Dictionary<int, int> penWidth;
         RastrSaveHelper saveLoad;
-        
+        Action disableUndoRedo;
+        public bool EnableUndoRedo = false;
 
 
         //S
@@ -38,6 +39,11 @@ namespace FinalPaint.Classes
         public void SetCurrentMode(EButtonDrawingType mode)
         {
             currentMode = mode;
+        }
+
+        public void SetDisableUndoRedo(Action act)
+        {
+            disableUndoRedo = act;
         }
 
         public void Initialize(IMyGraphics myGraphicsUI)
@@ -86,6 +92,69 @@ namespace FinalPaint.Classes
             }
             return success;
 
+        }
+
+        public void MoveSelectedFigure(int x, int y)
+        {
+            List<FigureWithParametrs> figures = storage.GetCurrentList();
+
+
+            List<FigureWithParametrs> temp = new List<FigureWithParametrs>();
+            foreach (var fwp in figures)
+            {
+                temp.Add((FigureWithParametrs)fwp.Clone());
+            }
+
+
+
+            foreach (var figure in temp)
+            {
+                if (figure.GetFigure().IsSelected)
+                {
+                    figure.FigureAddCoordinates(x, y);
+                }     
+            }
+
+            storage.AddCurrent(temp);
+
+            myGraphics.ClearSurface();
+            foreach (var figure in temp)
+            {
+                Figure f = myGraphics.FigureFromFWP(figure);
+                f.Draw(f._finishX, f._finishY);
+                myGraphics.RestorePen();
+            }
+        }
+
+        public void SetSelection(int x, int y)
+        {
+             List<FigureWithParametrs> figures = storage.GetCurrentList();
+            foreach (var figure in figures)
+            {
+                figure.SetFigureSelection(false);
+            }
+            figures.Reverse();
+            foreach (var figure in figures)
+            {
+                if (figure.GetFigure().IsPointInPoly(x,y,Convert.ToInt32(figure.GetPenSize()/2)))
+                {
+                    figure.SetFigureSelection(true);
+                    break;
+                }
+                else
+                {
+                    figure.SetFigureSelection(false);
+                }
+            }
+            figures.Reverse();
+
+        }
+
+        public void Clear()
+        {
+            List<FigureWithParametrs> clean = new List<FigureWithParametrs>();
+            storage.AddCurrent(clean);
+           
         }
 
         public void DrawFigure(int x, int y)
@@ -158,8 +227,45 @@ namespace FinalPaint.Classes
       
         public void Load(Action act)
         {
-            saveLoad = RastrSaveHelper.Create();
-            act();
+            try
+            {
+                saveLoad = RastrSaveHelper.Create();
+                object res = saveLoad.Load();
+                _currentMode = EButtonDrawingType.Selection;
+                Clear();
+                myGraphics.ClearSurface();
+                if (res is string)
+                {
+                    
+                    List<FigureWithParametrs> list = MyJsonSerializer.Deserilize_((string)res);
+                    storage.Deserialize(list);
+                    foreach (var figure in storage.GetCurrentList())
+                    {
+                        Figure f = myGraphics.FigureFromFWP(figure);
+                        f.Draw(f._finishX, f._finishY);
+                        myGraphics.RestorePen();
+                    }
+                    EnableUndoRedo = true;
+                    disableUndoRedo();
+                }
+                else
+                {
+                  
+                    myGraphics.Load(res);
+                    storage.Deserialize(new List<FigureWithParametrs>());
+                    EnableUndoRedo = false;
+                    disableUndoRedo();
+
+
+                }
+                act();
+            }
+            catch (ArgumentNullException e)
+            {
+
+            }
+           
+           
         }
         public void Save(Action act)
         {
@@ -185,7 +291,7 @@ namespace FinalPaint.Classes
         {
             storage.Redo();
             List<FigureWithParametrs> figures = storage.GetCurrentList();
-            storage.ClearCurrentList();
+            //storage.ClearCurrentList();
             myGraphics.ClearSurface();
             foreach (var figure in figures)
             {
@@ -194,6 +300,7 @@ namespace FinalPaint.Classes
             }
 
         }
+        
         
 
     }

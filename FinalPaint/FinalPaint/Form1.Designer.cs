@@ -32,6 +32,7 @@ namespace FinalPaint
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnSelect = new System.Windows.Forms.Button();
             this.btnRoundedRectangle = new System.Windows.Forms.Button();
             this.textBox = new System.Windows.Forms.TextBox();
             this.nGon_button = new System.Windows.Forms.Button();
@@ -84,7 +85,7 @@ namespace FinalPaint
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(875, 80);
+            this.panel1.Size = new System.Drawing.Size(752, 80);
             this.panel1.TabIndex = 0;
             // 
             // panel3
@@ -92,6 +93,7 @@ namespace FinalPaint
             this.panel3.AutoScroll = true;
             this.panel3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.btnSelect);
             this.panel3.Controls.Add(this.btnRoundedRectangle);
             this.panel3.Controls.Add(this.textBox);
             this.panel3.Controls.Add(this.nGon_button);
@@ -105,8 +107,23 @@ namespace FinalPaint
             this.panel3.Location = new System.Drawing.Point(524, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(347, 86);
+            this.panel3.Size = new System.Drawing.Size(224, 86);
             this.panel3.TabIndex = 1;
+            // 
+            // btnSelect
+            // 
+            this.btnSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(246)))), ((int)(((byte)(247)))));
+            this.btnSelect.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSelect.BackgroundImage")));
+            this.btnSelect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSelect.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSelect.Location = new System.Drawing.Point(5, 41);
+            this.btnSelect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(34, 35);
+            this.btnSelect.TabIndex = 6;
+            this.btnSelect.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnSelect.UseVisualStyleBackColor = false;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // btnRoundedRectangle
             // 
@@ -124,8 +141,8 @@ namespace FinalPaint
             // textBox
             // 
             this.textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 5F);
-            this.textBox.Location = new System.Drawing.Point(165, 23);
-            this.textBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox.Location = new System.Drawing.Point(165, 45);
+            this.textBox.Margin = new System.Windows.Forms.Padding(2);
             this.textBox.Multiline = true;
             this.textBox.Name = "textBox";
             this.textBox.Size = new System.Drawing.Size(44, 16);
@@ -135,14 +152,15 @@ namespace FinalPaint
             // nGon_button
             // 
             this.nGon_button.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.nGon_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("nGon_button.BackgroundImage")));
+            this.nGon_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.nGon_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.nGon_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 5F);
             this.nGon_button.Location = new System.Drawing.Point(165, 3);
             this.nGon_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nGon_button.Name = "nGon_button";
-            this.nGon_button.Size = new System.Drawing.Size(42, 17);
+            this.nGon_button.Size = new System.Drawing.Size(44, 35);
             this.nGon_button.TabIndex = 4;
-            this.nGon_button.Text = "polygon";
             this.nGon_button.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.nGon_button.UseVisualStyleBackColor = false;
             this.nGon_button.Click += new System.EventHandler(this.NGon_button_Click);
@@ -332,7 +350,7 @@ namespace FinalPaint
             // 
             this.button_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F);
             this.button_save.Location = new System.Drawing.Point(4, 38);
-            this.button_save.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_save.Margin = new System.Windows.Forms.Padding(4);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(52, 25);
             this.button_save.TabIndex = 2;
@@ -356,7 +374,7 @@ namespace FinalPaint
             // 
             this.button_open.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F);
             this.button_open.Location = new System.Drawing.Point(4, 5);
-            this.button_open.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_open.Margin = new System.Windows.Forms.Padding(4);
             this.button_open.Name = "button_open";
             this.button_open.Size = new System.Drawing.Size(52, 25);
             this.button_open.TabIndex = 3;
@@ -511,7 +529,7 @@ namespace FinalPaint
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(75, 23);
             this.button7.TabIndex = 2;
-            this.button7.Text = "button7";
+            this.button7.Text = "DEBUG";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
@@ -519,7 +537,7 @@ namespace FinalPaint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(875, 449);
+            this.ClientSize = new System.Drawing.Size(752, 449);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.mainDrawingSurface);
             this.Controls.Add(this.panel1);
@@ -578,6 +596,7 @@ namespace FinalPaint
         private System.Windows.Forms.Button undoButton;
         private System.Windows.Forms.Button redoButton;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnSelect;
     }
 }
 

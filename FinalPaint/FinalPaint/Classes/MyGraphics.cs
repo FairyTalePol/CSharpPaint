@@ -393,11 +393,10 @@ namespace FinalPaint.DependencyInversion
             saveLoadHelper.Save(bitmap);
         }
 
-        public object Load()
+        public object Load(object img)
         {
-            saveLoadHelper = RastrSaveHelper.Create();
-            Image img = saveLoadHelper.Load();
-            _graphics.DrawImage(img, 0, 0);
+            
+            _graphics.DrawImage((Image)img, 0, 0);
             CurrentBitmap = bitmap;
             return img;
         }
