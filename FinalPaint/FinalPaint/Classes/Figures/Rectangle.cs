@@ -1,6 +1,4 @@
-﻿using FinalPaint.DependencyInversion;
-using FinalPaint.Interfaces_;
-using System.Collections.Generic;
+﻿using FinalPaint.Interfaces_;
 using Newtonsoft.Json;
 
 namespace FinalPaint.Classes

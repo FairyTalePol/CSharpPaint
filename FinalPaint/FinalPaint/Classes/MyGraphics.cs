@@ -25,10 +25,6 @@ namespace FinalPaint.DependencyInversion
         public bool temp;
         private Pen _penBackup;
 
-
-
-
-
         public void SwitchBitmap()
         {
             if (CurrentBitmap == bitmap)

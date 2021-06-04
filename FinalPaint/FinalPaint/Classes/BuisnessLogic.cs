@@ -9,31 +9,18 @@ namespace FinalPaint.Classes
     {
         private static BuisnessLogic _bl;
         public IMyGraphics myGraphics;
-        public EButtonDrawingType currentMode;
-
-        private Storage storage;
-        //public Bitmap _bitmap;
-        //public Bitmap _bitmapTemp;
-        //public Pen _pen;
-        //public Graphics _graphics;
-        //public Graphics _graphicsTemp;
-        public Figure currentFigure;
-        //public Dictionary<int, int> penWidth;
+        public EButtonDrawingType _currentMode;
+        public Storage storage;
+        public Figure _currentFigure;
         RastrSaveHelper saveLoad;
         Action disableUndoRedo;
         public bool EnableUndoRedo = false;
 
-
-        //S
-
-        private BuisnessLogic(IMyGraphics myGraphicsUI)
+        private BuisnessLogic()
         {
         //    Config.Configure();
             saveLoad = RastrSaveHelper.Create();
-            storage = Storage.Create();
-            myGraphics = myGraphicsUI;
-            //  penWidth = Config.penWidth;
-
+            storage = Storage.Create();         
         }
 
         public void SetCurrentMode(EButtonDrawingType mode)
@@ -47,30 +34,10 @@ namespace FinalPaint.Classes
         }
 
         public void Initialize(IMyGraphics myGraphicsUI)
-        {
-            //_bitmap = new Bitmap(bitmapWidth, bitmapHeight);
-            //_bitmapTemp = new Bitmap(bitmapWidth, bitmapHeight);
-            //_pen = Config.pen;
-            //_graphics = Graphics.FromImage(_bitmap);
-            //_graphicsTemp = Graphics.FromImage(_bitmapTemp);
-            currentMode = Config.eButtonDrawingType;
-            myGraphics = myGraphicsUI;
-            // penWidth = Config.penWidth;
+        {           
+            _currentMode = Config.eButtonDrawingType;
+            myGraphics = myGraphicsUI;      
         }
-
-        //public void SetPenWidth(int width)
-        //{
-        //    _pen.Width = width;
-
-        //}
-
-        //public void ClearSurface(Color c)
-        //{
-        //    _graphics.Clear(c);
-        //    _graphicsTemp.Clear(c);
-        //    _graphicsTemp.DrawImage(_bitmap, 0, 0);
-
-        //}
 
         public bool ValidatePolygon(string algles, out string message)
         {
@@ -170,15 +137,6 @@ namespace FinalPaint.Classes
                 }
             }
         }
-
-        //public void FinishFigure(Point p, ref Image img)
-        //{
-        //    if (_currentFigure != null)
-        //    {
-        //        _currentFigure.Draw(p.X, p.Y);
-
-        //    }
-        //}
         public void SelectFigure(int x, int y, int polygonAngles = -1)
         {
             FigureFactory.FigureFactory factory;
@@ -291,7 +249,6 @@ namespace FinalPaint.Classes
         {
             storage.Redo();
             List<FigureWithParametrs> figures = storage.GetCurrentList();
-            //storage.ClearCurrentList();
             myGraphics.ClearSurface();
             foreach (var figure in figures)
             {

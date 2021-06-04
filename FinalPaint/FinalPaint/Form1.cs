@@ -9,8 +9,6 @@ namespace FinalPaint
 
     public partial class MainForm : Form
     {
-       
-        RastrSaveHelper saveLoad;
         BuisnessLogic bl;
         MyGraphics _myGraphics;
         int mouseDownX;
@@ -82,17 +80,6 @@ namespace FinalPaint
 
         private void MainDrawingSurface_MouseClick(object sender, MouseEventArgs e)
         {
-            //storage = Storage.Create();
-            //storage.AddFigure(new Ellipse(e.Location, _pen));
-            //storage.AddFigure(new Line(e.Location, _pen));
-            //if(storage._figures.Equals(storage._archive.Last()))
-            //{
-            //    MessageBox.Show("true");
-            //}
-            //else
-            //{
-            //    MessageBox.Show("false");
-            //}
 
         }
 
@@ -144,21 +131,14 @@ namespace FinalPaint
                 
             }
             else if (e.Button == MouseButtons.Left)
-            {
-                //Image img = mainDrawingSurface.Image;
-
-             
-                bl.DrawFigure(e.X, e.Y);
-                //mainDrawingSurface.Image = img;
+            {      
+                bl.DrawFigure(e.X, e.Y);              
             }
         }
 
         private void MainDrawingSurface_MouseUp(object sender, MouseEventArgs e)
         {
-            //Image img = mainDrawingSurface.Image;
-            //bl.FinishFigure(new Point(e.X, e.Y), ref img);
-            //mainDrawingSurface.Image = img;
-            if (bl.currentMode == EButtonDrawingType.Selection)
+            if (bl._currentMode == EButtonDrawingType.Selection)
             {
                 bl.MoveSelectedFigure(e.X - mouseDownX, e.Y - mouseDownY);
             }
