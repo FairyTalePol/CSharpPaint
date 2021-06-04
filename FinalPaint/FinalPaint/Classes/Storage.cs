@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using FinalPaint.Interfaces_;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace FinalPaint.Classes
