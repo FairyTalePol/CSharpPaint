@@ -22,14 +22,41 @@ namespace FinalPaint.Classes
             points.Add(new TwoDimensionalPoint(startX, startY));
         }
 
+        public Curve(int startX, int startY)
+        {
+            _startX = startX;
+            _startY = startY;
+            _pullable = true;
+            
+            points = new List<TwoDimensionalPoint>();
+            points.Add(new TwoDimensionalPoint(startX, startY));
+        }
+
         public override void AddCoordinates(int x, int y)
         {
-            throw new NotImplementedException();
+            foreach (var point in points)
+            {
+                point.X += x;
+                point.Y += y;
+            }
+            _finishX += x;
+            _finishY += y;
         }
 
         public override object Clone()
         {
-            throw new NotImplementedException();
+            Curve res = new Curve(_startX, _startY);
+            res.points.RemoveAt(0);
+            res._finishX = _finishX;
+            res._finishY = _finishY;
+            res._myGraphics = _myGraphics;
+            res._pullable = _pullable;
+            res.IsSelected = IsSelected;
+            foreach(var point in points)
+            {
+                res.points.Add(new TwoDimensionalPoint(point.X, point.Y));
+            }
+            return res;
         }
 
         public override void Draw(int finishX, int finishY)
@@ -43,12 +70,20 @@ namespace FinalPaint.Classes
 
         public override bool IsPointInPoly(int x, int y, int error = 0)
         {
-            return false;
+            bool res = false;
+            foreach (var point in points)
+            {
+                if (Math.Abs(x - point.X) < error && Math.Abs(y - point.Y) < error)
+                {
+                    res = true;
+                }
+            }
+            return res;
         }
 
         public override void Optimize()
         {
-            throw new NotImplementedException();
+           
         }
     }
 }

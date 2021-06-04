@@ -14,14 +14,30 @@ namespace FinalPaint.Classes
 
         }
 
+        public Ellipse(int startX, int startY)
+        {
+            _startX = startX;
+            _startY = startY;
+            _pullable = true;
+        }
+
         public override void AddCoordinates(int x, int y)
         {
-            throw new System.NotImplementedException();
+            _startY += y;
+            _startX += x;
+            _finishX += x;
+            _finishY += y;
         }
 
         public override object Clone()
         {
-            throw new System.NotImplementedException();
+            Ellipse res = new Ellipse(_startX, _startY);
+            res._finishX = _finishX;
+            res._finishY = _finishY;
+            res._myGraphics = _myGraphics;
+            res._pullable = _pullable;
+            res.IsSelected = IsSelected;
+            return res;
         }
 
         public override void Draw(int finishX, int finishY)
@@ -44,7 +60,20 @@ namespace FinalPaint.Classes
 
         public override void Optimize()
         {
-            throw new System.NotImplementedException();
+            int temp;
+            if (_startX > _finishX)
+            {
+                temp = _startX;
+                _startX = _finishX;
+                _finishX = temp;
+            }
+
+            if (_startY > _finishY)
+            {
+                temp = _startY;
+                _startY = _finishY;
+                _finishY = temp;
+            }
         }
     }
 }

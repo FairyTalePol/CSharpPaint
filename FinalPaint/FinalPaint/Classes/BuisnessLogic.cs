@@ -121,20 +121,29 @@ namespace FinalPaint.Classes
         public void SetSelection(int x, int y)
         {
              List<FigureWithParametrs> figures = storage.GetCurrentList();
-
             foreach (var figure in figures)
             {
-                if (figure.GetFigure().IsPointInPoly(x,y,Convert.ToInt32(figure.GetPenSize())))
+                figure.SetFigureSelection(false);
+            }
+            foreach (var figure in figures)
+            {
+                if (figure.GetFigure().IsPointInPoly(x,y,Convert.ToInt32(figure.GetPenSize()/2)))
                 {
                     figure.SetFigureSelection(true);
+                    break;
                 }
                 else
                 {
                     figure.SetFigureSelection(false);
                 }
-
             }
 
+        }
+
+        public void Clear()
+        {
+            List<FigureWithParametrs> clean = new List<FigureWithParametrs>();
+            storage.AddCurrent(clean);
         }
 
         public void DrawFigure(int x, int y)
@@ -208,7 +217,25 @@ namespace FinalPaint.Classes
         public void Load(Action act)
         {
             saveLoad = RastrSaveHelper.Create();
+            object res = saveLoad.Load();
+           
+            if (res is string)
+            {
+                List<FigureWithParametrs> list = MyJsonSerializer.Deserilize_((string)res);
+                storage.Deserialize(list);
+                foreach (var figure in storage.GetCurrentList())
+                {
+                    Figure f = myGraphics.FigureFromFWP(figure);
+                    f.Draw(f._finishX, f._finishY);
+                    myGraphics.RestorePen();
+                }
+            }
+            else
+            {
+                myGraphics.Load(res);
+            }
             act();
+           
         }
         public void Save(Action act)
         {
@@ -243,6 +270,7 @@ namespace FinalPaint.Classes
             }
 
         }
+        
         
 
     }

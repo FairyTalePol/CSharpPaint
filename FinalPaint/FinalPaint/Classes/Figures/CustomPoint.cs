@@ -42,17 +42,24 @@ namespace FinalPaint.Classes
 
         public override void AddCoordinates(int x, int y)
         {
-            throw new System.NotImplementedException();
+            _startX += x;
+            _startY += y;
         }
 
         public override object Clone()
         {
-            throw new System.NotImplementedException();
+            CustomPoint res = new CustomPoint(_startX, _startY);
+            res._finishX = _finishX;
+            res._finishY = _finishY;
+            res._myGraphics = _myGraphics;
+            res._pullable = _pullable;
+            res.IsSelected = IsSelected;
+            return res;
         }
 
         public override void Optimize()
         {
-            throw new System.NotImplementedException();
+            
         }
     }
 }

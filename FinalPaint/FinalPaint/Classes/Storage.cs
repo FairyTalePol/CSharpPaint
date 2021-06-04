@@ -20,6 +20,18 @@ namespace FinalPaint.Classes
             _pointer = 0;
         }
 
+        public void Deserialize(List<FigureWithParametrs> list)
+        {
+            _current = list;
+            _archive = new List<List<FigureWithParametrs>>();
+            _pointer = 0;
+            List<FigureWithParametrs> temp = new List<FigureWithParametrs>();
+            foreach (var fwp in _current)
+            {
+                temp.Add((FigureWithParametrs)fwp.Clone());
+            }
+            _archive.Add(temp);
+        }
         public static Storage Create()
         {
             if (_storage == null)

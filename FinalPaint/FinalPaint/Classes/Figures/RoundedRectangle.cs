@@ -19,14 +19,30 @@ namespace FinalPaint.Classes
             _myGraphics = mg;
         }
 
+        public RoundedRectangle(int startX, int startY)
+        {
+            _startX = startX;
+            _startY = startY;
+            _pullable = true;
+        }
+
         public override void AddCoordinates(int x, int y)
         {
-            throw new NotImplementedException();
+            _startX += x;
+            _startY += y;
+            _finishX += x;
+            _finishY += y;
         }
 
         public override object Clone()
         {
-            throw new NotImplementedException();
+            RoundedRectangle res = new RoundedRectangle(_startX, _startY);
+            res._finishX = _finishX;
+            res._finishY = _finishY;
+            res._myGraphics = _myGraphics;
+            res._pullable = _pullable;
+            res.IsSelected = IsSelected;
+            return res;
         }
 
         public override void Draw(int finishX, int finishY)
@@ -65,7 +81,20 @@ namespace FinalPaint.Classes
 
         public override void Optimize()
         {
-            throw new NotImplementedException();
+            int temp;
+            if (_startX > _finishX)
+            {
+                temp = _startX;
+                _startX = _finishX;
+                _finishX = temp;
+            }
+
+            if (_startY > _finishY)
+            {
+                temp = _startY;
+                _startY = _finishY;
+                _finishY = temp;
+            }
         }
     }
 }

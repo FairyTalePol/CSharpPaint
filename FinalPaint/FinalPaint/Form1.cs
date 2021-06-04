@@ -58,6 +58,7 @@ namespace FinalPaint
         private void BtnClear_Click(object sender, EventArgs e)
         {
             _myGraphics.ClearSurface(mainDrawingSurface.BackColor);
+            bl.Clear();
             mainDrawingSurface.Image = _myGraphics.bitmap;
         }
 
@@ -215,7 +216,7 @@ namespace FinalPaint
 
         private void Load_()
         {
-            mainDrawingSurface.Image = (Image)_myGraphics.Load();
+            mainDrawingSurface.Image = (Image)_myGraphics.GetBitmap();
         }
 
         private void Button_open_Click(object sender, EventArgs e)
@@ -256,6 +257,7 @@ namespace FinalPaint
         private void redoButton_Click(object sender, EventArgs e)
         {
             bl.Redo();
+            GetImage();
         }
 
         private void button7_Click(object sender, EventArgs e)

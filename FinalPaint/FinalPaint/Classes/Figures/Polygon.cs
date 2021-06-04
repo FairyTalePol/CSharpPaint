@@ -7,15 +7,18 @@ using System.Threading.Tasks;
 using System.Drawing.Drawing2D;
 using FinalPaint.DependencyInversion;
 using FinalPaint.Interfaces_;
+using Newtonsoft.Json;
 
 namespace FinalPaint.Classes
 {
     public class Polygon : Figure
     {
+        [JsonProperty]
         private int _pointsAmount;
-        private List<TwoDimensionalPoint> _points = new List<TwoDimensionalPoint>();
-        private double _r;
 
+        [JsonProperty]
+        private List<TwoDimensionalPoint> _points = new List<TwoDimensionalPoint>();
+    
         public Polygon(int x, int y, int pointsAmount, IMyGraphics mg)
         {
             _startX = x;
@@ -42,9 +45,9 @@ namespace FinalPaint.Classes
             TwoDimensionalPoint temp = new TwoDimensionalPoint();
             for (double angle = 0.0; angle <= 2 * Math.PI; angle += 2 * Math.PI / _pointsAmount)
             {
-                int width = currentX - _startX;
+     
                 temp.X = (int)(_r * Math.Cos(angle)) + _startX;
-                int height = currentY - _startY;
+            
                 temp.Y = ((int)(_r * Math.Sin(angle)) + _startY);
                 _points.Add(new TwoDimensionalPoint((int)_r + temp.X, (int)_r + temp.Y));
             }
@@ -69,17 +72,44 @@ namespace FinalPaint.Classes
 
         public override void AddCoordinates(int x, int y)
         {
-            throw new NotImplementedException();
+            _startX += x;
+            _startY += y;
+            _finishX += x;
+            _finishY += y;
         }
 
         public override object Clone()
         {
-            throw new NotImplementedException();
+            Polygon res = new Polygon(_startX, _startY,_pointsAmount);
+           
+            res._finishX = _finishX;
+            res._finishY = _finishY;
+            res._myGraphics = _myGraphics;
+            res._pullable = _pullable;
+            res.IsSelected = IsSelected;
+            foreach (var point in _points)
+            {
+                res._points.Add(new TwoDimensionalPoint(point.X, point.Y));
+            }
+            return res;
         }
 
         public override void Optimize()
         {
-            throw new NotImplementedException();
+            int temp;
+            if (_startX > _finishX)
+            {
+                temp = _startX;
+                _startX = _finishX;
+                _finishX = temp;
+            }
+
+            if (_startY > _finishY)
+            {
+                temp = _startY;
+                _startY = _finishY;
+                _finishY = temp;
+            }
         }
     }
 }

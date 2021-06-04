@@ -1,11 +1,15 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace FinalPaint.Classes
 {
     public class FigureWithParametrs : ICloneable
     {
+        [JsonProperty]
         private  Figure _figure;
+        [JsonProperty]
         private string _penColor;
+        [JsonProperty]
         private float _penSize;
 
 

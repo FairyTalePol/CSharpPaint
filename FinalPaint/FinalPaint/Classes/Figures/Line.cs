@@ -35,22 +35,14 @@ namespace FinalPaint.Classes
         public override bool IsPointInPoly(int x, int y, int error = 0)
         {
             bool res = false;
-            //////////int x1 = _startX;
-            //////////int x2 = _finishX;
-            //////////int y1 = _startY;
-            //////////int y2 = _finishY;
-            //////////if (((x-x1)*(y2-y1)-(y-y1)*(x2-x1)==0) &&((x>x1 && x<x2)||(x>x2 && x<x1)))
-            //////////{
-            //////////    res = true;
-            //////////}
-            ///
+
             int x1 = _startX;
             int x2 = _finishX;
             int y1 = _startY;
             int y2 = _finishY;
 
-
-            if (Math.Abs(x-((y-y1)*(x2-x1)/(y2-y1) - x1)) <= error)
+           
+            if (Math.Abs(x-((y-y1)*(x2-x1)/(y2-y1) + x1)) <= error)
             {
                 res = true;
             }
@@ -60,17 +52,26 @@ namespace FinalPaint.Classes
 
         public override void AddCoordinates(int x, int y)
         {
-            throw new NotImplementedException();
+            _startX += x;
+            _startY += y;
+            _finishX += x;
+            _finishY += y;
         }
 
         public override object Clone()
         {
-            throw new NotImplementedException();
+            Line res = new Line(_startX, _startY);
+            res._finishX = _finishX;
+            res._finishY = _finishY;
+            res._myGraphics = _myGraphics;
+            res._pullable = _pullable;
+            res.IsSelected = IsSelected;
+            return res;
         }
 
         public override void Optimize()
         {
-            throw new NotImplementedException();
+         
         }
     }
 }
