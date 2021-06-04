@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace FinalPaint.Classes
 {
-    class BuisnessLogic
+    public class BuisnessLogic : IBuisnessLogic
     {
         private static BuisnessLogic _bl;
         public IMyGraphics myGraphics;
@@ -18,14 +18,14 @@ namespace FinalPaint.Classes
 
         private BuisnessLogic()
         {
-            Config.Configure();
+        //    Config.Configure();
             saveLoad = RastrSaveHelper.Create();
             storage = Storage.Create();         
         }
 
         public void SetCurrentMode(EButtonDrawingType mode)
         {
-            _currentMode = mode;
+            currentMode = mode;
         }
 
         public void SetDisableUndoRedo(Action act)
@@ -126,21 +126,21 @@ namespace FinalPaint.Classes
 
         public void DrawFigure(int x, int y)
         {
-            if (_currentFigure != null)
+            if (currentFigure != null)
             {
-                _currentFigure._finishX = x;
-                _currentFigure._finishY = y;
-                _currentFigure.Draw(x, y);
+                currentFigure._finishX = x;
+                currentFigure._finishY = y;
+                currentFigure.Draw(x, y);
                 if (!myGraphics.IsCurrentSurfaceTemporary())
                 {
-                    storage.AddFigure(_currentFigure, myGraphics.GetCurrentPenSize(), myGraphics.GetCurrentPenColor());
+                    storage.AddFigure(currentFigure, myGraphics.GetCurrentPenSize(), myGraphics.GetCurrentPenColor());
                 }
             }
         }
         public void SelectFigure(int x, int y, int polygonAngles = -1)
         {
             FigureFactory.FigureFactory factory;
-            switch (_currentMode)
+            switch (currentMode)
             {
                 case EButtonDrawingType.Line:
                     factory = new LineFactory(x, y, myGraphics);
@@ -170,15 +170,15 @@ namespace FinalPaint.Classes
                     factory = new LineFactory(x, y, myGraphics);
                     break;
             }
-            _currentFigure = factory.Create();
+            currentFigure = factory.Create();
         }
 
 
-        public static BuisnessLogic Create()
+        public static BuisnessLogic Create(IMyGraphics myGraphicsUI/*, IStorage*/)
         {
             if (_bl == null)
             {
-                _bl = new BuisnessLogic();
+                _bl = new BuisnessLogic(myGraphicsUI);
             }
             return _bl;
         }
@@ -189,7 +189,7 @@ namespace FinalPaint.Classes
             {
                 saveLoad = RastrSaveHelper.Create();
                 object res = saveLoad.Load();
-                _currentMode = EButtonDrawingType.Selection;
+                currentMode = EButtonDrawingType.Selection;
                 Clear();
                 myGraphics.ClearSurface();
                 if (res is string)

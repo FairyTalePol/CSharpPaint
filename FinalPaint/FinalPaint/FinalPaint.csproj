@@ -139,6 +139,7 @@
     <Compile Include="Classes\MyJsonSerializer.cs" />
     <Compile Include="Classes\Storage.cs" />
     <Compile Include="Classes\TwoDimensionalPoint.cs" />
+    <Compile Include="Interfaces_\IBuisnessLogic.cs" />
     <Compile Include="Interfaces_\IMyGraphics.cs" />
     <Compile Include="Classes\MyGraphics.cs" />
     <Compile Include="Enums\EButtonDrawingType.cs" />
@@ -164,6 +165,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces_\ISaveHelper.cs" />
+    <Compile Include="Interfaces_\IStorage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
