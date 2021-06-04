@@ -1,6 +1,7 @@
 ﻿using FinalPaint.Interfaces_;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 
 namespace FinalPaint.Classes
 {

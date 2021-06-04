@@ -138,7 +138,7 @@ namespace FinalPaint
 
         private void MainDrawingSurface_MouseUp(object sender, MouseEventArgs e)
         {
-            if (bl._currentMode == EButtonDrawingType.Selection)
+            if (bl.currentMode == EButtonDrawingType.Selection)
             {
                 bl.MoveSelectedFigure(e.X - mouseDownX, e.Y - mouseDownY);
             }

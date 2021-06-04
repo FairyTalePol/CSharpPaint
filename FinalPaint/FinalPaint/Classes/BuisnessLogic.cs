@@ -9,9 +9,9 @@ namespace FinalPaint.Classes
     {
         private static BuisnessLogic _bl;
         public IMyGraphics myGraphics;
-        public EButtonDrawingType _currentMode;
+        public EButtonDrawingType currentMode;
         public Storage storage;
-        public Figure _currentFigure;
+        public Figure currentFigure;
         RastrSaveHelper saveLoad;
         Action disableUndoRedo;
         public bool EnableUndoRedo = false;
@@ -21,6 +21,12 @@ namespace FinalPaint.Classes
         //    Config.Configure();
             saveLoad = RastrSaveHelper.Create();
             storage = Storage.Create();         
+        }
+        private BuisnessLogic(IMyGraphics myGraphicsUI)
+        {
+            saveLoad = RastrSaveHelper.Create();
+            storage = Storage.Create();
+            myGraphics = myGraphicsUI;
         }
 
         public void SetCurrentMode(EButtonDrawingType mode)
@@ -35,7 +41,7 @@ namespace FinalPaint.Classes
 
         public void Initialize(IMyGraphics myGraphicsUI)
         {           
-            _currentMode = Config.eButtonDrawingType;
+            currentMode = Config.eButtonDrawingType;
             myGraphics = myGraphicsUI;      
         }
 
