@@ -1,10 +1,10 @@
 ﻿using FinalPaint.Interfaces_;
-using Newtonsoft.Json;
+using Newtonsoft.Json;
 
 
 namespace FinalPaint.Classes
 {
-    class RoundedRectangle : Figure
+  public  class RoundedRectangle : Figure
     {      
         public RoundedRectangle(int startX, int startY, IMyGraphics mg)
         {

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace FinalPaint.Classes
 {
-    class Curve : Figure
+   public class Curve : Figure
     {
         [JsonProperty]
         List<TwoDimensionalPoint> points;
