@@ -2,16 +2,6 @@
 using FinalPaint.Interfaces_;
 using System.Collections.Generic;
 
-namespace FinalPaint.Classes
-{
-     public class Ellipse : Figure
-    {
-        public Ellipse(int startX, int startY, IMyGraphics mg)
-        {
-            _startX = startX;
-            _startY = startY;
-            _pullable = true;
-            _myGraphics = mg;
 
 namespace FinalPaint.Classes
 {
@@ -75,7 +65,7 @@ namespace FinalPaint.Classes
             return hashCode;
         }
 
-        public override bool IsPointInPoly(int x, int y)
+     
         public override bool IsPointInPoly(int x, int y, int error = 0)
         {
             bool res = false;

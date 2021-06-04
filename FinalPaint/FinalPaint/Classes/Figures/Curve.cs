@@ -70,7 +70,7 @@ namespace FinalPaint.Classes
             return hashCode;
         }
 
-        public override bool IsPointInPoly(int x, int y)
+        public override bool IsPointInPoly(int x, int y, int error=0)
         {
             return false;
         }

@@ -88,10 +88,8 @@ namespace FinalPaint.Classes
             hashCode = hashCode * -1521134295 + Pullable.GetHashCode();
             return hashCode;
         }
-    }
-}
 
-        }
+
 
         public override void AddCoordinates(int x, int y)
         {
@@ -128,7 +126,4 @@ namespace FinalPaint.Classes
     }
 }
 
-            }
-        
-            {
-                _finishY = temp;
+           
