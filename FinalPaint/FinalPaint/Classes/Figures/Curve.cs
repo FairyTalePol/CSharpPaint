@@ -1,5 +1,6 @@
 ﻿using FinalPaint.DependencyInversion;
 using FinalPaint.Interfaces_;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -11,6 +12,7 @@ namespace FinalPaint.Classes
 {
     class Curve : Figure
     {
+        [JsonProperty]
         List<TwoDimensionalPoint> points;
         public Curve(int startX, int startY, IMyGraphics mg)
         {
@@ -31,6 +33,18 @@ namespace FinalPaint.Classes
             points = new List<TwoDimensionalPoint>();
             points.Add(new TwoDimensionalPoint(startX, startY));
         }
+        [JsonConstructor]
+        public Curve(List<TwoDimensionalPoint>list, bool pullable, bool isselected, int startx, int starty, int endx, int endy)
+        {
+            points = list;
+            _pullable = pullable;
+            IsSelected = isselected;
+            _startX = startx;
+            _startY = _startY;
+            _finishX = endx;
+            _finishX = endy;
+        }
+
 
         public override void AddCoordinates(int x, int y)
         {

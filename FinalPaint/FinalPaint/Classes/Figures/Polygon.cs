@@ -16,7 +16,7 @@ namespace FinalPaint.Classes
         [JsonProperty]
         private int _pointsAmount;
 
-        [JsonProperty]
+   
         private List<TwoDimensionalPoint> _points = new List<TwoDimensionalPoint>();
     
         public Polygon(int x, int y, int pointsAmount, IMyGraphics mg)
@@ -36,6 +36,18 @@ namespace FinalPaint.Classes
             _pullable = true;
         }
 
+
+        [JsonConstructor]
+        public Polygon(int pointsAmount,bool pullable, bool isselected, int startx, int starty, int endx, int endy)
+        {
+            _pointsAmount = pointsAmount;
+            _pullable = pullable;
+            IsSelected = isselected;
+            _startX = startx;
+            _startY = _startY;
+            _finishX = endx;
+            _finishX = endy;
+        }
         private void CreatePolygon(int currentX, int currentY)
         {
             _finishX = currentX;

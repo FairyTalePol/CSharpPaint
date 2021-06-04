@@ -41,7 +41,7 @@ namespace FinalPaint.Classes
                 }   
                 else
                 {
-                    res = new Bitmap(f.FileName);
+                    throw new ArgumentNullException();
                 }
               
             }

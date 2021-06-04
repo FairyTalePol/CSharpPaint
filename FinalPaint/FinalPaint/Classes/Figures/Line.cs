@@ -1,5 +1,6 @@
 ﻿using FinalPaint.DependencyInversion;
 using FinalPaint.Interfaces_;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -24,6 +25,17 @@ namespace FinalPaint.Classes
             _startX = startX;
             _startY = startY;
             _pullable = true;
+        }
+
+        [JsonConstructor]
+        public Line(bool pullable, bool isselected, int startx, int starty, int endx, int endy)
+        {
+            _pullable = pullable;
+            IsSelected = isselected;
+            _startX = startx;
+            _startY = _startY;
+            _finishX = endx;
+            _finishX = endy;
         }
 
 

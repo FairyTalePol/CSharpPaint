@@ -22,7 +22,11 @@ namespace FinalPaint.Classes
 
         public void Deserialize(List<FigureWithParametrs> list)
         {
-            _current = list;
+            _current = new List<FigureWithParametrs>();
+            foreach (var fwp in list)
+            {
+                _current.Add((FigureWithParametrs)fwp.Clone());
+            }
             _archive = new List<List<FigureWithParametrs>>();
             _pointer = 0;
             List<FigureWithParametrs> temp = new List<FigureWithParametrs>();

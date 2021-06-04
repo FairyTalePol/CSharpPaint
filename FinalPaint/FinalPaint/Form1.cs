@@ -24,7 +24,22 @@ namespace FinalPaint
             bl.Initialize(_myGraphics);
             btnColorDialog.BackColor = Config.pen.Color;
             dropdownPenWidth.SelectedIndex = Config.dropDownSelectedIndex;
-            
+            Action UndoRedo = SetDisabledUndoRedo;
+            bl.SetDisableUndoRedo(UndoRedo);
+        }
+
+        public void SetDisabledUndoRedo()
+        {
+            if (bl.EnableUndoRedo)
+            {
+                undoButton.Enabled = true;
+                redoButton.Enabled = true;
+            }
+            else
+            {
+                undoButton.Enabled = false;
+                redoButton.Enabled = false;
+            }
         }
 
         public void GetImage()

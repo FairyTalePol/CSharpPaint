@@ -1,5 +1,6 @@
 ﻿
 using FinalPaint.Interfaces_;
+using Newtonsoft.Json;
 
 namespace FinalPaint.Classes
 {
@@ -27,6 +28,17 @@ namespace FinalPaint.Classes
             _startX += x;
             _finishX += x;
             _finishY += y;
+        }
+
+        [JsonConstructor]
+        public Ellipse(bool pullable, bool isselected, int startx, int starty, int endx, int endy)
+        {
+            _pullable = pullable;
+            IsSelected = isselected;
+            _startX = startx;
+            _startY = _startY;
+            _finishX = endx;
+            _finishX = endy;
         }
 
         public override object Clone()

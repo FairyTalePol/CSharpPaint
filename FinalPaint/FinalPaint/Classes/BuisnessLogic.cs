@@ -19,7 +19,8 @@ namespace FinalPaint.Classes
         public Figure _currentFigure;
         //public Dictionary<int, int> penWidth;
         RastrSaveHelper saveLoad;
-        
+        Action disableUndoRedo;
+        public bool EnableUndoRedo = false;
 
 
         //S
@@ -29,6 +30,7 @@ namespace FinalPaint.Classes
             Config.Configure();
             saveLoad = RastrSaveHelper.Create();
             storage = Storage.Create();
+          
             //  penWidth = Config.penWidth;
 
         }
@@ -36,6 +38,11 @@ namespace FinalPaint.Classes
         public void SetCurrentMode(EButtonDrawingType mode)
         {
             _currentMode = mode;
+        }
+
+        public void SetDisableUndoRedo(Action act)
+        {
+            disableUndoRedo = act;
         }
 
         public void Initialize(IMyGraphics myGraphicsUI)
@@ -125,6 +132,7 @@ namespace FinalPaint.Classes
             {
                 figure.SetFigureSelection(false);
             }
+            figures.Reverse();
             foreach (var figure in figures)
             {
                 if (figure.GetFigure().IsPointInPoly(x,y,Convert.ToInt32(figure.GetPenSize()/2)))
@@ -137,6 +145,7 @@ namespace FinalPaint.Classes
                     figure.SetFigureSelection(false);
                 }
             }
+            figures.Reverse();
 
         }
 
@@ -144,6 +153,7 @@ namespace FinalPaint.Classes
         {
             List<FigureWithParametrs> clean = new List<FigureWithParametrs>();
             storage.AddCurrent(clean);
+           
         }
 
         public void DrawFigure(int x, int y)
@@ -216,25 +226,44 @@ namespace FinalPaint.Classes
       
         public void Load(Action act)
         {
-            saveLoad = RastrSaveHelper.Create();
-            object res = saveLoad.Load();
-           
-            if (res is string)
+            try
             {
-                List<FigureWithParametrs> list = MyJsonSerializer.Deserilize_((string)res);
-                storage.Deserialize(list);
-                foreach (var figure in storage.GetCurrentList())
+                saveLoad = RastrSaveHelper.Create();
+                object res = saveLoad.Load();
+                _currentMode = EButtonDrawingType.Selection;
+                Clear();
+                myGraphics.ClearSurface();
+                if (res is string)
                 {
-                    Figure f = myGraphics.FigureFromFWP(figure);
-                    f.Draw(f._finishX, f._finishY);
-                    myGraphics.RestorePen();
+                    
+                    List<FigureWithParametrs> list = MyJsonSerializer.Deserilize_((string)res);
+                    storage.Deserialize(list);
+                    foreach (var figure in storage.GetCurrentList())
+                    {
+                        Figure f = myGraphics.FigureFromFWP(figure);
+                        f.Draw(f._finishX, f._finishY);
+                        myGraphics.RestorePen();
+                    }
+                    EnableUndoRedo = true;
+                    disableUndoRedo();
                 }
+                else
+                {
+                  
+                    myGraphics.Load(res);
+                    storage.Deserialize(new List<FigureWithParametrs>());
+                    EnableUndoRedo = false;
+                    disableUndoRedo();
+
+
+                }
+                act();
             }
-            else
+            catch (ArgumentNullException e)
             {
-                myGraphics.Load(res);
+
             }
-            act();
+           
            
         }
         public void Save(Action act)
