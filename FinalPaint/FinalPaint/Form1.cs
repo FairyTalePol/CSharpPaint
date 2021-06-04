@@ -9,8 +9,6 @@ namespace FinalPaint
 
     public partial class MainForm : Form
     {
-       
-        RastrSaveHelper saveLoad;
         BuisnessLogic bl;
         MyGraphics _myGraphics;
         int mouseDownX;
