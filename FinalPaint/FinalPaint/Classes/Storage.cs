@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalPaint.Classes
 {
-    class Storage
+  public  class Storage
     {
 
         private static Storage _storage;

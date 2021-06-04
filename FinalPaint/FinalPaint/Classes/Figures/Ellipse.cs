@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace FinalPaint.Classes
 {
-    class Ellipse : Figure
+  public  class Ellipse : Figure
     {
         public Ellipse(int startX, int startY, IMyGraphics mg)
         {

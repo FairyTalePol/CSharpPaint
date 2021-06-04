@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace FinalPaint.Classes
 {
-    class RoundedRectangle : Figure
+  public  class RoundedRectangle : Figure
     {      
         public RoundedRectangle(int startX, int startY, IMyGraphics mg)
         {
