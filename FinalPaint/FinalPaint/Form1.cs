@@ -20,7 +20,7 @@ namespace FinalPaint
         {
             Action act = GetImage;
             _myGraphics = MyGraphics.Create(mainDrawingSurface.Width, mainDrawingSurface.Height,act);
-            bl = BuisnessLogic.Create();
+            bl = BuisnessLogic.Create(_myGraphics);
             bl.Initialize(_myGraphics);
             btnColorDialog.BackColor = Config.pen.Color;
             dropdownPenWidth.SelectedIndex = Config.dropDownSelectedIndex;
@@ -116,7 +116,11 @@ namespace FinalPaint
                     _myGraphics.SwitchBitmap();
                 }
             }
-           
+            
+            if (bl.currentFigure.Pullable)
+            {
+                _myGraphics.SwitchBitmap();
+            }
 
         }
 
@@ -142,13 +146,9 @@ namespace FinalPaint
             //Image img = mainDrawingSurface.Image;
             //bl.FinishFigure(new Point(e.X, e.Y), ref img);
             //mainDrawingSurface.Image = img;
-            if (bl._currentMode == EButtonDrawingType.Selection)
+            if (bl.currentFigure!=null)
             {
-                bl.MoveSelectedFigure(e.X - mouseDownX, e.Y - mouseDownY);
-            }
-            else if (bl._currentFigure!=null)
-            {
-                if (bl._currentFigure.Pullable)
+                if (bl.currentFigure.Pullable)
                 {
                     _myGraphics.SwitchBitmap();
                 }

@@ -67,6 +67,36 @@ namespace FinalPaint.Classes
             return res;
         }
 
+        public override bool Equals(object obj)
+        {
+            return obj is Polygon polygon &&
+                   EqualityComparer<IMyGraphics>.Default.Equals(_myGraphics, polygon._myGraphics) &&
+                   _pullable == polygon._pullable &&
+                   IsSelected == polygon.IsSelected &&
+                   _startX == polygon._startX &&
+                   _startY == polygon._startY &&
+                   _finishX == polygon._finishX &&
+                   _finishY == polygon._finishY &&
+                   Pullable == polygon.Pullable &&
+                   _pointsAmount == polygon._pointsAmount &&
+                   EqualityComparer<List<TwoDimensionalPoint>>.Default.Equals(_points, polygon._points);
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = -479915808;
+            hashCode = hashCode * -1521134295 + EqualityComparer<IMyGraphics>.Default.GetHashCode(_myGraphics);
+            hashCode = hashCode * -1521134295 + _pullable.GetHashCode();
+            hashCode = hashCode * -1521134295 + IsSelected.GetHashCode();
+            hashCode = hashCode * -1521134295 + _startX.GetHashCode();
+            hashCode = hashCode * -1521134295 + _startY.GetHashCode();
+            hashCode = hashCode * -1521134295 + _finishX.GetHashCode();
+            hashCode = hashCode * -1521134295 + _finishY.GetHashCode();
+            hashCode = hashCode * -1521134295 + Pullable.GetHashCode();
+            hashCode = hashCode * -1521134295 + _pointsAmount.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<List<TwoDimensionalPoint>>.Default.GetHashCode(_points);
+            return hashCode;
+        }
         public override void AddCoordinates(int x, int y)
         {
             throw new NotImplementedException();

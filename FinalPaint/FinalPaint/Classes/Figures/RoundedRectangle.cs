@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FinalPaint.Classes
 {
-   public class RoundedRectangle : Figure
+    public class RoundedRectangle : Figure
     {      
         public RoundedRectangle(int startX, int startY, IMyGraphics mg)
         {
@@ -57,6 +57,44 @@ namespace FinalPaint.Classes
             {
                 _myGraphics.DrawRoundedRectangle(finishX, _startY, width, height);
             }
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is RoundedRectangle rectangle &&
+                   EqualityComparer<IMyGraphics>.Default.Equals(_myGraphics, rectangle._myGraphics) &&
+                   _pullable == rectangle._pullable &&
+                   IsSelected == rectangle.IsSelected &&
+                   _startX == rectangle._startX &&
+                   _startY == rectangle._startY &&
+                   _finishX == rectangle._finishX &&
+                   _finishY == rectangle._finishY &&
+                   Pullable == rectangle.Pullable;
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = -1288887542;
+            hashCode = hashCode * -1521134295 + EqualityComparer<IMyGraphics>.Default.GetHashCode(_myGraphics);
+            hashCode = hashCode * -1521134295 + _pullable.GetHashCode();
+            hashCode = hashCode * -1521134295 + IsSelected.GetHashCode();
+            hashCode = hashCode * -1521134295 + _startX.GetHashCode();
+            hashCode = hashCode * -1521134295 + _startY.GetHashCode();
+            hashCode = hashCode * -1521134295 + _finishX.GetHashCode();
+            hashCode = hashCode * -1521134295 + _finishY.GetHashCode();
+            hashCode = hashCode * -1521134295 + Pullable.GetHashCode();
+            return hashCode;
+        }
+
+        public override bool IsPointInPoly(int x, int y)
+        {
+            bool res = false;
+
+            if (x >= _startX && x <= _finishX && y >= _startY && y <= _finishY)
+            {
+                res = true;
+            }
+            return res;
         }
 
         public override bool IsPointInPoly(int x, int y, int error = 0)

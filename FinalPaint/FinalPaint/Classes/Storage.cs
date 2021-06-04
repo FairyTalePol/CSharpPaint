@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalPaint.Interfaces_;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FinalPaint.Classes
 {
-    class Storage
+    public class Storage : IStorage
     {
 
         private static Storage _storage;
@@ -146,6 +147,7 @@ namespace FinalPaint.Classes
         {
 
             _current = new List<FigureWithParametrs>();
+          //  _current = null;
         }
     }
 }
