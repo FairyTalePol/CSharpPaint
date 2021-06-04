@@ -1,7 +1,9 @@
 using FinalPaint.Classes;
+using FinalPaint.DependencyInversion;
 using FinalPaint.Interfaces_;
 using Moq;
 using NUnit.Framework;
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace PaintTests
@@ -12,8 +14,10 @@ namespace PaintTests
         private Mock<IMyGraphics> _myGraphicsMock;
         private Mock<IBuisnessLogic> _blMock;
         private Mock<IStorage> _storageMock;
+        private Storage _storage;
         private Figure _currentFigure;
         private EButtonDrawingType _eButton;
+        
 
 
 
@@ -21,13 +25,28 @@ namespace PaintTests
         [SetUp]
         public void Setup()
         {
-            _myGraphicsMock = new Mock<IMyGraphics>(MockBehavior.Loose);
-            _blMock = new Mock<IBuisnessLogic>(MockBehavior.Loose);
-            _storageMock = new Mock<IStorage>(MockBehavior.Loose);
+            _myGraphicsMock = new Mock<IMyGraphics>(MockBehavior.Strict);
+            _blMock = new Mock<IBuisnessLogic>(MockBehavior.Strict);
+            _storageMock = new Mock<IStorage>(MockBehavior.Strict);
             _bl = BuisnessLogic.Create(_myGraphicsMock.Object);
+            _storage = Storage.Create();
             //var fieldInfo = typeof(BuisnessLogic).GetField("storage", BindingFlags.NonPublic | BindingFlags.Instance);
             ////   var actualData = fieldInfo.GetValue(workClass);
             //fieldInfo.SetValue(_bl, _myGraphicsMock.Object);
+            
+        }
+        [Test]
+        public void UndoTest1()
+        {
+            //List<FigureWithParametrs> fwp = new List<FigureWithParametrs>();
+            List<FigureWithParametrs> fwp = _storage._current;
+            fwp.Add(new FigureWithParametrs(new Ellipse(5,6, _myGraphicsMock.Object), "White", 5));
+            fwp.Add(new FigureWithParametrs(new Ellipse(5,6, _myGraphicsMock.Object), "White", 5));
+            FieldInfo getPointer = typeof(Storage).GetField("_pointer", BindingFlags.NonPublic | BindingFlags.Instance);
+            getPointer.SetValue(_storage, 0);
+            _storageMock.Setup(a => a.Undo());
+            _bl.Undo();
+            _storageMock.Verify(a => a.Undo(), Times.Once);
         }
 
         [TestCase(EButtonDrawingType.Curve, EButtonDrawingType.Curve)]
@@ -38,12 +57,11 @@ namespace PaintTests
             _bl.SetCurrentMode(mode);
             Assert.AreEqual(_bl.currentMode, exp);
         }
-
         [Test]
         public void DrawFigureTest1()
         {
             _bl.currentFigure = new Ellipse(5, 6, _myGraphicsMock.Object);
-            _myGraphicsMock.Setup(a => a.IsCurrentSurfaceTemporary()).Returns(false);
+            _myGraphicsMock.Setup(a => a.IsCurrentSurfaceTemporary()).Returns(true);
             _myGraphicsMock.Verify(a => a.IsCurrentSurfaceTemporary(), Times.Never);
         }
         [Test]
@@ -56,16 +74,18 @@ namespace PaintTests
         public void DrawFigureTest3()
         {
             _myGraphicsMock.Setup(a => a.IsCurrentSurfaceTemporary()).Returns(false);
-            _currentFigure = new Ellipse(5, 6, _myGraphicsMock.Object);
+            _bl.currentFigure = new Ellipse(It.IsAny<int>(), It.IsAny<int>(), _myGraphicsMock.Object);
+    
+            _storageMock.Setup(a => a.AddFigure(It.IsAny<Figure>(), It.IsAny<int>(), "White"));
             
-            _bl.DrawFigure(5, 6);
+            _bl.DrawFigure(It.IsAny<int>(), It.IsAny<int>());
 
             //_myGraphicsMock.Verify(a => a.IsCurrentSurfaceTemporary(), Times.Once);
             //var penSize = _myGraphicsMock.Setup(a => a.GetCurrentPenSize()).Returns(It.IsAny<float>);
             //var penColor = _myGraphicsMock.Setup(a => a.GetCurrentPenColor()).Returns(It.IsAny<string>))
 
-            _storageMock.Setup(a => a.AddFigure(_currentFigure, 45, "White"));
-            _storageMock.Verify(a => a.AddFigure(_currentFigure, 45, "White"), Times.Once);
+           
+            _storageMock.Verify(a => a.AddFigure(It.IsAny<Figure>(), It.IsAny<int>(), It.IsAny<string>()), Times.Once);
         }
         [Test]
         public void DrawFigureTest4()
@@ -82,9 +102,9 @@ namespace PaintTests
             _bl.currentFigure = new Ellipse(5, 6, _myGraphicsMock.Object);
             _bl.DrawFigure(x, y);
             var resX = _bl.currentFigure._finishX;
-            //Assert.AreEqual(exp_finishX, resX);
+            Assert.AreEqual(exp_finishX, resX);
             
-            _storageMock.Verify(a => a.AddFigure(_currentFigure, 45, "White"), Times.Once);
+            //_storageMock.Verify(a => a.AddFigure(_currentFigure, 45, "White"), Times.Once);
         }
 
 
@@ -104,9 +124,10 @@ namespace PaintTests
         [Test]
         public void SelectFigureTest1()
         {
+            
             var exp = new Ellipse(5, 6, _myGraphicsMock.Object);
             _bl.currentMode = EButtonDrawingType.Ellipse;
-            _bl.SelectFigure(5, 6, 6);
+            _bl.SelectFigure(5, 6);
 
             var res = _bl.currentFigure;
 
@@ -115,6 +136,7 @@ namespace PaintTests
         [Test]
         public void SelectFigureTest2()
         {
+           
             var exp = new Line(5, 6, _myGraphicsMock.Object);
             _bl.currentMode = EButtonDrawingType.Line;
             _bl.SelectFigure(5, 6, 6);
