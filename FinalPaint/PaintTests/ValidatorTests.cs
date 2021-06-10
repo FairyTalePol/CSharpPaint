@@ -48,9 +48,12 @@ namespace PaintTests
         [TestCase("..konst.", false)]
         [TestCase("kons$#t", false)]
         [TestCase("aloe", true)]
-        [TestCase("mashamashamashamashamashamasha", false)]
+        [TestCase("mashamashamashamashamashamashaamashaamasha", false)]
         [TestCase("Yakovenko",true)]
-
+        [TestCase("M", true)]
+        [TestCase("Yakovenko-Ratushna", true)]
+        [TestCase("Yakovenko-Ratushna-", false)]
+        [TestCase("-Yakovenko-Ratushna-", false)]
         public void FirstOrLastNameCheckTests_CheckIfNameOrLastNameIsValid(string actualName, bool expected)
         {
             bool actual = Validator.CheckFirst_or_LastName(actualName);

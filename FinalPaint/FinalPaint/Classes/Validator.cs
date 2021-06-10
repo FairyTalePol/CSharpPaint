@@ -9,7 +9,7 @@ namespace FinalPaint.Classes
 {
    public static class Validator
     {
-        private const string _regexFirst_or_LastName = "^[A-Za-z]{2,20}$";
+        private const string _regexFirst_or_LastName = "^[A-Za-z](-?[A-Za-z]{1,14})?-?([A-Za-z]{1,15})?$";
         private const string _regexEmail = "^[0-9A-Za-z]+(.?[0-9A-Za-z]+){2,29}.?[0-9A-Za-z]+@[a-z]+.[a-z]{2,4}$";
         private static Regex _regex;
         public static bool CheckEmail(string email)
