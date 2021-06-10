@@ -11,6 +11,8 @@ namespace FinalPaint.Classes
         public static Dictionary<int, int> penWidth = new Dictionary<int, int>() {
             { 0,1 },
             { 1, 5 },
+             { 2, 10 },
+              { 3, 20 }
         };
         public static Pen pen = new Pen(Color.Black, 3)
         {
