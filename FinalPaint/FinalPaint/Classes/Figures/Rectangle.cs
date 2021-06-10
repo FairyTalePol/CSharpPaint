@@ -1,5 +1,6 @@
 ﻿using FinalPaint.Interfaces_;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace FinalPaint.Classes
 {
@@ -105,6 +106,33 @@ namespace FinalPaint.Classes
                 _startY = _finishY;
                 _finishY = temp;
             }
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Rectangle rectangle &&
+                   EqualityComparer<IMyGraphics>.Default.Equals(_myGraphics, rectangle._myGraphics) &&
+                   _pullable == rectangle._pullable &&
+                   IsSelected == rectangle.IsSelected &&
+                   _startX == rectangle._startX &&
+                   _startY == rectangle._startY &&
+                   _finishX == rectangle._finishX &&
+                   _finishY == rectangle._finishY &&
+                   Pullable == rectangle.Pullable;
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = -1288887542;
+            hashCode = hashCode * -1521134295 + EqualityComparer<IMyGraphics>.Default.GetHashCode(_myGraphics);
+            hashCode = hashCode * -1521134295 + _pullable.GetHashCode();
+            hashCode = hashCode * -1521134295 + IsSelected.GetHashCode();
+            hashCode = hashCode * -1521134295 + _startX.GetHashCode();
+            hashCode = hashCode * -1521134295 + _startY.GetHashCode();
+            hashCode = hashCode * -1521134295 + _finishX.GetHashCode();
+            hashCode = hashCode * -1521134295 + _finishY.GetHashCode();
+            hashCode = hashCode * -1521134295 + Pullable.GetHashCode();
+            return hashCode;
         }
     }
 }

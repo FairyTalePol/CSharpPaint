@@ -18,7 +18,6 @@ namespace FinalPaint.Classes
 
         private BuisnessLogic()
         {
-        //    Config.Configure();
             saveLoad = RastrSaveHelper.Create();
             storage = Storage.Create();         
         }
@@ -107,7 +106,7 @@ namespace FinalPaint.Classes
                 figure.SetFigureSelection(false);
             }
             figures.Reverse();
-            foreach (var figure in figures)
+            foreach (var figure in figures)//проход в обратном порядке
             {
                 if (figure.GetFigure().IsPointInPoly(x,y,Convert.ToInt32(figure.GetPenSize()/2)))
                 {
