@@ -139,6 +139,7 @@
     <Compile Include="Classes\MyJsonSerializer.cs" />
     <Compile Include="Classes\Storage.cs" />
     <Compile Include="Classes\TwoDimensionalPoint.cs" />
+    <Compile Include="Classes\Validator.cs" />
     <Compile Include="Interfaces_\IBuisnessLogic.cs" />
     <Compile Include="Interfaces_\IMyGraphics.cs" />
     <Compile Include="Classes\MyGraphics.cs" />
