@@ -140,6 +140,18 @@
     <Compile Include="Classes\Storage.cs" />
     <Compile Include="Classes\TwoDimensionalPoint.cs" />
     <Compile Include="Classes\Validator.cs" />
+    <Compile Include="AuthorithationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AuthorithationForm.Designer.cs">
+      <DependentUpon>AuthorithationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrationForm.Designer.cs">
+      <DependentUpon>RegistrationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces_\IBuisnessLogic.cs" />
     <Compile Include="Interfaces_\IMyGraphics.cs" />
     <Compile Include="Classes\MyGraphics.cs" />
@@ -172,6 +184,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AuthorithationForm.resx">
+      <DependentUpon>AuthorithationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -181,6 +196,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RegistrationForm.resx">
+      <DependentUpon>RegistrationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
