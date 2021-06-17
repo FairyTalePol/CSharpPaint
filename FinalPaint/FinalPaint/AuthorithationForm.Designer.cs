@@ -29,6 +29,7 @@ namespace FinalPaint
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AuthorithationForm));
             this.authorization_lbl = new System.Windows.Forms.Label();
             this.login_lbl = new System.Windows.Forms.Label();
             this.login_textBox = new System.Windows.Forms.TextBox();
@@ -43,6 +44,7 @@ namespace FinalPaint
             // authorization_lbl
             // 
             this.authorization_lbl.AutoSize = true;
+            this.authorization_lbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.authorization_lbl.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.authorization_lbl.Location = new System.Drawing.Point(145, 113);
             this.authorization_lbl.Name = "authorization_lbl";
@@ -53,6 +55,7 @@ namespace FinalPaint
             // login_lbl
             // 
             this.login_lbl.AutoSize = true;
+            this.login_lbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.login_lbl.Location = new System.Drawing.Point(165, 229);
             this.login_lbl.Name = "login_lbl";
             this.login_lbl.Size = new System.Drawing.Size(86, 32);
@@ -61,7 +64,7 @@ namespace FinalPaint
             // 
             // login_textBox
             // 
-            this.login_textBox.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.login_textBox.BackColor = System.Drawing.Color.LightGray;
             this.login_textBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.login_textBox.Location = new System.Drawing.Point(171, 264);
             this.login_textBox.Name = "login_textBox";
@@ -71,6 +74,7 @@ namespace FinalPaint
             // password_lbl
             // 
             this.password_lbl.AutoSize = true;
+            this.password_lbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.password_lbl.Location = new System.Drawing.Point(165, 309);
             this.password_lbl.Name = "password_lbl";
             this.password_lbl.Size = new System.Drawing.Size(139, 32);
@@ -79,7 +83,7 @@ namespace FinalPaint
             // 
             // password_textBox
             // 
-            this.password_textBox.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.password_textBox.BackColor = System.Drawing.Color.LightGray;
             this.password_textBox.Location = new System.Drawing.Point(171, 344);
             this.password_textBox.Name = "password_textBox";
             this.password_textBox.PasswordChar = '*';
@@ -88,7 +92,7 @@ namespace FinalPaint
             // 
             // signIn_btn
             // 
-            this.signIn_btn.BackColor = System.Drawing.Color.AliceBlue;
+            this.signIn_btn.BackColor = System.Drawing.Color.LightGray;
             this.signIn_btn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.signIn_btn.Location = new System.Drawing.Point(230, 447);
             this.signIn_btn.Name = "signIn_btn";
@@ -100,7 +104,7 @@ namespace FinalPaint
             // 
             // signUp_btn
             // 
-            this.signUp_btn.BackColor = System.Drawing.Color.AliceBlue;
+            this.signUp_btn.BackColor = System.Drawing.Color.LightGray;
             this.signUp_btn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.signUp_btn.Location = new System.Drawing.Point(230, 540);
             this.signUp_btn.Name = "signUp_btn";
@@ -112,6 +116,7 @@ namespace FinalPaint
             // message_lbl
             // 
             this.message_lbl.AutoSize = true;
+            this.message_lbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.message_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.message_lbl.ForeColor = System.Drawing.Color.DarkRed;
             this.message_lbl.Location = new System.Drawing.Point(166, 399);
@@ -124,6 +129,7 @@ namespace FinalPaint
             // signUp_lbl
             // 
             this.signUp_lbl.AutoSize = true;
+            this.signUp_lbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.signUp_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 3.9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.signUp_lbl.ForeColor = System.Drawing.Color.Azure;
             this.signUp_lbl.Location = new System.Drawing.Point(161, 590);
@@ -137,6 +143,8 @@ namespace FinalPaint
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SlateGray;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(613, 790);
             this.Controls.Add(this.signUp_lbl);
             this.Controls.Add(this.message_lbl);
@@ -147,6 +155,8 @@ namespace FinalPaint
             this.Controls.Add(this.login_textBox);
             this.Controls.Add(this.login_lbl);
             this.Controls.Add(this.authorization_lbl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "AuthorithationForm";
             this.Text = "PaintiK";
             this.Load += new System.EventHandler(this.Form2_Load);
