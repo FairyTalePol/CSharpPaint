@@ -139,6 +139,7 @@
     <Compile Include="Classes\MyJsonSerializer.cs" />
     <Compile Include="Classes\Storage.cs" />
     <Compile Include="Classes\TwoDimensionalPoint.cs" />
+    <Compile Include="Classes\UserData.cs" />
     <Compile Include="Classes\Validator.cs" />
     <Compile Include="AuthorithationForm.cs">
       <SubType>Form</SubType>

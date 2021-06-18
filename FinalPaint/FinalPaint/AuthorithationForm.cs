@@ -14,12 +14,20 @@ namespace FinalPaint
     {
         string password = "0";
         string login = "0";
-        public AuthorithationForm()
+        private static AuthorithationForm _authorithationForm;
+        private AuthorithationForm()
         {
             InitializeComponent();
            
         }
-
+        public static AuthorithationForm CreateAuthorithationForm()
+        {
+            if (_authorithationForm == null)
+            {
+                _authorithationForm = new AuthorithationForm();
+            }
+            return _authorithationForm;
+        }
         private void Form2_Load(object sender, EventArgs e)
         {
 
@@ -29,10 +37,10 @@ namespace FinalPaint
         {
             if (password_textBox.Text == password && login_textBox.Text == login)
             {
-                this.Hide();
-                new MainForm().ShowDialog();
                 DefaultBackGround();
-                this.Show();
+                _authorithationForm.Hide();
+                MainForm.CreateMainForm().Show();
+
             }
             else
             {
@@ -52,10 +60,18 @@ namespace FinalPaint
         private void DefaultBackGround()
         {
             message_lbl.Visible = false;
-            password_textBox.BackColor = Color.LightSteelBlue;
-            login_textBox.BackColor = Color.LightSteelBlue;
+            password_textBox.BackColor = Color.LightGray;
+            login_textBox.BackColor = Color.LightGray;
             password_textBox.Text = null;
             login_textBox.Text = null;
+        }
+
+        private void signUp_btn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            RegistrationForm.CreateRegistrationForm().Show();
+            DefaultBackGround();
+            
         }
     }
 }

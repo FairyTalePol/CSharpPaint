@@ -15,7 +15,7 @@ namespace FinalPaint
             if (Environment.OSVersion.Version.Major >= 6) SetProcessDPIAware();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AuthorithationForm());
+            Application.Run(AuthorithationForm.CreateAuthorithationForm());
 
         }
         [System.Runtime.InteropServices.DllImport("user32.dll")]

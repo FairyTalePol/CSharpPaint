@@ -112,6 +112,7 @@ namespace FinalPaint
             this.signUp_btn.TabIndex = 6;
             this.signUp_btn.Text = "Sign Up";
             this.signUp_btn.UseVisualStyleBackColor = false;
+            this.signUp_btn.Click += new System.EventHandler(this.signUp_btn_Click);
             // 
             // message_lbl
             // 

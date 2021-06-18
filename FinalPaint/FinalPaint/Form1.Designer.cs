@@ -67,6 +67,7 @@ namespace FinalPaint
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.button7 = new System.Windows.Forms.Button();
+            this.logOut_btn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -85,7 +86,7 @@ namespace FinalPaint
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1504, 151);
+            this.panel1.Size = new System.Drawing.Size(1600, 151);
             this.panel1.TabIndex = 0;
             // 
             // panel3
@@ -104,10 +105,10 @@ namespace FinalPaint
             this.panel3.Controls.Add(this.btnLine);
             this.panel3.Controls.Add(this.btnPencil);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(1044, 0);
+            this.panel3.Location = new System.Drawing.Point(1162, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(456, 163);
+            this.panel3.Size = new System.Drawing.Size(434, 163);
             this.panel3.TabIndex = 1;
             // 
             // btnSelect
@@ -131,7 +132,7 @@ namespace FinalPaint
             this.btnRoundedRectangle.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRoundedRectangle.Image = ((System.Drawing.Image)(resources.GetObject("btnRoundedRectangle.Image")));
             this.btnRoundedRectangle.Location = new System.Drawing.Point(250, 78);
-            this.btnRoundedRectangle.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnRoundedRectangle.Margin = new System.Windows.Forms.Padding(6);
             this.btnRoundedRectangle.Name = "btnRoundedRectangle";
             this.btnRoundedRectangle.Size = new System.Drawing.Size(68, 68);
             this.btnRoundedRectangle.TabIndex = 2;
@@ -143,7 +144,7 @@ namespace FinalPaint
             // 
             this.textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 5F);
             this.textBox.Location = new System.Drawing.Point(330, 87);
-            this.textBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox.Margin = new System.Windows.Forms.Padding(4);
             this.textBox.Multiline = true;
             this.textBox.Name = "textBox";
             this.textBox.Size = new System.Drawing.Size(84, 27);
@@ -249,6 +250,7 @@ namespace FinalPaint
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.logOut_btn);
             this.panel2.Controls.Add(this.redoButton);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.undoButton);
@@ -272,13 +274,13 @@ namespace FinalPaint
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1044, 147);
+            this.panel2.Size = new System.Drawing.Size(1162, 147);
             this.panel2.TabIndex = 0;
             // 
             // redoButton
             // 
-            this.redoButton.Location = new System.Drawing.Point(920, 74);
-            this.redoButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.redoButton.Location = new System.Drawing.Point(1023, 77);
+            this.redoButton.Margin = new System.Windows.Forms.Padding(6);
             this.redoButton.Name = "redoButton";
             this.redoButton.Size = new System.Drawing.Size(104, 48);
             this.redoButton.TabIndex = 3;
@@ -289,7 +291,7 @@ namespace FinalPaint
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(824, 21);
+            this.label1.Location = new System.Drawing.Point(938, 24);
             this.label1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 32);
@@ -298,8 +300,8 @@ namespace FinalPaint
             // 
             // undoButton
             // 
-            this.undoButton.Location = new System.Drawing.Point(920, 10);
-            this.undoButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.undoButton.Location = new System.Drawing.Point(1023, 13);
+            this.undoButton.Margin = new System.Windows.Forms.Padding(6);
             this.undoButton.Name = "undoButton";
             this.undoButton.Size = new System.Drawing.Size(104, 48);
             this.undoButton.TabIndex = 2;
@@ -314,7 +316,7 @@ namespace FinalPaint
             this.btnClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnClear.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClear.ForeColor = System.Drawing.Color.Coral;
-            this.btnClear.Location = new System.Drawing.Point(828, 68);
+            this.btnClear.Location = new System.Drawing.Point(942, 71);
             this.btnClear.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(66, 64);
@@ -330,7 +332,7 @@ namespace FinalPaint
             "5px",
             "10px",
             "20px"});
-            this.dropdownPenWidth.Location = new System.Drawing.Point(588, 87);
+            this.dropdownPenWidth.Location = new System.Drawing.Point(702, 90);
             this.dropdownPenWidth.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.dropdownPenWidth.Name = "dropdownPenWidth";
             this.dropdownPenWidth.Size = new System.Drawing.Size(216, 39);
@@ -341,7 +343,7 @@ namespace FinalPaint
             // penChangeSizeTrackBar
             // 
             this.penChangeSizeTrackBar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.penChangeSizeTrackBar.Location = new System.Drawing.Point(568, 14);
+            this.penChangeSizeTrackBar.Location = new System.Drawing.Point(682, 17);
             this.penChangeSizeTrackBar.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.penChangeSizeTrackBar.Maximum = 50;
             this.penChangeSizeTrackBar.Name = "penChangeSizeTrackBar";
@@ -352,8 +354,8 @@ namespace FinalPaint
             // button_save
             // 
             this.button_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F);
-            this.button_save.Location = new System.Drawing.Point(8, 74);
-            this.button_save.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.button_save.Location = new System.Drawing.Point(122, 77);
+            this.button_save.Margin = new System.Windows.Forms.Padding(8);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(104, 48);
             this.button_save.TabIndex = 2;
@@ -365,7 +367,7 @@ namespace FinalPaint
             // 
             this.button10.BackColor = System.Drawing.Color.Purple;
             this.button10.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button10.Location = new System.Drawing.Point(376, 74);
+            this.button10.Location = new System.Drawing.Point(490, 77);
             this.button10.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(48, 48);
@@ -376,8 +378,8 @@ namespace FinalPaint
             // button_open
             // 
             this.button_open.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F);
-            this.button_open.Location = new System.Drawing.Point(8, 10);
-            this.button_open.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.button_open.Location = new System.Drawing.Point(122, 13);
+            this.button_open.Margin = new System.Windows.Forms.Padding(8);
             this.button_open.Name = "button_open";
             this.button_open.Size = new System.Drawing.Size(104, 48);
             this.button_open.TabIndex = 3;
@@ -389,7 +391,7 @@ namespace FinalPaint
             // 
             this.button8.BackColor = System.Drawing.Color.Blue;
             this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button8.Location = new System.Drawing.Point(312, 74);
+            this.button8.Location = new System.Drawing.Point(426, 77);
             this.button8.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(48, 48);
@@ -400,7 +402,7 @@ namespace FinalPaint
             // btnColorDialog
             // 
             this.btnColorDialog.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnColorDialog.Location = new System.Drawing.Point(440, 10);
+            this.btnColorDialog.Location = new System.Drawing.Point(554, 13);
             this.btnColorDialog.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.btnColorDialog.Name = "btnColorDialog";
             this.btnColorDialog.Size = new System.Drawing.Size(118, 118);
@@ -412,7 +414,7 @@ namespace FinalPaint
             // 
             this.button9.BackColor = System.Drawing.Color.Fuchsia;
             this.button9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button9.Location = new System.Drawing.Point(376, 10);
+            this.button9.Location = new System.Drawing.Point(490, 13);
             this.button9.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(48, 48);
@@ -424,7 +426,7 @@ namespace FinalPaint
             // 
             this.btnColor.BackColor = System.Drawing.Color.Aqua;
             this.btnColor.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnColor.Location = new System.Drawing.Point(312, 10);
+            this.btnColor.Location = new System.Drawing.Point(426, 13);
             this.btnColor.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.btnColor.Name = "btnColor";
             this.btnColor.Size = new System.Drawing.Size(48, 48);
@@ -436,7 +438,7 @@ namespace FinalPaint
             // 
             this.button6.BackColor = System.Drawing.Color.Lime;
             this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button6.Location = new System.Drawing.Point(244, 74);
+            this.button6.Location = new System.Drawing.Point(358, 77);
             this.button6.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(48, 48);
@@ -448,7 +450,7 @@ namespace FinalPaint
             // 
             this.button5.BackColor = System.Drawing.Color.Yellow;
             this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button5.Location = new System.Drawing.Point(244, 10);
+            this.button5.Location = new System.Drawing.Point(358, 13);
             this.button5.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(48, 48);
@@ -460,7 +462,7 @@ namespace FinalPaint
             // 
             this.button4.BackColor = System.Drawing.Color.Red;
             this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button4.Location = new System.Drawing.Point(184, 10);
+            this.button4.Location = new System.Drawing.Point(298, 13);
             this.button4.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(48, 48);
@@ -472,7 +474,7 @@ namespace FinalPaint
             // 
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.Location = new System.Drawing.Point(184, 74);
+            this.button3.Location = new System.Drawing.Point(298, 77);
             this.button3.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(48, 48);
@@ -484,7 +486,7 @@ namespace FinalPaint
             // 
             this.button2.BackColor = System.Drawing.Color.Black;
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.Location = new System.Drawing.Point(120, 74);
+            this.button2.Location = new System.Drawing.Point(234, 77);
             this.button2.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(48, 48);
@@ -496,7 +498,7 @@ namespace FinalPaint
             // 
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Location = new System.Drawing.Point(120, 10);
+            this.button1.Location = new System.Drawing.Point(234, 13);
             this.button1.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(48, 48);
@@ -510,7 +512,7 @@ namespace FinalPaint
             this.mainDrawingSurface.Location = new System.Drawing.Point(0, 149);
             this.mainDrawingSurface.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.mainDrawingSurface.Name = "mainDrawingSurface";
-            this.mainDrawingSurface.Size = new System.Drawing.Size(1498, 723);
+            this.mainDrawingSurface.Size = new System.Drawing.Size(1597, 723);
             this.mainDrawingSurface.TabIndex = 1;
             this.mainDrawingSurface.TabStop = false;
             this.mainDrawingSurface.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MainDrawingSurface_MouseClick);
@@ -528,8 +530,8 @@ namespace FinalPaint
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(1534, 180);
-            this.button7.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.button7.Location = new System.Drawing.Point(1620, 175);
+            this.button7.Margin = new System.Windows.Forms.Padding(6);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(150, 45);
             this.button7.TabIndex = 2;
@@ -537,11 +539,22 @@ namespace FinalPaint
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
+            // logOut_btn
+            // 
+            this.logOut_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.logOut_btn.Location = new System.Drawing.Point(8, 13);
+            this.logOut_btn.Name = "logOut_btn";
+            this.logOut_btn.Size = new System.Drawing.Size(104, 47);
+            this.logOut_btn.TabIndex = 4;
+            this.logOut_btn.Text = "Log Out";
+            this.logOut_btn.UseVisualStyleBackColor = true;
+            this.logOut_btn.Click += new System.EventHandler(this.logOut_btn_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1504, 870);
+            this.ClientSize = new System.Drawing.Size(1600, 870);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.mainDrawingSurface);
             this.Controls.Add(this.panel1);
@@ -602,6 +615,7 @@ namespace FinalPaint
         private System.Windows.Forms.Button redoButton;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button btnSelect;
+        private System.Windows.Forms.Button logOut_btn;
     }
 }
 

@@ -13,6 +13,7 @@ namespace FinalPaint
         MyGraphics _myGraphics;
         int mouseDownX;
         int mouseDownY;
+        private static MainForm _mainForm;
 
         public void Setup()
         {
@@ -24,6 +25,20 @@ namespace FinalPaint
             dropdownPenWidth.SelectedIndex = Config.dropDownSelectedIndex;
             Action UndoRedo = SetDisabledUndoRedo;
             bl.SetDisableUndoRedo(UndoRedo);
+        }
+
+        private MainForm()
+        {
+
+            InitializeComponent();
+        }
+        public static MainForm CreateMainForm()
+        {
+            if (_mainForm == null)
+            {
+                _mainForm = new MainForm();
+            }
+            return _mainForm;
         }
 
         public void SetDisabledUndoRedo()
@@ -238,11 +253,6 @@ namespace FinalPaint
             bl.SetCurrentMode(EButtonDrawingType.RoundedRectangle);
         }
 
-        public MainForm()
-        {
-
-            InitializeComponent();
-        }
 
         private void undoButton_Click(object sender, EventArgs e)
         {
@@ -267,8 +277,15 @@ namespace FinalPaint
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            
-            
+            _mainForm = null;
+            AuthorithationForm.CreateAuthorithationForm().Show();
+        }
+
+        private void logOut_btn_Click(object sender, EventArgs e)
+        {
+            _mainForm.Close();
+            _mainForm = null;
+            AuthorithationForm.CreateAuthorithationForm().Show();
         }
     }
 }
