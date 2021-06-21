@@ -129,6 +129,11 @@ namespace FinalPaint.Classes
            
         }
 
+        public  void TestRestApi()
+        {
+            RestApi r = new RestApi();
+            r.RequestTest();
+        }
         public void DrawFigure(int x, int y)
         {
             if (currentFigure != null)

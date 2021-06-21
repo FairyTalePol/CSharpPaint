@@ -267,7 +267,7 @@ namespace FinalPaint
 
         private void button7_Click(object sender, EventArgs e)
         {
-
+            bl.TestRestApi();
         }
 
         private void btnSelect_Click(object sender, EventArgs e)

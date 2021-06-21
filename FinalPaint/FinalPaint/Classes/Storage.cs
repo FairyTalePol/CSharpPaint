@@ -18,6 +18,15 @@ namespace FinalPaint.Classes
             _pointer = 0;
         }
 
+        public static Storage Create()
+        {
+            if (_storage == null)
+            {
+                _storage = new Storage();
+            }
+            return _storage;
+        }
+
         public void Deserialize(List<FigureWithParametrs> list)
         {
             _current = new List<FigureWithParametrs>();
@@ -34,14 +43,7 @@ namespace FinalPaint.Classes
             }
             _archive.Add(temp);
         }
-        public static Storage Create()
-        {
-            if (_storage == null)
-            {
-                _storage = new Storage();
-            }
-            return _storage;
-        }
+    
 
         private void UpdateCurrent()
         {
