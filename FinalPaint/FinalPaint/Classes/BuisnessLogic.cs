@@ -16,17 +16,18 @@ namespace FinalPaint.Classes
         Action disableUndoRedo;
         public bool EnableUndoRedo = false;
         
+        
 
-        private BuisnessLogic()
-        {
-            saveLoad = RastrSaveHelper.Create();
-            storage = Storage.Create();         
-        }
-        private BuisnessLogic(IMyGraphics myGraphicsUI)
+        //private BuisnessLogic()
+        //{
+        //    saveLoad = RastrSaveHelper.Create();
+        //    storage = Storage.Create();         
+        //}
+        private BuisnessLogic(/*IMyGraphics myGraphicsUI*/)
         {
             saveLoad = RastrSaveHelper.Create();
             storage = Storage.Create();
-            myGraphics = myGraphicsUI;
+            //myGraphics = myGraphicsUI;
         }
 
         public void SetCurrentMode(EButtonDrawingType mode)
@@ -130,12 +131,20 @@ namespace FinalPaint.Classes
            
         }
 
-        public  void TestRestApi()
+        
+        public void RegistrationRestApi(NewUserData newUser)
         {
             RestApi r;
             r = RestApi.Create();
-            // r.RequestTest();
-            r.AuthorizationRequest();
+            r.RequestTest(newUser);
+         
+        }
+        public bool AuthorizationRestApi(string email, string password)
+        {
+            RestApi r;
+            r = RestApi.Create();
+            bool answer = r.AuthorizationRequest(email, password);
+            return answer;
         }
 
         public void DrawFigure(int x, int y)
@@ -188,11 +197,11 @@ namespace FinalPaint.Classes
         }
 
 
-        public static BuisnessLogic Create(IMyGraphics myGraphicsUI/*, IStorage*/)
+        public static BuisnessLogic Create(/*IMyGraphics myGraphicsUI/*, IStorage*/ )
         {
             if (_bl == null)
             {
-                _bl = new BuisnessLogic(myGraphicsUI);
+                _bl = new BuisnessLogic(/*myGraphicsUI*/);
             }
             return _bl;
         }

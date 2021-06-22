@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalPaint.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,8 +13,6 @@ namespace FinalPaint
 {
     public partial class AuthorithationForm : Form
     {
-        string password = "0";
-        string login = "0";
         private static AuthorithationForm _authorithationForm;
         private AuthorithationForm()
         {
@@ -28,19 +27,16 @@ namespace FinalPaint
             }
             return _authorithationForm;
         }
-        private void Form2_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void signIn_btn_Click(object sender, EventArgs e)
         {
-            if (password_textBox.Text == password && login_textBox.Text == login)
+            var bl = BuisnessLogic.Create();
+            bool isValid = bl.AuthorizationRestApi(login_textBox.Text, password_textBox.Text);
+            if (isValid)
             {
                 DefaultBackGround();
                 _authorithationForm.Hide();
                 MainForm.CreateMainForm().Show();
-
             }
             else
             {

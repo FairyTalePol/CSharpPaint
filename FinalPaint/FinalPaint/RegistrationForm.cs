@@ -1,4 +1,6 @@
 ﻿using FinalPaint.Classes;
+using FinalPaint.DependencyInversion;
+using FinalPaint.Interfaces_;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,7 +21,7 @@ namespace FinalPaint
         bool IsPasswordValid;
         bool IsConfirmed;
         private static RegistrationForm _registrationForm;
-        
+        BuisnessLogic bl;
 
 
         private RegistrationForm()
@@ -41,24 +43,28 @@ namespace FinalPaint
             _registrationForm.Close();
             _registrationForm = null;
             AuthorithationForm.CreateAuthorithationForm().Show();
-            
-           
         }
 
         private void SignUp_btn_Click(object sender, EventArgs e)
         {
             if(IsAllDataCorrect())
             {
+                AddData();
                 _registrationForm.Close();
                 _registrationForm = null;
                 MainForm.CreateMainForm().Show();
             }
-            
-           
         }
-        private void AddData()
+        public void AddData()
         {
-            UserData.AddUser(firstName_textBox.Text, lastName_textbox.Text, email_textbox.Text, password_textBox.Text);
+            NewUserData newUserData = new NewUserData();
+            newUserData.Email = email_textbox.Text;
+            newUserData.FirstName = firstName_textBox.Text;
+            newUserData.LastName = lastName_textbox.Text;
+            newUserData.UserPassword = password_textBox.Text;
+            bl = BuisnessLogic.Create();
+            bl.RegistrationRestApi(newUserData);
+            
         }
 
         private void FirstName_textBox_Leave(object sender, EventArgs e)

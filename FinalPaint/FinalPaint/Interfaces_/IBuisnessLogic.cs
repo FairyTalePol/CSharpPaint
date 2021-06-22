@@ -17,6 +17,7 @@ namespace FinalPaint.Interfaces_
         void SelectFigure(int x, int y, int polygonAngles = -1);
         void Load(Action act);
         void Save(Action act);
+        
 
         void Undo();
         void Redo();

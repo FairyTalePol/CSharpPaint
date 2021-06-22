@@ -14,49 +14,46 @@ namespace FinalPaint.Classes
         private RestApi()
         {
             _restClient = new RestClient();
+
         }
 
 
         public static RestApi Create()
         {
-            if(_restApi==null)
+            if (_restApi == null)
             {
                 _restApi = new RestApi();
             }
             return _restApi;
         }
 
-        public void RequestTest()
+        public void RequestTest(NewUserData newUserData)
         {
             _request = new RestRequest { Resource = "https://localhost:44341/auth/register", Method = Method.POST };
-            NewUserData newUserData = new NewUserData
-            {
-                Email = "egorusdnepr9@gmail.com",
-                FirstName = "Mariia",
-                LastName = "Yakovenko",
-                UserPassword = "I_HATE_IT"
-            };
-
-     
-
             _request.AddJsonBody(newUserData);
             var response = _restClient.Execute(_request);
             var deserializedObject = new JsonSerializer().Deserialize<NewUserData>(response);
-            Console.WriteLine(deserializedObject.Id);
 
         }
 
-        public void AuthorizationRequest()
+        public bool AuthorizationRequest(string email, string password)
         {
-            string email = "egorusdnepr9@gmail.com";
-            string password = "I_HATE_IT";
-            _request =new RestRequest { Resource= "https://localhost:44341/auth/authorize", Method = Method.GET };
+            _request = new RestRequest { Resource = "https://localhost:44341/auth/authorize", Method = Method.GET };
             _request.AddQueryParameter("email", email);
             _request.AddQueryParameter("password", password);
             var response = _restClient.Execute(_request);
+            //id
             var deserializedObject = new JsonSerializer().Deserialize<string>(response);
-            Console.WriteLine(deserializedObject);
+            if (deserializedObject != null && deserializedObject != "")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
         }
-        
+
     }
 }
