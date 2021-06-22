@@ -15,6 +15,7 @@ namespace FinalPaint.Classes
         RastrSaveHelper saveLoad;
         Action disableUndoRedo;
         public bool EnableUndoRedo = false;
+        
 
         private BuisnessLogic()
         {
