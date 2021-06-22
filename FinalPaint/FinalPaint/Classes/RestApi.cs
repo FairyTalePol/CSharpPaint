@@ -46,5 +46,17 @@ namespace FinalPaint.Classes
 
         }
 
+        public void AuthorizationRequest()
+        {
+            string email = "egorusdnepr9@gmail.com";
+            string password = "I_HATE_IT";
+            _request =new RestRequest { Resource= "https://localhost:44341/auth/authorize", Method = Method.GET };
+            _request.AddQueryParameter("email", email);
+            _request.AddQueryParameter("password", password);
+            var response = _restClient.Execute(_request);
+            var deserializedObject = new JsonSerializer().Deserialize<string>(response);
+            Console.WriteLine(deserializedObject);
+        }
+        
     }
 }
