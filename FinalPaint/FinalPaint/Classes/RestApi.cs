@@ -44,7 +44,7 @@ namespace FinalPaint.Classes
             var response = _restClient.Execute(_request);
             //id
             var deserializedObject = new JsonSerializer().Deserialize<string>(response);
-            if (deserializedObject != null && deserializedObject != "")
+            if (deserializedObject != null && deserializedObject != "" && deserializedObject!="-1")
             {
                 return true;
             }
