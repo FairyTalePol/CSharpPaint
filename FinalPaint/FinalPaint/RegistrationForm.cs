@@ -47,15 +47,25 @@ namespace FinalPaint
 
         private void SignUp_btn_Click(object sender, EventArgs e)
         {
-            if(IsAllDataCorrect())
+            message_lbl.Visible = false;
+
+            if (IsAllDataCorrect())
             {
-                AddData();
-                _registrationForm.Close();
-                _registrationForm = null;
-                MainForm.CreateMainForm().Show();
+                if (AddData())
+                {
+                    _registrationForm.Close();
+                    _registrationForm = null;
+                    MainForm.CreateMainForm().Show();
+                }
+                else
+                {
+                    message_lbl.Visible = true;
+
+                }
+                
             }
         }
-        public void AddData()
+        public bool AddData()
         {
             NewUserData newUserData = new NewUserData();
             newUserData.Email = email_textbox.Text;
@@ -63,7 +73,21 @@ namespace FinalPaint
             newUserData.LastName = lastName_textbox.Text;
             newUserData.UserPassword = password_textBox.Text;
             bl = BuisnessLogic.Create();
-            bl.RegistrationRestApi(newUserData);
+            int status = bl.RegistrationRestApi(newUserData);
+            bool res = true;
+
+            if (status == -1)
+            {
+                message_lbl.Text = "User already exists";
+                res = false;
+
+            }
+            else if (status == -2)
+            {
+                message_lbl.Text = "No Database connection";
+                res = false;
+            }
+            return res;
             
         }
 

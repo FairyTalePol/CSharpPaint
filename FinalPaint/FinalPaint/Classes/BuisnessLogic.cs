@@ -132,11 +132,12 @@ namespace FinalPaint.Classes
         }
 
         
-        public void RegistrationRestApi(NewUserData newUser)
+        public int RegistrationRestApi(NewUserData newUser)
         {
             RestApi r;
             r = RestApi.Create();
-            r.RequestTest(newUser);
+            int status = r.RegistrationRequest(newUser);
+            return status;
          
         }
         public int AuthorizationRestApi(string email, string password)
