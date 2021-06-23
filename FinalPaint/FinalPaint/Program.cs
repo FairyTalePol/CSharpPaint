@@ -16,7 +16,7 @@ namespace FinalPaint
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
       
-            Application.Run(MainForm.CreateMainForm());
+            Application.Run(AuthorithationForm.CreateAuthorithationForm());
 
         }
         [System.Runtime.InteropServices.DllImport("user32.dll")]

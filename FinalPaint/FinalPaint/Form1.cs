@@ -19,7 +19,7 @@ namespace FinalPaint
         {
             Action act = GetImage;
             _myGraphics = MyGraphics.Create(mainDrawingSurface.Width, mainDrawingSurface.Height,act);
-            bl = BuisnessLogic.Create(_myGraphics);
+            bl = BuisnessLogic.Create(/*_myGraphics*/);
             bl.Initialize(_myGraphics);
             btnColorDialog.BackColor = Config.pen.Color;
             dropdownPenWidth.SelectedIndex = Config.dropDownSelectedIndex;
@@ -267,7 +267,7 @@ namespace FinalPaint
 
         private void button7_Click(object sender, EventArgs e)
         {
-            bl.TestRestApi();
+          //  bl.TestRestApi();
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
