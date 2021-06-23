@@ -132,7 +132,7 @@ namespace FinalPaint.Classes
 
         public  void TestRestApi()
         {
-            RestApi r = new RestApi();
+            RestApi r = RestApi.Create();
             r.RequestTestGetAllPictures();
         }
         public void DrawFigure(int x, int y)
