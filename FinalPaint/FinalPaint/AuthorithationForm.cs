@@ -31,17 +31,30 @@ namespace FinalPaint
         private void signIn_btn_Click(object sender, EventArgs e)
         {
             var bl = BuisnessLogic.Create();
-            bool isValid = bl.AuthorizationRestApi(login_textBox.Text, password_textBox.Text);
-            if (isValid)
+            int validCode = bl.AuthorizationRestApi(login_textBox.Text, password_textBox.Text);
+            switch (validCode)
             {
-                DefaultBackGround();
-                _authorithationForm.Hide();
-                MainForm.CreateMainForm().Show();
+                case 0 :
+                    {
+                        DefaultBackGround();
+                        _authorithationForm.Hide();
+                        MainForm.CreateMainForm().Show();
+                        break;
+                    }
+                case -1:
+                    {
+                        message_lbl.Text = "Incorrect input or no such user";
+                        WrongInputMessage();
+                        break;
+                    }
+                case -2:
+                    {
+                        message_lbl.Text = "No response from server";
+                        WrongInputMessage();
+                        break;
+                    }
             }
-            else
-            {
-                WrongInputMessage();
-            }
+          
         }
         private void CloseForm()
         {

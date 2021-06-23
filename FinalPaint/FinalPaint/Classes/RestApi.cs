@@ -33,27 +33,34 @@ namespace FinalPaint.Classes
             _request = new RestRequest { Resource = "https://localhost:44341/auth/register", Method = Method.POST };
             _request.AddJsonBody(newUserData);
             var response = _restClient.Execute(_request);
+
             var deserializedObject = new JsonSerializer().Deserialize<NewUserData>(response);
 
         }
 
-        public bool AuthorizationRequest(string email, string password)
+        public int  AuthorizationRequest(string email, string password)
         {
             _request = new RestRequest { Resource = "https://localhost:44341/auth/authorize", Method = Method.GET };
             _request.AddQueryParameter("email", email);
             _request.AddQueryParameter("password", password);
             var response = _restClient.Execute(_request);
             //id
-            var deserializedObject = new JsonSerializer().Deserialize<string>(response);
-            if (deserializedObject != null && deserializedObject != "" && deserializedObject!="-1")
+            if (response.StatusCode == 0)
             {
-                return true;
+                return -2;
+            }
+
+            var deserializedObject = new JsonSerializer().Deserialize<string>(response);
+
+            if (deserializedObject != null && deserializedObject != "" && deserializedObject != "-1")
+            {
+                return 0;
             }
             else
             {
-                return false;
+                return -1;
             }
-            
+
         }
 
         public void RequestTestWithPicture()
@@ -89,7 +96,7 @@ namespace FinalPaint.Classes
 
             request.AddQueryParameter("userId", "1");
             var response = _restClient.Execute(request);
-            List<PictureData> deserializedObject= new JsonSerializer().Deserialize<List<PictureData>>(response);
+            List<PictureData> deserializedObject = new JsonSerializer().Deserialize<List<PictureData>>(response);
             Console.WriteLine(deserializedObject);
 
         }

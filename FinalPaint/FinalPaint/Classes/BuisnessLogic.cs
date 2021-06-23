@@ -139,11 +139,11 @@ namespace FinalPaint.Classes
             r.RequestTest(newUser);
          
         }
-        public bool AuthorizationRestApi(string email, string password)
+        public int AuthorizationRestApi(string email, string password)
         {
             RestApi r;
             r = RestApi.Create();
-            bool answer = r.AuthorizationRequest(email, password);
+            int answer = r.AuthorizationRequest(email, password);
             return answer;
         }
 
