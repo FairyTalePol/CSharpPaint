@@ -8,15 +8,28 @@ namespace FinalPaint.Classes
 {
     class RestApi
     {
-  
+        private static RestApi _restApi;
+        private IRestClient _restClient;
+        private RestRequest _request;
+
+        private RestApi()
+        {
+            _restClient = new RestClient();
+        }
+
+
+        public static RestApi Create()
+        {
+            if(_restApi==null)
+            {
+                _restApi = new RestApi();
+            }
+            return _restApi;
+        }
+
         public void RequestTest()
         {
-            IRestClient _restClient;
- 
-            _restClient = new RestClient();
-
-
-            RestRequest request = new RestRequest { Resource = "https://localhost:44341/auth/register", Method = Method.POST };
+            _request = new RestRequest { Resource = "https://localhost:44341/auth/register", Method = Method.POST };
             NewUserData newUserData = new NewUserData
             {
                 Email = "egorusdnepr9@gmail.com",
@@ -27,8 +40,8 @@ namespace FinalPaint.Classes
 
      
 
-            request.AddJsonBody(newUserData);
-            var response = _restClient.Execute(request);
+            _request.AddJsonBody(newUserData);
+            var response = _restClient.Execute(_request);
             var deserializedObject = new JsonSerializer().Deserialize<NewUserData>(response);
             Console.WriteLine(deserializedObject.Id);
 
