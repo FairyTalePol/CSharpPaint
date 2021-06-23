@@ -142,6 +142,7 @@
     <Compile Include="Classes\FigureFactory\RoundedRectangleFactory.cs" />
     <Compile Include="Classes\MyJsonSerializer.cs" />
     <Compile Include="Classes\NewUserData.cs" />
+    <Compile Include="Classes\PictureData.cs" />
     <Compile Include="Classes\RestApi.cs" />
     <Compile Include="Classes\Storage.cs" />
     <Compile Include="Classes\TwoDimensionalPoint.cs" />
