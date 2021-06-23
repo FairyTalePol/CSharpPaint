@@ -277,8 +277,9 @@ namespace FinalPaint
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            _mainForm = null;
-            AuthorithationForm.CreateAuthorithationForm().Show();
+            //_mainForm = null;
+            //AuthorithationForm.CreateAuthorithationForm().Show();
+            Application.Exit();
         }
 
         private void logOut_btn_Click(object sender, EventArgs e)

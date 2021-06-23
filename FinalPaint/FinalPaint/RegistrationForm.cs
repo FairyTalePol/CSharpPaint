@@ -164,5 +164,16 @@ namespace FinalPaint
         {
             textBox.BackColor = Color.LightGray;
         }
+
+        private void RegistrationForm_Load(object sender, EventArgs e)
+        {
+            firstName_textBox.Select();
+        }
+
+        private void RegistrationForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _registrationForm = null;
+            AuthorithationForm.CreateAuthorithationForm().Show();
+        }
     }
 }
