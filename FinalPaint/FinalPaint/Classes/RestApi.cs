@@ -28,7 +28,7 @@ namespace FinalPaint.Classes
             return _restApi;
         }
 
-        public void RequestTest(NewUserData newUserData)
+        public void RegistrationRequest(NewUserData newUserData)
         {
             _request = new RestRequest { Resource = "https://localhost:44341/auth/register", Method = Method.POST };
             _request.AddJsonBody(newUserData);
