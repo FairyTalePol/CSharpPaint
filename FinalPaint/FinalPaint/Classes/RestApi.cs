@@ -28,12 +28,25 @@ namespace FinalPaint.Classes
             return _restApi;
         }
 
-        public void RegistrationRequest(NewUserData newUserData)
+        public int RegistrationRequest(NewUserData newUserData)
         {
             _request = new RestRequest { Resource = "https://localhost:44341/auth/register", Method = Method.POST };
             _request.AddJsonBody(newUserData);
             var response = _restClient.Execute(_request);
-            var deserializedObject = new JsonSerializer().Deserialize<NewUserData>(response);
+            if(response.StatusCode == 0 )
+            {
+                return -2;
+            }
+            if (response.StatusCode==System.Net.HttpStatusCode.OK)
+            {
+                var deserializedObject = new JsonSerializer().Deserialize<NewUserData>(response);
+                return 0;
+            }
+            else
+            {
+                return -1;
+            }
+           
 
         }
 
