@@ -8,7 +8,7 @@ namespace FinalPaint.Classes
     {
         private string _regexNameLastName = "^[A-Za-z](-?[A-Za-z]{1,14})?-?([A-Za-z]{1,15})?$";
         private string _regexEmail = "^[0-9A-Za-z]+(.?[0-9A-Za-z]+){2,29}.?[0-9A-Za-z]+@[a-z]+.[a-z]{2,4}$";
-        //public string Id { get; set; }
+        public string Id { get; set; }
         public string FirstName { get; set; }
         
         public string LastName { get; set; }

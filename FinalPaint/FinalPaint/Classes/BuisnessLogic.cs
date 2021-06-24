@@ -2,6 +2,7 @@
 using FinalPaint.Interfaces_;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FinalPaint.Classes
 {
@@ -15,6 +16,7 @@ namespace FinalPaint.Classes
         RastrSaveHelper saveLoad;
         Action disableUndoRedo;
         public bool EnableUndoRedo = false;
+        private RestApi _r;
         
         
 
@@ -27,6 +29,7 @@ namespace FinalPaint.Classes
         {
             saveLoad = RastrSaveHelper.Create();
             storage = Storage.Create();
+            _r = RestApi.Create();
             //myGraphics = myGraphicsUI;
         }
 
@@ -131,20 +134,14 @@ namespace FinalPaint.Classes
            
         }
 
-        
         public int RegistrationRestApi(NewUserData newUser)
         {
-            RestApi r;
-            r = RestApi.Create();
-            int status = r.RegistrationRequest(newUser);
-            return status;
-         
+            int status = _r.RegistrationRequest(newUser);
+            return status;  
         }
         public int AuthorizationRestApi(string email, string password)
         {
-            RestApi r;
-            r = RestApi.Create();
-            int answer = r.AuthorizationRequest(email, password);
+            int answer = _r.AuthorizationRequest(email, password);
             return answer;
         }
 
