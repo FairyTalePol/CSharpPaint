@@ -145,6 +145,12 @@ namespace FinalPaint.Classes
             return answer;
         }
 
+        public SingleUserStatistics GetUserStatistics()
+        {
+            SingleUserStatistics statistics = _r.GetUserStatisticsRequest();
+            return statistics;
+        }
+
         public void DrawFigure(int x, int y)
         {
             if (currentFigure != null)

@@ -113,17 +113,17 @@ namespace FinalPaint.Classes
         }
 
 
-        public UserStatistics GetUserStatisticsRequest()
+        public SingleUserStatistics GetUserStatisticsRequest()
         {
             _request = new RestRequest { Resource = "https://localhost:44341/auth/getStatistics", Method = Method.GET };
-            _request.AddQueryParameter("_userId", "1");
+            _request.AddQueryParameter("_userId", _userId);
             var response = _restClient.Execute(_request);
-            var deserializedObject = new JsonSerializer().Deserialize<UserStatistics>(response);
+            var deserializedObject = new JsonSerializer().Deserialize<SingleUserStatistics>(response);
             return deserializedObject;
-
         }
+    }
 
 
 
     }
-}
+
