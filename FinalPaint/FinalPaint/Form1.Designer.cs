@@ -68,6 +68,7 @@ namespace FinalPaint
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.button7 = new System.Windows.Forms.Button();
+            this.btn_saveServer = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -143,7 +144,7 @@ namespace FinalPaint
             // 
             this.textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 5F);
             this.textBox.Location = new System.Drawing.Point(165, 45);
-            this.textBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox.Margin = new System.Windows.Forms.Padding(2);
             this.textBox.Multiline = true;
             this.textBox.Name = "textBox";
             this.textBox.Size = new System.Drawing.Size(44, 16);
@@ -249,6 +250,7 @@ namespace FinalPaint
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.btn_saveServer);
             this.panel2.Controls.Add(this.logOut_btn);
             this.panel2.Controls.Add(this.redoButton);
             this.panel2.Controls.Add(this.label1);
@@ -280,7 +282,7 @@ namespace FinalPaint
             // 
             this.logOut_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.logOut_btn.Location = new System.Drawing.Point(4, 7);
-            this.logOut_btn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.logOut_btn.Margin = new System.Windows.Forms.Padding(2);
             this.logOut_btn.Name = "logOut_btn";
             this.logOut_btn.Size = new System.Drawing.Size(52, 24);
             this.logOut_btn.TabIndex = 4;
@@ -364,7 +366,7 @@ namespace FinalPaint
             // 
             this.button_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F);
             this.button_save.Location = new System.Drawing.Point(61, 40);
-            this.button_save.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_save.Margin = new System.Windows.Forms.Padding(4);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(52, 25);
             this.button_save.TabIndex = 2;
@@ -388,7 +390,7 @@ namespace FinalPaint
             // 
             this.button_open.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F);
             this.button_open.Location = new System.Drawing.Point(61, 7);
-            this.button_open.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_open.Margin = new System.Windows.Forms.Padding(4);
             this.button_open.Name = "button_open";
             this.button_open.Size = new System.Drawing.Size(52, 25);
             this.button_open.TabIndex = 3;
@@ -547,6 +549,18 @@ namespace FinalPaint
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
+            // btn_saveServer
+            // 
+            this.btn_saveServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F);
+            this.btn_saveServer.Location = new System.Drawing.Point(4, 40);
+            this.btn_saveServer.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_saveServer.Name = "btn_saveServer";
+            this.btn_saveServer.Size = new System.Drawing.Size(28, 25);
+            this.btn_saveServer.TabIndex = 5;
+            this.btn_saveServer.Text = "Save";
+            this.btn_saveServer.UseVisualStyleBackColor = true;
+            this.btn_saveServer.Click += new System.EventHandler(this.btn_saveServer_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -614,6 +628,7 @@ namespace FinalPaint
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button btnSelect;
         private System.Windows.Forms.Button logOut_btn;
+        private System.Windows.Forms.Button btn_saveServer;
     }
 }
 

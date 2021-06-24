@@ -54,8 +54,6 @@ namespace FinalPaint.Classes
     
         public void Save(Image img)
         {
-           
-
             SaveFileDialog save = new SaveFileDialog();
             save.Title = "Save Us";
             save.OverwritePrompt = true;
@@ -86,10 +84,18 @@ namespace FinalPaint.Classes
                 {
                     MessageBox.Show("Image cannot be saved", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-            
-        
+            } 
+        }
+
+
+        public string SaveServer(Image img)
+        {
            
+            //img.Save("testName1"); //Растр
+             
+            string res = MyJsonSerializer.SerializeToString(_storage.GetCurrentList()); //JSON
+            return res;
+              
         }
     }
 }

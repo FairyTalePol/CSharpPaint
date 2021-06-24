@@ -37,5 +37,19 @@ namespace FinalPaint.Classes
             });
             return list;
         }
+
+        public static string SerializeToString(List<FigureWithParametrs> figures)
+        {
+            Newtonsoft.Json.JsonSerializer serializer = new Newtonsoft.Json.JsonSerializer();
+            serializer.Converters.Add(new Newtonsoft.Json.Converters.JavaScriptDateTimeConverter());
+            serializer.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+            serializer.TypeNameHandling = Newtonsoft.Json.TypeNameHandling.All;
+            serializer.Formatting = Newtonsoft.Json.Formatting.Indented;
+
+            TextWriter s = new StringWriter();
+            serializer.Serialize(s, figures);
+            return s.ToString();
+
+        }
     }
 }

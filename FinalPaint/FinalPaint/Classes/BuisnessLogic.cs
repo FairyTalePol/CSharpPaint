@@ -258,6 +258,18 @@ namespace FinalPaint.Classes
             act();
         }
 
+        public void SaveServer(string serialized, string name, PictureType format)
+        {
+            PictureData pd = new PictureData();
+            pd.Picture = serialized;
+            pd.Type = format;
+            pd.UserId = 1;
+            RestApi r = RestApi.Create();
+            r.SavePicture(pd);
+
+
+        }
+
         public void Undo()
         {
             storage.Undo();

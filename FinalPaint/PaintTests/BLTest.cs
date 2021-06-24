@@ -28,7 +28,7 @@ namespace PaintTests
             _myGraphicsMock = new Mock<IMyGraphics>(MockBehavior.Strict);
             _blMock = new Mock<IBuisnessLogic>(MockBehavior.Strict);
             _storageMock = new Mock<IStorage>(MockBehavior.Strict);
-            _bl = BuisnessLogic.Create(/*_myGraphicsMock.Object*/);
+            _bl = BuisnessLogic.Create();
             _storage = Storage.Create();
             //var fieldInfo = typeof(BuisnessLogic).GetField("storage", BindingFlags.NonPublic | BindingFlags.Instance);
             ////   var actualData = fieldInfo.GetValue(workClass);
