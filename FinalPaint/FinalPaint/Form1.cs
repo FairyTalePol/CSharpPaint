@@ -288,5 +288,17 @@ namespace FinalPaint
             _mainForm = null;
             AuthorithationForm.CreateAuthorithationForm().Show();
         }
+
+        private void btn_saveServer_Click(object sender, EventArgs e)
+        {
+            Action save = SaveServer;
+            bl.Save(save);
+        }
+
+        private void SaveServer()
+        {
+            string serialized = _myGraphics.SaveServer();
+            bl.SaveServer(serialized, "testName1", PictureType.JSON);
+        }
     }
 }

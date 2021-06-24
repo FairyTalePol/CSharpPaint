@@ -153,6 +153,7 @@
     <Compile Include="AuthorithationForm.Designer.cs">
       <DependentUpon>AuthorithationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Enums\PictureType.cs" />
     <Compile Include="RegistrationForm.cs">
       <SubType>Form</SubType>
     </Compile>

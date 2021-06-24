@@ -77,7 +77,7 @@ namespace FinalPaint.Classes
 
         public void RequestTestWithPicture()
         {
-            IRestClient _restClient;
+          
 
             _restClient = new RestClient();
 
@@ -85,10 +85,23 @@ namespace FinalPaint.Classes
             PictureData pd = new PictureData
             {
                 UserId = 1,
-                Type = "JSON",
+                Type = PictureType.JSON,
                 Picture = "Serialized picture string"
 
             };
+
+            request.AddJsonBody(pd);
+            var response = _restClient.Execute(request);
+            var deserializedObject = response.Content;
+            Console.WriteLine(deserializedObject);
+        }
+
+        public void SavePicture(PictureData pd)
+        {
+            _restClient = new RestClient();
+
+            RestRequest request = new RestRequest { Resource = "https://localhost:44341/pictures/savepicture", Method = Method.POST };
+           
 
             request.AddJsonBody(pd);
             var response = _restClient.Execute(request);
