@@ -11,11 +11,11 @@ namespace FinalPaint.Classes
         private static RestApi _restApi;
         private IRestClient _restClient;
         private RestRequest _request;
+        private string _userId = "";
 
         private RestApi()
         {
             _restClient = new RestClient();
-
         }
 
 
@@ -40,17 +40,16 @@ namespace FinalPaint.Classes
             if (response.StatusCode==System.Net.HttpStatusCode.OK)
             {
                 var deserializedObject = new JsonSerializer().Deserialize<NewUserData>(response);
+                _userId = deserializedObject.Id;
                 return 0;
             }
             else
             {
                 return -1;
             }
-           
-
         }
 
-        public int  AuthorizationRequest(string email, string password)
+        public int AuthorizationRequest(string email, string password)
         {
             _request = new RestRequest { Resource = "https://localhost:44341/auth/authorize", Method = Method.GET };
             _request.AddQueryParameter("email", email);
@@ -62,7 +61,7 @@ namespace FinalPaint.Classes
                 return -2;
             }
 
-            var deserializedObject = new JsonSerializer().Deserialize<string>(response);
+            var deserializedObject =_userId= new JsonSerializer().Deserialize<string>(response);
 
             if (deserializedObject != null && deserializedObject != "" && deserializedObject != "-1")
             {
@@ -127,6 +126,17 @@ namespace FinalPaint.Classes
         }
 
 
+        public SingleUserStatistics GetUserStatisticsRequest()
+        {
+            _request = new RestRequest { Resource = "https://localhost:44341/auth/getStatistics", Method = Method.GET };
+            _request.AddQueryParameter("_userId", _userId);
+            var response = _restClient.Execute(_request);
+            var deserializedObject = new JsonSerializer().Deserialize<SingleUserStatistics>(response);
+            return deserializedObject;
+        }
+    }
+
+
 
     }
-}
+
