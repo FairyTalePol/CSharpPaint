@@ -245,7 +245,7 @@ namespace FinalPaint.Classes
                 }
                 act();
             }
-            catch (ArgumentNullException e)
+            catch (ArgumentNullException )
             {
 
             }

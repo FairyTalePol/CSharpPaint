@@ -212,12 +212,12 @@ namespace FinalPaint
             }
         }
 
-        private void Button_save_Click(object sender, EventArgs e)
-        {
-            Action save = Save;
-            bl.Save(save);
+        //private void Button_save_Click(object sender, EventArgs e)
+        //{
+        //    Action save = Save;
+        //    bl.Save(save);
 
-        }
+        //}
 
         private void Save()
         {
@@ -229,12 +229,12 @@ namespace FinalPaint
             mainDrawingSurface.Image = (Image)_myGraphics.GetBitmap();
         }
 
-        private void Button_open_Click(object sender, EventArgs e)
-        {
-            Action act = Load_;
-            bl.Load(act);
+        //private void Button_open_Click(object sender, EventArgs e)
+        //{
+        //    Action act = Load_;
+        //    bl.Load(act);
          
-        }
+        //}
 
 
         private void BtnHexagon_Click(object sender, EventArgs e)
@@ -299,6 +299,25 @@ namespace FinalPaint
         {
             string serialized = _myGraphics.SaveServer();
             bl.SaveServer(serialized, "testName1", PictureType.JSON);
+        }
+
+        private void openFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Action act = Load_;
+            bl.Load(act);
+        }
+
+        private void saveFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Action save = Save;
+            bl.Save(save);
+
+        }
+
+        private void saveFileOnServerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Action save = SaveServer;
+            bl.Save(save);
         }
     }
 }

@@ -32,6 +32,7 @@ namespace FinalPaint
         {
             var bl = BuisnessLogic.Create();
             int validCode = bl.AuthorizationRestApi(login_textBox.Text, password_textBox.Text);
+            message_lbl.Text = "Please wait...";
             switch (validCode)
             {
                 case 0 :
@@ -62,6 +63,7 @@ namespace FinalPaint
         }
         private void WrongInputMessage()
         {
+            message_lbl.Visible = false;
             message_lbl.Visible = true;
             password_textBox.BackColor = Color.Red;
             login_textBox.BackColor = Color.Red;
