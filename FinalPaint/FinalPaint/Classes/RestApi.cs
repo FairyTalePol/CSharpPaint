@@ -27,6 +27,14 @@ namespace FinalPaint.Classes
             }
             return _restApi;
         }
+        public void ClearUserId()
+        {
+            _userId = "";
+        }
+        public string GetUserId()
+        {
+            return _userId;
+        }
 
         public int RegistrationRequest(NewUserData newUserData)
         {

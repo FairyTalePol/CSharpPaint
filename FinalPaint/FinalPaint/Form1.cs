@@ -74,6 +74,8 @@ namespace FinalPaint
         private void PenChangeSizeTrackBar_Scroll(object sender, EventArgs e)
         {
             _myGraphics.SetPenWidth(penChangeSizeTrackBar.Value);
+            dropdownPenWidth.Text = Convert.ToString(penChangeSizeTrackBar.Value) + "px";
+
         }
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -277,13 +279,15 @@ namespace FinalPaint
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //_mainForm = null;
-            //AuthorithationForm.CreateAuthorithationForm().Show();
-            Application.Exit();
+            bl.ClearUserId();
+            _mainForm = null;
+            AuthorithationForm.CreateAuthorithationForm().Show();
+            //Application.Exit();
         }
 
         private void logOut_btn_Click(object sender, EventArgs e)
         {
+            bl.ClearUserId();
             _mainForm.Close();
             _mainForm = null;
             AuthorithationForm.CreateAuthorithationForm().Show();
@@ -318,6 +322,11 @@ namespace FinalPaint
         {
             Action save = SaveServer;
             bl.Save(save);
+        }
+
+        private void statisticToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -19,6 +19,7 @@ namespace FinalPaint.Classes
         private RestApi _r;
         
         
+        
 
         //private BuisnessLogic()
         //{
@@ -31,6 +32,10 @@ namespace FinalPaint.Classes
             storage = Storage.Create();
             _r = RestApi.Create();
             //myGraphics = myGraphicsUI;
+        }
+        public void ClearUserId()
+        {
+            _r.ClearUserId();
         }
 
         public void SetCurrentMode(EButtonDrawingType mode)

@@ -47,10 +47,11 @@ namespace FinalPaint
 
         private void SignUp_btn_Click(object sender, EventArgs e)
         {
-            message_lbl.Visible = false;
-
-            if (IsAllDataCorrect())
+            message_lbl.Visible = true;
+            
+            if (IsAllDataCorrect(sender, e))
             {
+                message_lbl.Text = "Please wait...";
                 if (AddData())
                 {
                     _registrationForm.Close();
@@ -167,8 +168,12 @@ namespace FinalPaint
                 return false;
             }
         }
-        private bool IsAllDataCorrect()
+        private bool IsAllDataCorrect(object sender, EventArgs e)
         {
+            FirstName_textBox_Leave(sender, e);
+            LastName_textbox_Leave(sender, e);
+            Email_textbox_Leave(sender, e);
+            Password_textbox_Leave(sender, e);
             if (IsFirstNameValid && IsLastNameValid && IsEmailValid && IsPasswordValid && IsConfirmed)
             {
                 message_lbl.Visible = false;

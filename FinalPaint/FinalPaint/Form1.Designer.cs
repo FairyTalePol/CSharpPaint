@@ -80,7 +80,7 @@ namespace FinalPaint
             // 
             // btnSelect
             // 
-            this.btnSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnSelect.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnSelect.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSelect.BackgroundImage")));
             this.btnSelect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSelect.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -98,7 +98,7 @@ namespace FinalPaint
             // 
             // btnRoundedRectangle
             // 
-            this.btnRoundedRectangle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnRoundedRectangle.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnRoundedRectangle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRoundedRectangle.BackgroundImage")));
             this.btnRoundedRectangle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnRoundedRectangle.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -128,10 +128,11 @@ namespace FinalPaint
             // 
             // nGon_button
             // 
-            this.nGon_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.nGon_button.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.nGon_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("nGon_button.BackgroundImage")));
             this.nGon_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.nGon_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.nGon_button.FlatAppearance.BorderSize = 0;
             this.nGon_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.nGon_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 5F);
             this.nGon_button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -146,10 +147,11 @@ namespace FinalPaint
             // 
             // btnHexagon
             // 
-            this.btnHexagon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnHexagon.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnHexagon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHexagon.BackgroundImage")));
             this.btnHexagon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnHexagon.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHexagon.FlatAppearance.BorderSize = 0;
             this.btnHexagon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHexagon.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnHexagon.Location = new System.Drawing.Point(1095, 18);
@@ -162,10 +164,11 @@ namespace FinalPaint
             // 
             // btnEllipse
             // 
-            this.btnEllipse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnEllipse.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnEllipse.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEllipse.BackgroundImage")));
             this.btnEllipse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnEllipse.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEllipse.FlatAppearance.BorderSize = 0;
             this.btnEllipse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEllipse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnEllipse.Location = new System.Drawing.Point(983, 18);
@@ -178,10 +181,11 @@ namespace FinalPaint
             // 
             // btnRectangle
             // 
-            this.btnRectangle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnRectangle.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnRectangle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRectangle.BackgroundImage")));
             this.btnRectangle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnRectangle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRectangle.FlatAppearance.BorderSize = 0;
             this.btnRectangle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRectangle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnRectangle.Location = new System.Drawing.Point(873, 18);
@@ -194,7 +198,7 @@ namespace FinalPaint
             // 
             // btnPoint
             // 
-            this.btnPoint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnPoint.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnPoint.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPoint.BackgroundImage")));
             this.btnPoint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnPoint.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -211,7 +215,7 @@ namespace FinalPaint
             // 
             // btnLine
             // 
-            this.btnLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnLine.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnLine.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLine.BackgroundImage")));
             this.btnLine.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnLine.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -228,13 +232,13 @@ namespace FinalPaint
             // 
             // btnPencil
             // 
-            this.btnPencil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnPencil.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnPencil.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPencil.BackgroundImage")));
             this.btnPencil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnPencil.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPencil.FlatAppearance.BorderSize = 0;
             this.btnPencil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPencil.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnPencil.ForeColor = System.Drawing.Color.White;
             this.btnPencil.Location = new System.Drawing.Point(501, 117);
             this.btnPencil.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.btnPencil.Name = "btnPencil";
@@ -286,7 +290,7 @@ namespace FinalPaint
             // 
             // redoButton
             // 
-            this.redoButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.redoButton.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.redoButton.FlatAppearance.BorderSize = 0;
             this.redoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.redoButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -312,7 +316,7 @@ namespace FinalPaint
             // 
             // undoButton
             // 
-            this.undoButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.undoButton.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.undoButton.FlatAppearance.BorderSize = 0;
             this.undoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.undoButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -525,12 +529,13 @@ namespace FinalPaint
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(40, 40);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1344, 49);
+            this.menuStrip1.Size = new System.Drawing.Size(1344, 52);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -542,7 +547,7 @@ namespace FinalPaint
             this.saveFileOnServerToolStripMenuItem,
             this.statisticToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(87, 45);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(87, 48);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // openFileToolStripMenuItem
@@ -632,6 +637,7 @@ namespace FinalPaint
             this.statisticToolStripMenuItem.Name = "statisticToolStripMenuItem";
             this.statisticToolStripMenuItem.Size = new System.Drawing.Size(448, 54);
             this.statisticToolStripMenuItem.Text = "Statistic";
+            this.statisticToolStripMenuItem.Click += new System.EventHandler(this.statisticToolStripMenuItem_Click);
             // 
             // MainForm
             // 
