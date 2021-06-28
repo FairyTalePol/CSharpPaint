@@ -326,7 +326,9 @@ namespace FinalPaint
 
         private void statisticToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            var user = bl.GetUserStatistics();
+            var s = new StatisticPage(user);
+            s.Show();
         }
     }
 }

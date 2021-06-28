@@ -138,6 +138,7 @@ namespace FinalPaint.Classes
             storage.AddCurrent(clean);
            
         }
+        
 
         public int RegistrationRestApi(NewUserData newUser)
         {

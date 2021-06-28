@@ -535,7 +535,7 @@ namespace FinalPaint
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1344, 52);
+            this.menuStrip1.Size = new System.Drawing.Size(1344, 49);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -547,7 +547,7 @@ namespace FinalPaint
             this.saveFileOnServerToolStripMenuItem,
             this.statisticToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(87, 48);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(87, 45);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // openFileToolStripMenuItem
@@ -636,7 +636,7 @@ namespace FinalPaint
             // 
             this.statisticToolStripMenuItem.Name = "statisticToolStripMenuItem";
             this.statisticToolStripMenuItem.Size = new System.Drawing.Size(448, 54);
-            this.statisticToolStripMenuItem.Text = "Statistic";
+            this.statisticToolStripMenuItem.Text = "Statistics";
             this.statisticToolStripMenuItem.Click += new System.EventHandler(this.statisticToolStripMenuItem_Click);
             // 
             // MainForm

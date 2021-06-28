@@ -12,14 +12,39 @@ namespace FinalPaint
 {
     public partial class StatisticPage : Form
     {
-        public StatisticPage()
+        public StatisticPage(SingleUserStatistics user)
         {
             InitializeComponent();
+            SetStatistics(user);
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        public void SetStatistics(SingleUserStatistics user)
         {
-
+            userValue_lbl.Text = user.Id;
+            activityValue_lbl.Text = user.LastActivity;
+            jpgValue_lbl.Text = user.AmountJPG;
+            bmpValue_lbl.Text = user.AmountBMP;
+            jsonValue_lbl.Text = user.AmountJson;
+            totalValue_lbl.Text = user.AmountTotal;
+            registrValue_lbl.Text = user.RegistrationDate;
         }
+        public void ClearStatistics()
+        {
+            userValue_lbl.Text = "";
+            activityValue_lbl.Text = "";
+            jpgValue_lbl.Text = "";
+            bmpValue_lbl.Text = "";
+            jsonValue_lbl.Text = "";
+            totalValue_lbl.Text = "";
+            registrValue_lbl.Text = "";
+        }
+    
+
+        private void goBack_btn_Click(object sender, EventArgs e)
+        {
+            ClearStatistics();
+            this.Close();
+        }
+
+        
     }
 }

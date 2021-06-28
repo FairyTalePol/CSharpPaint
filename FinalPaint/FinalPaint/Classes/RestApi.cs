@@ -11,7 +11,7 @@ namespace FinalPaint.Classes
         private static RestApi _restApi;
         private IRestClient _restClient;
         private RestRequest _request;
-        private string _userId = "";
+        private string _userId = "0";
 
         private RestApi()
         {
@@ -29,7 +29,7 @@ namespace FinalPaint.Classes
         }
         public void ClearUserId()
         {
-            _userId = "";
+            _userId = "0";
         }
         public string GetUserId()
         {
