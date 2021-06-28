@@ -82,6 +82,27 @@ namespace FinalPaint.Classes
 
         }
 
+        public bool ChangePasswordRequest(string password)
+        {
+            _request=new RestRequest { Resource = "https://localhost:44341/auth/changePassword", Method = Method.POST };
+            _request.AddJsonBody(_userId);
+            _request.AddJsonBody(password);
+            var response = _restClient.Execute(_request);
+            var deserializedObject = new JsonSerializer().Deserialize<bool>(response);
+            return deserializedObject;
+        }
+
+        public string GetPasswordRequest()
+        {
+            _request = new RestRequest { Resource = "https://localhost:44341/auth/getPassword", Method = Method.GET };
+            _request.AddQueryParameter("userId", _userId);
+            var response = _restClient.Execute(_request);
+            var deserializedObject = new JsonSerializer().Deserialize<string>(response);
+            //в deserializedObject хранится либо пароль юзера, либо строка с текстом
+            //"No user found" в случае BadRequest.
+            return deserializedObject;
+        }
+
         public void RequestTestWithPicture()
         {
           
