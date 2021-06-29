@@ -195,6 +195,12 @@
     <Compile Include="Interfaces_\IStorage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RemoteSaveForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RemoteSaveForm.Designer.cs">
+      <DependentUpon>RemoteSaveForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Classes\SingleUserStatistics.cs" />
     <Compile Include="StatisticPage.cs">
       <SubType>Form</SubType>
@@ -219,9 +225,13 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="RegistrationForm.resx">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RemoteSaveForm.resx">
+      <DependentUpon>RemoteSaveForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StatisticPage.resx">
       <DependentUpon>StatisticPage.cs</DependentUpon>

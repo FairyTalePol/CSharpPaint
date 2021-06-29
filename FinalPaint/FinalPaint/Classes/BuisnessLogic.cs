@@ -287,14 +287,23 @@ namespace FinalPaint.Classes
             act();
         }
 
-        public void SaveServer(string serialized, string name, PictureType format)
+        public void RemoteSaveForm()
         {
+            RemoteSaveForm form = new RemoteSaveForm();
+            form.ShowDialog();
+        }
+
+        public void SaveServer(string name, PictureType format)
+        {
+            string serialized = myGraphics.SaveServer(format);
             PictureData pd = new PictureData();
             pd.Picture = serialized;
             pd.Type = format;
             pd.UserId = 1;
+            pd.Name = name;
             RestApi r = RestApi.Create();
             r.SavePicture(pd);
+            //r.RequestTestWithPicture();
 
 
         }

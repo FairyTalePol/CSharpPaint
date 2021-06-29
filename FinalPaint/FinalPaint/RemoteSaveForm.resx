@@ -117,31 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Authorize" xml:space="preserve">
-    <value>authorize</value>
-  </data>
-  <data name="AuthPath" xml:space="preserve">
-    <value>https://localhost:44341/auth/</value>
-  </data>
-  <data name="ChangePassword" xml:space="preserve">
-    <value>changePassword</value>
-  </data>
-  <data name="GetAllPictures" xml:space="preserve">
-    <value>userid</value>
-  </data>
-  <data name="GetPassword" xml:space="preserve">
-    <value>getPassword</value>
-  </data>
-  <data name="GetStatistics" xml:space="preserve">
-    <value>getStatistics</value>
-  </data>
-  <data name="PicturesPath" xml:space="preserve">
-    <value>https://localhost:44341/pictures/</value>
-  </data>
-  <data name="Register" xml:space="preserve">
-    <value>register</value>
-  </data>
-  <data name="SavePicture" xml:space="preserve">
-    <value>savepicture</value>
-  </data>
 </root>
