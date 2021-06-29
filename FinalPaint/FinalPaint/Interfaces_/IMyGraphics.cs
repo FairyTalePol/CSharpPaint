@@ -10,7 +10,7 @@ namespace FinalPaint.Interfaces_
         void BackupPen();
         void RestorePen();
         bool IsCurrentSurfaceTemporary();
-
+        void ClearMyGraphics();
         void ClearSurface();
         void DrawEllipse(int startX, int startY, int finishX, int finishY);
         void DrawRectangle(int startX, int startY, int finishX, int finishY);

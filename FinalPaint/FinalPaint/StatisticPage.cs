@@ -19,13 +19,22 @@ namespace FinalPaint
         }
         public void SetStatistics(SingleUserStatistics user)
         {
-           // userValue_lbl.Text = user.Id;
+            userValue_lbl.Text = user.Email;
             activityValue_lbl.Text = user.LastActivity;
-            jpgValue_lbl.Text = user.AmountJPG;
-            bmpValue_lbl.Text = user.AmountBMP;
-            jsonValue_lbl.Text = user.AmountJson;
+            jpgValue_lbl.Text = CheckNull(user.AmountJPG);
+            bmpValue_lbl.Text = CheckNull(user.AmountBMP);
+            jsonValue_lbl.Text = CheckNull(user.AmountJson);
             totalValue_lbl.Text = user.AmountTotal;
             registrValue_lbl.Text = user.RegistrationDate;
+        }
+        public string CheckNull(string statisticsItem)
+        {
+            var res = statisticsItem;
+            if (statisticsItem == null || statisticsItem == "")
+            {
+                res = "0";
+            }
+            return res;
         }
         public void ClearStatistics()
         {

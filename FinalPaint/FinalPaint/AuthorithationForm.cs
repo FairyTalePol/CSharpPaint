@@ -31,9 +31,9 @@ namespace FinalPaint
         private void signIn_btn_Click(object sender, EventArgs e)
         {
             var bl = BuisnessLogic.Create();
-            int validCode = bl.AuthorizationRestApi(login_textBox.Text, password_textBox.Text);
             message_lbl.Visible = true;
             message_lbl.Text = "Please wait...";
+            int validCode = bl.AuthorizationRestApi(login_textBox.Text, password_textBox.Text);
             switch (validCode)
             {
                 case 0 :

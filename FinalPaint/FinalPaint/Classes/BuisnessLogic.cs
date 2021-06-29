@@ -34,6 +34,10 @@ namespace FinalPaint.Classes
             _r = RestApi.Create();
             //myGraphics = myGraphicsUI;
         }
+        public void ClearMyGraphics()
+        {
+            myGraphics.ClearMyGraphics();
+        }
         public string GetUserPassword()
         {
             var _password = _r.GetPasswordRequest();
@@ -61,6 +65,10 @@ namespace FinalPaint.Classes
         public void SetDisableUndoRedo(Action act)
         {
             disableUndoRedo = act;
+        }
+        public void ClearBL()
+        {
+            _bl = null;
         }
 
         public void Initialize(IMyGraphics myGraphicsUI)
