@@ -8,6 +8,7 @@ namespace FinalPaint.Classes
 {
     class RestApi
     {
+        string BaseAdress = "https://localhost:44341/"; //вынести в конфиг
         private static RestApi _restApi;
         private IRestClient _restClient;
         private RestRequest _request;
@@ -45,14 +46,14 @@ namespace FinalPaint.Classes
             return _userId;
         }
 
-        public int RegistrationRequest(NewUserData newUserData)
+        public int RegistrationRequest(NewUserData newUserData) //спросить у дани на счет статус код 0
         {
             _request = new RestRequest { Resource = _authPath+_register, Method = Method.POST };
             _request.AddJsonBody(newUserData);
             var response = _restClient.Execute(_request);
             if(response.StatusCode == 0 )
             {
-                return -2;
+                return -2; //переделать на енамки
             }
             if (response.StatusCode==System.Net.HttpStatusCode.OK)
             {
@@ -114,10 +115,7 @@ namespace FinalPaint.Classes
 
         public void RequestTestWithPicture()
         {
-          
-
             _restClient = new RestClient();
-
             RestRequest request = new RestRequest { Resource = "https://localhost:44341/pictures/savepicture", Method = Method.POST };
             PictureData pd = new PictureData
             {
@@ -126,6 +124,7 @@ namespace FinalPaint.Classes
                 Picture = "Serialized picture string"
 
             };
+         
 
             request.AddJsonBody(pd);
             var response = _restClient.Execute(request);
