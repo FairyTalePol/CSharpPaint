@@ -12,6 +12,15 @@ namespace FinalPaint.Classes
         private IRestClient _restClient;
         private RestRequest _request;
         private string _userId = "0";
+        private string _authPath = Properties.Resources.AuthPath;
+        private string _register = Properties.Resources.Register;
+        private string _authorize = Properties.Resources.Authorize;
+        private string _changePassword = Properties.Resources.ChangePassword;
+        private string _getPassword = Properties.Resources.GetPassword;
+        private string _getStatistics = Properties.Resources.GetStatistics;
+        private string _picturesPath = Properties.Resources.PicturesPath;
+        private string _savepicture = Properties.Resources.SavePicture;
+        private string _getAllPictures = Properties.Resources.GetAllPictures;
 
         private RestApi()
         {
@@ -38,7 +47,7 @@ namespace FinalPaint.Classes
 
         public int RegistrationRequest(NewUserData newUserData)
         {
-            _request = new RestRequest { Resource = "https://localhost:44341/auth/register", Method = Method.POST };
+            _request = new RestRequest { Resource = _authPath+_register, Method = Method.POST };
             _request.AddJsonBody(newUserData);
             var response = _restClient.Execute(_request);
             if(response.StatusCode == 0 )
@@ -59,11 +68,11 @@ namespace FinalPaint.Classes
 
         public int AuthorizationRequest(string email, string password)
         {
-            _request = new RestRequest { Resource = "https://localhost:44341/auth/authorize", Method = Method.GET };
+            _request = new RestRequest { Resource = _authPath+_authorize, Method = Method.GET };
             _request.AddQueryParameter("email", email);
             _request.AddQueryParameter("password", password);
             var response = _restClient.Execute(_request);
-            //id
+     
             if (response.StatusCode == 0)
             {
                 return -2;
@@ -84,7 +93,7 @@ namespace FinalPaint.Classes
 
         public bool ChangePasswordRequest(string password)
         {
-            _request=new RestRequest { Resource = "https://localhost:44341/auth/changePassword", Method = Method.POST };
+            _request=new RestRequest { Resource = _authPath+_changePassword, Method = Method.POST };
             _request.AddJsonBody(_userId);
             _request.AddJsonBody(password);
             var response = _restClient.Execute(_request);
@@ -94,7 +103,7 @@ namespace FinalPaint.Classes
 
         public string GetPasswordRequest()
         {
-            _request = new RestRequest { Resource = "https://localhost:44341/auth/getPassword", Method = Method.GET };
+            _request = new RestRequest { Resource = _authPath+_getPassword, Method = Method.GET };
             _request.AddQueryParameter("userId", _userId);
             var response = _restClient.Execute(_request);
             var deserializedObject = new JsonSerializer().Deserialize<string>(response);
@@ -128,7 +137,7 @@ namespace FinalPaint.Classes
         {
             _restClient = new RestClient();
 
-            RestRequest request = new RestRequest { Resource = "https://localhost:44341/pictures/savepicture", Method = Method.POST };
+            RestRequest request = new RestRequest { Resource = _picturesPath+_savepicture, Method = Method.POST };
            
 
             request.AddJsonBody(pd);
@@ -144,7 +153,7 @@ namespace FinalPaint.Classes
 
             _restClient = new RestClient();
 
-            RestRequest request = new RestRequest { Resource = "https://localhost:44341/pictures/userid", Method = Method.GET };
+            RestRequest request = new RestRequest { Resource = _picturesPath+_getAllPictures, Method = Method.GET };
 
 
             request.AddQueryParameter("userId", "1");
@@ -157,7 +166,7 @@ namespace FinalPaint.Classes
 
         public SingleUserStatistics GetUserStatisticsRequest()
         {
-            _request = new RestRequest { Resource = "https://localhost:44341/auth/getStatistics", Method = Method.GET };
+            _request = new RestRequest { Resource = _authPath+_getStatistics, Method = Method.GET };
             _request.AddQueryParameter("_userId", _userId);
             var response = _restClient.Execute(_request);
             var deserializedObject = new JsonSerializer().Deserialize<SingleUserStatistics>(response);
