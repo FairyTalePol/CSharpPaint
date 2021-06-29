@@ -272,13 +272,15 @@ namespace FinalPaint.Classes
 
         public void SaveServer(string name, PictureType format)
         {
-            string serialized = myGraphics.SaveServer();
+            string serialized = myGraphics.SaveServer(format);
             PictureData pd = new PictureData();
             pd.Picture = serialized;
             pd.Type = format;
             pd.UserId = 1;
+            pd.Name = name;
             RestApi r = RestApi.Create();
             r.SavePicture(pd);
+            //r.RequestTestWithPicture();
 
 
         }

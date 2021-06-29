@@ -31,7 +31,9 @@ namespace FinalPaint
         {
             string name = textBoxName.Text;
             PictureType type = (PictureType) Enum.Parse(typeof(PictureType),comboBoxFormat.SelectedItem.ToString());
+            bl = BuisnessLogic.Create();
             bl.SaveServer(name, type);
+            MessageBox.Show("Картинка успешно сохранена");
             this.Close();
         }
 

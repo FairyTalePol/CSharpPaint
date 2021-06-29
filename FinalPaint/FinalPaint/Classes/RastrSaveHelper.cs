@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Windows.Forms;
 
 namespace FinalPaint.Classes
@@ -88,12 +90,30 @@ namespace FinalPaint.Classes
         }
 
 
-        public string SaveServer(Image img)
+        public string SaveServer(Image img, PictureType format)
         {
-           
+
             //img.Save("testName1"); //Растр
-             
-            string res = MyJsonSerializer.SerializeToString(_storage.GetCurrentList()); //JSON
+            string res = "";
+            switch (format)
+            {
+                case PictureType.JSON:
+                    res = MyJsonSerializer.SerializeToString(_storage.GetCurrentList()); //JSON
+                    break;
+                default:
+                    using (MemoryStream m = new MemoryStream())
+                    {
+                        img.Save(m, ImageFormat.Jpeg);
+                        byte[] imageBytes = m.ToArray();
+
+                        // Convert byte[] to Base64 String
+                        res = Convert.ToBase64String(imageBytes);                   
+                    }
+            
+                    break;
+            }
+
+      
             return res;
               
         }
