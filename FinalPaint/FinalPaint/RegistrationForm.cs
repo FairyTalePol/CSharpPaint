@@ -170,6 +170,7 @@ namespace FinalPaint
         }
         private bool IsAllDataCorrect(object sender, EventArgs e)
         {
+            var answer = false;
             FirstName_textBox_Leave(sender, e);
             LastName_textbox_Leave(sender, e);
             Email_textbox_Leave(sender, e);
@@ -177,13 +178,15 @@ namespace FinalPaint
             if (IsFirstNameValid && IsLastNameValid && IsEmailValid && IsPasswordValid && IsConfirmed)
             {
                 message_lbl.Visible = false;
-                return true;
+                answer = true;
             }
             else
             {
                 message_lbl.Visible = true;
-                return false;
+                answer = true;
             }
+            return answer;
+
         }
         private void WrongInputColored(TextBox textBox)
         {

@@ -17,9 +17,10 @@ namespace FinalPaint.Classes
         Action disableUndoRedo;
         public bool EnableUndoRedo = false;
         private RestApi _r;
-        
-        
-        
+        private string _password;
+
+
+
 
         //private BuisnessLogic()
         //{
@@ -32,6 +33,20 @@ namespace FinalPaint.Classes
             storage = Storage.Create();
             _r = RestApi.Create();
             //myGraphics = myGraphicsUI;
+        }
+        public string GetUserPassword()
+        {
+            var _password = _r.GetPasswordRequest();
+            return _password;
+        }
+        public bool ChangePassword(string newPassword)
+        {
+            var answer = _r.ChangePasswordRequest(newPassword);
+            if (answer)
+            {
+                _password = newPassword;
+            }
+            return answer;
         }
         public void ClearUserId()
         {

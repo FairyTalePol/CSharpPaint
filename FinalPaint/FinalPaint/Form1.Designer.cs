@@ -63,14 +63,16 @@ namespace FinalPaint
             this.openFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileOnServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.logOut_btn = new System.Windows.Forms.Button();
+            this.statisticToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainDrawingSurface = new System.Windows.Forms.PictureBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.button7 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.statisticToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.penChangeSizeTrackBar)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -253,7 +255,6 @@ namespace FinalPaint
             this.panel2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.textBox);
-            this.panel2.Controls.Add(this.logOut_btn);
             this.panel2.Controls.Add(this.nGon_button);
             this.panel2.Controls.Add(this.redoButton);
             this.panel2.Controls.Add(this.label1);
@@ -294,7 +295,7 @@ namespace FinalPaint
             this.redoButton.FlatAppearance.BorderSize = 0;
             this.redoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.redoButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.redoButton.Location = new System.Drawing.Point(185, 2);
+            this.redoButton.Location = new System.Drawing.Point(186, 4);
             this.redoButton.Margin = new System.Windows.Forms.Padding(6);
             this.redoButton.Name = "redoButton";
             this.redoButton.Size = new System.Drawing.Size(104, 48);
@@ -307,12 +308,12 @@ namespace FinalPaint
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(409, 10);
+            this.label1.Location = new System.Drawing.Point(400, 13);
             this.label1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 32);
+            this.label1.Size = new System.Drawing.Size(79, 32);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Size";
+            this.label1.Text = "Size:";
             // 
             // undoButton
             // 
@@ -320,7 +321,7 @@ namespace FinalPaint
             this.undoButton.FlatAppearance.BorderSize = 0;
             this.undoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.undoButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.undoButton.Location = new System.Drawing.Point(84, 2);
+            this.undoButton.Location = new System.Drawing.Point(282, 4);
             this.undoButton.Margin = new System.Windows.Forms.Padding(6);
             this.undoButton.Name = "undoButton";
             this.undoButton.Size = new System.Drawing.Size(104, 48);
@@ -532,10 +533,11 @@ namespace FinalPaint
             this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(40, 40);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.userToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1344, 49);
+            this.menuStrip1.Size = new System.Drawing.Size(1344, 52);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -553,38 +555,53 @@ namespace FinalPaint
             // openFileToolStripMenuItem
             // 
             this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
-            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(448, 54);
+            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(422, 54);
             this.openFileToolStripMenuItem.Text = "Open file";
             this.openFileToolStripMenuItem.Click += new System.EventHandler(this.openFileToolStripMenuItem_Click);
             // 
             // saveFileToolStripMenuItem
             // 
             this.saveFileToolStripMenuItem.Name = "saveFileToolStripMenuItem";
-            this.saveFileToolStripMenuItem.Size = new System.Drawing.Size(448, 54);
+            this.saveFileToolStripMenuItem.Size = new System.Drawing.Size(422, 54);
             this.saveFileToolStripMenuItem.Text = "Save file";
             this.saveFileToolStripMenuItem.Click += new System.EventHandler(this.saveFileToolStripMenuItem_Click);
             // 
             // saveFileOnServerToolStripMenuItem
             // 
             this.saveFileOnServerToolStripMenuItem.Name = "saveFileOnServerToolStripMenuItem";
-            this.saveFileOnServerToolStripMenuItem.Size = new System.Drawing.Size(448, 54);
+            this.saveFileOnServerToolStripMenuItem.Size = new System.Drawing.Size(422, 54);
             this.saveFileOnServerToolStripMenuItem.Text = "Save file on server";
             this.saveFileOnServerToolStripMenuItem.Click += new System.EventHandler(this.saveFileOnServerToolStripMenuItem_Click);
             // 
-            // logOut_btn
+            // statisticToolStripMenuItem
             // 
-            this.logOut_btn.FlatAppearance.BorderSize = 0;
-            this.logOut_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.logOut_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.logOut_btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.logOut_btn.Location = new System.Drawing.Point(283, 2);
-            this.logOut_btn.Margin = new System.Windows.Forms.Padding(4);
-            this.logOut_btn.Name = "logOut_btn";
-            this.logOut_btn.Size = new System.Drawing.Size(123, 46);
-            this.logOut_btn.TabIndex = 4;
-            this.logOut_btn.Text = "Log Out";
-            this.logOut_btn.UseVisualStyleBackColor = true;
-            this.logOut_btn.Click += new System.EventHandler(this.logOut_btn_Click);
+            this.statisticToolStripMenuItem.Name = "statisticToolStripMenuItem";
+            this.statisticToolStripMenuItem.Size = new System.Drawing.Size(422, 54);
+            this.statisticToolStripMenuItem.Text = "Statistics";
+            this.statisticToolStripMenuItem.Click += new System.EventHandler(this.statisticToolStripMenuItem_Click);
+            // 
+            // userToolStripMenuItem
+            // 
+            this.userToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.changePasswordToolStripMenuItem,
+            this.logOutToolStripMenuItem});
+            this.userToolStripMenuItem.Name = "userToolStripMenuItem";
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(102, 48);
+            this.userToolStripMenuItem.Text = "User";
+            // 
+            // changePasswordToolStripMenuItem
+            // 
+            this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(448, 54);
+            this.changePasswordToolStripMenuItem.Text = "Change password";
+            this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
+            // 
+            // logOutToolStripMenuItem
+            // 
+            this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(448, 54);
+            this.logOutToolStripMenuItem.Text = "Log out";
+            this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
             // mainDrawingSurface
             // 
@@ -631,13 +648,6 @@ namespace FinalPaint
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1352, 183);
             this.panel1.TabIndex = 0;
-            // 
-            // statisticToolStripMenuItem
-            // 
-            this.statisticToolStripMenuItem.Name = "statisticToolStripMenuItem";
-            this.statisticToolStripMenuItem.Size = new System.Drawing.Size(448, 54);
-            this.statisticToolStripMenuItem.Text = "Statistics";
-            this.statisticToolStripMenuItem.Click += new System.EventHandler(this.statisticToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -700,7 +710,6 @@ namespace FinalPaint
         private System.Windows.Forms.Button redoButton;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button btnSelect;
-        private System.Windows.Forms.Button logOut_btn;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
@@ -708,6 +717,9 @@ namespace FinalPaint
         private System.Windows.Forms.ToolStripMenuItem saveFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveFileOnServerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem statisticToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem userToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
     }
 }
 

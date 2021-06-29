@@ -53,6 +53,7 @@ namespace FinalPaint
             this.registration_lbl.AutoSize = true;
             this.registration_lbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.registration_lbl.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold);
+            this.registration_lbl.ForeColor = System.Drawing.SystemColors.ControlText;
             this.registration_lbl.Location = new System.Drawing.Point(260, 108);
             this.registration_lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.registration_lbl.Name = "registration_lbl";
@@ -64,6 +65,7 @@ namespace FinalPaint
             // 
             this.lastName_lbl.AutoSize = true;
             this.lastName_lbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lastName_lbl.ForeColor = System.Drawing.SystemColors.Control;
             this.lastName_lbl.Location = new System.Drawing.Point(182, 294);
             this.lastName_lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lastName_lbl.Name = "lastName_lbl";
@@ -75,7 +77,7 @@ namespace FinalPaint
             // 
             this.lastName_textbox.BackColor = System.Drawing.Color.LightGray;
             this.lastName_textbox.Location = new System.Drawing.Point(186, 341);
-            this.lastName_textbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lastName_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.lastName_textbox.Name = "lastName_textbox";
             this.lastName_textbox.Size = new System.Drawing.Size(396, 38);
             this.lastName_textbox.TabIndex = 2;
@@ -86,6 +88,7 @@ namespace FinalPaint
             // 
             this.firstName_lbl.AutoSize = true;
             this.firstName_lbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.firstName_lbl.ForeColor = System.Drawing.SystemColors.Control;
             this.firstName_lbl.Location = new System.Drawing.Point(182, 196);
             this.firstName_lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.firstName_lbl.Name = "firstName_lbl";
@@ -97,7 +100,7 @@ namespace FinalPaint
             // 
             this.firstName_textBox.BackColor = System.Drawing.Color.LightGray;
             this.firstName_textBox.Location = new System.Drawing.Point(188, 240);
-            this.firstName_textBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.firstName_textBox.Margin = new System.Windows.Forms.Padding(4);
             this.firstName_textBox.Name = "firstName_textBox";
             this.firstName_textBox.Size = new System.Drawing.Size(396, 38);
             this.firstName_textBox.TabIndex = 1;
@@ -108,6 +111,7 @@ namespace FinalPaint
             // 
             this.email_lbl.AutoSize = true;
             this.email_lbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.email_lbl.ForeColor = System.Drawing.SystemColors.Control;
             this.email_lbl.Location = new System.Drawing.Point(182, 391);
             this.email_lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.email_lbl.Name = "email_lbl";
@@ -119,7 +123,7 @@ namespace FinalPaint
             // 
             this.email_textbox.BackColor = System.Drawing.Color.LightGray;
             this.email_textbox.Location = new System.Drawing.Point(188, 438);
-            this.email_textbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.email_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.email_textbox.Name = "email_textbox";
             this.email_textbox.Size = new System.Drawing.Size(396, 38);
             this.email_textbox.TabIndex = 3;
@@ -130,6 +134,7 @@ namespace FinalPaint
             // 
             this.confirmPassword_lbl.AutoSize = true;
             this.confirmPassword_lbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.confirmPassword_lbl.ForeColor = System.Drawing.SystemColors.Control;
             this.confirmPassword_lbl.Location = new System.Drawing.Point(182, 591);
             this.confirmPassword_lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.confirmPassword_lbl.Name = "confirmPassword_lbl";
@@ -141,7 +146,7 @@ namespace FinalPaint
             // 
             this.confirmPassword_textBox.BackColor = System.Drawing.Color.LightGray;
             this.confirmPassword_textBox.Location = new System.Drawing.Point(188, 637);
-            this.confirmPassword_textBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.confirmPassword_textBox.Margin = new System.Windows.Forms.Padding(4);
             this.confirmPassword_textBox.Name = "confirmPassword_textBox";
             this.confirmPassword_textBox.PasswordChar = '*';
             this.confirmPassword_textBox.Size = new System.Drawing.Size(396, 38);
@@ -153,6 +158,7 @@ namespace FinalPaint
             // 
             this.password_lbl.AutoSize = true;
             this.password_lbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.password_lbl.ForeColor = System.Drawing.SystemColors.Control;
             this.password_lbl.Location = new System.Drawing.Point(182, 488);
             this.password_lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.password_lbl.Name = "password_lbl";
@@ -164,7 +170,7 @@ namespace FinalPaint
             // 
             this.password_textBox.BackColor = System.Drawing.Color.LightGray;
             this.password_textBox.Location = new System.Drawing.Point(188, 535);
-            this.password_textBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.password_textBox.Margin = new System.Windows.Forms.Padding(4);
             this.password_textBox.Name = "password_textBox";
             this.password_textBox.PasswordChar = '*';
             this.password_textBox.Size = new System.Drawing.Size(396, 38);
@@ -175,7 +181,7 @@ namespace FinalPaint
             // signUp_btn
             // 
             this.signUp_btn.Location = new System.Drawing.Point(302, 767);
-            this.signUp_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.signUp_btn.Margin = new System.Windows.Forms.Padding(4);
             this.signUp_btn.Name = "signUp_btn";
             this.signUp_btn.Size = new System.Drawing.Size(156, 58);
             this.signUp_btn.TabIndex = 6;
@@ -186,7 +192,7 @@ namespace FinalPaint
             // goBack_btn
             // 
             this.goBack_btn.Location = new System.Drawing.Point(302, 851);
-            this.goBack_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.goBack_btn.Margin = new System.Windows.Forms.Padding(4);
             this.goBack_btn.Name = "goBack_btn";
             this.goBack_btn.Size = new System.Drawing.Size(156, 58);
             this.goBack_btn.TabIndex = 7;
@@ -231,7 +237,7 @@ namespace FinalPaint
             this.Controls.Add(this.lastName_lbl);
             this.Controls.Add(this.registration_lbl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "RegistrationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

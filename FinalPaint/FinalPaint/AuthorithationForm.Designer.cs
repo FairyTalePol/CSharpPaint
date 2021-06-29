@@ -46,7 +46,7 @@ namespace FinalPaint
             this.authorization_lbl.AutoSize = true;
             this.authorization_lbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.authorization_lbl.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.authorization_lbl.Location = new System.Drawing.Point(144, 112);
+            this.authorization_lbl.Location = new System.Drawing.Point(152, 105);
             this.authorization_lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.authorization_lbl.Name = "authorization_lbl";
             this.authorization_lbl.Size = new System.Drawing.Size(305, 71);
@@ -57,7 +57,8 @@ namespace FinalPaint
             // 
             this.login_lbl.AutoSize = true;
             this.login_lbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.login_lbl.Location = new System.Drawing.Point(164, 229);
+            this.login_lbl.ForeColor = System.Drawing.SystemColors.Control;
+            this.login_lbl.Location = new System.Drawing.Point(172, 222);
             this.login_lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.login_lbl.Name = "login_lbl";
             this.login_lbl.Size = new System.Drawing.Size(86, 32);
@@ -68,8 +69,8 @@ namespace FinalPaint
             // 
             this.login_textBox.BackColor = System.Drawing.Color.LightGray;
             this.login_textBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.login_textBox.Location = new System.Drawing.Point(172, 264);
-            this.login_textBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.login_textBox.Location = new System.Drawing.Point(180, 257);
+            this.login_textBox.Margin = new System.Windows.Forms.Padding(4);
             this.login_textBox.Name = "login_textBox";
             this.login_textBox.Size = new System.Drawing.Size(260, 38);
             this.login_textBox.TabIndex = 1;
@@ -78,7 +79,8 @@ namespace FinalPaint
             // 
             this.password_lbl.AutoSize = true;
             this.password_lbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.password_lbl.Location = new System.Drawing.Point(164, 308);
+            this.password_lbl.ForeColor = System.Drawing.SystemColors.Control;
+            this.password_lbl.Location = new System.Drawing.Point(172, 301);
             this.password_lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.password_lbl.Name = "password_lbl";
             this.password_lbl.Size = new System.Drawing.Size(139, 32);
@@ -88,8 +90,8 @@ namespace FinalPaint
             // password_textBox
             // 
             this.password_textBox.BackColor = System.Drawing.Color.LightGray;
-            this.password_textBox.Location = new System.Drawing.Point(172, 345);
-            this.password_textBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.password_textBox.Location = new System.Drawing.Point(180, 338);
+            this.password_textBox.Margin = new System.Windows.Forms.Padding(4);
             this.password_textBox.Name = "password_textBox";
             this.password_textBox.PasswordChar = '*';
             this.password_textBox.Size = new System.Drawing.Size(260, 38);
@@ -99,8 +101,8 @@ namespace FinalPaint
             // 
             this.signIn_btn.BackColor = System.Drawing.Color.LightGray;
             this.signIn_btn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.signIn_btn.Location = new System.Drawing.Point(230, 448);
-            this.signIn_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.signIn_btn.Location = new System.Drawing.Point(235, 448);
+            this.signIn_btn.Margin = new System.Windows.Forms.Padding(4);
             this.signIn_btn.Name = "signIn_btn";
             this.signIn_btn.Size = new System.Drawing.Size(140, 46);
             this.signIn_btn.TabIndex = 3;
@@ -112,8 +114,8 @@ namespace FinalPaint
             // 
             this.signUp_btn.BackColor = System.Drawing.Color.LightGray;
             this.signUp_btn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.signUp_btn.Location = new System.Drawing.Point(230, 541);
-            this.signUp_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.signUp_btn.Location = new System.Drawing.Point(235, 541);
+            this.signUp_btn.Margin = new System.Windows.Forms.Padding(4);
             this.signUp_btn.Name = "signUp_btn";
             this.signUp_btn.Size = new System.Drawing.Size(140, 46);
             this.signUp_btn.TabIndex = 4;
@@ -141,7 +143,7 @@ namespace FinalPaint
             this.signUp_lbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.signUp_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 3.9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.signUp_lbl.ForeColor = System.Drawing.Color.Azure;
-            this.signUp_lbl.Location = new System.Drawing.Point(160, 591);
+            this.signUp_lbl.Location = new System.Drawing.Point(165, 591);
             this.signUp_lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.signUp_lbl.Name = "signUp_lbl";
             this.signUp_lbl.Size = new System.Drawing.Size(301, 17);
@@ -166,7 +168,7 @@ namespace FinalPaint
             this.Controls.Add(this.login_lbl);
             this.Controls.Add(this.authorization_lbl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "AuthorithationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
