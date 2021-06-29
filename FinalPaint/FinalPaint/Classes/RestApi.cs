@@ -85,8 +85,6 @@ namespace FinalPaint.Classes
         public bool ChangePasswordRequest(string password)
         {
             _request=new RestRequest { Resource = "https://localhost:44341/auth/changePassword", Method = Method.GET };
-            // _request.AddJsonBody(_userId);
-            //  _request.AddJsonBody(password);
             _request.AddQueryParameter("userId", _userId);
             _request.AddQueryParameter("password", password);
             var response = _restClient.Execute(_request);
