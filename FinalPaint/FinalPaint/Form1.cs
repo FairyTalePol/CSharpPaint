@@ -301,8 +301,7 @@ namespace FinalPaint
 
         private void SaveServer()
         {
-            string serialized = _myGraphics.SaveServer();
-            bl.SaveServer(serialized, "testName1", PictureType.JSON);
+            bl.RemoteSaveForm();
         }
 
         private void openFileToolStripMenuItem_Click(object sender, EventArgs e)

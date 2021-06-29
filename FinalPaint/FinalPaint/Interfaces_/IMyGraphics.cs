@@ -26,5 +26,7 @@ namespace FinalPaint.Interfaces_
         float GetCurrentPenSize();
         string GetCurrentPenColor();
 
+        string SaveServer();
+
     }
 }
