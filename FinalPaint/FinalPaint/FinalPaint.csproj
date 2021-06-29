@@ -189,7 +189,7 @@
     <Compile Include="Interfaces_\IStorage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SingleUserStatistics.cs" />
+    <Compile Include="Classes\SingleUserStatistics.cs" />
     <Compile Include="StatisticPage.cs">
       <SubType>Form</SubType>
     </Compile>

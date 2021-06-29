@@ -19,7 +19,7 @@ namespace FinalPaint
         }
         public void SetStatistics(SingleUserStatistics user)
         {
-            userValue_lbl.Text = user.Id;
+           // userValue_lbl.Text = user.Id;
             activityValue_lbl.Text = user.LastActivity;
             jpgValue_lbl.Text = user.AmountJPG;
             bmpValue_lbl.Text = user.AmountBMP;
