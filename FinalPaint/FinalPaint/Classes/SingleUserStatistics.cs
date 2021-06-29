@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalPaint
 {
-   public class SingleUserStatistics
+    public class SingleUserStatistics
     {
         public string Email { get; set; }
         public string AmountBMP { get; set; }

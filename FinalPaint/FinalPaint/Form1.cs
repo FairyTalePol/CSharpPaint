@@ -279,13 +279,13 @@ namespace FinalPaint
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            bl.ClearUserId();
-            _mainForm = null;
-            AuthorithationForm.CreateAuthorithationForm().Show();
-            //Application.Exit();
+            //bl.ClearUserId();
+            //_mainForm = null;
+            //AuthorithationForm.CreateAuthorithationForm().Show();
+            Application.Restart();
         }
 
-
+        //1350  1050 15 100 грн 100 час 40 кг угля
         private void btn_saveServer_Click(object sender, EventArgs e)
         {
             Action save = SaveServer;
@@ -326,10 +326,12 @@ namespace FinalPaint
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            bl.ClearUserId();
-            _mainForm.Close();
-            _mainForm = null;
-            AuthorithationForm.CreateAuthorithationForm().Show();
+            Application.Restart();
+            //bl.ClearMyGraphics();
+            //_mainForm.Close();
+            //bl.ClearBL();
+            //_mainForm = null;
+            //AuthorithationForm.CreateAuthorithationForm().Show();
         }
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)

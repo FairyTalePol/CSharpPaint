@@ -80,6 +80,10 @@ namespace FinalPaint.DependencyInversion
             return _myGraphics;
         }
 
+        public void ClearMyGraphics()
+        {
+            _myGraphics = null;
+        }
 
         public void DrawEllipse(int startX, int startY, int finishX, int finishY)
         {
