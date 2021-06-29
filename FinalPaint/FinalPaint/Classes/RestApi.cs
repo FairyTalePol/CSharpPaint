@@ -93,9 +93,9 @@ namespace FinalPaint.Classes
 
         public bool ChangePasswordRequest(string password)
         {
-            _request=new RestRequest { Resource = _authPath+_changePassword, Method = Method.POST };
-            _request.AddJsonBody(_userId);
-            _request.AddJsonBody(password);
+            _request=new RestRequest { Resource = _authPath+_changePassword, Method = Method.GET };
+            _request.AddQueryParameter("userId",_userId);
+            _request.AddQueryParameter("password",password);
             var response = _restClient.Execute(_request);
             var deserializedObject = new JsonSerializer().Deserialize<bool>(response);
             return deserializedObject;
