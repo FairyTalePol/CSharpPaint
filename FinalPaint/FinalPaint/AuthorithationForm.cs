@@ -32,6 +32,7 @@ namespace FinalPaint
         {
             var bl = BuisnessLogic.Create();
             int validCode = bl.AuthorizationRestApi(login_textBox.Text, password_textBox.Text);
+            message_lbl.Visible = true;
             message_lbl.Text = "Please wait...";
             switch (validCode)
             {

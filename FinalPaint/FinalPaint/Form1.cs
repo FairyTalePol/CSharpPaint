@@ -285,13 +285,6 @@ namespace FinalPaint
             //Application.Exit();
         }
 
-        private void logOut_btn_Click(object sender, EventArgs e)
-        {
-            bl.ClearUserId();
-            _mainForm.Close();
-            _mainForm = null;
-            AuthorithationForm.CreateAuthorithationForm().Show();
-        }
 
         private void btn_saveServer_Click(object sender, EventArgs e)
         {
@@ -329,6 +322,22 @@ namespace FinalPaint
             var user = bl.GetUserStatistics();
             var s = new StatisticPage(user);
             s.Show();
+        }
+
+        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bl.ClearUserId();
+            _mainForm.Close();
+            _mainForm = null;
+            AuthorithationForm.CreateAuthorithationForm().Show();
+        }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var userPassword = bl.GetUserPassword();
+            var changePassword = new ChangePasswordForm(userPassword);
+            changePassword.Show();
+
         }
     }
 }
