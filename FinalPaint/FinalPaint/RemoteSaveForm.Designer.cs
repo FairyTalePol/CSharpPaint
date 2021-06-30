@@ -29,6 +29,7 @@ namespace FinalPaint
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RemoteSaveForm));
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -39,29 +40,32 @@ namespace FinalPaint
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(137, 22);
+            this.textBoxName.Location = new System.Drawing.Point(274, 43);
+            this.textBoxName.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(204, 22);
+            this.textBoxName.Size = new System.Drawing.Size(404, 38);
             this.textBoxName.TabIndex = 0;
             this.textBoxName.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 22);
+            this.label1.Location = new System.Drawing.Point(24, 43);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(119, 17);
+            this.label1.Size = new System.Drawing.Size(140, 32);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Название файла";
+            this.label1.Text = "File name";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 61);
+            this.label2.Location = new System.Drawing.Point(24, 118);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 17);
+            this.label2.Size = new System.Drawing.Size(104, 32);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Формат";
+            this.label2.Text = "Format";
             // 
             // comboBoxFormat
             // 
@@ -72,42 +76,47 @@ namespace FinalPaint
             "BMP",
             "JPEG",
             "PNG"});
-            this.comboBoxFormat.Location = new System.Drawing.Point(137, 58);
+            this.comboBoxFormat.Location = new System.Drawing.Point(274, 112);
+            this.comboBoxFormat.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.comboBoxFormat.Name = "comboBoxFormat";
-            this.comboBoxFormat.Size = new System.Drawing.Size(204, 24);
+            this.comboBoxFormat.Size = new System.Drawing.Size(404, 39);
             this.comboBoxFormat.TabIndex = 3;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(183, 103);
+            this.btnSave.Location = new System.Drawing.Point(366, 200);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(158, 40);
+            this.btnSave.Size = new System.Drawing.Size(316, 78);
             this.btnSave.TabIndex = 4;
-            this.btnSave.Text = "Сохранить";
+            this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(15, 103);
+            this.btnCancel.Location = new System.Drawing.Point(30, 200);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(162, 40);
+            this.btnCancel.Size = new System.Drawing.Size(324, 78);
             this.btnCancel.TabIndex = 5;
-            this.btnCancel.Text = "Отмена";
+            this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.button2_Click);
             // 
             // RemoteSaveForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(369, 170);
+            this.ClientSize = new System.Drawing.Size(738, 329);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.comboBoxFormat);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxName);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "RemoteSaveForm";
             this.Text = "Удаленное сохранение";
             this.Load += new System.EventHandler(this.RemoteSaveForm_Load);

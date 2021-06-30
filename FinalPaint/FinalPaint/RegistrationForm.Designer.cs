@@ -208,7 +208,7 @@ namespace FinalPaint
             this.message_lbl.Location = new System.Drawing.Point(2, 699);
             this.message_lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.message_lbl.Name = "message_lbl";
-            this.message_lbl.Size = new System.Drawing.Size(800, 39);
+            this.message_lbl.Size = new System.Drawing.Size(770, 39);
             this.message_lbl.TabIndex = 4;
             this.message_lbl.Text = "Incorrect input";
             this.message_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

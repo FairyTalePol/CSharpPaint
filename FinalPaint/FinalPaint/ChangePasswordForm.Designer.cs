@@ -149,14 +149,14 @@ namespace FinalPaint
             // 
             // message_lbl
             // 
-            this.message_lbl.AutoSize = true;
             this.message_lbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.message_lbl.ForeColor = System.Drawing.Color.Maroon;
-            this.message_lbl.Location = new System.Drawing.Point(322, 659);
+            this.message_lbl.Location = new System.Drawing.Point(2, 644);
             this.message_lbl.Name = "message_lbl";
-            this.message_lbl.Size = new System.Drawing.Size(201, 32);
+            this.message_lbl.Size = new System.Drawing.Size(843, 47);
             this.message_lbl.TabIndex = 4;
             this.message_lbl.Text = "Incorrect input ";
+            this.message_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.message_lbl.Visible = false;
             // 
             // ChangePasswordForm

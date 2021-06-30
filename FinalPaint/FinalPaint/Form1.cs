@@ -285,7 +285,7 @@ namespace FinalPaint
             Application.Restart();
         }
 
-        //1350  1050 15 100 грн 100 час 40 кг угля
+        
         private void btn_saveServer_Click(object sender, EventArgs e)
         {
             Action save = SaveServer;

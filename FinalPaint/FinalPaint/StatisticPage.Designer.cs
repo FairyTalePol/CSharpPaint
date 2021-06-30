@@ -95,7 +95,7 @@ namespace FinalPaint
             this.jpg_lbl.Name = "jpg_lbl";
             this.jpg_lbl.Size = new System.Drawing.Size(383, 39);
             this.jpg_lbl.TabIndex = 3;
-            this.jpg_lbl.Text = "Amount of JPG pictures:";
+            this.jpg_lbl.Text = "Amount of JPEG pictures:";
             // 
             // png_lbl
             // 
@@ -247,7 +247,7 @@ namespace FinalPaint
             this.goBack_btn.ForeColor = System.Drawing.SystemColors.ControlText;
             this.goBack_btn.Location = new System.Drawing.Point(566, 962);
             this.goBack_btn.Name = "goBack_btn";
-            this.goBack_btn.Size = new System.Drawing.Size(133, 61);
+            this.goBack_btn.Size = new System.Drawing.Size(150, 61);
             this.goBack_btn.TabIndex = 5;
             this.goBack_btn.Text = "Go back";
             this.goBack_btn.UseVisualStyleBackColor = false;
