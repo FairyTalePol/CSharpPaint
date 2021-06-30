@@ -25,12 +25,25 @@ namespace FinalPaint.Classes
             return "";
 
         }
-        public static List<FigureWithParametrs> Deserilize_(string path)
+        public static List<FigureWithParametrs> DeserilizeByPath_(string path)
         {
             //List<FigureWithParametrs> figures = new List<FigureWithParametrs>();
             //figures = JsonConvert.DeserializeObject<List<FigureWithParametrs>>(json);
             //return figures;
             List<FigureWithParametrs> list = Newtonsoft.Json.JsonConvert.DeserializeObject<List<FigureWithParametrs>>(File.ReadAllText(path), new Newtonsoft.Json.JsonSerializerSettings
+            {
+                TypeNameHandling = Newtonsoft.Json.TypeNameHandling.All,
+                NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
+            });
+            return list;
+        }
+
+        public static List<FigureWithParametrs> Deserilize_(string json)
+        {
+            //List<FigureWithParametrs> figures = new List<FigureWithParametrs>();
+            //figures = JsonConvert.DeserializeObject<List<FigureWithParametrs>>(json);
+            //return figures;
+            List<FigureWithParametrs> list = Newtonsoft.Json.JsonConvert.DeserializeObject<List<FigureWithParametrs>>(json, new Newtonsoft.Json.JsonSerializerSettings
             {
                 TypeNameHandling = Newtonsoft.Json.TypeNameHandling.All,
                 NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,

@@ -160,6 +160,12 @@
       <DependentUpon>AuthorithationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Enums\PictureType.cs" />
+    <Compile Include="GetPicturesList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GetPicturesList.Designer.cs">
+      <DependentUpon>GetPicturesList.cs</DependentUpon>
+    </Compile>
     <Compile Include="RegistrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -216,6 +222,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AuthorithationForm.resx">
       <DependentUpon>AuthorithationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GetPicturesList.resx">
+      <DependentUpon>GetPicturesList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

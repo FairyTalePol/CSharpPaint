@@ -22,6 +22,7 @@ namespace FinalPaint.Classes
         private string _picturesPath = Properties.Resources.PicturesPath;
         private string _savepicture = Properties.Resources.SavePicture;
         private string _getAllPictures = Properties.Resources.GetAllPictures;
+        private string _getSpecificPicture = Properties.Resources.GetSpecificPicture;
 
         private RestApi()
         {
@@ -141,12 +142,16 @@ namespace FinalPaint.Classes
 
             request.AddJsonBody(pd);
             var response = _restClient.Execute(request);
+            if (!response.IsSuccessful)
+            {
+                throw new Exception("No access to server");
+            }
             var deserializedObject = response.Content;
             Console.WriteLine(deserializedObject);
         }
 
 
-        public void RequestTestGetAllPictures()
+        public List<PictureData> GetAllPictures()
         {
             IRestClient _restClient;
 
@@ -155,13 +160,28 @@ namespace FinalPaint.Classes
             RestRequest request = new RestRequest { Resource = _picturesPath+_getAllPictures, Method = Method.GET };
 
 
-            request.AddQueryParameter("userId", "1");
+            request.AddQueryParameter("userId", _userId);
             var response = _restClient.Execute(request);
             List<PictureData> deserializedObject = new JsonSerializer().Deserialize<List<PictureData>>(response);
-            Console.WriteLine(deserializedObject);
+            return deserializedObject;
 
         }
 
+        public PictureData GetPictureByNameAndUserId(PictureData pd)
+        {
+            IRestClient _restClient;
+
+            _restClient = new RestClient();
+
+            RestRequest request = new RestRequest { Resource = _picturesPath + "pictureById", Method = Method.GET };
+
+
+            request.AddQueryParameter("userId", pd.UserId.ToString());
+            request.AddQueryParameter("pictureName", pd.Name);
+            var response = _restClient.Execute(request);
+            PictureData deserializedObject = new JsonSerializer().Deserialize<PictureData>(response);
+            return deserializedObject;
+        }
 
         public SingleUserStatistics GetUserStatisticsRequest()
         {

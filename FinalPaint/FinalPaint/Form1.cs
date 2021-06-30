@@ -340,5 +340,11 @@ namespace FinalPaint
             changePassword.Show();
 
         }
+
+        private void openFromServerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var openFromServer = new GetPicturesList();
+            openFromServer.ShowDialog();
+        }
     }
 }

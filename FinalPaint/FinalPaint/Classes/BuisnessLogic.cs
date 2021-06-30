@@ -251,7 +251,7 @@ namespace FinalPaint.Classes
                 if (res is string)
                 {
                     
-                    List<FigureWithParametrs> list = MyJsonSerializer.Deserilize_((string)res);
+                    List<FigureWithParametrs> list = MyJsonSerializer.DeserilizeByPath_((string)res);
                     storage.Deserialize(list);
                     foreach (var figure in storage.GetCurrentList())
                     {
@@ -269,8 +269,6 @@ namespace FinalPaint.Classes
                     storage.Deserialize(new List<FigureWithParametrs>());
                     EnableUndoRedo = false;
                     disableUndoRedo();
-
-
                 }
                 act();
             }
@@ -281,6 +279,9 @@ namespace FinalPaint.Classes
            
            
         }
+
+     
+
         public void Save(Action act)
         {
             saveLoad = RastrSaveHelper.Create();
@@ -304,8 +305,42 @@ namespace FinalPaint.Classes
             RestApi r = RestApi.Create();
             r.SavePicture(pd);
             //r.RequestTestWithPicture();
+        }
 
+        public void ChoosePictureLoad(PictureData pd)
+        {
+            RestApi r = RestApi.Create();
+            PictureData res = r.GetPictureByNameAndUserId(pd);
+            currentMode = EButtonDrawingType.Selection;
+            Clear();
+            myGraphics.ClearSurface();
+            if (res.Type == PictureType.JSON)
+            {
+                List<FigureWithParametrs> list = MyJsonSerializer.Deserilize_((string)res.Picture);
+                storage.Deserialize(list);
+                foreach (var figure in storage.GetCurrentList())
+                {
+                    Figure f = myGraphics.FigureFromFWP(figure);
+                    f.Draw(f._finishX, f._finishY);
+                    myGraphics.RestorePen();
+                }
+                EnableUndoRedo = true;
+                disableUndoRedo();
+            }
+            else
+            {
+                myGraphics.Load(res);
+                storage.Deserialize(new List<FigureWithParametrs>());
+                EnableUndoRedo = false;
+                disableUndoRedo();
+            }
 
+        }
+
+        public List<PictureData> GetAllPictures()
+        {
+            RestApi r = RestApi.Create();
+            return r.GetAllPictures();
         }
 
         public void Undo()

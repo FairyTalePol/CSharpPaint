@@ -95,7 +95,19 @@ namespace FinalPaint.Properties {
                 return ResourceManager.GetString("GetAllPictures", resourceCulture);
             }
         }
-        
+
+
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на userid.
+        /// </summary>
+        internal static string GetSpecificPicture
+        {
+            get
+            {
+                return ResourceManager.GetString("pictureById", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Ищет локализованную строку, похожую на getPassword.
         /// </summary>

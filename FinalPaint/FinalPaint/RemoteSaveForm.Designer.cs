@@ -65,6 +65,7 @@ namespace FinalPaint
             // 
             // comboBoxFormat
             // 
+            this.comboBoxFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxFormat.FormattingEnabled = true;
             this.comboBoxFormat.Items.AddRange(new object[] {
             "JSON",
@@ -109,6 +110,7 @@ namespace FinalPaint
             this.Controls.Add(this.textBoxName);
             this.Name = "RemoteSaveForm";
             this.Text = "Удаленное сохранение";
+            this.Load += new System.EventHandler(this.RemoteSaveForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -32,14 +32,28 @@ namespace FinalPaint
             string name = textBoxName.Text;
             PictureType type = (PictureType) Enum.Parse(typeof(PictureType),comboBoxFormat.SelectedItem.ToString());
             bl = BuisnessLogic.Create();
-            bl.SaveServer(name, type);
-            MessageBox.Show("Картинка успешно сохранена");
+            try
+            {
+                bl.SaveServer(name, type);
+                MessageBox.Show("Picture saved successfully");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Picture save failed with "+ex.Message);
+            }
+            
+          
             this.Close();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void RemoteSaveForm_Load(object sender, EventArgs e)
+        {
+            comboBoxFormat.SelectedIndex = 0;
         }
     }
 }
