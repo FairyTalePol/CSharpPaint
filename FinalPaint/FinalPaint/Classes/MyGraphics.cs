@@ -408,6 +408,9 @@ namespace FinalPaint.DependencyInversion
             return img;
         }
 
+       
+
+
         public bool IsCurrentSurfaceTemporary()
         {
             return temp;

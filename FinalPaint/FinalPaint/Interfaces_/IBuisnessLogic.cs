@@ -10,7 +10,7 @@ namespace FinalPaint.Interfaces_
     public interface IBuisnessLogic
     {
         void SetCurrentMode(EButtonDrawingType mode);
-        void Initialize(IMyGraphics myGraphicsUI);
+        void Initialize(IMyGraphics myGraphicsUI,Action act);
 
         bool ValidatePolygon(string algles, out string message);
         void DrawFigure(int x, int y);

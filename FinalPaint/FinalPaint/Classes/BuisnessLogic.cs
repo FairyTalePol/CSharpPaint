@@ -18,6 +18,7 @@ namespace FinalPaint.Classes
         public bool EnableUndoRedo = false;
         private RestApi _r;
         private string _password;
+        Action updatePicture;
 
 
 
@@ -71,10 +72,11 @@ namespace FinalPaint.Classes
             _bl = null;
         }
 
-        public void Initialize(IMyGraphics myGraphicsUI)
+        public void Initialize(IMyGraphics myGraphicsUI, Action act)
         {           
             currentMode = Config.eButtonDrawingType;
-            myGraphics = myGraphicsUI;      
+            myGraphics = myGraphicsUI;
+            updatePicture = act;
         }
 
         public bool ValidatePolygon(string algles, out string message)
@@ -329,12 +331,14 @@ namespace FinalPaint.Classes
             }
             else
             {
-                myGraphics.Load(res);
+                RastrSaveHelper saveLoadHelper = RastrSaveHelper.Create();
+                myGraphics.Load(saveLoadHelper.StringToImageConvert(res.Picture));
                 storage.Deserialize(new List<FigureWithParametrs>());
                 EnableUndoRedo = false;
                 disableUndoRedo();
             }
 
+            updatePicture();
         }
 
         public List<PictureData> GetAllPictures()

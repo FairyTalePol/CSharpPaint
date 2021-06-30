@@ -20,7 +20,7 @@ namespace FinalPaint
             Action act = GetImage;
             _myGraphics = MyGraphics.Create(mainDrawingSurface.Width, mainDrawingSurface.Height,act);
             bl = BuisnessLogic.Create(/*_myGraphics*/);
-            bl.Initialize(_myGraphics);
+            bl.Initialize(_myGraphics, Load_);
             btnColorDialog.BackColor = Config.pen.Color;
             dropdownPenWidth.SelectedIndex = Config.dropDownSelectedIndex;
             Action UndoRedo = SetDisabledUndoRedo;

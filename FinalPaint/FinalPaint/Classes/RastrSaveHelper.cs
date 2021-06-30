@@ -89,6 +89,20 @@ namespace FinalPaint.Classes
             } 
         }
 
+        public Image StringToImageConvert(string pic)
+        {
+            Image res = null;
+
+            byte[] imageBytes = Convert.FromBase64String(pic);
+            // Convert byte[] to Image
+            using (var ms = new MemoryStream(imageBytes, 0, imageBytes.Length))
+            {
+                res = Image.FromStream(ms, true);
+              
+            }
+
+            return res;
+        }
 
         public string SaveServer(Image img, PictureType format)
         {
